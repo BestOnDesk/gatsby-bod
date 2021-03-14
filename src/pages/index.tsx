@@ -22,7 +22,6 @@ interface IndexPageProps {
 export default ({ data }: IndexPageProps) => {
   return (
     <Layout>
-      <Menu color={"red"} />
       <Header />
     </Layout>
   );
