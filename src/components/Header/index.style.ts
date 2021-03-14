@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { layout } from "../../styles/variables";
 import { isDark } from "../../utils/theme";
+import { Row } from "styled-bootstrap-grid";
 
 export interface HeaderProps {
   withShadow?: boolean;
@@ -34,4 +35,9 @@ const Header = styled.header<HeaderProps>`
 
 const HeaderWrap = styled.div``;
 
-export { Header, HeaderWrap };
+const HeaderRow = styled(Row)`
+  justify-content: space-between !important;
+  align-items: center !important;
+`;
+
+export { Header, HeaderWrap, HeaderRow };

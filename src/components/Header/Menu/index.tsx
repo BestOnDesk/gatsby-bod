@@ -1,10 +1,6 @@
 import * as React from "react";
 import { graphql, StaticQuery } from "gatsby";
-import { MainCategory } from "../../app-types/category";
-
-export interface MenuComponentProps {
-  color: string;
-}
+import { MainCategory } from "../../../app-types/category";
 
 export interface MenuQueryProps {
   allWpCategory: {
@@ -12,13 +8,13 @@ export interface MenuQueryProps {
   };
 }
 
-const Menu = (props: MenuComponentProps) => (
+const Menu = () => (
   <StaticQuery
     query={menuQuery}
     render={(result: MenuQueryProps) => (
       <>
-        {result.allWpCategory.nodes.map((category: MainCategory) => {
-          return <h2 color={props.color}>{category.name}</h2>;
+        {result.allWpCategory.nodes.map((category: MainCategory, i) => {
+          return <h2 key={i}>{category.name}</h2>;
         })}
       </>
     )}

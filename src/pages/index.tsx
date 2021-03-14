@@ -1,5 +1,5 @@
 import * as React from "react";
-import Menu from "../components/Menu";
+import Menu from "../components/Header/Menu";
 import { graphql } from "gatsby";
 import Header from "../components/Header";
 import Layout from "../components/Layout";
