@@ -1,18 +1,18 @@
-export enum ThemeVariation {
+export enum ThemeMode {
   Light = "light",
   Dark = "dark",
 }
 
 export interface Theme {
-  variation: ThemeVariation;
+  mode: ThemeMode;
 }
 
 const lightTheme: Theme = {
-  variation: ThemeVariation.Light,
+  mode: ThemeMode.Light,
 };
 
 const darkTheme: Theme = {
-  variation: ThemeVariation.Dark,
+  mode: ThemeMode.Dark,
 };
 
 export { lightTheme, darkTheme };

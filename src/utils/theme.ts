@@ -1,7 +1,7 @@
-import { Theme, ThemeVariation } from "../styles/theme";
+import { Theme, ThemeMode } from "../styles/theme";
 
-const isDark = (theme: Theme) => theme.variation === ThemeVariation.Dark;
+const isDark = (theme: Theme) => theme.mode === ThemeMode.Dark;
 
-const isLight = (theme: Theme) => theme.variation === ThemeVariation.Light;
+const isLight = (theme: Theme) => theme.mode === ThemeMode.Light;
 
 export { isDark, isLight };
