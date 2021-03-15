@@ -15,13 +15,13 @@ const Layout = ({ children }: LayoutProps) => {
     <Wrapper>
       <BaseCSS />
       <GlobalStyles />
-      <ThemeProvider theme={lightTheme}>{children}</ThemeProvider>
       <Helmet>
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
       </Helmet>
+      <ThemeProvider theme={lightTheme}>{children}</ThemeProvider>
     </Wrapper>
   );
 };
