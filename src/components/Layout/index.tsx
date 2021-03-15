@@ -2,7 +2,7 @@ import * as React from "react";
 import { ReactChild } from "react";
 import { GlobalStyles, Wrapper } from "./index.style";
 import { ThemeProvider } from "styled-components";
-import { darkTheme } from "../../styles/theme";
+import { lightTheme } from "../../styles/theme";
 import { Helmet } from "react-helmet";
 import { BaseCSS } from "styled-bootstrap-grid";
 
@@ -15,7 +15,7 @@ const Layout = ({ children }: LayoutProps) => {
     <Wrapper>
       <BaseCSS />
       <GlobalStyles />
-      <ThemeProvider theme={darkTheme}>{children}</ThemeProvider>
+      <ThemeProvider theme={lightTheme}>{children}</ThemeProvider>
       <Helmet>
         <meta
           name="viewport"

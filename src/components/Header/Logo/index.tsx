@@ -1,15 +1,15 @@
 import * as React from "react";
 import { Logo as LogoDiv, LogoLink } from "./index.style";
-import Img from "../../Img";
+import StaticImg from "../../StaticImg";
 
 const Logo = () => {
   return (
     <LogoDiv>
       <LogoLink>
-        <Img
+        <StaticImg
           alt="BestOnDesk"
-          src={"../../images/logo-light.png"}
-          srcDark={"../../images/logo-light.png"}
+          src={"logo/logo-light.png"}
+          srcDark={"logo/logo-dark.png"}
         />
       </LogoLink>
     </LogoDiv>
