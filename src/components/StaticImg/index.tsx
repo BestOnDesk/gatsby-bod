@@ -5,7 +5,7 @@ import { GatsbyImage, getImage, IGatsbyImageData } from "gatsby-plugin-image";
 import { IStaticImageProps } from "gatsby-plugin-image/dist/src/components/static-image.server";
 import { graphql, StaticQuery } from "gatsby";
 
-interface InternalStaticImgProps {
+interface StaticImgProps {
   alt: string;
   src: string;
   srcDark?: string;
@@ -23,7 +23,7 @@ interface ImageQueryProps {
   };
 }
 
-export type ImgProps = InternalStaticImgProps & IStaticImageProps;
+export type ImgProps = StaticImgProps & IStaticImageProps;
 
 const StaticImg: FunctionComponent<ImgProps> = ({
   src,
@@ -39,6 +39,7 @@ const StaticImg: FunctionComponent<ImgProps> = ({
         themeContext.mode === ThemeMode.Light || srcDark === undefined
           ? src
           : srcDark;
+
       const image = data.images.edges.find(
         (n) => n.node.relativePath === computedSrc
       );
@@ -47,7 +48,7 @@ const StaticImg: FunctionComponent<ImgProps> = ({
         const imageData = getImage(image.node.childImageSharp);
 
         if (imageData) {
-          return <GatsbyImage alt={alt} image={imageData} />;
+          return <GatsbyImage alt={alt} image={imageData} {...rest} />;
         } else {
           return null;
         }
