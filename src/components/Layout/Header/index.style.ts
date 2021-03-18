@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { layout } from "../../styles/variables";
-import { isDark } from "../../utils/theme";
+import { layout } from "../../../styles/variables";
+import { isDark } from "../../../utils/theme";
 import { Row } from "styled-bootstrap-grid";
 
 export interface HeaderProps {

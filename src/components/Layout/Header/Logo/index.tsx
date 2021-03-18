@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Logo as LogoDiv, LogoLink } from "./index.style";
-import StaticImg from "../../StaticImg";
+import StaticImg from "components/StaticImg";
 
 const Logo = () => {
   return (

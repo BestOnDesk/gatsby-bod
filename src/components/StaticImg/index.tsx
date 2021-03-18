@@ -1,8 +1,12 @@
 import React, { FunctionComponent, useContext } from "react";
 import { ThemeContext } from "styled-components";
 import { ThemeMode } from "../../styles/theme";
-import { GatsbyImage, getImage, IGatsbyImageData } from "gatsby-plugin-image";
-import { IStaticImageProps } from "gatsby-plugin-image/dist/src/components/static-image.server";
+import {
+  GatsbyImage,
+  GatsbyImageProps,
+  getImage,
+  IGatsbyImageData,
+} from "gatsby-plugin-image";
 import { graphql, StaticQuery } from "gatsby";
 
 interface StaticImgProps {
@@ -23,7 +27,7 @@ interface ImageQueryProps {
   };
 }
 
-export type ImgProps = StaticImgProps & IStaticImageProps;
+export type ImgProps = StaticImgProps & GatsbyImageProps;
 
 const StaticImg: FunctionComponent<ImgProps> = ({
   src,
@@ -47,8 +51,10 @@ const StaticImg: FunctionComponent<ImgProps> = ({
       if (image) {
         const imageData = getImage(image.node.childImageSharp);
 
+        const { image: _, ...restProps } = rest;
+
         if (imageData) {
-          return <GatsbyImage alt={alt} image={imageData} {...rest} />;
+          return <GatsbyImage alt={alt} image={imageData} {...restProps} />;
         } else {
           return null;
         }

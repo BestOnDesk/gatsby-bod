@@ -1,6 +1,6 @@
 import * as React from "react";
 import { graphql, StaticQuery } from "gatsby";
-import { MainCategory } from "../../../app-types/category";
+import { MainCategory } from "../../../../app-types/category";
 
 export interface MenuQueryProps {
   allWpCategory: {
