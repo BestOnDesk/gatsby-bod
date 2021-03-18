@@ -1,3 +1,5 @@
+const path = require("path");
+
 module.exports = {
   siteMetadata: {
     title: "BestOnDesk",
@@ -11,6 +13,16 @@ module.exports = {
           timeout: 3600000,
           requestConcurrency: 150,
         },
+      },
+    },
+    {
+      resolve: "gatsby-plugin-root-import",
+      options: {
+        src: path.join(__dirname, "src"),
+        components: path.join(__dirname, "src/components"),
+        pages: path.join(__dirname, "src/pages"),
+        styles: path.join(__dirname, "src/styles"),
+        utils: path.join(__dirname, "src/utils"),
       },
     },
     "gatsby-plugin-styled-components",
