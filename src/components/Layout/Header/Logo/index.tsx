@@ -7,7 +7,7 @@ const Logo = () => {
     <LogoDiv>
       <LogoLink>
         <StaticImg
-          style={{ maxHeight: "37px" }}
+          imgStyle={{ maxHeight: "37px" }}
           alt="BestOnDesk"
           src={"logo/logo-light.png"}
           srcDark={"logo/logo-dark.png"}

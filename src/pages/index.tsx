@@ -1,8 +1,6 @@
 import * as React from "react";
-import Menu from "../components/Header/Menu";
 import { graphql } from "gatsby";
-import Header from "../components/Header";
-import Layout from "../components/Layout";
+import Layout from "../components/GlobalWrapper";
 
 interface PostNode {
   node: {
@@ -22,7 +20,7 @@ interface IndexPageProps {
 export default ({ data }: IndexPageProps) => {
   return (
     <Layout>
-      <Header />
+      <h1>Test</h1>
     </Layout>
   );
 };

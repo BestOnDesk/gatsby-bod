@@ -1,18 +1,20 @@
 import * as React from "react";
 import { ReactChild } from "react";
-import { GlobalStyles, Wrapper } from "./index.style";
 import { ThemeProvider } from "styled-components";
 import { lightTheme } from "styles/theme";
 import { Helmet } from "react-helmet";
 import { BaseCSS } from "styled-bootstrap-grid";
+import { GlobalStyle } from "../../styles/global.style";
+import { Layout } from "../Layout";
 
-interface LayoutProps {
+interface GlobalWrapperProps {
   children: ReactChild | ReactChild[];
+  withLayout?: boolean;
 }
 
-const GlobalWrapper = ({ children }: LayoutProps) => {
+const GlobalWrapper = ({ children, withLayout }: GlobalWrapperProps) => {
   return (
-    <Wrapper>
+    <>
       <Helmet>
         <meta
           name="viewport"
@@ -20,9 +22,12 @@ const GlobalWrapper = ({ children }: LayoutProps) => {
         />
       </Helmet>
       <BaseCSS />
-      <GlobalStyles />
-      <ThemeProvider theme={lightTheme}>{children}</ThemeProvider>
-    </Wrapper>
+      <ThemeProvider theme={lightTheme}>
+        <GlobalStyle />
+        {withLayout ? <Layout>{children}</Layout> : children}
+        {children}
+      </ThemeProvider>
+    </>
   );
 };
 
