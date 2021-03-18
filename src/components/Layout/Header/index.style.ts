@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { layout } from "../../../styles/variables";
 import { isDark } from "../../../utils/theme";
 import { Row } from "styled-bootstrap-grid";
 
@@ -13,7 +12,7 @@ const Header = styled.header<HeaderProps>`
   position: relative !important;
   z-index: 99 !important;
 
-  @media ${layout.laptopDevice} {
+  @media ${(props) => props.theme.layout.laptopDevice} {
     padding: 0 30px !important;
   }
   @media only screen and (max-width: 1199px) {
