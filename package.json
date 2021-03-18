@@ -12,14 +12,16 @@
     "start": "gatsby develop",
     "build": "gatsby build",
     "serve": "gatsby serve",
-    "clean": "gatsby clean"
+    "clean": "gatsby clean",
+    "storybook": "NODE_ENV=production start-storybook -s public -p 6006 --debug-webpack",
+    "build-storybook": "build-storybook"
   },
   "dependencies": {
     "babel-plugin-styled-components": "^1.12.0",
     "gatsby": "^3.0.1",
     "gatsby-image": "^3.0.0",
     "gatsby-plugin-google-analytics": "^3.0.0",
-    "gatsby-plugin-image": "^1.0.1",
+    "gatsby-plugin-image": "^1.1.0",
     "gatsby-plugin-manifest": "^3.0.0",
     "gatsby-plugin-react-helmet": "^4.0.0",
     "gatsby-plugin-sharp": "^3.0.1",
@@ -36,15 +38,25 @@
     "styled-components": "^5.2.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.13.10",
+    "@storybook/addon-actions": "^6.1.21",
+    "@storybook/addon-essentials": "^6.1.21",
+    "@storybook/addon-links": "^6.1.21",
+    "@storybook/react": "^6.1.21",
     "@types/react": "^17.0.3",
     "@types/react-helmet": "^6.1.0",
     "@types/styled-components": "^5.1.8",
     "@typescript-eslint/eslint-plugin": "^4.17.0",
     "@typescript-eslint/parser": "^4.17.0",
+    "babel-loader": "^8.2.2",
+    "babel-plugin-remove-graphql-queries": "^3.1.0",
+    "babel-preset-react-app": "^10.0.0",
     "eslint": "^7.22.0",
     "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-react": "^7.22.0",
+    "storybook-addon-styled-component-theme": "^2.0.0",
+    "tsconfig-paths-webpack-plugin": "^3.5.1",
     "typescript": "^4.2.3"
   }
 }
