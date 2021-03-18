@@ -1,8 +1,6 @@
-import styled, { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from "styled-components";
 
-const Wrapper = styled.div``;
-
-const GlobalStyles = createGlobalStyle`
+const GlobalStyle = createGlobalStyle`
     img {
         vertical-align: middle !important;
         max-width: 100% !important;
@@ -14,4 +12,4 @@ const GlobalStyles = createGlobalStyle`
     }
 `;
 
-export { Wrapper, GlobalStyles };
+export { GlobalStyle };

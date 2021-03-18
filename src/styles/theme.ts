@@ -3,16 +3,20 @@ export enum ThemeMode {
   Dark = "dark",
 }
 
-export interface Theme {
-  mode: ThemeMode;
-}
+export type ThemeModeType = ThemeMode.Light | ThemeMode.Dark;
 
-const lightTheme: Theme = {
+const baseTheme: { [property: string]: any } = {};
+const t = baseTheme;
+
+export const lightTheme = {
+  ...baseTheme,
   mode: ThemeMode.Light,
+  name: "Light",
 };
-
-const darkTheme: Theme = {
+export const darkTheme = {
+  ...baseTheme,
   mode: ThemeMode.Dark,
+  name: "Dark",
 };
 
-export { lightTheme, darkTheme };
+export const themes = [lightTheme, darkTheme];
