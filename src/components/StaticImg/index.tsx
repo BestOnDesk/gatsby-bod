@@ -1,13 +1,9 @@
 import React, { FunctionComponent, useContext } from "react";
 import { ThemeContext } from "styled-components";
-import { ThemeMode } from "../../styles/theme";
-import {
-  GatsbyImage,
-  GatsbyImageProps,
-  getImage,
-  IGatsbyImageData,
-} from "gatsby-plugin-image";
+import { ThemeMode } from "styles/theme";
+import { GatsbyImage, getImage, IGatsbyImageData } from "gatsby-plugin-image";
 import { graphql, StaticQuery } from "gatsby";
+import { GatsbyImageProps } from "gatsby-plugin-image/dist/src/components/gatsby-image.browser";
 
 interface StaticImgProps {
   alt: string;
@@ -36,7 +32,7 @@ const StaticImg: FunctionComponent<ImgProps> = ({
   ...rest
 }) => (
   <StaticQuery
-    query={imageQuery}
+    query={staticImgQuery}
     render={(data: ImageQueryProps) => {
       const themeContext = useContext(ThemeContext);
       const computedSrc =
@@ -51,10 +47,10 @@ const StaticImg: FunctionComponent<ImgProps> = ({
       if (image) {
         const imageData = getImage(image.node.childImageSharp);
 
-        const { image: _, ...restProps } = rest;
+        const { image: _, ...restDestr } = rest;
 
         if (imageData) {
-          return <GatsbyImage alt={alt} image={imageData} {...restProps} />;
+          return <GatsbyImage alt={alt} image={imageData} {...restDestr} />;
         } else {
           return null;
         }
@@ -65,8 +61,8 @@ const StaticImg: FunctionComponent<ImgProps> = ({
   />
 );
 
-const imageQuery = graphql`
-  query imageQuery {
+const staticImgQuery = graphql`
+  query staticImgQuery {
     images: allFile(filter: { sourceInstanceName: { eq: "images" } }) {
       edges {
         node {
