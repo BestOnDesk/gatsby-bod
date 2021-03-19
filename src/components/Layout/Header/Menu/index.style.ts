@@ -44,10 +44,10 @@ const ItemLink = styled(Link)`
 const MenuItem = styled.li`
   margin: 0 18px;
   position: relative;
-  @media ${(props) => props.theme.layout.laptopDevice} {
+  @media ${(props) => props.theme.layouts.laptopDevice} {
     margin: 0 12px;
   }
-  @media ${(props) => props.theme.layout.lgLayout} {
+  @media ${(props) => props.theme.layouts.lgLayout} {
     margin: 0 12px;
   }
   &:hover {
