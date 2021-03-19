@@ -1,6 +1,6 @@
 import * as React from "react";
 import { graphql } from "gatsby";
-import Layout from "../components/GlobalWrapper";
+import GlobalWrapper from "../components/GlobalWrapper";
 
 interface PostNode {
   node: {
@@ -19,9 +19,9 @@ interface IndexPageProps {
 
 export default ({ data }: IndexPageProps) => {
   return (
-    <Layout>
+    <GlobalWrapper withLayout={true}>
       <h1>Test</h1>
-    </Layout>
+    </GlobalWrapper>
   );
 };
 

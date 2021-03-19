@@ -2,6 +2,7 @@ import * as React from "react";
 import { graphql, StaticQuery } from "gatsby";
 import { MainCategory } from "../../../../app-types/category";
 import { ItemLink, MainMenu, MenuNav, MenuWrapper } from "./index.style";
+import { getCategoryLink } from "../../../../utils/links";
 
 export interface MenuQueryProps {
   allWpCategory: {
@@ -18,7 +19,11 @@ const Menu = () => (
           <MainMenu>
             <ItemLink to="/">Home</ItemLink>
             {result.allWpCategory.nodes.map((category: MainCategory, i) => {
-              return <h2 key={i}>{category.name}</h2>;
+              return (
+                <ItemLink to={getCategoryLink(category.slug)} key={i}>
+                  {category.name}
+                </ItemLink>
+              );
             })}
           </MainMenu>
         </MenuNav>
