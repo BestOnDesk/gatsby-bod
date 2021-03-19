@@ -25,7 +25,13 @@ module.exports = {
         utils: path.join(__dirname, "src/utils"),
       },
     },
-    "gatsby-plugin-styled-components",
+    {
+      resolve: "gatsby-plugin-styled-components",
+      options: {
+        fileName: false,
+        displayName: process.env.NODE_ENV === "development",
+      },
+    },
     //{
     //  resolve: "gatsby-plugin-google-analytics",
     //  options: {
