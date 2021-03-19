@@ -15,10 +15,10 @@ const MainMenu = styled.ul`
 `;
 
 const ItemLink = styled(Link)`
-  font-size: ${(props) => props.theme.font.size.b2};
-  line-height: ${(props) => props.theme.font.height.b2};
+  font-size: ${(props) => props.theme.fonts.size.b2};
+  line-height: ${(props) => props.theme.fonts.height.b2};
   color: ${(props) => props.theme.colors.midgray};
-  font-weight: ${(props) => props.theme.font.weight.pMedium};
+  font-weight: ${(props) => props.theme.fonts.weight.pMedium};
   ${(props) => props.theme.extends.transition};
   height: 80px;
   display: block;

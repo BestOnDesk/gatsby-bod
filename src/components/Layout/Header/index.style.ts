@@ -12,7 +12,7 @@ const Header = styled.header<HeaderProps>`
   position: relative !important;
   z-index: 99 !important;
 
-  @media ${(props) => props.theme.layout.laptopDevice} {
+  @media ${(props) => props.theme.layouts.laptopDevice} {
     padding: 0 30px !important;
   }
   @media only screen and (max-width: 1199px) {

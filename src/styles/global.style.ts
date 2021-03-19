@@ -4,9 +4,9 @@ type Theme = { [property: string]: any };
 
 const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
     * {
-        -webkit-box-sizing: border-box;
         box-sizing: border-box;
     }
+
 
     article,
     aside,
@@ -36,11 +36,13 @@ const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
         display: none;
     }
 
+
     a {
         color: ${(props) => props.theme.colors.heading};
         text-decoration: none;
         outline: none;
     }
+
 
     a:hover,
     a:focus,
@@ -76,13 +78,9 @@ const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
     kbd,
     pre,
     samp {
-        font-size: ${(props) => props.theme.font.size.b3};
-        -webkit-hyphens: none;
-        -moz-hyphens: none;
-        -ms-hyphens: none;
+        font-size: ${(props) => props.theme.fonts.size.b3};
         hyphens: none;
-        color: ${(props) => props.theme.color.primary};
-
+        color: ${(props) => props.theme.colors.primary};
     }
 
     kbd,
@@ -92,16 +90,17 @@ const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
 
     pre {
         font-family: "Courier 10 Pitch", Courier, monospace;
-        font-size: ${(props) => props.theme.font.size.b3};
+        font-size: ${(props) => props.theme.fonts.size.b3};
         margin: 10px 0;
         overflow: auto;
         padding: 20px;
         white-space: pre;
         white-space: pre-wrap;
         word-wrap: break-word;
-        color: ${(props) => props.theme.color.body};
-        background: ${(props) => props.theme.color.lighter};
+        color: ${(props) => props.theme.colors.body};
+        background: ${(props) => props.theme.colors.lighter};
     }
+
 
     small {
         font-size: smaller;
@@ -155,8 +154,10 @@ const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
         margin: 0;
     }
 
-    ol ul {
-        margin-bottom: 0;
+    ol {
+        ul {
+            margin-bottom: 0;
+        }
     }
 
     img {
@@ -211,8 +212,6 @@ const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
     html input[type="button"],
     input[type="reset"],
     input[type="submit"] {
-        -webkit-appearance: button;
-        -moz-appearance: button;
         appearance: button;
         cursor: pointer;
     }
@@ -228,15 +227,12 @@ const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
     }
 
     input[type="search"] {
-        -webkit-appearance: textfield;
-        -moz-appearance: textfield;
         appearance: textfield;
         padding-right: 2px;
         width: 270px;
     }
 
     input[type="search"]::-webkit-search-decoration {
-        -webkit-appearance: none;
         appearance: none;
     }
 
@@ -311,6 +307,295 @@ const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
     cite,
     em {
         font-style: italic;
+    }
+
+
+    blockquote,
+    q {
+        hyphens: none;
+        quotes: none;
+    }
+
+    blockquote:before,
+    blockquote:after,
+    q:before,
+    q:after {
+        content: "";
+        content: none;
+    }
+
+    blockquote {
+        font-size: ${(props) => props.theme.fonts.size.b1};
+        font-style: italic;
+        font-weight: ${(props) => props.theme.fonts.weight.pLight};
+        margin: 24px 40px;
+    }
+
+    blockquote blockquote {
+        margin-right: 0;
+    }
+
+    blockquote cite,
+    blockquote small {
+        font-size: ${(props) => props.theme.fonts.size.b3};
+        font-weight: normal;
+    }
+
+    blockquote strong,
+    blockquote b {
+        font-weight: 700;
+    }
+
+    html {
+        overflow: hidden;
+        overflow-y: auto;
+        margin: 0;
+        padding: 0;
+        font-size: 10px;
+    }
+
+    body {
+        overflow: hidden;
+        font-size: ${(props) => props.theme.fonts.size.b1};
+        line-height: ${(props) => props.theme.fonts.height.b1};
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        font-family: ${(props) => props.theme.fonts.family.primary};
+        color: ${(props) => props.theme.colors.body};
+        font-weight: ${(props) => props.theme.fonts.weight.pRegular};
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    address,
+    p,
+    pre,
+    blockquote,
+    menu,
+    ol,
+    ul,
+    table,
+    hr {
+        margin: 0;
+        margin-bottom: 20px;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        word-break: break-word;
+        font-family: ${(props) => props.theme.fonts.family.secondary};
+        line-height: 1.4074;
+        color: ${(props) => props.theme.colors.heading};
+    }
+
+    h1 {
+        font-size: ${(props) => props.theme.fonts.size.h1};
+        line-height: 1.19;
+    }
+
+    h2 {
+        font-size: ${(props) => props.theme.fonts.size.h2};
+        line-height: 1.23;
+    }
+
+    h3 {
+        font-size: ${(props) => props.theme.fonts.size.h3};
+        line-height: 1.14;
+    }
+
+    h4 {
+        font-size: ${(props) => props.theme.fonts.size.h4};
+        line-height: 1.25;
+    }
+
+    h5 {
+        font-size: ${(props) => props.theme.fonts.size.h5};
+        line-height: 1.24;
+    }
+
+    h6 {
+        font-size: ${(props) => props.theme.fonts.size.h6};
+        line-height: 1.25;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        a {
+            color: inherit;
+        }
+    }
+
+
+    @media ${(props) => props.theme.layouts.md} {
+        h1 {
+            font-size: 38px;
+        }
+
+        h2 {
+            font-size: 32px;
+        }
+
+        h3 {
+            font-size: 28px;
+        }
+
+        h4 {
+            font-size: 24px;
+        }
+
+        h5 {
+            font-size: 18px;
+        }
+    }
+
+
+    @media ${(props) => props.theme.layouts.sm} {
+        h1 {
+            font-size: 34px;
+        }
+
+        h2 {
+            font-size: 28px;
+        }
+
+        h3 {
+            font-size: 24px;
+        }
+
+        h4 {
+            font-size: 20px;
+        }
+
+        h5 {
+            font-size: 16px;
+        }
+    }
+
+
+    h1,
+    h2,
+    h3 {
+        font-weight: ${(props) => props.theme.fonts.weight.bold};
+    }
+
+    h4,
+    h5 {
+        font-weight: ${(props) => props.theme.fonts.weight.bold};
+    }
+
+    h6 {
+        font-weight: ${(props) => props.theme.fonts.weight.medium};
+    }
+
+
+    p {
+        font-size: ${(props) => props.theme.fonts.size.b1};
+        line-height: ${(props) => props.theme.fonts.height.b1};
+        font-weight: ${(props) => props.theme.fonts.weight.regular};
+        color: ${(props) => props.theme.colors.body};
+        margin: 0 0 40px;
+        @media ${(props) => props.theme.layouts.sm} {
+            margin: 0 0 20px;
+            font-size: ${(props) => props.theme.fonts.size.b2}
+            line-height: ${(props) => props.theme.fonts.height.b2};
+        }
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    table {
+        border-collapse: collapse;
+        border-spacing: 0;
+        margin: 0 0 20px;
+        width: 100%;
+    }
+
+    table a,
+    table a:link,
+    table a:visited {
+        text-decoration: none;
+    }
+
+    cite {
+        color: ${(props) => props.theme.colors.heading};
+    }
+
+    var {
+        font-family: "Courier 10 Pitch", Courier, monospace;
+    }
+
+    
+    ul,
+    ol {
+        padding-left: 18px;
+    }
+
+    ul {
+        list-style: square;
+        margin-bottom: 30px;
+        padding-left: 20px;
+
+        li {
+            font-size: ${(props) => props.theme.fonts.size.b1};
+            line-height: ${(props) => props.theme.fonts.height.b1};
+            margin-top: 10px;
+            margin-bottom: 10px;
+            color: ${(props) => props.theme.colors.body};
+
+            a {
+                text-decoration: none;
+                color: ${(props) => props.theme.colors.gray};
+                ${(props) => props.theme.extends.transition}
+
+                &:hover {
+                    color: ${(props) => props.theme.colors.primary};
+                }
+            }
+        }
+
+        ul {
+            margin-bottom: 0;
+        }
+    }
+
+    ol {
+        margin-bottom: 30px;
+
+        li {
+            font-size: ${(props) => props.theme.fonts.size.b1};
+            line-height: ${(props) => props.theme.fonts.height.b1};
+            color: ${(props) => props.theme.colors.body};
+            margin-top: 10px;
+            margin-bottom: 10px;
+
+            a {
+                color: ${(props) => props.theme.colors.heading}
+                ${(props) => props.theme.extends.transition}
+                text-decoration: none;
+
+                &:hover {
+                    color: ${(props) => props.theme.colors.primary};
+                }
+            }
+        }
+
+        ul {
+            padding-left: 30px;
+        }
     }
 `;
 
