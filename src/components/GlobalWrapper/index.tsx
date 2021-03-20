@@ -25,7 +25,6 @@ const GlobalWrapper = ({ children, withLayout }: GlobalWrapperProps) => {
       <ThemeProvider theme={lightTheme}>
         <GlobalStyle />
         {withLayout ? <Layout>{children}</Layout> : children}
-        {children}
       </ThemeProvider>
     </>
   );
