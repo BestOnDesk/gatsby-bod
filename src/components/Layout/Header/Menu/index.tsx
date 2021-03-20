@@ -4,18 +4,12 @@ import { MainCategory } from "../../../../app-types/category";
 import {
   ItemLink,
   MainMenu,
-  MegaMenuItem,
-  MegaMenuSubMenu,
-  MegaMenuWrapper,
   MenuItem,
   MenuItemWithChildren,
   MenuNav,
   MenuWrapper,
   SubMenu,
   SubMenuItem,
-  VerticalNav,
-  VerticalNavItem,
-  VerticalNavMenu,
 } from "./index.style";
 import { getCategoryLink } from "../../../../utils/links";
 import HoverFlip from "../../../HoverFlip";
@@ -53,21 +47,7 @@ const Menu = () => (
                 </MenuItem>
               );
             })}
-            <MenuItem>
-              <MegaMenuWrapper>
-                <MegaMenuSubMenu>
-                  <MegaMenuItem>
-                    <VerticalNav>
-                      <VerticalNavMenu>
-                        <VerticalNavItem active={true}>
-                          <HoverFlip to={"/"}>Test</HoverFlip>
-                        </VerticalNavItem>
-                      </VerticalNavMenu>
-                    </VerticalNav>
-                  </MegaMenuItem>
-                </MegaMenuSubMenu>
-              </MegaMenuWrapper>
-            </MenuItem>
+            <MenuItem></MenuItem>
           </MainMenu>
         </MenuNav>
       </MenuWrapper>
