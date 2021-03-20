@@ -4,11 +4,21 @@ import { MainCategory } from "../../../../app-types/category";
 import {
   ItemLink,
   MainMenu,
+  MegaMenuItem,
+  MegaMenuSubMenu,
+  MegaMenuWrapper,
   MenuItem,
+  MenuItemWithChildren,
   MenuNav,
   MenuWrapper,
+  SubMenu,
+  SubMenuItem,
+  VerticalNav,
+  VerticalNavItem,
+  VerticalNavMenu,
 } from "./index.style";
 import { getCategoryLink } from "../../../../utils/links";
+import HoverFlip from "../../../HoverFlip";
 
 export interface MenuQueryProps {
   allWpCategory: {
@@ -23,9 +33,17 @@ const Menu = () => (
       <MenuWrapper>
         <MenuNav>
           <MainMenu>
-            <MenuItem>
+            <MenuItemWithChildren>
               <ItemLink to="/">Home</ItemLink>
-            </MenuItem>
+              <SubMenu>
+                <SubMenuItem>
+                  <HoverFlip to={"/"}>Test</HoverFlip>
+                </SubMenuItem>
+                <SubMenuItem>
+                  <HoverFlip to={"/2"}>Test2</HoverFlip>
+                </SubMenuItem>
+              </SubMenu>
+            </MenuItemWithChildren>
             {result.allWpCategory.nodes.map((category: MainCategory, i) => {
               return (
                 <MenuItem>
@@ -35,6 +53,21 @@ const Menu = () => (
                 </MenuItem>
               );
             })}
+            <MenuItem>
+              <MegaMenuWrapper>
+                <MegaMenuSubMenu>
+                  <MegaMenuItem>
+                    <VerticalNav>
+                      <VerticalNavMenu>
+                        <VerticalNavItem active={true}>
+                          <HoverFlip to={"/"}>Test</HoverFlip>
+                        </VerticalNavItem>
+                      </VerticalNavMenu>
+                    </VerticalNav>
+                  </MegaMenuItem>
+                </MegaMenuSubMenu>
+              </MegaMenuWrapper>
+            </MenuItem>
           </MainMenu>
         </MenuNav>
       </MenuWrapper>

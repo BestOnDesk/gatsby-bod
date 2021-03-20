@@ -7,28 +7,28 @@ export interface HeaderProps {
 }
 
 const Header = styled.header<HeaderProps>`
-  padding: 0 60px !important;
-  background: #fff !important;
-  position: relative !important;
-  z-index: 99 !important;
+  padding: 0 60px;
+  background: #fff;
+  position: relative;
+  z-index: 99;
 
   @media ${(props) => props.theme.layouts.laptopDevice} {
-    padding: 0 30px !important;
+    padding: 0 30px;
   }
   @media only screen and (max-width: 1199px) {
-    padding: 20px 30px !important;
+    padding: 20px 30px;
   }
 
   ${(props) =>
     props.withShadow &&
     `
-        box-shadow: var(--shadow-primary) !important;
+        box-shadow: ${props.theme.shadows.primary};
     `}
 
   ${(props) =>
     isDark(props.theme) &&
     `
-        background: var(--color-extra04) !important;
+        background: ${props.theme.colors.extra04};
     `}
 `;
 

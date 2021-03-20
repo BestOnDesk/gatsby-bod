@@ -12,9 +12,9 @@ export interface HoverFlipProps extends GatsbyLinkProps<undefined> {
 
 const HoverFlip = ({ to, children }: HoverFlipProps) => {
   return (
-    <HoverFlipItemWrapper>
-      <HoverFlipItem>
-        <HoverFlipSpan text={children}>{children}</HoverFlipSpan>
+    <HoverFlipItemWrapper to={to}>
+      <HoverFlipItem text={children}>
+        <HoverFlipSpan>{children}</HoverFlipSpan>
       </HoverFlipItem>
     </HoverFlipItemWrapper>
   );
