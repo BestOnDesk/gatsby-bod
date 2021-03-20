@@ -114,7 +114,7 @@ t.extends.listStyle = `
   list-style: none;
 `;
 t.extends.transition = `
-  transition: ${t.animations.transition}
+  transition: ${t.animations.transition};
 `;
 
 export const lightTheme = {
