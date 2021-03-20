@@ -4,6 +4,8 @@ import { Col, Row } from "styled-bootstrap-grid";
 import Logo from "./Logo";
 import Menu from "./Menu";
 
+// TODO: change hiddenLgDown to hiddenXlDown when styled-bootstrap-grid will be fixed
+
 const Header = () => {
   return (
     <HeaderStyled>
@@ -12,7 +14,7 @@ const Header = () => {
           <Col xl={3} lg={3} md={4} sm={3} xs={12}>
             <Logo />
           </Col>
-          <Col xl={6} hiddenXlDown>
+          <Col xl={6} hiddenLgDown>
             <Menu />
           </Col>
         </Row>

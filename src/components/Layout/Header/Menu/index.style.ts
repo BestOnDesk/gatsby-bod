@@ -83,7 +83,7 @@ const SubMenu = styled.ul`
   padding: 20px;
   border-radius: 0 0 10px 10px;
   box-shadow: ${(props) => props.theme.shadows.primary};
-  ${(props) => props.theme.extends.transitions};
+  ${(props) => props.theme.extends.transitions}
 
   li {
     a {
@@ -91,7 +91,7 @@ const SubMenu = styled.ul`
       line-height: ${(props) => props.theme.fonts.height.b2};
       color: ${(props) => props.theme.colors.midgray};
       font-weight: ${(props) => props.theme.fonts.weight.pMedium};
-      ${(props) => props.theme.extends.transitions};
+      ${(props) => props.theme.extends.transitions}
     }
 
     ${HoverFlipItemWrapper} {
@@ -132,17 +132,6 @@ export interface VerticalNavItemProps {
   active: boolean;
 }
 
-const MegaMenuWrapper = styled(MenuItem)`
-  position: static;
-
-  &:hover {
-    .megamenu-sub-menu {
-      opacity: 1;
-      visibility: visible;
-    }
-  }
-`;
-
 const MegaMenuSubMenu = styled.ul`
   ${(props) => props.theme.extends.listStyle}
   box-sizing: border-box;
@@ -159,6 +148,17 @@ const MegaMenuSubMenu = styled.ul`
   transform: translateX(-50%);
   border-radius: 0 0 10px 10px;
   box-shadow: ${(props) => props.theme.shadows.primary};
+`;
+
+const MegaMenuWrapper = styled(MenuItem)`
+  position: static;
+
+  &:hover {
+    ${MegaMenuSubMenu} {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
 `;
 
 const MegaMenuItem = styled.li`

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { isDark } from "../../../utils/theme";
 import { Row } from "styled-bootstrap-grid";
+import { Logo } from "./Logo/index.style";
 
 export interface HeaderProps {
   withShadow?: boolean;
@@ -30,6 +31,21 @@ const Header = styled.header<HeaderProps>`
     `
         background: ${props.theme.colors.extra04};
     `}
+
+  ${Logo} {
+      a {
+          display: block;
+
+          img {
+              max-height: 37px;
+          }
+
+          @media ${(props) => props.theme.layouts.largeMobile} {
+              text-align: center;
+              margin-bottom: 20px;
+          }
+      }
+  }
 `;
 
 const HeaderWrap = styled.div``;
