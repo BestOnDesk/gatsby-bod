@@ -9,6 +9,8 @@ import {
 } from "./index.style";
 import HoverFlip from "../../../../HoverFlip";
 
+// TODO Add props and graphql query
+
 const MegaMenu = () => {
   return (
     <MegaMenuWrapper>

@@ -1,22 +1,21 @@
 import * as React from "react";
 import { graphql, StaticQuery } from "gatsby";
-import { MainCategory } from "../../../../app-types/category";
+import { MenuCategory } from "../../../../app-types/category";
 import {
   ItemLink,
   MainMenu,
-  MenuItem,
   MenuItemWithChildren,
   MenuNav,
   MenuWrapper,
   SubMenu,
   SubMenuItem,
 } from "./index.style";
-import { getCategoryLink } from "../../../../utils/links";
 import HoverFlip from "../../../HoverFlip";
+import MegaMenu from "./MegaMenu";
 
 export interface MenuQueryProps {
   allWpCategory: {
-    nodes: MainCategory[];
+    nodes: MenuCategory[];
   };
 }
 
@@ -38,16 +37,10 @@ const Menu = () => (
                 </SubMenuItem>
               </SubMenu>
             </MenuItemWithChildren>
-            {result.allWpCategory.nodes.map((category: MainCategory, i) => {
-              return (
-                <MenuItem>
-                  <ItemLink to={getCategoryLink(category.slug)} key={i}>
-                    {category.name}
-                  </ItemLink>
-                </MenuItem>
-              );
+            {result.allWpCategory.nodes.map((category: MenuCategory, i) => {
+              return <MegaMenu categoryId={category.id} />;
             })}
-            <MenuItem></MenuItem>
+            <MegaMenu />
           </MainMenu>
         </MenuNav>
       </MenuWrapper>
@@ -65,13 +58,9 @@ export const menuQuery = graphql`
     ) {
       nodes {
         id
-        slug
-        name
         wpChildren {
           nodes {
             id
-            slug
-            name
           }
         }
       }

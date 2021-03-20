@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { HoverFlipItemWrapper } from "../../../../HoverFlip/index.style";
-import { MenuItem } from "../index.style";
+import { MenuItem, MenuItemWithChildren } from "../index.style";
 
 export interface VerticalNavItemProps {
   active: boolean;
@@ -24,7 +24,7 @@ const MegaMenuSubMenu = styled.ul`
   box-shadow: ${(props) => props.theme.shadows.primary};
 `;
 
-const MegaMenuWrapper = styled(MenuItem)`
+const MegaMenuWrapper = styled(MenuItemWithChildren)`
   position: static;
 
   &:hover {
