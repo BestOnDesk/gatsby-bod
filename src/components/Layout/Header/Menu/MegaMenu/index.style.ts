@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { HoverFlipItemWrapper } from "../../../../HoverFlip/index.style";
-import { MenuItem, MenuItemWithChildren } from "../index.style";
+import { MenuItemWithChildren } from "../index.style";
 
 export interface VerticalNavItemProps {
   active: boolean;
@@ -66,19 +66,14 @@ const VerticalNavItem = styled.li<VerticalNavItemProps>`
     font-size: 16px;
     line-break: 20px;
     display: block;
-
-    ${HoverFlipItemWrapper} {
-      span {
-        &:before {
-          color: ${(props) =>
-            props.active
-              ? props.theme.colors.primary
-              : props.theme.colors.midgray};
-        }
-        &:after {
-          color: ${(props) => props.theme.colors.primary};
-        }
-      }
+  }
+  ${HoverFlipItemWrapper} {
+    span::before {
+      color: ${(props) =>
+        props.active ? props.theme.colors.primary : props.theme.colors.midgray};
+    }
+    span::after {
+      color: ${(props) => props.theme.colors.primary};
     }
   }
 
@@ -90,6 +85,11 @@ const VerticalNavItem = styled.li<VerticalNavItemProps>`
   }
 `;
 
+const VerticalNavContent = styled.div`
+  width: 83.589%;
+  padding: 30px;
+`;
+
 export {
   MegaMenuWrapper,
   MegaMenuSubMenu,
@@ -97,4 +97,5 @@ export {
   VerticalNav,
   VerticalNavMenu,
   VerticalNavItem,
+  VerticalNavContent,
 };

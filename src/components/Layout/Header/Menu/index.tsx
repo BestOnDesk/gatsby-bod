@@ -4,13 +4,10 @@ import { MenuCategory } from "../../../../app-types/category";
 import {
   ItemLink,
   MainMenu,
-  MenuItemWithChildren,
+  MenuItem,
   MenuNav,
   MenuWrapper,
-  SubMenu,
-  SubMenuItem,
 } from "./index.style";
-import HoverFlip from "../../../HoverFlip";
 import MegaMenu from "./MegaMenu";
 
 export interface MenuQueryProps {
@@ -26,21 +23,12 @@ const Menu = () => (
       <MenuWrapper>
         <MenuNav>
           <MainMenu>
-            <MenuItemWithChildren>
+            <MenuItem>
               <ItemLink to="/">Home</ItemLink>
-              <SubMenu>
-                <SubMenuItem>
-                  <HoverFlip to={"/"}>Test</HoverFlip>
-                </SubMenuItem>
-                <SubMenuItem>
-                  <HoverFlip to={"/2"}>Test2</HoverFlip>
-                </SubMenuItem>
-              </SubMenu>
-            </MenuItemWithChildren>
+            </MenuItem>
             {result.allWpCategory.nodes.map((category: MenuCategory, i) => {
-              return <MegaMenu categoryId={category.id} />;
+              return <MegaMenu category={category} />;
             })}
-            <MegaMenu />
           </MainMenu>
         </MenuNav>
       </MenuWrapper>
@@ -55,12 +43,17 @@ export const menuQuery = graphql`
         slug: { ne: "uncategorized-en" }
         wpChildren: { nodes: { elemMatch: { count: { gt: 0 } } } }
       }
+      sort: { fields: name, order: DESC }
     ) {
       nodes {
         id
+        slug
+        name
         wpChildren {
           nodes {
             id
+            slug
+            name
           }
         }
       }
