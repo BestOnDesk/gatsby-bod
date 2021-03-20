@@ -315,10 +315,10 @@ const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
         quotes: none;
     }
 
-    blockquote:before,
-    blockquote:after,
-    q:before,
-    q:after {
+    blockquote::before,
+    blockquote::after,
+    q::before,
+    q::after {
         content: "";
         content: none;
     }
@@ -351,6 +351,7 @@ const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
         margin: 0;
         padding: 0;
         font-size: 10px;
+        height: 100%;
     }
 
     body {
@@ -362,6 +363,8 @@ const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
         font-family: ${(props) => props.theme.fonts.family.primary};
         color: ${(props) => props.theme.colors.body};
         font-weight: ${(props) => props.theme.fonts.weight.pRegular};
+        height: 100%;
+
     }
 
     h1,

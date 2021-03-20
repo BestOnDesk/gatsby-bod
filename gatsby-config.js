@@ -58,5 +58,14 @@ module.exports = {
       __key: "images",
     },
     "gatsby-plugin-image",
+    {
+      resolve: `gatsby-plugin-google-fonts`,
+      options: {
+        fonts: [
+          `Red Hat Display\:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500`,
+        ],
+        display: "swap",
+      },
+    },
   ],
 };
