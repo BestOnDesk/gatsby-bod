@@ -6,8 +6,7 @@ const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
     * {
         box-sizing: border-box;
     }
-
-
+    
     article,
     aside,
     details,
