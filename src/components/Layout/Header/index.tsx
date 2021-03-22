@@ -17,6 +17,7 @@ const Header = () => {
           <Col xl={6} hiddenLgDown>
             <Menu />
           </Col>
+          <Col xl={3} lg={8} md={8} sm={9} xs={12}></Col>
         </Row>
       </HeaderWrap>
     </HeaderStyled>

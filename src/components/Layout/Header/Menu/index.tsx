@@ -9,12 +9,23 @@ import {
   MenuWrapper,
 } from "./index.style";
 import MegaMenu from "./MegaMenu";
+import { getLastPostsPreview } from "../../../../utils/post";
 
 export interface MenuQueryProps {
   allWpCategory: {
     nodes: MenuCategory[];
   };
 }
+
+const modifySubCategory = (category: MenuCategory): MenuCategory => {
+  category.wpChildren.nodes.forEach((subCategory, i) => {
+    category.wpChildren.nodes[i].posts.nodes = getLastPostsPreview(
+      category.wpChildren.nodes[i].posts.nodes,
+      4
+    );
+  });
+  return category;
+};
 
 const Menu = () => (
   <StaticQuery
@@ -27,7 +38,9 @@ const Menu = () => (
               <ItemLink to="/">Home</ItemLink>
             </MenuItem>
             {result.allWpCategory.nodes.map((category: MenuCategory, i) => {
-              return <MegaMenu category={category} />;
+              return (
+                <MegaMenu category={modifySubCategory(category)} key={i} />
+              );
             })}
           </MainMenu>
         </MenuNav>
@@ -39,21 +52,35 @@ const Menu = () => (
 export const menuQuery = graphql`
   query menuQuery {
     allWpCategory(
+      sort: { fields: name, order: DESC }
       filter: {
         slug: { ne: "uncategorized-en" }
         wpChildren: { nodes: { elemMatch: { count: { gt: 0 } } } }
       }
-      sort: { fields: name, order: DESC }
     ) {
       nodes {
-        id
         slug
         name
         wpChildren {
           nodes {
-            id
             slug
             name
+            posts {
+              nodes {
+                date
+                slug
+                title
+                featuredImage {
+                  node {
+                    localFile {
+                      childImageSharp {
+                        gatsbyImageData
+                      }
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }

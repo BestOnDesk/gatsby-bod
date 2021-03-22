@@ -6,6 +6,10 @@ export interface VerticalNavItemProps {
   active: boolean;
 }
 
+export interface VerticalInnerProps {
+  active: boolean;
+}
+
 const MegaMenuSubMenu = styled.ul`
   ${(props) => props.theme.extends.listStyle}
   box-sizing: border-box;
@@ -90,6 +94,12 @@ const VerticalNavContent = styled.div`
   padding: 30px;
 `;
 
+const VerticalInner = styled.div<VerticalInnerProps>`
+  display: ${(props) => (props.active ? `block` : `none`)};
+`;
+
+const VerticalSingle = styled.div``;
+
 export {
   MegaMenuWrapper,
   MegaMenuSubMenu,
@@ -98,4 +108,6 @@ export {
   VerticalNavMenu,
   VerticalNavItem,
   VerticalNavContent,
+  VerticalInner,
+  VerticalSingle,
 };

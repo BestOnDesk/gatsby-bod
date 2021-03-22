@@ -116,6 +116,7 @@ t.extends.listStyle = `
 t.extends.transition = `
   transition: ${t.animations.transition};
 `;
+t.extends.radius = `border-radius: ${t.borders.radius};`;
 
 export const lightTheme = {
   ...baseTheme,
