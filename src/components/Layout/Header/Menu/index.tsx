@@ -74,7 +74,7 @@ export const menuQuery = graphql`
                   node {
                     localFile {
                       childImageSharp {
-                        gatsbyImageData
+                        gatsbyImageData(width: 200, height: 130)
                       }
                     }
                   }

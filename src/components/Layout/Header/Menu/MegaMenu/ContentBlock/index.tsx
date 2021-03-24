@@ -10,7 +10,7 @@ import {
   Title,
 } from "./index.style";
 import { getPostLink } from "../../../../../../utils/links";
-import { GatsbyImage } from "gatsby-plugin-image";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { Link } from "gatsby";
 
 export interface ContentBlockProps {
@@ -19,18 +19,22 @@ export interface ContentBlockProps {
 }
 
 const ContentBlock = (props: ContentBlockProps) => {
+  const image = getImage(
+    props.post.featuredImage.node.localFile.childImageSharp
+  );
   return (
     <>
       {props.imgRounded ? (
         <ContentBlockImgRounded>
           <PostThumbnail style={{ marginBottom: "20px" }}>
             <PostLink to={getPostLink(props.post.slug)}>
-              <GatsbyImage
-                alt={props.post.title}
-                image={props.post.featuredImage.node.localFile.childImageSharp}
-                style={{ width: "100%" }}
-                imgStyle={{ width: "100%" }}
-              />
+              {image && (
+                <GatsbyImage
+                  alt={props.post.title}
+                  image={image}
+                  style={{ width: "100%" }}
+                />
+              )}
             </PostLink>
           </PostThumbnail>
           <PostContent>
