@@ -19,6 +19,7 @@ const SearchButton = styled.button`
   left: 21px;
   i {
     font-size: 16px;
+    color: ${(props) => props.theme.colors.gray};
   }
 `;
 
