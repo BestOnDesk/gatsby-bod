@@ -6,6 +6,7 @@ import { Helmet } from "react-helmet";
 import { BaseCSS } from "styled-bootstrap-grid";
 import { GlobalStyle } from "../../styles/global.style";
 import { Layout } from "../Layout";
+import "@fortawesome/fontawesome-free/css/all.min.css";
 
 interface GlobalWrapperProps {
   children: ReactChild | ReactChild[];
