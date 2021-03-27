@@ -42,6 +42,9 @@ const Menu = () => (
                 <MegaMenu category={modifySubCategory(category)} key={i} />
               );
             })}
+            <MenuItem>
+              <ItemLink to="/chi-siamo">Chi siamo</ItemLink>
+            </MenuItem>
           </MainMenu>
         </MenuNav>
       </MenuWrapper>

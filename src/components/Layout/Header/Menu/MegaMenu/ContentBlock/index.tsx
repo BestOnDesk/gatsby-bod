@@ -4,18 +4,22 @@ import {
   ContentBlock as ContentBlockDiv,
   ContentBlockImgRounded,
   PostCat,
+  PostCatList,
   PostContent,
   PostLink,
   PostThumbnail,
   Title,
 } from "./index.style";
-import { getPostLink } from "../../../../../../utils/links";
+import { getCategoryLink, getPostLink } from "../../../../../../utils/links";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { Link } from "gatsby";
+import HoverFlip from "../../../../../HoverFlip";
 
 export interface ContentBlockProps {
   imgRounded?: boolean;
   post: PostPreview;
+  categoryName: string;
+  categorySlug: string;
 }
 
 const ContentBlock = (props: ContentBlockProps) => {
@@ -38,7 +42,13 @@ const ContentBlock = (props: ContentBlockProps) => {
             </PostLink>
           </PostThumbnail>
           <PostContent>
-            <PostCat></PostCat>
+            <PostCat>
+              <PostCatList>
+                <HoverFlip to={getCategoryLink(props.categorySlug)}>
+                  {props.categoryName.toUpperCase()}
+                </HoverFlip>
+              </PostCatList>
+            </PostCat>
             <Title>
               <Link to={getPostLink(props.post.slug)}>{props.post.title}</Link>
             </Title>

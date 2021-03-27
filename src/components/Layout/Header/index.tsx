@@ -3,6 +3,7 @@ import { Header as HeaderStyled, HeaderWrap } from "./index.style";
 import { Col, Row } from "styled-bootstrap-grid";
 import Logo from "./Logo";
 import Menu from "./Menu";
+import HeaderSearch from "./HeaderSearch";
 
 // TODO: change hiddenLgDown to hiddenXlDown when styled-bootstrap-grid will be fixed
 
@@ -17,7 +18,9 @@ const Header = () => {
           <Col xl={6} hiddenLgDown>
             <Menu />
           </Col>
-          <Col xl={3} lg={8} md={8} sm={9} xs={12}></Col>
+          <Col xl={3} lg={8} md={8} sm={9} xs={12}>
+            <HeaderSearch />
+          </Col>
         </Row>
       </HeaderWrap>
     </HeaderStyled>

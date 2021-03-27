@@ -57,7 +57,12 @@ const MegaMenu = ({ category }: MegaMenuProps) => {
                       {subCategory.posts.nodes.map((post, i) => {
                         return (
                           <Col lg={3} key={i}>
-                            <ContentBlock imgRounded={true} post={post} />
+                            <ContentBlock
+                              imgRounded={true}
+                              post={post}
+                              categorySlug={subCategory.slug}
+                              categoryName={subCategory.name}
+                            />
                           </Col>
                         );
                       })}

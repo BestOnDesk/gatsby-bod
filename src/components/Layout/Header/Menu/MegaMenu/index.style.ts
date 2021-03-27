@@ -29,7 +29,7 @@ const MegaMenuSubMenu = styled.ul`
 `;
 
 const MegaMenuWrapper = styled(MenuItemWithChildren)`
-  position: static;
+  position: static !important;
 
   &:hover {
     ${MegaMenuSubMenu} {
@@ -48,8 +48,8 @@ const VerticalNav = styled.div`
   min-width: 279px;
   width: auto;
   border-right: 1px solid #ced0d4;
-  padding: 30px;
   ${(props) => props.theme.extends.listStyle}
+  padding: 30px;
 `;
 
 const VerticalNavMenu = styled.ul``;
