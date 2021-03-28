@@ -8,41 +8,41 @@ export interface HeaderProps {
 }
 
 const Header = styled.header<HeaderProps>`
-  padding: 0 60px;
-  background: #fff;
-  position: relative;
-  z-index: 99;
+  padding: 0 60px !important;
+  background: #fff !important;
+  position: relative !important;
+  z-index: 99 !important;
 
   @media ${(props) => props.theme.layouts.laptopDevice} {
-    padding: 0 30px;
+    padding: 0 30px !important;
   }
   @media only screen and (max-width: 1199px) {
-    padding: 20px 30px;
+    padding: 20px 30px !important;
   }
 
   ${(props) =>
     props.withShadow &&
     `
-        box-shadow: ${props.theme.shadows.primary};
+        box-shadow: ${props.theme.shadows.primary} !important;
     `}
 
   ${(props) =>
     isDark(props.theme) &&
     `
-        background: ${props.theme.colors.extra04};
+        background: ${props.theme.colors.extra04} !important;
     `}
 
   ${Logo} {
       a {
-          display: block;
+          display: block !important;
 
           img {
-              max-height: 37px;
+              max-height: 37px !important;
           }
 
           @media ${(props) => props.theme.layouts.largeMobile} {
-              text-align: center;
-              margin-bottom: 20px;
+              text-align: center !important;
+              margin-bottom: 20px !important;
           }
       }
   }

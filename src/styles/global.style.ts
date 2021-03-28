@@ -585,7 +585,7 @@ const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
             margin-bottom: 10px;
 
             a {
-                color: ${(props) => props.theme.colors.heading}
+                color: ${(props) => props.theme.colors.heading};
                 ${(props) => props.theme.extends.transition}
                 text-decoration: none;
 
@@ -598,6 +598,396 @@ const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
         ul {
             padding-left: 30px;
         }
+    }
+
+    input,
+    button,
+    select,
+    textarea {
+        background: transparent;
+        border: 1px solid ${(props) => props.theme.colors.border};
+        transition: all 0.4s ease-out 0s;
+        color: ${(props) => props.theme.colors.body};
+        width: 100%;
+
+        &:focus,
+        &:active {
+            outline: none;
+            border-color: ${(props) => props.theme.colors.primary};
+        }
+    }
+
+    button,
+    [type="button"],
+    [type="reset"],
+    [type="submit"] {
+        -webkit-appearance: button;
+    }
+
+
+    input {
+        height: 40px;
+        padding: 0 15px;
+    }
+
+    select {
+        transition: 0.3s;
+        height: 40px;
+        padding: 0 20px;
+        outline: none;
+        color: ${(props) => props.theme.colors.body};
+        -moz-appearance: none;
+        -webkit-appearance: none;
+        appearance: none;
+        border: 1px solid ${(props) => props.theme.colors.border};
+        border-radius: 4px;
+        background: url(../images/icons/arrow-icon.png) 95% center no-repeat transparent;
+        padding-right: 32px;
+    }
+
+
+    input[type="text"],
+    input[type="password"],
+    input[type="email"],
+    input[type="number"],
+    input[type="tel"],
+    textarea {
+        font-size: ${(props) => props.theme.fonts.size.b2};
+        font-weight: 400;
+        height: auto;
+        line-height: 28px;
+        background: transparent;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        padding: 0 15px;
+        outline: none;
+        border: ${(props) => props.theme.borders.width} solid ${(props) =>
+  props.theme.colors.border};
+        border-radius: ${(props) => props.theme.borders.radius};
+        /* -- Placeholder -- */
+
+        &::placeholder {
+            color: ${(props) => props.theme.colors.body};
+            /* Firefox */
+            opacity: 1;
+        }
+
+        &:-ms-input-placeholder {
+            /* Internet Explorer 10-11 */
+            color: ${(props) => props.theme.colors.body};
+        }
+
+        &::-ms-input-placeholder {
+            /* Microsoft Edge */
+            color: ${(props) => props.theme.colors.body};
+        }
+
+        &.p-holder__active {
+            border-color: ${(props) => props.theme.colors.primary};
+
+            /* -- Placeholder -- */
+
+            &::placeholder {
+                color: ${(props) => props.theme.colors.primary};
+                /* Firefox */
+                opacity: 1;
+            }
+
+            &:-ms-input-placeholder {
+                /* Internet Explorer 10-11 */
+                color: ${(props) => props.theme.colors.primary};
+            }
+
+            &::-ms-input-placeholder {
+                /* Microsoft Edge */
+                color: ${(props) => props.theme.colors.primary};
+            }
+        }
+
+        &.p-holder__error {
+            border-color: #f4282d;
+
+            /* -- Placeholder -- */
+
+            &::placeholder {
+                color: #f4282d;
+                /* Firefox */
+                opacity: 1;
+            }
+
+            &:-ms-input-placeholder {
+                /* Internet Explorer 10-11 */
+                color: #f4282d;
+            }
+
+            &::-ms-input-placeholder {
+                /* Microsoft Edge */
+                color: #f4282d;
+            }
+
+            &:focus {
+                border-color: #f4282d;
+            }
+        }
+
+        &:focus {
+            border-color: ${(props) => props.theme.colors.primary};
+        }
+    }
+
+    .input-active {
+        border-color: ${(props) => props.theme.colors.primary};
+
+        /* -- Placeholder -- */
+
+        &::placeholder {
+            color: ${(props) => props.theme.colors.primary};
+            /* Firefox */
+            opacity: 1;
+        }
+
+        &:-ms-input-placeholder {
+            /* Internet Explorer 10-11 */
+            color: ${(props) => props.theme.colors.primary};
+        }
+
+        &::-ms-input-placeholder {
+            /* Microsoft Edge */
+            color: ${(props) => props.theme.colors.primary};
+        }
+
+        input {
+            border-color: ${(props) => props.theme.colors.primary};
+
+            /* -- Placeholder -- */
+
+            &::placeholder {
+                color: ${(props) => props.theme.colors.primary};
+                /* Firefox */
+                opacity: 1;
+            }
+
+            &:-ms-input-placeholder {
+                /* Internet Explorer 10-11 */
+                color: ${(props) => props.theme.colors.primary};
+            }
+
+            &::-ms-input-placeholder {
+                /* Microsoft Edge */
+                color: ${(props) => props.theme.colors.primary};
+            }
+        }
+    }
+
+    .input-error {
+        border-color: #f4282d;
+
+        /* -- Placeholder -- */
+
+        &::placeholder {
+            color: #f4282d;
+            /* Firefox */
+            opacity: 1;
+        }
+
+        &:-ms-input-placeholder {
+            /* Internet Explorer 10-11 */
+            color: #f4282d;
+        }
+
+        &::-ms-input-placeholder {
+            /* Microsoft Edge */
+            color: #f4282d;
+        }
+
+        &:focus {
+            border-color: #f4282d;
+        }
+    }
+
+    &:focus {
+        border-color: ${(props) => props.theme.colors.primary};
+
+        input {
+            border-color: #f4282d;
+
+            /* -- Placeholder -- */
+
+            &::placeholder {
+                color: #f4282d;
+                /* Firefox */
+                opacity: 1;
+            }
+
+            &:-ms-input-placeholder {
+                /* Internet Explorer 10-11 */
+                color: #f4282d;
+            }
+
+            &::-ms-input-placeholder {
+                /* Microsoft Edge */
+                color: #f4282d;
+            }
+
+            &:focus {
+                border-color: #f4282d;
+            }
+        }
+
+        &:focus {
+            border-color: ${(props) => props.theme.colors.primary};
+        }
+    }
+
+    // Custom Checkbox and radio button 
+    input[type="checkbox"],
+    input[type="radio"] {
+        opacity: 0;
+        position: absolute;
+
+        ~ label {
+            position: relative;
+            font-size: 12px;
+            line-height: 17px;
+            color: ${(props) => props.theme.colors.gray};
+            font-weight: 400;
+            padding-left: 20px;
+            cursor: pointer;
+
+            &::before {
+                content: " ";
+                position: absolute;
+                top: 2px;
+                left: 0;
+                width: 14px;
+                height: 14px;
+                background-color: #fff;
+                border: ${(props) => props.theme.borders.width} solid ${(
+  props
+) => props.theme.colors.lightest};
+                border-radius: 2px;
+                transition: all .3s;
+            }
+
+            &::after {
+                content: " ";
+                position: absolute;
+                top: 5px;
+                left: 2px;
+                width: 10px;
+                height: 5px;
+                background-color: transparent;
+                border-bottom: ${(props) =>
+                  props.theme.borders.width} solid #fff;
+                border-left: ${(props) => props.theme.borders.width} solid #fff;
+                border-radius: 2px;
+                transform: rotate(-45deg);
+                opacity: 0;
+                transition: all .3s;
+            }
+        }
+
+        &:checked {
+            ~ label {
+                &::before {
+                    background-color: ${(props) => props.theme.colors.primary};
+                    border: ${(props) => props.theme.borders.width} solid ${(
+  props
+) => props.theme.colors.primary};
+                }
+
+                &::after {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+
+    input[type="radio"] {
+        ~ label {
+            &::before {
+                border-radius: 50%;
+            }
+
+            &::after {
+                width: 8px;
+                height: 8px;
+                left: 3px;
+                background: #fff;
+                border-radius: 50%;
+            }
+        }
+    }
+
+
+    .form-group {
+        margin-bottom: 20px;
+
+        label {
+            margin-bottom: 6px;
+            font-size: 14px;
+            line-height: 22px;
+            font-weight: 500;
+        }
+
+        input {
+            border: 0 none;
+            border-radius: 4px;
+            height: 50px;
+            font-size: ${(props) => props.theme.fonts.size.b2};
+            ${(props) => props.theme.extends.transition}
+            padding: 0 20px;
+            background-color: ${(props) => props.theme.colors.lightest};
+            border: 1px solid transparent;
+            ${(props) => props.theme.extends.transition}
+
+
+            &:focus {
+                border-color: ${(props) => props.theme.colors.primary};
+                box-shadow: none;
+            }
+        }
+
+        textarea {
+            min-height: 160px;
+            border: 0 none;
+            border-radius: 4px;
+            resize: none;
+            padding: 15px;
+            font-size: ${(props) => props.theme.fonts.size.b2};
+            ${(props) => props.theme.extends.transition}
+            background-color: ${(props) => props.theme.colors.lightest};
+            border: 1px solid transparent;
+
+            &:focus {
+                border-color: ${(props) => props.theme.colors.primary};
+            }
+        }
+    }
+
+    input[type="submit"] {
+        width: auto;
+        padding: 0 30px;
+        border-radius: 500px;
+        display: inline-block;
+        font-weight: 500;
+        transition: 0.3s;
+        height: 60px;
+        background: ${(props) => props.theme.colors.primary};
+        color: ${(props) => props.theme.colors.white};
+        font-weight: ${(props) => props.theme.fonts.weight.pMedium};
+        font-size: ${(props) => props.theme.fonts.size.b2};
+        line-height: ${(props) => props.theme.fonts.height.b3};
+        height: 50px;
+        border: 2px solid ${(props) => props.theme.colors.primary};
+        ${(props) => props.theme.extends.transition}
+
+        &:hover {
+            background: transparent;
+            color: ${(props) => props.theme.colors.primary};
+            transform: translateY(-5px);
+        }
+
     }
 `;
 

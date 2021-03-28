@@ -46,47 +46,47 @@ const HoverFlipItem = styled.span<HoverFlipItemProps>`
 const HoverFlipSpan = styled.span``;
 
 const HoverFlipItemWrapper = styled(Link)`
-  position: relative;
-  display: inline-block;
-  overflow: hidden;
-  cursor: pointer;
-  transition: opacity 0.2s;
-  display: flex;
+  position: relative !important;
+  display: inline-block !important;
+  overflow: hidden !important;
+  cursor: pointer !important;
+  transition: opacity 0.2s !important;
+  display: flex !important;
 
   @media (min-width: 768px) {
   }
 
   @media (min-width: 1200px) {
-    opacity: 1;
-    text-align: left;
+    opacity: 1 !important;
+    text-align: left !important;
   }
 
   &:hover {
-    opacity: 1;
+    opacity: 1 !important;
 
     ${HoverFlipItem} span {
-      transform: translateY(-105%);
+      transform: translateY(-105%) !important;
     }
 
     ${HoverFlipItem} span::before {
-      transform: skewY(7deg);
+      transform: skewY(7deg) !important;
     }
 
     ${HoverFlipItem} span::after {
-      transform: skewY(0);
+      transform: skewY(0) !important;
     }
 
     @media (pointer: coarse) {
       ${HoverFlipItem} span {
-        transform: none;
+        transform: none !important;
       }
 
       ${HoverFlipItem} span::before {
-        transform: none;
+        transform: none !important;
       }
 
       ${HoverFlipItem} span::after {
-        transform: none;
+        transform: none !important;
       }
     }
   }

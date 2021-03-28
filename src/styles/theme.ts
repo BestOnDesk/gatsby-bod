@@ -111,12 +111,12 @@ t.extends = {};
 t.extends.listStyle = `
   padding: 0;
   margin: 0;
-  list-style: none;
+  list-style: none !important;
 `;
 t.extends.transition = `
-  transition: ${t.animations.transition};
+  transition: ${t.animations.transition} !important;
 `;
-t.extends.radius = `border-radius: ${t.borders.radius};`;
+t.extends.radius = `border-radius: ${t.borders.radius} !important;`;
 
 export const lightTheme = {
   ...baseTheme,
