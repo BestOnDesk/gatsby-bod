@@ -4,9 +4,10 @@ import { ThemeProvider } from "styled-components";
 import { lightTheme } from "styles/theme";
 import { Helmet } from "react-helmet";
 import { BaseCSS } from "styled-bootstrap-grid";
-import { GlobalStyle } from "../../styles/global.style";
-import { Layout } from "../Layout";
+import { GlobalStyle } from "styles/global.style";
+import { Layout } from "components/Layout";
 import "styles/font-awesome.min.css";
+import "styles/fonts-import.css";
 
 interface GlobalWrapperProps {
   children: ReactChild | ReactChild[];
