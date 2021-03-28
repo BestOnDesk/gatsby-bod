@@ -17,10 +17,8 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^5.15.3",
     "gatsby": "^3.0.1",
     "gatsby-image": "^3.0.0",
-    "gatsby-plugin-fontawesome-css": "^1.1.0",
     "gatsby-plugin-google-analytics": "^3.0.0",
     "gatsby-plugin-google-fonts": "^1.0.1",
     "gatsby-plugin-image": "^1.1.0",
