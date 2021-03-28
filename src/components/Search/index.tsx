@@ -1,11 +1,17 @@
 import React from "react";
-import { Search as SearchDiv, SearchButton, SearchInput } from "./index.style";
+import {
+  Search as SearchDiv,
+  SearchButton,
+  SearchIcon,
+  SearchInput,
+} from "./index.style";
 
 const Search = () => {
   return (
-    <SearchDiv>
+    <SearchDiv className="form-group">
       <SearchButton type="submit">
-        <i className="fa fa-search" />
+        <SearchIcon />
+        <i className="fal fa-search" />
       </SearchButton>
       <SearchInput type="text" placeholder="Search" />
     </SearchDiv>
