@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Search, SearchButton } from "../../../Search/index.style";
+import { media } from "styled-bootstrap-grid";
 
 const HeaderSearch = styled.div`
   text-align: right !important;
@@ -60,4 +61,109 @@ const HeaderSearchForm = styled.form`
   }
 `;
 
-export { HeaderSearch, HeaderSearchForm };
+const MetabarBlock = styled.ul`
+  ${(props) => props.theme.extends.listStyle}
+  display: flex !important;
+  align-items: center !important;
+  li {
+    margin-left: 20px !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    @media only screen and (min-width: 1600px) and (max-width: 1800px) {
+      margin-left: 8px !important;
+    }
+    @media ${(props) => props.theme.layouts.laptopDevice} {
+      margin-left: 5px !important;
+    }
+    @media ${(props) => props.theme.layouts.md} {
+      margin-left: 10px !important;
+    }
+    @media ${(props) => props.theme.layouts.sm} {
+      margin-left: 10px !important;
+    }
+
+    img {
+      border-radius: 100% !important;
+      max-height: 40px !important;
+      min-width: 40px !important;
+      @media ${(props) => props.theme.layouts.laptopDevice} {
+        max-height: 35px !important;
+        min-width: 35px !important;
+      }
+    }
+  }
+`;
+
+const MetabarIcon = styled.li`
+  a {
+    background: ${(props) => props.theme.colors.lightest} !important;
+    width: 40px !important;
+    height: 40px !important;
+    line-height: 40px !important;
+    text-align: center !important;
+    display: block !important;
+    border-radius: 100% !important;
+    font-size: 14px !important;
+    ${(props) => props.theme.extends.transition}
+
+    &:hover {
+      background: ${(props) => props.theme.colors.primary} !important;
+      color: #fff !important;
+    }
+
+    @media ${(props) => props.theme.layouts.laptopDevice} {
+      width: 35px !important;
+      height: 35px !important;
+      line-height: 35px !important;
+      font-size: 12px !important;
+    }
+  }
+`;
+
+const HamburgerMenu = styled.div`
+  display: block !important;
+  margin-left: 20px !important;
+  @media ${(props) => props.theme.layouts.md} {
+    margin-left: 10px !important;
+  }
+  @media ${(props) => props.theme.layouts.sm} {
+    margin-left: 10px !important;
+  }
+
+  ${media.xl`
+    display: none !important;
+  `}
+`;
+
+const HamburgerInner = styled.div``;
+
+const HamburgerIcon = styled.div`
+  background: ${(props) => props.theme.colors.lightest} !important;
+  width: 40px !important;
+  height: 40px !important;
+  line-height: 40px !important;
+  text-align: center !important;
+  display: block !important;
+  border-radius: 100% !important;
+  font-size: 14px !important;
+  ${(props) => props.theme.extends.transition}
+  display: inline-block !important;
+  color: ${(props) => props.theme.colors.heading} !important;
+  i {
+    font-weight: 900 !important;
+  }
+  &:hover {
+    background: ${(props) => props.theme.colors.primary} !important;
+    color: #fff !important;
+  }
+`;
+
+export {
+  HeaderSearch,
+  HeaderSearchForm,
+  MetabarBlock,
+  MetabarIcon,
+  HamburgerMenu,
+  HamburgerInner,
+  HamburgerIcon,
+};
