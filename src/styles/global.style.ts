@@ -361,6 +361,7 @@ const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         font-family: ${(props) => props.theme.fonts.family.primary};
+        font: ${(props) => props.theme.fonts.family.primary};
         color: ${(props) => props.theme.colors.body};
         font-weight: ${(props) => props.theme.fonts.weight.pRegular};
         height: 100%;
@@ -609,6 +610,7 @@ const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
         transition: all 0.4s ease-out 0s;
         color: ${(props) => props.theme.colors.body};
         width: 100%;
+        font-family: ${(props) => props.theme.fonts.family.primary};
 
         &:focus,
         &:active {
