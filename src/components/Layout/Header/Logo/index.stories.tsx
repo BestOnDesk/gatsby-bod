@@ -8,6 +8,6 @@ export default {
   component: LogoComponent,
 } as Meta;
 
-const Template: Story = (args) => <LogoComponent />;
+const Template: Story = () => <LogoComponent />;
 
 export const Logo = Template.bind({});
