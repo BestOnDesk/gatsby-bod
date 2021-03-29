@@ -6,6 +6,7 @@ import {
   HeaderSearch as HeaderSearchDiv,
   HeaderSearchForm,
   MetabarBlock,
+  MetabarIcon,
 } from "./index.style";
 import Search from "components/Search";
 
@@ -15,7 +16,15 @@ const HeaderSearch = () => {
       <HeaderSearchForm>
         <Search />
       </HeaderSearchForm>
-      <MetabarBlock></MetabarBlock>
+      <MetabarBlock>
+        <MetabarIcon>
+          <li>
+            <a href="#">
+              <i className="fab fa-telegram-plane" />
+            </a>
+          </li>
+        </MetabarIcon>
+      </MetabarBlock>
       <HamburgerMenu>
         <HamburgerInner>
           <HamburgerIcon>
