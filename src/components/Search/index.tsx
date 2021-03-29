@@ -7,6 +7,7 @@ import {
 } from "./index.style";
 
 const Search = () => {
+  // TODO: Do search system
   return (
     <SearchDiv className="form-group">
       <SearchButton type="submit">
