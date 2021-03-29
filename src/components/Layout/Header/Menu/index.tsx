@@ -1,6 +1,6 @@
 import * as React from "react";
 import { graphql, StaticQuery } from "gatsby";
-import { MenuCategory } from "../../../../app-types/category";
+import { MenuCategory } from "app-types/category";
 import {
   ItemLink,
   MainMenu,
@@ -9,7 +9,7 @@ import {
   MenuWrapper,
 } from "./index.style";
 import MegaMenu from "./MegaMenu";
-import { getLastPostsPreview } from "../../../../utils/post";
+import { getLastPostsPreview } from "utils/post";
 
 export interface MenuQueryProps {
   allWpCategory: {
