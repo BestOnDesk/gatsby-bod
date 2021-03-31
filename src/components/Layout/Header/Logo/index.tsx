@@ -1,10 +1,10 @@
 import * as React from "react";
-import { Logo as LogoDiv, LogoLink } from "./index.style";
+import { LogoLink, StyledLogo } from "./index.style";
 import StaticImg from "components/StaticImg";
 
 const Logo = () => {
   return (
-    <LogoDiv>
+    <StyledLogo>
       <LogoLink>
         <StaticImg
           imgStyle={{ maxHeight: "37px" }}
@@ -13,7 +13,7 @@ const Logo = () => {
           srcDark={"logo/logo-dark.png"}
         />
       </LogoLink>
-    </LogoDiv>
+    </StyledLogo>
   );
 };
 
