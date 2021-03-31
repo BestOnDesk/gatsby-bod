@@ -6,6 +6,10 @@ export interface StyledMobileMenuProps {
   show: boolean;
 }
 
+export interface MenuWithChildrenProps {
+  open: boolean;
+}
+
 const Inner = styled.div`
   background: ${(props) => props.theme.colors.white} !important;
   position: relative !important;
@@ -71,26 +75,26 @@ const MobileMenuTop = styled.div`
 const MainMenu = styled.div`
   ${(props) => props.theme.extends.listStyle}
   padding: 5px 20px !important;
-  > li {
-    margin: 0 !important;
-    padding: 15px 0 !important;
-    border-bottom: 1px solid ${(props) => props.theme.colors.lightest} !important;
-    a {
-      font-size: 16px !important;
-      line-height: 20px !important;
-      color: #65676b !important;
-      font-weight: 500 !important;
-      &.open,
-      &:hover {
-        color: ${(props) => props.theme.colors.primary} !important;
-      }
-    }
+`;
+
+const ItemLink = styled(Link)`
+  font-size: 16px !important;
+  display: block !important;
+  line-height: 20px !important;
+  color: #65676b !important;
+  font-weight: 500 !important;
+  &:hover {
+    color: ${(props) => props.theme.colors.primary} !important;
   }
 `;
 
-const MenuItem = styled.li``;
+const MenuItem = styled.li`
+  margin: 0 !important;
+  padding: 15px 0 !important;
+  border-bottom: 1px solid ${(props) => props.theme.colors.lightest} !important;
+`;
 
-const MenuItemWithChildren = styled.li`
+const MenuItemWithChildren = styled(MenuItem)<MenuWithChildrenProps>`
   > a {
     position: relative !important;
     display: block !important;
@@ -128,8 +132,6 @@ const SubMenu = styled.ul`
     }
   }
 `;
-
-const ItemLink = styled(Link)``;
 
 export {
   StyledMobileMenu,

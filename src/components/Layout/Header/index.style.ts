@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { isDark } from "../../../utils/theme";
 import { Row } from "styled-bootstrap-grid";
-import { Logo } from "./Logo/index.style";
+import { StyledLogo } from "./Logo/index.style";
 
 export interface HeaderProps {
   withShadow?: boolean;
@@ -32,7 +32,7 @@ const Header = styled.header<HeaderProps>`
         background: ${props.theme.colors.extra04} !important;
     `}
 
-  ${Logo} {
+  ${StyledLogo} {
       a {
           display: block !important;
 
