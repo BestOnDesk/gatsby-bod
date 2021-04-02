@@ -10,6 +10,10 @@ export interface MenuWithChildrenProps {
   open: boolean;
 }
 
+export interface SubMenuProps {
+  open: boolean;
+}
+
 const Inner = styled.div`
   background: ${(props) => props.theme.colors.white} !important;
   position: relative !important;
@@ -95,42 +99,55 @@ const MenuItem = styled.li`
 `;
 
 const MenuItemWithChildren = styled(MenuItem)<MenuWithChildrenProps>`
-  > a {
-    position: relative !important;
-    display: block !important;
-    &::after {
-      position: absolute !important;
-      content: "\\f107" !important;
-      font-family: ${(props) => props.theme.fonts.family.fontAwesome};
-      right: 0 !important;
-      top: 50% !important;
-      transform: translateY(-50%) !important;
-      ${(props) => props.theme.extends.transition}
+  > div {
+    > a {
+      ${(props) =>
+        props.open &&
+        `
+        color: ${props.theme.colors.primary} !important;
+      `}
     }
-    &.open {
-      color: ${(props) => props.theme.colors.primary} !important;
-      &::after {
-        content: "\\f106" !important;
-      }
+
+    > i {
+      display: flex !important;
+      justify-content: flex-end !important;
+      flex: 1 !important;
+      cursor: pointer !important;
     }
   }
 `;
 
-const SubMenu = styled.ul`
+const MenuItemWithChildrenInner = styled.div`
+  display: flex !important;
+  justify-content: space-between !important;
+`;
+
+const SubMenu = styled.ul<SubMenuProps>`
   ${(props) => props.theme.extends.listStyle}
   display: none !important;
   padding-left: 20px !important;
-  padding-top: 10px !important;
+
   li {
     margin-top: 0 !important;
     margin-bottom: 0 !important;
     a {
-      padding: 8px 0 !important;
+      padding: 5px 0 !important;
       display: block !important;
       font-size: 14px !important;
       line-height: 18px !important;
     }
   }
+
+  li:last-child {
+    border-bottom: 0 !important;
+    margin-bottom: -15px !important;
+  }
+
+  ${(props) =>
+    props.open &&
+    `
+      display: block !important;
+    `}
 `;
 
 export {
@@ -141,6 +158,7 @@ export {
   MainMenu,
   MenuItem,
   MenuItemWithChildren,
+  MenuItemWithChildrenInner,
   ItemLink,
   SubMenu,
 };

@@ -1,5 +1,5 @@
 import * as React from "react";
-import { graphql, StaticQuery } from "gatsby";
+import { graphql, useStaticQuery } from "gatsby";
 import { MenuCategory } from "app-types/category";
 import {
   ItemLink,
@@ -27,57 +27,34 @@ const modifySubCategory = (category: MenuCategory): MenuCategory => {
   return category;
 };
 
-const Menu = () => (
-  <StaticQuery
-    query={menuQuery}
-    render={(result: MenuQueryProps) => (
-      <MenuWrapper>
-        <MenuNav>
-          <MainMenu>
-            <MenuItem>
-              <ItemLink to="/">Home</ItemLink>
-            </MenuItem>
-            {result.allWpCategory.nodes.map((category: MenuCategory, i) => {
-              return (
-                <MegaMenu category={modifySubCategory(category)} key={i} />
-              );
-            })}
-            <MenuItem>
-              <ItemLink to="/chi-siamo">Chi siamo</ItemLink>
-            </MenuItem>
-          </MainMenu>
-        </MenuNav>
-      </MenuWrapper>
-    )}
-  />
-);
-
-export const menuQuery = graphql`
-  query menuQuery {
-    allWpCategory(
-      sort: { fields: name, order: DESC }
-      filter: {
-        slug: { ne: "uncategorized-en" }
-        wpChildren: { nodes: { elemMatch: { count: { gt: 0 } } } }
-      }
-    ) {
-      nodes {
-        slug
-        name
-        wpChildren {
-          nodes {
-            slug
-            name
-            posts {
-              nodes {
-                date
-                slug
-                title
-                featuredImage {
-                  node {
-                    localFile {
-                      childImageSharp {
-                        gatsbyImageData(width: 200, height: 130)
+const Menu = () => {
+  const { allWpCategory }: MenuQueryProps = useStaticQuery(graphql`
+    query {
+      allWpCategory(
+        sort: { fields: name, order: DESC }
+        filter: {
+          slug: { ne: "uncategorized-en" }
+          wpChildren: { nodes: { elemMatch: { count: { gt: 0 } } } }
+        }
+      ) {
+        nodes {
+          slug
+          name
+          wpChildren {
+            nodes {
+              slug
+              name
+              posts {
+                nodes {
+                  date
+                  slug
+                  title
+                  featuredImage {
+                    node {
+                      localFile {
+                        childImageSharp {
+                          gatsbyImageData(width: 200, height: 130)
+                        }
                       }
                     }
                   }
@@ -88,7 +65,27 @@ export const menuQuery = graphql`
         }
       }
     }
-  }
-`;
+  `);
+
+  return (
+    <MenuWrapper>
+      <MenuNav>
+        <MainMenu>
+          <MenuItem>
+            <ItemLink to="/">Home</ItemLink>
+          </MenuItem>
+          {allWpCategory.nodes.map((category: MenuCategory, i) => {
+            return <MegaMenu category={modifySubCategory(category)} key={i} />;
+          })}
+          <MenuItem>
+            <ItemLink to="/chi-siamo">Chi siamo</ItemLink>
+          </MenuItem>
+        </MainMenu>
+      </MenuNav>
+    </MenuWrapper>
+  );
+};
+
+export const menuQuery = graphql;
 
 export default Menu;

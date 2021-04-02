@@ -6,6 +6,7 @@ import {
   MainMenu,
   MenuItem,
   MenuItemWithChildren,
+  MenuItemWithChildrenInner,
   MobileClose,
   MobileMenuTop,
   StyledMobileMenu,
@@ -16,6 +17,7 @@ import { getCategoryLink } from "../../../utils/links";
 
 export interface MobileMenuProps {
   show: boolean;
+  onExit: () => void;
 }
 
 export interface MobileMenuQueryProps {
@@ -58,12 +60,17 @@ const MobileMenu = (props: MobileMenuProps) => {
     }
   `);
 
+  const toggleSubMenuOpen = (index: number) => {
+    if (subMenuOpenIndex !== index) setSubMenuOpenIndex(index);
+    else setSubMenuOpenIndex(-1);
+  };
+
   return (
     <StyledMobileMenu show={props.show}>
       <Inner>
         <MobileMenuTop>
           <Logo />
-          <MobileClose>
+          <MobileClose onClick={() => props.onExit()}>
             <i className="fal fa-times" />
           </MobileClose>
         </MobileMenuTop>
@@ -72,16 +79,20 @@ const MobileMenu = (props: MobileMenuProps) => {
             <ItemLink to="/">Home</ItemLink>
           </MenuItem>
           {categories.nodes.map((category, i) => {
+            const open = i === subMenuOpenIndex;
+
             return (
-              <MenuItemWithChildren
-                key={i}
-                open={i === subMenuOpenIndex}
-                onClick={() => setSubMenuOpenIndex(i)}
-              >
-                <ItemLink to={getCategoryLink(category.slug)}>
-                  {category.name}
-                </ItemLink>
-                <SubMenu>
+              <MenuItemWithChildren key={i} open={open}>
+                <MenuItemWithChildrenInner>
+                  <ItemLink to={getCategoryLink(category.slug)}>
+                    {category.name}
+                  </ItemLink>
+                  <i
+                    className={open ? "fal fa-angle-up" : "fal fa-angle-down"}
+                    onClick={() => toggleSubMenuOpen(i)}
+                  />
+                </MenuItemWithChildrenInner>
+                <SubMenu open={open}>
                   {category.wpChildren.nodes.map((subcategory) => {
                     return (
                       <MenuItem>
