@@ -24,6 +24,7 @@ module.exports = {
         create: path.join(__dirname, "src/create"),
         fonts: path.join(__dirname, "src/fonts"),
         pages: path.join(__dirname, "src/pages"),
+        redux: path.join(__dirname, "src/redux"),
         stories: path.join(__dirname, "src/stories"),
         styles: path.join(__dirname, "src/styles"),
         templates: path.join(__dirname, "src/templates"),
