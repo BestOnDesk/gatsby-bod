@@ -1,16 +1,21 @@
-export enum ThemeMode {
-  Light = "light",
-  Dark = "dark",
-}
+import { BaseTheme, Theme, ThemeMode } from "../app-types/style";
 
-export type ThemeModeType = ThemeMode.Light | ThemeMode.Dark;
-
-const baseTheme: { [property: string]: any } = {};
+const baseTheme: BaseTheme = {
+  colors: {},
+  borders: {},
+  shadows: {},
+  animations: {},
+  fonts: {
+    family: {},
+    height: {},
+    size: {},
+    weight: {},
+  },
+  layouts: {},
+  extends: {},
+};
 const t = baseTheme;
 
-t.layouts = {};
-
-t.colors = {};
 t.colors.primary = "#3858F6";
 t.colors.secondary = "#D93E40";
 t.colors.secondaryAlt = "#F1352A";
@@ -43,33 +48,26 @@ t.colors.extra03 = "#FBFBFD";
 t.colors.extra04 = "#1A1A1A";
 t.colors.extra05 = "#242424";
 
-t.borders = {};
 t.borders.radius = "10px";
 t.borders.radiusBig = "16px";
 t.borders.radiusSmall = "6px";
 t.borders.borderWidth = "2px";
 
-t.shadows = {};
 t.shadows.primary = "0px 4px 10px rgba(37, 47, 63, 0.1)";
 t.shadows.light = "0 2px 6px 0 rgba(0, 0, 0, 0.05)";
 t.shadows.dark = "0 2px 6px 0 rgba(0, 0, 0, 0.2)";
 
-t.animations = {};
 t.animations.transition = "0.3s";
 
-t.fonts = {};
-t.fonts.family = {};
 t.fonts.family.primary = "'Red Hat Display', sans-serif";
 t.fonts.family.secondary = "'Red Hat Display', sans-serif";
 t.fonts.family.fontAwesome = "'Font Awesome 5 Pro'";
 
-t.fonts.height = {};
 t.fonts.height.b1 = "1.67";
 t.fonts.height.b2 = "1.5";
 t.fonts.height.b3 = "1.6";
 t.fonts.height.b4 = "1.3";
 
-t.fonts.size = {};
 t.fonts.size.b1 = "18px";
 t.fonts.size.b2 = "16px";
 t.fonts.size.b3 = "14px";
@@ -81,7 +79,6 @@ t.fonts.size.h4 = "24px";
 t.fonts.size.h5 = "18px";
 t.fonts.size.h6 = "16px";
 
-t.fonts.weight = {};
 t.fonts.weight.pLight = "300";
 t.fonts.weight.pRegular = "400";
 t.fonts.weight.pMedium = "500";
@@ -95,7 +92,6 @@ t.fonts.weight.sMedium = "500";
 t.fonts.weight.sBold = "700";
 t.fonts.weight.sBlack = "900";
 
-t.layouts = {};
 t.layouts.smlgDevice = "only screen and (max-width: 1199px)";
 t.layouts.extraDevice =
   "only screen and (min-width: 1600px) and (max-width: 1919px)";
@@ -107,7 +103,6 @@ t.layouts.sm = "only screen and (max-width: 767px)";
 t.layouts.largeMobile = "only screen and (max-width: 575px)";
 t.layouts.smallMobile = "only screen and (max-width: 479px)";
 
-t.extends = {};
 t.extends.listStyle = `
   padding: 0;
   margin: 0;
@@ -118,12 +113,12 @@ t.extends.transition = `
 `;
 t.extends.radius = `border-radius: ${t.borders.radius} !important;`;
 
-export const lightTheme = {
+export const lightTheme: Theme = {
   ...baseTheme,
   mode: ThemeMode.Light,
   name: "Light",
 };
-export const darkTheme = {
+export const darkTheme: Theme = {
   ...baseTheme,
   mode: ThemeMode.Dark,
   name: "Dark",
