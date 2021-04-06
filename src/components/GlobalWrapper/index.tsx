@@ -1,19 +1,30 @@
 import * as React from "react";
 import { ReactChild } from "react";
 import { ThemeProvider } from "styled-components";
-import { lightTheme } from "styles/theme";
 import { Helmet } from "react-helmet";
 import { BaseCSS } from "styled-bootstrap-grid";
 import { GlobalStyle } from "styles/global.style";
-import { Layout } from "components/Layout";
+import Layout from "components/Layout";
 import "styles/font-awesome.min.css";
+import { lightTheme } from "../../styles/theme";
+import { ThemeMode } from "../../app-types/style";
+import { IState } from "../../state/reducers";
+import { connect } from "react-redux";
 
 interface GlobalWrapperProps {
   children: ReactChild | ReactChild[];
   withLayout?: boolean;
+  themeMode: ThemeMode;
 }
 
-const GlobalWrapper = ({ children, withLayout }: GlobalWrapperProps) => {
+const GlobalWrapper = ({
+  children,
+  withLayout,
+  themeMode,
+}: GlobalWrapperProps) => {
+  const theme = lightTheme;
+  theme.mode = themeMode;
+
   return (
     <>
       <Helmet>
@@ -23,7 +34,7 @@ const GlobalWrapper = ({ children, withLayout }: GlobalWrapperProps) => {
         />
       </Helmet>
       <BaseCSS />
-      <ThemeProvider theme={lightTheme}>
+      <ThemeProvider theme={theme}>
         <GlobalStyle />
         {withLayout ? <Layout>{children}</Layout> : children}
       </ThemeProvider>
@@ -31,4 +42,8 @@ const GlobalWrapper = ({ children, withLayout }: GlobalWrapperProps) => {
   );
 };
 
-export default GlobalWrapper;
+const mapStateToProps = (state: IState) => ({
+  themeMode: state.themeReducer.themeMode,
+});
+
+export default connect(mapStateToProps)(GlobalWrapper);

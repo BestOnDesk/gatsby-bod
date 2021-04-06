@@ -20,5 +20,4 @@ export interface BaseTheme {
 
 export interface Theme extends BaseTheme {
   mode: ThemeMode;
-  name: string;
 }

@@ -14,10 +14,11 @@ import {
 } from "./index.style";
 import { graphql, useStaticQuery } from "gatsby";
 import { getCategoryLink } from "../../../utils/links";
+import { useDispatch } from "react-redux";
+import { closeMenu } from "../../../state/actions/mobile";
 
 export interface MobileMenuProps {
   show: boolean;
-  onExit: () => void;
 }
 
 export interface MobileMenuQueryProps {
@@ -36,6 +37,7 @@ export interface MobileMenuQueryProps {
 }
 
 const MobileMenu = (props: MobileMenuProps) => {
+  const dispatch = useDispatch();
   const [subMenuOpenIndex, setSubMenuOpenIndex] = useState<number>(-1);
   const { categories }: MobileMenuQueryProps = useStaticQuery(graphql`
     query {
@@ -65,18 +67,27 @@ const MobileMenu = (props: MobileMenuProps) => {
     else setSubMenuOpenIndex(-1);
   };
 
+  const close = () => dispatch(closeMenu());
+
+  const preventDefault = (e: any) => {
+    e.preventDefault();
+    e.stopPropagation();
+  };
+
   return (
-    <StyledMobileMenu show={props.show}>
-      <Inner>
+    <StyledMobileMenu show={props.show} onClick={close}>
+      <Inner onClick={preventDefault}>
         <MobileMenuTop>
           <Logo />
-          <MobileClose onClick={() => props.onExit()}>
+          <MobileClose onClick={close}>
             <i className="fal fa-times" />
           </MobileClose>
         </MobileMenuTop>
         <MainMenu>
           <MenuItem>
-            <ItemLink to="/">Home</ItemLink>
+            <ItemLink to="/" onClick={close}>
+              Home
+            </ItemLink>
           </MenuItem>
           {categories.nodes.map((category, i) => {
             const open = i === subMenuOpenIndex;
@@ -84,7 +95,7 @@ const MobileMenu = (props: MobileMenuProps) => {
             return (
               <MenuItemWithChildren key={i} open={open}>
                 <MenuItemWithChildrenInner>
-                  <ItemLink to={getCategoryLink(category.slug)}>
+                  <ItemLink to={getCategoryLink(category.slug)} onClick={close}>
                     {category.name}
                   </ItemLink>
                   <i
@@ -93,10 +104,13 @@ const MobileMenu = (props: MobileMenuProps) => {
                   />
                 </MenuItemWithChildrenInner>
                 <SubMenu open={open}>
-                  {category.wpChildren.nodes.map((subcategory) => {
+                  {category.wpChildren.nodes.map((subcategory, i) => {
                     return (
-                      <MenuItem>
-                        <ItemLink to={getCategoryLink(subcategory.slug)}>
+                      <MenuItem key={i}>
+                        <ItemLink
+                          to={getCategoryLink(subcategory.slug)}
+                          onClick={close}
+                        >
                           {subcategory.name}
                         </ItemLink>
                       </MenuItem>
@@ -107,7 +121,9 @@ const MobileMenu = (props: MobileMenuProps) => {
             );
           })}
           <MenuItem>
-            <ItemLink to="/chi-siamo">Chi siamo</ItemLink>
+            <ItemLink to="/chi-siamo" onClick={close}>
+              Chi siamo
+            </ItemLink>
           </MenuItem>
         </MainMenu>
       </Inner>

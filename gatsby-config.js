@@ -24,7 +24,6 @@ module.exports = {
         create: path.join(__dirname, "src/create"),
         fonts: path.join(__dirname, "src/fonts"),
         pages: path.join(__dirname, "src/pages"),
-        redux: path.join(__dirname, "src/redux"),
         stories: path.join(__dirname, "src/stories"),
         styles: path.join(__dirname, "src/styles"),
         templates: path.join(__dirname, "src/templates"),
@@ -48,6 +47,28 @@ module.exports = {
     "gatsby-plugin-typescript",
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-sitemap",
+    {
+      resolve: `gatsby-plugin-react-redux-persist`,
+      options: {
+        // [required] - path to your createStore module
+        pathToCreateStoreModule: "./src/state/createStore",
+        // [optional] - options passed to `serialize-javascript`
+        // info: https://github.com/yahoo/serialize-javascript#options
+        // will be merged with these defaults:
+        serialize: {
+          space: 0,
+          // if `isJSON` is set to `false`, `eval` is used to deserialize redux state,
+          // otherwise `JSON.parse` is used
+          isJSON: true,
+          unsafe: false,
+          ignoreFunction: true,
+        },
+        // [optional] - if true will clean up after itself on the client, default:
+        cleanupOnClient: true,
+        // [optional] - name of key on `window` where serialized state will be stored, default:
+        windowKey: "__PRELOADED_STATE__",
+      },
+    },
     {
       resolve: "gatsby-plugin-manifest",
       options: {

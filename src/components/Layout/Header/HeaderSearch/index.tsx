@@ -9,8 +9,11 @@ import {
   MetabarIcon,
 } from "./index.style";
 import Search from "components/Search";
+import { useDispatch } from "react-redux";
+import { openMenu } from "../../../../state/actions/mobile";
 
 const HeaderSearch = () => {
+  const dispatch = useDispatch();
   return (
     <HeaderSearchDiv>
       <HeaderSearchForm>
@@ -18,16 +21,14 @@ const HeaderSearch = () => {
       </HeaderSearchForm>
       <MetabarBlock>
         <MetabarIcon>
-          <li>
-            <a href="#">
-              <i className="fab fa-telegram-plane" />
-            </a>
-          </li>
+          <a href="#">
+            <i className="fab fa-telegram-plane" />
+          </a>
         </MetabarIcon>
       </MetabarBlock>
       <HamburgerMenu>
         <HamburgerInner>
-          <HamburgerIcon>
+          <HamburgerIcon onClick={() => dispatch(openMenu())}>
             <i className="fal fa-bars" />
           </HamburgerIcon>
         </HamburgerInner>

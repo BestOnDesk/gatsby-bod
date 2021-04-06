@@ -116,12 +116,10 @@ t.extends.radius = `border-radius: ${t.borders.radius} !important;`;
 export const lightTheme: Theme = {
   ...baseTheme,
   mode: ThemeMode.Light,
-  name: "Light",
 };
 export const darkTheme: Theme = {
   ...baseTheme,
   mode: ThemeMode.Dark,
-  name: "Dark",
 };
 
 export const themes = [lightTheme, darkTheme];

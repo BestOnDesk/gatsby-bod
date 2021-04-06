@@ -86,6 +86,4 @@ const Menu = () => {
   );
 };
 
-export const menuQuery = graphql;
-
 export default Menu;

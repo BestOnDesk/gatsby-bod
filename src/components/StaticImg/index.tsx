@@ -1,9 +1,9 @@
 import React, { FunctionComponent, useContext } from "react";
 import { ThemeContext } from "styled-components";
-import { ThemeMode } from "styles/theme";
 import { GatsbyImage, getImage, IGatsbyImageData } from "gatsby-plugin-image";
 import { graphql, StaticQuery } from "gatsby";
 import { GatsbyImageProps } from "gatsby-plugin-image/dist/src/components/gatsby-image.browser";
+import { ThemeMode } from "../../app-types/style";
 
 interface StaticImgProps {
   alt: string;

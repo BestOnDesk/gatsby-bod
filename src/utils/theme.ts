@@ -1,4 +1,4 @@
-import { ThemeMode } from "../styles/theme";
+import { ThemeMode } from "../app-types/style";
 
 const isDark = (theme: any) => theme.mode === ThemeMode.Dark;
 
