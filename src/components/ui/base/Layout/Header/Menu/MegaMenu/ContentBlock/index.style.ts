@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Link } from "gatsby";
-import { HoverFlipItemWrapper } from "../../../../../HoverFlip/index.style";
+import { HoverFlipItemWrapper } from "../../../../../../../core/HoverFlip/index.style";
 
 const PostCatList = styled.div`
   display: flex !important;

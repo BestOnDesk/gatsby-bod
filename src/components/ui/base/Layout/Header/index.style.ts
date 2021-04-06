@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { isDark } from "../../../utils/theme";
+import { isDark } from "../../../../../utils/theme";
 import { Row } from "styled-bootstrap-grid";
 import { StyledLogo } from "./Logo/index.style";
 
@@ -33,18 +33,18 @@ const Header = styled.header<HeaderProps>`
     `}
 
   ${StyledLogo} {
-      a {
-          display: block !important;
+    a {
+      display: block !important;
 
-          img {
-              max-height: 37px !important;
-          }
-
-          @media ${(props) => props.theme.layouts.largeMobile} {
-              text-align: center !important;
-              margin-bottom: 20px !important;
-          }
+      img {
+        max-height: 37px !important;
       }
+
+      @media ${(props) => props.theme.layouts.largeMobile} {
+        text-align: center !important;
+        margin-bottom: 20px !important;
+      }
+    }
   }
 `;
 

@@ -8,9 +8,9 @@ import {
   MetabarBlock,
   MetabarIcon,
 } from "./index.style";
-import Search from "components/Search";
+import Search from "components/ui/base/Search";
 import { useDispatch } from "react-redux";
-import { openMenu } from "../../../../state/actions/mobile";
+import { openMenu } from "../../../../../../state/actions/mobile";
 
 const HeaderSearch = () => {
   const dispatch = useDispatch();

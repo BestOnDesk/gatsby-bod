@@ -10,10 +10,10 @@ import {
   VerticalNavMenu,
   VerticalSingle,
 } from "./index.style";
-import HoverFlip from "../../../../HoverFlip";
+import HoverFlip from "../../../../../../core/HoverFlip";
 import { Link } from "gatsby";
-import { getCategoryLink } from "../../../../../utils/links";
-import { MenuCategory } from "../../../../../app-types/category";
+import { getCategoryLink } from "../../../../../../../utils/links";
+import { MenuCategory } from "../../../../../../../app-types/category";
 import { Col, Row } from "styled-bootstrap-grid";
 import ContentBlock from "./ContentBlock";
 

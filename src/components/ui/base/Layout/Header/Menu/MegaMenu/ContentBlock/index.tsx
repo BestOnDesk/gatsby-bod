@@ -1,5 +1,5 @@
 import React from "react";
-import { PostPreview } from "../../../../../../app-types/post";
+import { PostPreview } from "../../../../../../../../app-types/post";
 import {
   ContentBlock as ContentBlockDiv,
   ContentBlockImgRounded,
@@ -10,10 +10,13 @@ import {
   PostThumbnail,
   Title,
 } from "./index.style";
-import { getCategoryLink, getPostLink } from "../../../../../../utils/links";
+import {
+  getCategoryLink,
+  getPostLink,
+} from "../../../../../../../../utils/links";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { Link } from "gatsby";
-import HoverFlip from "../../../../../HoverFlip";
+import HoverFlip from "../../../../../../../core/HoverFlip";
 
 export interface ContentBlockProps {
   imgRounded?: boolean;

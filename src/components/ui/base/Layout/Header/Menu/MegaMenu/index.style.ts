@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { HoverFlipItemWrapper } from "../../../../HoverFlip/index.style";
+import { HoverFlipItemWrapper } from "../../../../../../core/HoverFlip/index.style";
 import { MenuItemWithChildren } from "../index.style";
 
 export interface VerticalNavItemProps {

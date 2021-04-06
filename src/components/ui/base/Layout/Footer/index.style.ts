@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { HoverFlipItemWrapper } from "../../HoverFlip/index.style";
+import { HoverFlipItemWrapper } from "../../../../core/HoverFlip/index.style";
 import { media } from "styled-bootstrap-grid";
 
 const FooterArea = styled.div`

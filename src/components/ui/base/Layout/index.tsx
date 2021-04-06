@@ -2,7 +2,7 @@ import React, { ReactChild } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
 import MobileMenu from "./MobileMenu";
-import { IState } from "../../state/reducers";
+import { IState } from "../../../../state/reducers";
 import { connect } from "react-redux";
 
 interface LayoutProps {

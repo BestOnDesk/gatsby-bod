@@ -11,16 +11,16 @@ import {
   MainMenu,
 } from "./index.style";
 import { Col, Container, Row } from "styled-bootstrap-grid";
-import SocialIcons from "components/SocialIcons";
+import SocialIcons from "components/ui/base/SocialIcons";
 import {
   FACEBOOK_URL,
   INSTAGRAM_URL,
   LINKEDIN_URL,
   TELEGRAM_URL,
-} from "../../../constants/socials";
+} from "../../../../../constants/socials";
 import { Link } from "gatsby";
-import StaticImg from "../../StaticImg";
-import HoverFlip from "../../HoverFlip";
+import StaticImg from "../../../../core/StaticImg";
+import HoverFlip from "../../../../core/HoverFlip";
 
 const Footer = () => {
   return (

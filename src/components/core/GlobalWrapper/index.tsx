@@ -4,11 +4,11 @@ import { ThemeProvider } from "styled-components";
 import { Helmet } from "react-helmet";
 import { BaseCSS } from "styled-bootstrap-grid";
 import { GlobalStyle } from "styles/global.style";
-import Layout from "components/Layout";
+import Layout from "components/ui/base/Layout";
 import "styles/font-awesome.min.css";
-import { lightTheme } from "../../styles/theme";
-import { ThemeMode } from "../../app-types/style";
-import { IState } from "../../state/reducers";
+import { lightTheme } from "../../../styles/theme";
+import { ThemeMode } from "../../../app-types/style";
+import { IState } from "../../../state/reducers";
 import { connect } from "react-redux";
 
 interface GlobalWrapperProps {

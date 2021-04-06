@@ -13,9 +13,9 @@ import {
   SubMenu,
 } from "./index.style";
 import { graphql, useStaticQuery } from "gatsby";
-import { getCategoryLink } from "../../../utils/links";
+import { getCategoryLink } from "../../../../../utils/links";
 import { useDispatch } from "react-redux";
-import { closeMenu } from "../../../state/actions/mobile";
+import { closeMenu } from "../../../../../state/actions/mobile";
 
 export interface MobileMenuProps {
   show: boolean;

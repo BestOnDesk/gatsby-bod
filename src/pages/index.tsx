@@ -1,6 +1,6 @@
 import * as React from "react";
 import { graphql } from "gatsby";
-import GlobalWrapper from "../components/GlobalWrapper";
+import GlobalWrapper from "../components/core/GlobalWrapper";
 
 interface PostNode {
   node: {
