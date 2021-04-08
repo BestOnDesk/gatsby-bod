@@ -1,6 +1,7 @@
 import * as React from "react";
 import { graphql } from "gatsby";
-import GlobalWrapper from "../components/core/GlobalWrapper";
+import GlobalWrapper from "components/core/GlobalWrapper";
+import Last5PostsSlider from "components/ui/extended/Last5PostsSlider";
 
 interface PostNode {
   node: {
@@ -20,7 +21,7 @@ interface IndexPageProps {
 export default ({ data }: IndexPageProps) => {
   return (
     <GlobalWrapper withLayout={true}>
-      <h1>Test</h1>
+      <Last5PostsSlider />
     </GlobalWrapper>
   );
 };
