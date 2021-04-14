@@ -16,6 +16,8 @@ import { getImage, IGatsbyImageData } from "gatsby-plugin-image";
 import { Link } from "gatsby";
 import { getCategoryLink, getPostLink } from "../../../../utils/links";
 import HoverFlip from "../../../core/HoverFlip";
+import SwiperCore, { EffectFade } from "swiper";
+import PostMeta from "../PostMeta";
 
 export interface PostSliderPost {
   title: string;
@@ -36,13 +38,15 @@ export interface PostsSliderProps {
   posts: PostSliderPost[];
 }
 
+SwiperCore.use([EffectFade]);
+
 const PostsSlider = ({ posts }: PostsSliderProps) => {
   return (
     <StyledMainSlider>
       <Container>
         <Row>
           <Col lg={12}>
-            <Swiper>
+            <Swiper effect="fade" loop={true}>
               {posts.map((post) => {
                 const image = getImage(post.image);
                 return (
@@ -68,6 +72,7 @@ const PostsSlider = ({ posts }: PostsSliderProps) => {
                         <PostTitle>
                           <Link to={getPostLink(post.slug)}>{post.title}</Link>
                         </PostTitle>
+                        <PostMeta author={post.author} />
                       </PostContent>
                     </ContentBlock>
                   </SwiperSlide>

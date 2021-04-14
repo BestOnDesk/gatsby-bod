@@ -3,6 +3,7 @@ import { IGatsbyImageData } from "gatsby-plugin-image";
 import { graphql, useStaticQuery } from "gatsby";
 import PostsSlider, { PostSliderPost } from "../../base/PostsSlider";
 import { getReadingTimeString } from "../../../../utils/reading-time";
+import { CategoryPreview } from "../../../../app-types/category";
 
 export interface Last5PostsSliderQueryProps {
   posts: {
@@ -25,10 +26,7 @@ export interface Last5PostsSliderQueryProps {
         };
       };
       categories: {
-        nodes: {
-          name: string;
-          slug: string;
-        }[];
+        nodes: CategoryPreview[];
       };
     }[];
   };
@@ -45,8 +43,7 @@ const Last5PostsSlider = () => {
           slug
           author {
             node {
-              name
-              slug
+              ...AuthorPreviewFragment
             }
           }
           featuredImage {
@@ -60,8 +57,7 @@ const Last5PostsSlider = () => {
           }
           categories {
             nodes {
-              name
-              slug
+              ...CategoryPreviewFragment
             }
           }
         }

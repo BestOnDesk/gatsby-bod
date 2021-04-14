@@ -13,3 +13,15 @@ export interface MenuCategory {
     }[];
   };
 }
+
+export const CategoryPreviewFragment = graphql`
+  fragment CategoryPreviewFragment on WpCategory {
+    name
+    slug
+  }
+`;
+
+export interface CategoryPreview {
+  name: string;
+  slug: string;
+}
