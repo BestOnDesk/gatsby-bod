@@ -38,30 +38,7 @@ const Menu = () => {
         }
       ) {
         nodes {
-          slug
-          name
-          wpChildren {
-            nodes {
-              slug
-              name
-              posts {
-                nodes {
-                  date
-                  slug
-                  title
-                  featuredImage {
-                    node {
-                      localFile {
-                        childImageSharp {
-                          gatsbyImageData(width: 200, height: 130)
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
+          ...MenuCategoryFragment
         }
       }
     }

@@ -1,4 +1,23 @@
 import { PostPreview } from "./post";
+import { graphql } from "gatsby";
+
+export const MenuCategoryFragment = graphql`
+  fragment MenuCategoryFragment on WpCategory {
+    slug
+    name
+    wpChildren {
+      nodes {
+        slug
+        name
+        posts {
+          nodes {
+            ...PostPreviewFragment
+          }
+        }
+      }
+    }
+  }
+`;
 
 export interface MenuCategory {
   slug: string;
