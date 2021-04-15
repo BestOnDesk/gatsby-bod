@@ -4,6 +4,7 @@ import { graphql, useStaticQuery } from "gatsby";
 import PostsSlider, { PostSliderPost } from "../../base/PostsSlider";
 import { getReadingTimeString } from "../../../../utils/reading-time";
 import { CategoryPreview } from "../../../../app-types/category";
+import { AuthorPreview } from "../../../../app-types/author";
 
 export interface Last5PostsSliderQueryProps {
   posts: {
@@ -13,10 +14,7 @@ export interface Last5PostsSliderQueryProps {
       title: string;
       slug: string;
       author: {
-        node: {
-          name: string;
-          slug: string;
-        };
+        node: AuthorPreview;
       };
       featuredImage: {
         node: {
