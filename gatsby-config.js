@@ -80,9 +80,17 @@ module.exports = {
       resolve: "gatsby-source-filesystem",
       options: {
         name: "images",
-        path: "./src/images/",
+        path: `${__dirname}/src/media/images/`,
       },
       __key: "images",
+    },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "videos",
+        path: `${__dirname}/src/media/videos/`,
+      },
+      __key: "videos",
     },
     "gatsby-plugin-image",
     {
