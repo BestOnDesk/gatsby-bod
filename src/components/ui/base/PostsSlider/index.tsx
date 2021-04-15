@@ -22,6 +22,7 @@ import PostMeta from "../PostMeta";
 export interface PostSliderPost {
   title: string;
   slug: string;
+  date: string;
   image: IGatsbyImageData;
   readingTime: string;
   author: {
@@ -75,7 +76,7 @@ const PostsSlider = ({ posts }: PostsSliderProps) => {
                         <PostTitle>
                           <Link to={getPostLink(post.slug)}>{post.title}</Link>
                         </PostTitle>
-                        <PostMeta author={post.author} />
+                        <PostMeta author={post.author} date={post.date} />
                       </PostContent>
                     </ContentBlock>
                   </SwiperSlide>

@@ -3,6 +3,7 @@ import {
   Content,
   PostAuthorAvatar,
   PostAuthorName,
+  PostMetaList,
   StyledPostMeta,
 } from "./index.style";
 import { AuthorPreview } from "../../../../app-types/author";
@@ -14,6 +15,7 @@ import { getAuthorLink } from "utils/links";
 export interface PostMetaProps {
   withButton?: boolean;
   authorAvatarRounded?: boolean;
+  date: string;
   author: AuthorPreview;
 }
 
@@ -32,6 +34,10 @@ const PostMeta = (props: PostMetaProps) => {
             {props.author.name}
           </HoverFlip>
         </PostAuthorName>
+        <PostMetaList>
+          <li>{props.date}</li>
+          <li>test</li>
+        </PostMetaList>
       </Content>
     </StyledPostMeta>
   );

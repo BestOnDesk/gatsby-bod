@@ -1,32 +1,12 @@
 import React from "react";
-import { IGatsbyImageData } from "gatsby-plugin-image";
 import { graphql, useStaticQuery } from "gatsby";
 import PostsSlider, { PostSliderPost } from "../../base/PostsSlider";
 import { getReadingTimeString } from "../../../../utils/reading-time";
-import { CategoryPreview } from "../../../../app-types/category";
-import { AuthorPreview } from "../../../../app-types/author";
+import { PostExtendedPreview } from "../../../../app-types/post";
 
 export interface Last5PostsSliderQueryProps {
   posts: {
-    nodes: {
-      date: string;
-      content: string;
-      title: string;
-      slug: string;
-      author: {
-        node: AuthorPreview;
-      };
-      featuredImage: {
-        node: {
-          localFile: {
-            childImageSharp: IGatsbyImageData;
-          };
-        };
-      };
-      categories: {
-        nodes: CategoryPreview[];
-      };
-    }[];
+    nodes: PostExtendedPreview[];
   };
 }
 
@@ -35,29 +15,7 @@ const Last5PostsSlider = () => {
     {
       posts: allWpPost(sort: { fields: date, order: DESC }, limit: 5) {
         nodes {
-          date
-          content
-          title
-          slug
-          author {
-            node {
-              ...AuthorPreviewFragment
-            }
-          }
-          featuredImage {
-            node {
-              localFile {
-                childImageSharp {
-                  gatsbyImageData(width: 2880, height: 1440)
-                }
-              }
-            }
-          }
-          categories {
-            nodes {
-              ...CategoryPreviewFragment
-            }
-          }
+          ...PostExtendedPreviewFragment
         }
       }
     }

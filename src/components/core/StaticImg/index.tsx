@@ -45,7 +45,6 @@ const StaticImg: FunctionComponent<ImgProps> = ({
 
       if (image) {
         const imageData = getImage(image.node.childImageSharp);
-        console.log(image);
 
         if (imageData) {
           return <GatsbyImage alt={alt} image={imageData} {...rest} />;
