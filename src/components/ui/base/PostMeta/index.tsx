@@ -1,6 +1,15 @@
 import React from "react";
-import { StyledPostMeta } from "./index.style";
+import {
+  Content,
+  PostAuthorAvatar,
+  PostAuthorName,
+  StyledPostMeta,
+} from "./index.style";
 import { AuthorPreview } from "../../../../app-types/author";
+import StaticImg from "../../../core/StaticImg";
+import { getAuthorAvatarRelativePath } from "../../../../utils/author";
+import HoverFlip from "../../../core/HoverFlip";
+import { getAuthorLink } from "utils/links";
 
 export interface PostMetaProps {
   withButton?: boolean;
@@ -9,7 +18,23 @@ export interface PostMetaProps {
 }
 
 const PostMeta = (props: PostMetaProps) => {
-  return <StyledPostMeta></StyledPostMeta>;
+  return (
+    <StyledPostMeta>
+      <PostAuthorAvatar>
+        <StaticImg
+          alt={props.author.name}
+          src={getAuthorAvatarRelativePath(props.author.slug)}
+        />
+      </PostAuthorAvatar>
+      <Content>
+        <PostAuthorName>
+          <HoverFlip to={getAuthorLink(props.author.slug)}>
+            {props.author.name}
+          </HoverFlip>
+        </PostAuthorName>
+      </Content>
+    </StyledPostMeta>
+  );
 };
 
 export default PostMeta;
