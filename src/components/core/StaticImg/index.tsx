@@ -1,14 +1,14 @@
-import React, { FunctionComponent, useContext } from "react";
+import React, { CSSProperties, FunctionComponent, useContext } from "react";
 import { ThemeContext } from "styled-components";
+import { ThemeMode } from "app-types/style";
 import { GatsbyImage, getImage, IGatsbyImageData } from "gatsby-plugin-image";
 import { graphql, StaticQuery } from "gatsby";
-import { GatsbyImageProps } from "gatsby-plugin-image/dist/src/components/gatsby-image.browser";
-import { ThemeMode } from "../../../app-types/style";
 
 interface StaticImgProps {
   alt: string;
   src: string;
   srcDark?: string;
+  imgStyle?: CSSProperties;
 }
 
 interface ImageQueryProps {
@@ -23,7 +23,7 @@ interface ImageQueryProps {
   };
 }
 
-export type ImgProps = StaticImgProps & GatsbyImageProps;
+export type ImgProps = StaticImgProps;
 
 const StaticImg: FunctionComponent<ImgProps> = ({
   src,
@@ -39,31 +39,29 @@ const StaticImg: FunctionComponent<ImgProps> = ({
         themeContext.mode === ThemeMode.Light || srcDark === undefined
           ? src
           : srcDark;
-
       const image = data.images.edges.find(
         (n) => n.node.relativePath === computedSrc
       );
 
       if (image) {
         const imageData = getImage(image.node.childImageSharp);
-
-        const { image: _, ...restDestr } = rest;
+        console.log(image);
 
         if (imageData) {
-          return <GatsbyImage alt={alt} image={imageData} {...restDestr} />;
-        } else {
-          return null;
+          return <GatsbyImage alt={alt} image={imageData} {...rest} />;
         }
-      } else {
-        return null;
       }
+
+      return null;
     }}
   />
 );
 
 const staticImgQuery = graphql`
   query staticImgQuery {
-    images: allFile(filter: { sourceInstanceName: { eq: "images" } }) {
+    images: allFile(
+      filter: { sourceInstanceName: { eq: "images" }, extension: { ne: "svg" } }
+    ) {
       edges {
         node {
           relativePath
