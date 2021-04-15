@@ -6,7 +6,7 @@ const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
     * {
         box-sizing: border-box;
     }
-    
+
     article,
     aside,
     details,
@@ -364,8 +364,7 @@ const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
         font: ${(props) => props.theme.fonts.family.primary};
         color: ${(props) => props.theme.colors.body};
         font-weight: ${(props) => props.theme.fonts.weight.pRegular};
-        height: 100%;
-
+        margin: 0;
     }
 
     h1,
@@ -541,7 +540,7 @@ const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
         font-family: "Courier 10 Pitch", Courier, monospace;
     }
 
-    
+
     ul,
     ol {
         padding-left: 18px;
@@ -562,8 +561,8 @@ const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
             a {
                 text-decoration: none;
                 color: ${(props) => props.theme.colors.gray};
-                ${(props) => props.theme.extends.transition}
 
+                ${(props) => props.theme.extends.transition}
                 &:hover {
                     color: ${(props) => props.theme.colors.primary};
                 }
@@ -643,7 +642,7 @@ const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
         appearance: none;
         border: 1px solid ${(props) => props.theme.colors.border};
         border-radius: 4px;
-        background: url(../images/icons/arrow-icon.png) 95% center no-repeat transparent;
+        background: url(../media/images/icons/arrow-icon.png) 95% center no-repeat transparent;
         padding-right: 32px;
     }
 
@@ -941,9 +940,8 @@ const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
             padding: 0 20px;
             background-color: ${(props) => props.theme.colors.lightest};
             border: 1px solid transparent;
+
             ${(props) => props.theme.extends.transition}
-
-
             &:focus {
                 border-color: ${(props) => props.theme.colors.primary};
                 box-shadow: none;
@@ -982,8 +980,8 @@ const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
         line-height: ${(props) => props.theme.fonts.height.b3};
         height: 50px;
         border: 2px solid ${(props) => props.theme.colors.primary};
-        ${(props) => props.theme.extends.transition}
 
+        ${(props) => props.theme.extends.transition}
         &:hover {
             background: transparent;
             color: ${(props) => props.theme.colors.primary};
