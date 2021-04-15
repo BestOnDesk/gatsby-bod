@@ -15,37 +15,37 @@ export interface SubMenuProps {
 }
 
 const Inner = styled.div`
-  background: ${(props) => props.theme.colors.white} !important;
-  position: relative !important;
-  width: 320px !important;
-  max-width: 80% !important;
-  height: 100% !important;
-  text-align: left !important;
-  transition: all 0.3s !important;
-  overflow-y: auto !important;
-  transform: translateX(-100%) !important;
-  cursor: default !important;
+  background: ${(props) => props.theme.colors.white};
+  position: relative;
+  width: 320px;
+  max-width: 80%;
+  height: 100%;
+  text-align: left;
+  transition: all 0.3s;
+  overflow-y: auto;
+  transform: translateX(-100%);
+  cursor: default;
 `;
 
 const StyledMobileMenu = styled.div<StyledMobileMenuProps>`
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  width: 100% !important;
-  height: 100% !important;
-  background: rgba(0, 0, 0, 0.9) !important;
-  visibility: hidden !important;
-  opacity: 0 !important;
-  cursor: url(../images/icons/light-close.png) 16 16, pointer !important;
-  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1) !important;
-  z-index: 99999 !important;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  visibility: hidden;
+  opacity: 0;
+  cursor: url(../images/icons/light-close.png) 16 16, pointer;
+  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  z-index: 99999;
 
   ${(props) =>
     props.show &&
-    `visibility: visible !important;
-    opacity: 1 !important;
+    `visibility: visible;
+    opacity: 1;
       ${Inner} {
-        transform: none !important;
+        transform: none;
       }
     `}
 `;
@@ -59,18 +59,18 @@ const MobileClose = styled.div`
 `;
 
 const MobileMenuTop = styled.div`
-  padding: 20px !important;
-  border-bottom: 1px solid ${(props) => props.theme.colors.lightest} !important;
-  padding-bottom: 26px !important;
-  display: flex !important;
-  justify-content: space-between !important;
-  align-items: center !important;
+  padding: 20px;
+  border-bottom: 1px solid ${(props) => props.theme.colors.lightest};
+  padding-bottom: 26px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
   ${StyledLogo} {
     a {
-      display: block !important;
+      display: block;
       img {
-        max-height: 37px !important;
+        max-height: 37px;
       }
     }
   }
@@ -78,24 +78,24 @@ const MobileMenuTop = styled.div`
 
 const MainMenu = styled.div`
   ${(props) => props.theme.extends.listStyle}
-  padding: 5px 20px !important;
+  padding: 5px 20px;
 `;
 
 const ItemLink = styled(Link)`
-  font-size: 16px !important;
-  display: block !important;
-  line-height: 20px !important;
-  color: #65676b !important;
-  font-weight: 500 !important;
+  font-size: 16px;
+  display: block;
+  line-height: 20px;
+  color: #65676b;
+  font-weight: 500;
   &:hover {
-    color: ${(props) => props.theme.colors.primary} !important;
+    color: ${(props) => props.theme.colors.primary};
   }
 `;
 
 const MenuItem = styled.li`
-  margin: 0 !important;
-  padding: 15px 0 !important;
-  border-bottom: 1px solid ${(props) => props.theme.colors.lightest} !important;
+  margin: 0;
+  padding: 15px 0;
+  border-bottom: 1px solid ${(props) => props.theme.colors.lightest};
 `;
 
 const MenuItemWithChildren = styled(MenuItem)<MenuWithChildrenProps>`
@@ -104,49 +104,49 @@ const MenuItemWithChildren = styled(MenuItem)<MenuWithChildrenProps>`
       ${(props) =>
         props.open &&
         `
-        color: ${props.theme.colors.primary} !important;
+        color: ${props.theme.colors.primary};
       `}
     }
 
     > i {
-      display: flex !important;
-      justify-content: flex-end !important;
-      flex: 1 !important;
-      cursor: pointer !important;
+      display: flex;
+      justify-content: flex-end;
+      flex: 1;
+      cursor: pointer;
     }
   }
 `;
 
 const MenuItemWithChildrenInner = styled.div`
-  display: flex !important;
-  justify-content: space-between !important;
+  display: flex;
+  justify-content: space-between;
 `;
 
 const SubMenu = styled.ul<SubMenuProps>`
   ${(props) => props.theme.extends.listStyle}
-  display: none !important;
-  padding-left: 20px !important;
+  display: none;
+  padding-left: 20px;
 
   li {
-    margin-top: 0 !important;
-    margin-bottom: 0 !important;
+    margin-top: 0;
+    margin-bottom: 0;
     a {
-      padding: 5px 0 !important;
-      display: block !important;
-      font-size: 14px !important;
-      line-height: 18px !important;
+      padding: 5px 0;
+      display: block;
+      font-size: 14px;
+      line-height: 18px;
     }
   }
 
   li:last-child {
-    border-bottom: 0 !important;
-    margin-bottom: -15px !important;
+    border-bottom: 0;
+    margin-bottom: -15px;
   }
 
   ${(props) =>
     props.open &&
     `
-      display: block !important;
+      display: block;
     `}
 `;
 

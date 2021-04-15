@@ -3,80 +3,80 @@ import { HoverFlipItemWrapper } from "../../../../core/HoverFlip/index.style";
 import { media } from "styled-bootstrap-grid";
 
 const FooterArea = styled.div`
-  padding: 40px 0 !important;
-  background-color: white !important;
+  padding: 40px 0;
+  background-color: white;
 `;
 
 const FooterTop = styled.div``;
 
 const Inner = styled.div`
-  display: flex !important;
-  align-items: center !important;
-  flex-wrap: wrap !important;
-  padding-bottom: 20px !important;
-  border-bottom: 1px solid ${(props) => props.theme.colors.lighter} !important;
-  margin-bottom: 20px !important;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  padding-bottom: 20px;
+  border-bottom: 1px solid ${(props) => props.theme.colors.lighter};
+  margin-bottom: 20px;
 `;
 
 const FollowTitle = styled.h5`
-  margin-right: 20px !important;
-  margin-bottom: 0px !important;
+  margin-right: 20px;
+  margin-bottom: 0px;
 
   @media ${(props) => props.theme.layouts.smallMobile} {
-    margin-bottom: 10px !important;
+    margin-bottom: 10px;
   }
 `;
 
 const CopyrightArea = styled.div``;
 
 const CopyrightLeft = styled.div`
-  display: flex !important;
-  align-items: center !important;
-  flex-wrap: wrap !important;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
 `;
 
 const Logo = styled.div`
-  margin-right: 53px !important;
+  margin-right: 53px;
   @media ${(props) => props.theme.layouts.sm} {
-    flex-basis: 100% !important;
-    margin-bottom: 20px !important;
+    flex-basis: 100%;
+    margin-bottom: 20px;
   }
 `;
 
 const MainMenu = styled.ul`
   ${(props) => props.theme.extends.listStyle}
-  display: flex !important;
-  flex-wrap: wrap !important;
-  justify-content: start !important;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
   li {
-    margin: 0 18px !important;
+    margin: 0 18px;
 
     @media ${(props) => props.theme.layouts.sm} {
-      margin: 0 5px !important;
+      margin: 0 5px;
     }
 
     &:first-child {
-      margin-left: 0 !important;
+      margin-left: 0;
     }
 
     a {
-      color: ${(props) => props.theme.colors.midgray} !important;
-      font-size: 16px !important;
-      line-height: 22px !important;
-      display: block !important;
-      font-weight: 500 !important;
-      height: auto !important;
-      line-height: initial !important;
+      color: ${(props) => props.theme.colors.midgray};
+      font-size: 16px;
+      line-height: 22px;
+      display: block;
+      font-weight: 500;
+      height: auto;
+      line-height: initial;
       ${(props) => props.theme.extends.transition}
     }
 
     ${HoverFlipItemWrapper} {
       span {
         &::before {
-          color: ${(props) => props.theme.colors.midgray} !important;
+          color: ${(props) => props.theme.colors.midgray};
         }
         &::after {
-          color: ${(props) => props.theme.colors.primary} !important;
+          color: ${(props) => props.theme.colors.primary};
         }
       }
     }
@@ -84,28 +84,28 @@ const MainMenu = styled.ul`
 `;
 
 const CopyrightRight = styled.div`
-  text-align: left !important;
+  text-align: left;
 
   p {
-    color: ${(props) => props.theme.colors.midgray} !important;
+    color: ${(props) => props.theme.colors.midgray};
   }
 
   @media only screen and (max-width: 767px) {
-    margin-top: 20px !important;
+    margin-top: 20px;
   }
 
   @media only screen and (min-width: 768px) and (max-width: 991px) {
-    margin-top: 20px !important;
+    margin-top: 20px;
   }
 
   ${media.lg`
-    text-align: right !important;
+    text-align: right;
   `}
 `;
 
 const CopyrightText = styled.p`
-  font-size: ${(props) => props.theme.fonts.size.b3} !important;
-  line-height: ${(props) => props.theme.fonts.height.b3} !important;
+  font-size: ${(props) => props.theme.fonts.size.b3};
+  line-height: ${(props) => props.theme.fonts.height.b3};
 `;
 
 export {

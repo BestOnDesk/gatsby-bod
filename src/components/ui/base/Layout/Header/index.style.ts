@@ -8,41 +8,41 @@ export interface HeaderProps {
 }
 
 const Header = styled.header<HeaderProps>`
-  padding: 0 60px !important;
-  background: #fff !important;
-  position: relative !important;
-  z-index: 99 !important;
+  padding: 0 60px;
+  background: #fff;
+  position: relative;
+  z-index: 99;
 
   @media ${(props) => props.theme.layouts.laptopDevice} {
-    padding: 0 30px !important;
+    padding: 0 30px;
   }
   @media only screen and (max-width: 1199px) {
-    padding: 20px 30px !important;
+    padding: 20px 30px;
   }
 
   ${(props) =>
     props.withShadow &&
     `
-        box-shadow: ${props.theme.shadows.primary} !important;
+        box-shadow: ${props.theme.shadows.primary};
     `}
 
   ${(props) =>
     isDark(props.theme) &&
     `
-        background: ${props.theme.colors.extra04} !important;
+        background: ${props.theme.colors.extra04};
     `}
 
   ${StyledLogo} {
     a {
-      display: block !important;
+      display: block;
 
       img {
-        max-height: 37px !important;
+        max-height: 37px;
       }
 
       @media ${(props) => props.theme.layouts.largeMobile} {
-        text-align: center !important;
-        margin-bottom: 20px !important;
+        text-align: center;
+        margin-bottom: 20px;
       }
     }
   }
@@ -51,8 +51,8 @@ const Header = styled.header<HeaderProps>`
 const HeaderWrap = styled.div``;
 
 const HeaderRow = styled(Row)`
-  justify-content: space-between !important;
-  align-items: center !important;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 export { Header, HeaderWrap, HeaderRow };

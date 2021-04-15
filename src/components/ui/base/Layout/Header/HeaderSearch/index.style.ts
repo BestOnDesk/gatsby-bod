@@ -3,59 +3,59 @@ import { Search, SearchButton } from "../../../Search/index.style";
 import { media } from "styled-bootstrap-grid";
 
 const HeaderSearch = styled.div`
-  text-align: right !important;
-  align-items: center !important;
-  display: flex !important;
+  text-align: right;
+  align-items: center;
+  display: flex;
 
   @media ${(props) => props.theme.layouts.largeMobile} {
-    text-align: center !important;
-    justify-content: center !important;
+    text-align: center;
+    justify-content: center;
   }
 `;
 
 const HeaderSearchForm = styled.form`
-  flex-grow: 1 !important;
+  flex-grow: 1;
   @media ${(props) => props.theme.layouts.largeMobile} {
-    flex-grow: 0 !important;
+    flex-grow: 0;
   }
   ${Search} {
     input {
-      min-width: 245px !important;
+      min-width: 245px;
       height: 40px !important;
       @media only screen and (min-width: 1600px) and (max-width: 1800px) {
-        min-width: 220px !important;
+        min-width: 220px;
       }
       @media ${(props) => props.theme.layouts.laptopDevice} {
-        min-width: 143px !important;
-        height: 35px !important;
+        min-width: 143px;
+        height: 35px;
       }
       @media ${(props) => props.theme.layouts.sm} {
-        min-width: 174px !important;
+        min-width: 174px;
       }
       @media ${(props) => props.theme.layouts.largeMobile} {
-        display: none !important;
+        display: none;
       }
     }
 
     ${SearchButton} {
       i {
         @media ${(props) => props.theme.layouts.largeMobile} {
-          font-weight: 900 !important;
-          color: ${(props) => props.theme.colors.heading} !important;
+          font-weight: 900;
+          color: ${(props) => props.theme.colors.heading};
         }
       }
 
       @media ${(props) => props.theme.layouts.largeMobile} {
-        position: static !important;
-        transform: none !important;
-        background: ${(props) => props.theme.colors.lightest} !important;
-        width: 40px !important;
-        height: 40px !important;
-        line-height: 40px !important;
-        text-align: center !important;
-        display: block !important;
-        border-radius: 100% !important;
-        font-size: 14px !important;
+        position: static;
+        transform: none;
+        background: ${(props) => props.theme.colors.lightest};
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        display: block;
+        border-radius: 100%;
+        font-size: 14px;
       }
     }
   }
@@ -63,32 +63,32 @@ const HeaderSearchForm = styled.form`
 
 const MetabarBlock = styled.ul`
   ${(props) => props.theme.extends.listStyle}
-  display: flex !important;
-  align-items: center !important;
+  display: flex;
+  align-items: center;
   li {
-    margin-left: 20px !important;
-    margin-top: 0 !important;
-    margin-bottom: 0 !important;
+    margin-left: 20px;
+    margin-top: 0;
+    margin-bottom: 0;
     @media only screen and (min-width: 1600px) and (max-width: 1800px) {
-      margin-left: 8px !important;
+      margin-left: 8px;
     }
     @media ${(props) => props.theme.layouts.laptopDevice} {
-      margin-left: 5px !important;
+      margin-left: 5px;
     }
     @media ${(props) => props.theme.layouts.md} {
-      margin-left: 10px !important;
+      margin-left: 10px;
     }
     @media ${(props) => props.theme.layouts.sm} {
-      margin-left: 10px !important;
+      margin-left: 10px;
     }
 
     img {
-      border-radius: 100% !important;
-      max-height: 40px !important;
-      min-width: 40px !important;
+      border-radius: 100%;
+      max-height: 40px;
+      min-width: 40px;
       @media ${(props) => props.theme.layouts.laptopDevice} {
-        max-height: 35px !important;
-        min-width: 35px !important;
+        max-height: 35px;
+        min-width: 35px;
       }
     }
   }
@@ -96,65 +96,65 @@ const MetabarBlock = styled.ul`
 
 const MetabarIcon = styled.li`
   a {
-    background: ${(props) => props.theme.colors.lightest} !important;
-    width: 40px !important;
-    height: 40px !important;
-    line-height: 40px !important;
-    text-align: center !important;
-    display: block !important;
-    border-radius: 100% !important;
-    font-size: 14px !important;
+    background: ${(props) => props.theme.colors.lightest};
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    display: block;
+    border-radius: 100%;
+    font-size: 14px;
     ${(props) => props.theme.extends.transition}
 
     &:hover {
-      background: ${(props) => props.theme.colors.primary} !important;
-      color: #fff !important;
+      background: ${(props) => props.theme.colors.primary};
+      color: #fff;
     }
 
     @media ${(props) => props.theme.layouts.laptopDevice} {
-      width: 35px !important;
-      height: 35px !important;
-      line-height: 35px !important;
-      font-size: 12px !important;
+      width: 35px;
+      height: 35px;
+      line-height: 35px;
+      font-size: 12px;
     }
   }
 `;
 
 const HamburgerMenu = styled.div`
-  display: block !important;
-  margin-left: 20px !important;
+  display: block;
+  margin-left: 20px;
   @media ${(props) => props.theme.layouts.md} {
-    margin-left: 10px !important;
+    margin-left: 10px;
   }
   @media ${(props) => props.theme.layouts.sm} {
-    margin-left: 10px !important;
+    margin-left: 10px;
   }
 
   ${media.xl`
-    display: none !important;
+    display: none;
   `}
 `;
 
 const HamburgerInner = styled.div``;
 
 const HamburgerIcon = styled.div`
-  background: ${(props) => props.theme.colors.lightest} !important;
-  width: 40px !important;
-  height: 40px !important;
-  line-height: 40px !important;
-  text-align: center !important;
-  display: block !important;
-  border-radius: 100% !important;
-  font-size: 14px !important;
+  background: ${(props) => props.theme.colors.lightest};
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  display: block;
+  border-radius: 100%;
+  font-size: 14px;
   ${(props) => props.theme.extends.transition}
-  display: inline-block !important;
-  color: ${(props) => props.theme.colors.heading} !important;
+  display: inline-block;
+  color: ${(props) => props.theme.colors.heading};
   i {
-    font-weight: 900 !important;
+    font-weight: 900;
   }
   &:hover {
-    background: ${(props) => props.theme.colors.primary} !important;
-    color: #fff !important;
+    background: ${(props) => props.theme.colors.primary};
+    color: #fff;
   }
 `;
 

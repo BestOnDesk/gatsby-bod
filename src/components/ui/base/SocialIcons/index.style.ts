@@ -2,32 +2,32 @@ import styled from "styled-components";
 import { SocialIconsProps } from "./index";
 
 const SocialIcons = styled.ul<SocialIconsProps>`
-  margin: -5px !important;
+  margin: -5px;
   ${(props) => props.theme.extends.listStyle}
-  display: flex !important;
-  flex-wrap: wrap !important;
+  display: flex;
+  flex-wrap: wrap;
   @media ${(props) => props.theme.layouts.lg} {
-    margin: -3px !important;
+    margin: -3px;
   }
   li {
-    margin: 5px !important;
+    margin: 5px;
     @media ${(props) => props.theme.layouts.lg} {
-      margin: 3px !important;
+      margin: 3px;
     }
     a {
-      width: 50px !important;
-      height: 50px !important;
-      line-height: 50px !important;
-      border-radius: 100% !important;
-      background: ${(props) => props.theme.colors.lightest} !important;
-      display: block !important;
-      text-align: center !important;
-      font-size: 14px !important;
-      color: ${(props) => props.theme.colors.gray} !important;
+      width: 50px;
+      height: 50px;
+      line-height: 50px;
+      border-radius: 100%;
+      background: ${(props) => props.theme.colors.lightest};
+      display: block;
+      text-align: center;
+      font-size: 14px;
+      color: ${(props) => props.theme.colors.gray};
       ${(props) => props.theme.extends.transition}
       &:hover {
-        background: ${(props) => props.theme.colors.primary} !important;
-        color: ${(props) => props.theme.colors.white} !important;
+        background: ${(props) => props.theme.colors.primary};
+        color: ${(props) => props.theme.colors.white};
       }
     }
   }
@@ -37,9 +37,9 @@ const SocialIcons = styled.ul<SocialIconsProps>`
     `
     li {
       a {
-        color: ${props.theme.colors.tertiary} !important;
+        color: ${props.theme.colors.tertiary};
         &:hover {
-          color: ${props.theme.colors.white} !important;
+          color: ${props.theme.colors.white};
         }
       }
     }
@@ -50,9 +50,9 @@ const SocialIcons = styled.ul<SocialIconsProps>`
     `
     li {
       a {
-        width: 40px !important;
-        height: 40px !important;
-        line-height: 40px !important;
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
       }
     }
   `}
@@ -62,12 +62,12 @@ const SocialIcons = styled.ul<SocialIconsProps>`
     `
     li {
       a {
-        background: transparent !important;
-        border: 1px solid ${props.theme.colors.lighter} !important;
+        background: transparent;
+        border: 1px solid ${props.theme.colors.lighter};
         &:hover {
-          color: ${props.theme.colors.white} !important;
-          background-color: ${props.theme.colors.primary} !important;
-          border-color: ${props.theme.colors.primary} !important;
+          color: ${props.theme.colors.white};
+          background-color: ${props.theme.colors.primary};
+          border-color: ${props.theme.colors.primary};
         }
       }
     }
@@ -78,11 +78,11 @@ const SocialIcons = styled.ul<SocialIconsProps>`
     `
     li {
       a {
-        background: #ffffff !important;
-        color: #050505 !important;
+        background: #ffffff;
+        color: #050505;
         &:hover {
-          color: ${props.theme.colors.white} !important;
-          background-color: ${props.theme.colors.primary} !important;
+          color: ${props.theme.colors.white};
+          background-color: ${props.theme.colors.primary};
         }
       }
     }
@@ -91,7 +91,7 @@ const SocialIcons = styled.ul<SocialIconsProps>`
   ${(props) =>
     props.justifyContent &&
     `
-      justify-content: ${props.justifyContent} !important;
+      justify-content: ${props.justifyContent};
     `}
 `;
 

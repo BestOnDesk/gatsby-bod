@@ -6,51 +6,50 @@ const MenuWrapper = styled.div``;
 
 const MainMenu = styled.ul`
     ${(props) => props.theme.extends.listStyle}
-    display: flex !important;w
-    margin: 0 !important;
-    padding: 0 !important;
-    justify-content: center !important;
-    flex-wrap: wrap !important;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+    flex-wrap: wrap;
     > li {
-        margin: 0 18px !important;
+        margin: 0 18px;
         position: relative;
         @media ${(props) => props.theme.layouts.laptopDevice} {
-            margin: 0 12px !important;
+            margin: 0 12px;
         }
         @media ${(props) => props.theme.layouts.lg} {
-            margin: 0 12px !important;
+            margin: 0 12px;
         }
         > a {
-            font-size: ${(props) => props.theme.fonts.size.b2} !important;
-            line-height: ${(props) => props.theme.fonts.height.b2} !important;
-            color: ${(props) => props.theme.colors.midgray} !important;
-            font-weight: ${(props) =>
-              props.theme.fonts.weight.pMedium} !important;
+            font-size: ${(props) => props.theme.fonts.size.b2};
+            line-height: ${(props) => props.theme.fonts.height.b2};
+            color: ${(props) => props.theme.colors.midgray};
+            font-weight: ${(props) => props.theme.fonts.weight.pMedium};
             ${(props) => props.theme.extends.transition}
-            height: 80px !important;
-            display: block !important;
-            line-height: 80px !important;
-            position: relative !important;
+            height: 80px;
+            display: block;
+            line-height: 80px;
+            position: relative;
             &::after {
-                position: absolute !important;
-                bottom: 0 !important;
-                width: 0 !important;
-                height: 4px !important;
-                background: ${(props) => props.theme.colors.primary} !important;
-                content: "" !important;
+                position: absolute;
+                bottom: 0;
+                width: 0;
+                height: 4px;
+                background: ${(props) => props.theme.colors.primary};
+                content: "";
                 ${(props) => props.theme.extends.transition}
-                left: 0 !important;
-                border-radius: 10px 10px 0 0 !important;
+                left: 0;
+                border-radius: 10px 10px 0 0;
             }
 
             &:hover {
-                color: ${(props) => props.theme.colors.primary} !important;
+                color: ${(props) => props.theme.colors.primary};
             }
         }
         &:hover {
             > a {
                 &::after {
-                    width: 100% !important;
+                    width: 100%;
                 }
             }
         }
@@ -59,10 +58,10 @@ const MainMenu = styled.ul`
 const MenuNav = styled.nav`
   ul {
     ${MainMenu} {
-      justify-content: flex-start !important;
+      justify-content: flex-start;
       li {
         &:first-child {
-          margin-left: 0 !important;
+          margin-left: 0;
         }
       }
     }
@@ -73,43 +72,43 @@ const ItemLink = styled(Link)``;
 
 const SubMenu = styled.ul`
   ${(props) => props.theme.extends.listStyle}
-  position: absolute !important;
-  top: 100% !important;
-  left: 0 !important;
-  background: #ffffff !important;
-  z-index: -1 !important;
-  opacity: 0 !important;
-  visibility: hidden !important;
-  min-width: 240px !important;
-  padding: 20px !important;
-  border-radius: 0 0 10px 10px !important;
-  box-shadow: ${(props) => props.theme.shadows.primary} !important;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #ffffff;
+  z-index: -1;
+  opacity: 0;
+  visibility: hidden;
+  min-width: 240px;
+  padding: 20px;
+  border-radius: 0 0 10px 10px;
+  box-shadow: ${(props) => props.theme.shadows.primary};
   ${(props) => props.theme.extends.transitions}
 
   li {
     a {
-      font-size: ${(props) => props.theme.fonts.size.b2} !important;
-      line-height: ${(props) => props.theme.fonts.height.b2} !important;
-      color: ${(props) => props.theme.colors.midgray} !important;
-      font-weight: ${(props) => props.theme.fonts.weight.pMedium} !important;
+      font-size: ${(props) => props.theme.fonts.size.b2};
+      line-height: ${(props) => props.theme.fonts.height.b2};
+      color: ${(props) => props.theme.colors.midgray};
+      font-weight: ${(props) => props.theme.fonts.weight.pMedium};
       ${(props) => props.theme.extends.transitions}
     }
 
     ${HoverFlipItemWrapper} {
       span {
         &::before {
-          color: ${(props) => props.theme.colors.midgray} !important;
+          color: ${(props) => props.theme.colors.midgray};
         }
 
         &::after {
-          color: ${(props) => props.theme.colors.primary} !important;
+          color: ${(props) => props.theme.colors.primary};
         }
       }
     }
 
     &:hover {
       > a {
-        color: ${(props) => props.theme.colors.primary} !important;
+        color: ${(props) => props.theme.colors.primary};
       }
     }
   }
@@ -122,9 +121,9 @@ const MenuItem = styled.li``;
 const MenuItemWithChildren = styled(MenuItem)`
   &:hover {
     ${SubMenu} {
-      opacity: 1 !important;
-      visibility: visible !important;
-      z-index: 9 !important;
+      opacity: 1;
+      visibility: visible;
+      z-index: 9;
     }
   }
 `;
