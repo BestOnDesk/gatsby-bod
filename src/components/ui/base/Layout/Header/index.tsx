@@ -15,7 +15,7 @@ const Header = () => {
           <Col xl={3} lg={3} md={4} sm={3} xs={12}>
             <Logo />
           </Col>
-          <Col xl={6} hiddenXlDown>
+          <Col xl={6} hiddenLgDown>
             <Menu />
           </Col>
           <Col xl={3} lg={8} md={8} sm={9} xs={12}>
