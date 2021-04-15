@@ -47,10 +47,10 @@ const PostsSlider = ({ posts }: PostsSliderProps) => {
         <Row>
           <Col lg={12}>
             <Swiper effect="fade" loop={true}>
-              {posts.map((post) => {
+              {posts.map((post, i) => {
                 const image = getImage(post.image);
                 return (
-                  <SwiperSlide>
+                  <SwiperSlide key={i}>
                     <ContentBlock>
                       <PostThumbnail>
                         {image && (
@@ -62,8 +62,11 @@ const PostsSlider = ({ posts }: PostsSliderProps) => {
                       <PostContent>
                         <PostCat>
                           <PostCatList>
-                            {post.categories.map((category) => (
-                              <HoverFlip to={getCategoryLink(category.slug)}>
+                            {post.categories.map((category, i) => (
+                              <HoverFlip
+                                to={getCategoryLink(category.slug)}
+                                key={i}
+                              >
                                 {category.name.toUpperCase()}
                               </HoverFlip>
                             ))}
