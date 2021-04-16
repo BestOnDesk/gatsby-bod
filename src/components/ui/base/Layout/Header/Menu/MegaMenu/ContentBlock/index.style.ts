@@ -3,35 +3,35 @@ import { Link } from "gatsby";
 import { HoverFlipItemWrapper } from "../../../../../../../core/HoverFlip/index.style";
 
 const PostCatList = styled.div`
-  display: flex !important;
-  flex-wrap: wrap !important;
-  align-items: center !important;
-  margin: -8px !important;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: -8px;
 
   a {
-    color: ${(props) => props.theme.colors.secondary} !important;
+    color: ${(props) => props.theme.colors.secondary};
     ${(props) => props.theme.extends.transition}
-    display: flex !important;
-    font-size: ${(props) => props.theme.fonts.size.b3} !important;
-    line-height: 20px !important;
-    margin: 8px !important;
-    position: relative !important;
-    font-weight: ${(props) => props.theme.fonts.weight.pMedium} !important;
+    display: flex;
+    font-size: ${(props) => props.theme.fonts.size.b3};
+    line-height: 20px;
+    margin: 8px;
+    position: relative;
+    font-weight: ${(props) => props.theme.fonts.weight.pMedium};
     ${(props) => props.theme.extends.transition}
 
     &:hover {
-      color: ${(props) => props.theme.colors.primary} !important;
+      color: ${(props) => props.theme.colors.primary};
     }
 
     &::after {
-      content: "," !important;
-      position: absolute !important;
-      right: 0 !important;
+      content: ",";
+      position: absolute;
+      right: 0;
     }
 
     &:last-child {
       &::after {
-        display: none !important;
+        display: none;
       }
     }
   }
@@ -39,14 +39,14 @@ const PostCatList = styled.div`
   ${HoverFlipItemWrapper} {
     span {
       &::after {
-        color: ${(props) => props.theme.colors.primary} !important;
+        color: ${(props) => props.theme.colors.primary};
       }
     }
   }
 `;
 
 const PostCat = styled.div`
-  margin-bottom: 10px !important;
+  margin-bottom: 10px;
 `;
 
 const PostThumbnail = styled.div``;
@@ -56,40 +56,40 @@ const PostLink = styled(Link)``;
 const PostContent = styled.div``;
 
 const Title = styled.h5`
-  margin-bottom: 0 !important;
+  margin-bottom: 0;
 
   a {
-    position: relative !important;
-    display: inline !important;
+    position: relative;
+    display: inline;
     background-image: linear-gradient(
       to right,
       currentColor 0%,
       currentColor 100%
-    ) !important;
-    background-size: 0 2px !important;
-    background-position: 0 95% !important;
-    transition: background-size 0.25s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0s !important;
-    padding: 0.1% 0 !important;
-    background-repeat: no-repeat !important;
-    color: inherit !important;
+    );
+    background-size: 0 2px;
+    background-position: 0 95%;
+    transition: background-size 0.25s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0s;
+    padding: 0.1% 0;
+    background-repeat: no-repeat;
+    color: inherit;
     &:hover {
-      color: inherit !important;
+      color: inherit;
     }
   }
 `;
 
 const ContentBlock = styled.div`
   ${PostThumbnail} {
-    position: relative !important;
+    position: relative;
     a {
-      display: block !important;
-      overflow: hidden !important;
-      border-radius: ${(props) => props.theme.borders.radius} !important;
+      display: block;
+      overflow: hidden;
+      border-radius: ${(props) => props.theme.borders.radius};
       & .gatsby-image-wrapper {
-        border-radius: ${(props) => props.theme.borders.radius} !important;
+        border-radius: ${(props) => props.theme.borders.radius};
       }
       img {
-        width: 100% !important;
+        width: 100%;
       }
     }
   }
@@ -98,7 +98,7 @@ const ContentBlock = styled.div`
     ${PostContent} {
       ${Title} {
         a {
-          background-size: 100% 2px !important;
+          background-size: 100% 2px;
         }
       }
     }
@@ -108,16 +108,16 @@ const ContentBlock = styled.div`
 const ContentBlockImgRounded = styled(ContentBlock)`
   ${PostThumbnail} {
     ${(props) => props.theme.extends.radius}
-    overflow: hidden !important;
+    overflow: hidden;
     img {
       ${(props) => props.theme.extends.radius}
-      transition: 0.5s !important;
+      transition: 0.5s;
     }
   }
   &:hover {
     ${PostThumbnail} {
       img {
-        transform: scale(1.1) !important;
+        transform: scale(1.1);
       }
     }
   }

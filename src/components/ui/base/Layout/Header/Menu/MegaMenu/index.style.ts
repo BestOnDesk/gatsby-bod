@@ -12,20 +12,20 @@ export interface VerticalInnerProps {
 
 const MegaMenuSubMenu = styled.ul`
   ${(props) => props.theme.extends.listStyle}
-  box-sizing: border-box !important;
-  position: absolute !important;
-  background: #fff !important;
-  width: 100% !important;
-  left: 0 !important;
-  right: 0 !important;
-  opacity: 0 !important;
-  visibility: hidden !important;
+  box-sizing: border-box;
+  position: absolute;
+  background: #fff;
+  width: 100%;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  visibility: hidden;
   ${(props) => props.theme.extends.transition}
-  min-width: 1230px !important;
-  left: 50% !important;
-  transform: translateX(-50%) !important;
-  border-radius: 0 0 10px 10px !important;
-  box-shadow: ${(props) => props.theme.shadows.primary} !important;
+  min-width: 1230px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 0 0 10px 10px;
+  box-shadow: ${(props) => props.theme.shadows.primary};
 `;
 
 const MegaMenuWrapper = styled(MenuItemWithChildren)`
@@ -33,73 +33,69 @@ const MegaMenuWrapper = styled(MenuItemWithChildren)`
 
   &:hover {
     ${MegaMenuSubMenu} {
-      opacity: 1 !important;
-      visibility: visible !important;
+      opacity: 1;
+      visibility: visible;
     }
   }
 `;
 
 const MegaMenuItem = styled.li`
-  display: flex !important;
-  margin: 0 !important;
+  display: flex;
+  margin: 0;
 `;
 
 const VerticalNav = styled.div`
-  min-width: 279px !important;
-  width: auto !important;
-  border-right: 1px solid #ced0d4 !important;
+  min-width: 279px;
+  width: auto;
+  border-right: 1px solid #ced0d4;
   ${(props) => props.theme.extends.listStyle}
-  padding: 30px !important;
+  padding: 30px;
 `;
 
 const VerticalNavMenu = styled.ul``;
 
 const VerticalNavItem = styled.li<VerticalNavItemProps>`
-  margin: 10px 0 !important;
+  margin: 10px 0;
 
   &:first-child {
-    margin-top: 0 !important;
+    margin-top: 0;
   }
   &:last-child {
-    margin-bottom: 0 !important;
+    margin-bottom: 0;
   }
 
   a {
     color: ${(props) =>
-      props.active
-        ? props.theme.colors.primary
-        : props.theme.colors.midgray} !important;
-    font-size: 16px !important;
-    line-break: 20px !important;
-    display: block !important;
+      props.active ? props.theme.colors.primary : props.theme.colors.midgray};
+    font-size: 16px;
+    line-break: 20px;
+    display: block;
   }
   ${HoverFlipItemWrapper} {
     span::before {
       color: ${(props) =>
-        props.active
-          ? props.theme.colors.primary
-          : props.theme.colors.midgray} !important;
+        props.active ? props.theme.colors.primary : props.theme.colors.midgray};
     }
     span::after {
-      color: ${(props) => props.theme.colors.primary} !important;
+      color: ${(props) => props.theme.colors.primary};
     }
   }
 
   &:first-child {
-    margin-top: 0 !important;
+    margin-top: 0;
   }
   &:last-child {
-    margin-bottom: 0 !important;
+    margin-bottom: 0;
   }
 `;
 
 const VerticalNavContent = styled.div`
-  width: 83.589% !important;
-  padding: 30px !important;
+  width: 83.589%;
+  padding: 30px;
 `;
 
 const VerticalInner = styled.div<VerticalInnerProps>`
-  display: ${(props) => (props.active ? `block` : `none`)} !important;
+  display: ${(props) => (props.active ? `block` : `none`)};
 `;
 
 const VerticalSingle = styled.div``;

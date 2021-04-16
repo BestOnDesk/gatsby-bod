@@ -109,9 +109,9 @@ t.extends.listStyle = `
   list-style: none !important;
 `;
 t.extends.transition = `
-  transition: ${t.animations.transition} !important;
+  transition: ${t.animations.transition};
 `;
-t.extends.radius = `border-radius: ${t.borders.radius} !important;`;
+t.extends.radius = `border-radius: ${t.borders.radius};`;
 
 export const lightTheme: Theme = {
   ...baseTheme,
