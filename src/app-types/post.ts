@@ -35,7 +35,7 @@ export interface PostPreview {
 
 export const PostExtendedPreviewFragment = graphql`
   fragment PostExtendedPreviewFragment on WpPost {
-    date
+    date(formatString: "DD MMMM YYYY", locale: "it")
     content
     title
     slug

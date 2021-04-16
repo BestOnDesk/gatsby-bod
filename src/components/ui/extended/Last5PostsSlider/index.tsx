@@ -32,6 +32,7 @@ const Last5PostsSlider = () => {
         slug: queryPost.author.node.slug,
       },
       categories: queryPost.categories.nodes,
+      date: queryPost.date,
     } as PostSliderPost;
   });
 

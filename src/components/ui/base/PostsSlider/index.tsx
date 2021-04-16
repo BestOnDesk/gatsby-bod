@@ -76,7 +76,11 @@ const PostsSlider = ({ posts }: PostsSliderProps) => {
                         <PostTitle>
                           <Link to={getPostLink(post.slug)}>{post.title}</Link>
                         </PostTitle>
-                        <PostMeta author={post.author} date={post.date} />
+                        <PostMeta
+                          author={post.author}
+                          date={post.date}
+                          readingTime={post.readingTime}
+                        />
                       </PostContent>
                     </ContentBlock>
                   </SwiperSlide>

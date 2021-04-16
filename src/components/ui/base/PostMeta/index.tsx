@@ -17,6 +17,7 @@ export interface PostMetaProps {
   authorAvatarRounded?: boolean;
   date: string;
   author: AuthorPreview;
+  readingTime: string;
 }
 
 const PostMeta = (props: PostMetaProps) => {
@@ -36,7 +37,7 @@ const PostMeta = (props: PostMetaProps) => {
         </PostAuthorName>
         <PostMetaList>
           <li>{props.date}</li>
-          <li>test</li>
+          <li>{props.readingTime}</li>
         </PostMetaList>
       </Content>
     </StyledPostMeta>
