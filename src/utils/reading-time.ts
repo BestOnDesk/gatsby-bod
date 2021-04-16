@@ -72,12 +72,12 @@ const wordsReadTime = (string: string, wordsPerMin = WORDS_PER_MIN) => {
 
 const humanizeTime = (time: number): string => {
   if (time < 0.5) {
-    return "less than a minute";
+    return "Meno di un minuto";
   }
   if (time >= 0.5 && time < 1.5) {
-    return "1 minute";
+    return "1 minuto";
   }
-  return `${Math.ceil(time)} minutes`;
+  return `${Math.ceil(time)} minuti`;
 };
 
 const getReadingTimeString = (string: string): string => {
