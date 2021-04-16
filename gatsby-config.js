@@ -72,7 +72,7 @@ module.exports = {
     {
       resolve: "gatsby-plugin-manifest",
       options: {
-        icon: "src/images/icon.png",
+        icon: "src/media/images/icon.png",
       },
     },
     "gatsby-transformer-sharp",
