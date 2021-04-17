@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { HoverFlipItemWrapper } from "../../../core/HoverFlip/index.style";
 
 const StyledPostMeta = styled.div`
   margin-top: 34px;
@@ -30,6 +31,21 @@ const PostAuthorName = styled.h6`
   font-weight: ${(props) => props.theme.fonts.weight.pMedium};
   a {
     ${(props) => props.theme.extends.transition}
+
+    &:hover {
+      color: ${(props) => props.theme.colors.primary};
+    }
+  }
+
+  ${HoverFlipItemWrapper} {
+    span {
+      &::before {
+        color: black;
+      }
+      &::after {
+        color: ${(props) => props.theme.colors.primary};
+      }
+    }
   }
 `;
 

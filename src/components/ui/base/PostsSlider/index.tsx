@@ -1,6 +1,7 @@
 import React from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/swiper.min.css";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import {
   ContentBlock,
   PostCat,
@@ -16,7 +17,6 @@ import { getImage, IGatsbyImageData } from "gatsby-plugin-image";
 import { Link } from "gatsby";
 import { getCategoryLink, getPostLink } from "../../../../utils/links";
 import HoverFlip from "../../../core/HoverFlip";
-import SwiperCore, { EffectFade } from "swiper";
 import PostMeta from "../PostMeta";
 
 export interface PostSliderPost {
@@ -39,54 +39,50 @@ export interface PostsSliderProps {
   posts: PostSliderPost[];
 }
 
-SwiperCore.use([EffectFade]);
-
 const PostsSlider = ({ posts }: PostsSliderProps) => {
   return (
     <StyledMainSlider>
       <Container>
         <Row>
           <Col lg={12}>
-            <Swiper effect="fade" loop={true}>
+            <Slider infinite fade arrows={false}>
               {posts.map((post, i) => {
                 const image = getImage(post.image);
                 return (
-                  <SwiperSlide key={i}>
-                    <ContentBlock>
-                      <PostThumbnail>
-                        {image && (
-                          <Link to={getPostLink(post.slug)}>
-                            <PostImage image={image} alt={post.title} />
-                          </Link>
-                        )}
-                      </PostThumbnail>
-                      <PostContent>
-                        <PostCat>
-                          <PostCatList>
-                            {post.categories.map((category, i) => (
-                              <HoverFlip
-                                to={getCategoryLink(category.slug)}
-                                key={i}
-                              >
-                                {category.name.toUpperCase()}
-                              </HoverFlip>
-                            ))}
-                          </PostCatList>
-                        </PostCat>
-                        <PostTitle>
-                          <Link to={getPostLink(post.slug)}>{post.title}</Link>
-                        </PostTitle>
-                        <PostMeta
-                          author={post.author}
-                          date={post.date}
-                          readingTime={post.readingTime}
-                        />
-                      </PostContent>
-                    </ContentBlock>
-                  </SwiperSlide>
+                  <ContentBlock>
+                    <PostThumbnail>
+                      {image && (
+                        <Link to={getPostLink(post.slug)}>
+                          <PostImage image={image} alt={post.title} />
+                        </Link>
+                      )}
+                    </PostThumbnail>
+                    <PostContent>
+                      <PostCat>
+                        <PostCatList>
+                          {post.categories.map((category, i) => (
+                            <HoverFlip
+                              to={getCategoryLink(category.slug)}
+                              key={i}
+                            >
+                              {category.name.toUpperCase()}
+                            </HoverFlip>
+                          ))}
+                        </PostCatList>
+                      </PostCat>
+                      <PostTitle>
+                        <Link to={getPostLink(post.slug)}>{post.title}</Link>
+                      </PostTitle>
+                      <PostMeta
+                        author={post.author}
+                        date={post.date}
+                        readingTime={post.readingTime}
+                      />
+                    </PostContent>
+                  </ContentBlock>
                 );
               })}
-            </Swiper>
+            </Slider>
           </Col>
         </Row>
       </Container>

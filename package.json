@@ -18,6 +18,7 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.5.1",
+    "@types/react-slick": "^0.23.4",
     "gatsby": "^3.0.1",
     "gatsby-image": "^3.0.0",
     "gatsby-plugin-google-analytics": "^3.0.0",
@@ -37,11 +38,12 @@
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0",
     "react-redux": "^7.2.3",
+    "react-slick": "^0.28.1",
     "redux": "^4.0.5",
     "redux-persist": "^6.0.0",
+    "slick-carousel": "^1.8.1",
     "styled-bootstrap-grid": "^3.1.0",
-    "styled-components": "^5.2.1",
-    "swiper": "^6.5.4"
+    "styled-components": "^5.2.1"
   },
   "devDependencies": {
     "@babel/core": "^7.13.10",
