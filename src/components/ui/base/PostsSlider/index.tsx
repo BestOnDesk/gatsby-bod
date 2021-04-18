@@ -10,6 +10,7 @@ import {
   PostImage,
   PostThumbnail,
   PostTitle,
+  SlideArrow,
   StyledMainSlider,
 } from "./index.style";
 import { Col, Container, Row } from "styled-bootstrap-grid";
@@ -40,16 +41,37 @@ export interface PostsSliderProps {
 }
 
 const PostsSlider = ({ posts }: PostsSliderProps) => {
+  const sliderSettings = {
+    infinite: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: true,
+    dots: false,
+    fade: true,
+    adaptiveHeight: true,
+    cssEase: "linear",
+    prevArrow: (
+      <SlideArrow>
+        <i className="fal fa-arrow-left" />
+      </SlideArrow>
+    ),
+    nextArrow: (
+      <SlideArrow nextArrow>
+        <i className="fal fa-arrow-right" />
+      </SlideArrow>
+    ),
+  };
+
   return (
     <StyledMainSlider>
       <Container>
         <Row>
           <Col lg={12}>
-            <Slider infinite fade arrows={false}>
+            <Slider {...sliderSettings}>
               {posts.map((post, i) => {
                 const image = getImage(post.image);
                 return (
-                  <ContentBlock>
+                  <ContentBlock key={i}>
                     <PostThumbnail>
                       {image && (
                         <Link to={getPostLink(post.slug)}>
@@ -77,6 +99,7 @@ const PostsSlider = ({ posts }: PostsSliderProps) => {
                         author={post.author}
                         date={post.date}
                         readingTime={post.readingTime}
+                        postSlug={post.slug}
                       />
                     </PostContent>
                   </ContentBlock>

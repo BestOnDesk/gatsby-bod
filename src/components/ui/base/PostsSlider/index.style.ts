@@ -2,8 +2,22 @@ import styled from "styled-components";
 import { GatsbyImage } from "gatsby-plugin-image";
 import { HoverFlipItemWrapper } from "../../../core/HoverFlip/index.style";
 
+export interface SlideArrowProps {
+  nextArrow?: boolean;
+}
+
 const StyledMainSlider = styled.section`
   background-color: ${(props) => props.theme.colors.lightest};
+
+  .slick-active {
+    z-index: 10;
+  }
+
+  .slick-arrow {
+    &::before {
+      display: none !important;
+    }
+  }
 `;
 
 const ContentBlock = styled.div`
@@ -109,6 +123,55 @@ const PostCatList = styled.div`
 
 const PostTitle = styled.h2``;
 
+const SlideArrow = styled.button<SlideArrowProps>`
+  border: 0 none;
+  width: auto;
+  outline: none;
+  width: 50px;
+  height: 50px;
+  background: transparent;
+  border: 1px solid ${(props) => props.theme.colors.midgray};
+  border-radius: 100%;
+  z-index: 2;
+  position: absolute;
+  left: 105px;
+  bottom: 43px;
+
+  i {
+    color: ${(props) => props.theme.colors.gray};
+  }
+
+  &:hover {
+    background: ${(props) => props.theme.colors.white};
+    box-shadow: ${(props) => props.theme.shadows.primary};
+    border: 1px solid ${(props) => props.theme.colors.white};
+    i {
+      color: ${(props) => props.theme.colors.primary};
+    }
+  }
+
+  @media ${(props) => props.theme.layouts.md} {
+    left: 0;
+  }
+
+  @media ${(props) => props.theme.layouts.sm} {
+    left: 0;
+    bottom: 0;
+  }
+
+  ${(props) =>
+    props.nextArrow &&
+    `
+    left: 175px;
+    @media ${props.theme.layouts.md} {
+    left: 59px;
+    }
+    @media ${props.theme.layouts.sm} {
+      left: 75px;
+    }
+    `}
+`;
+
 export {
   StyledMainSlider,
   ContentBlock,
@@ -118,4 +181,5 @@ export {
   PostCat,
   PostCatList,
   PostTitle,
+  SlideArrow,
 };

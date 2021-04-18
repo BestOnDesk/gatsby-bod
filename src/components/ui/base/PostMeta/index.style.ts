@@ -1,14 +1,26 @@
 import styled from "styled-components";
 import { HoverFlipItemWrapper } from "../../../core/HoverFlip/index.style";
+import SocialShare from "../SocialShare";
 
 const StyledPostMeta = styled.div`
   margin-top: 34px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
 
   @media ${(props) => props.theme.layouts.sm} {
     margin-top: 20px;
   }
+
+  @media ${(props) => props.theme.layouts.largeMobile} {
+    display: block;
+  }
+`;
+
+const PostMetaDiv = styled.div`
+  display: flex;
+  align-items: center;
 `;
 
 const PostAuthorAvatar = styled.div`
@@ -40,7 +52,7 @@ const PostAuthorName = styled.h6`
   ${HoverFlipItemWrapper} {
     span {
       &::before {
-        color: black;
+        color: ${(props) => props.theme.colors.heading};
       }
       &::after {
         color: ${(props) => props.theme.colors.primary};
@@ -79,10 +91,27 @@ const PostMetaList = styled.ul`
   }
 `;
 
+const SocialShareTransparent = styled(SocialShare)`
+  margin-right: 58px;
+  justify-content: end;
+
+  @media ${(props) => props.theme.layouts.sm} {
+    margin-right: 0;
+    margin-top: 12px;
+  }
+
+  @media ${(props) => props.theme.layouts.largeMobile} {
+    margin-top: 12px;
+    justify-content: flex-start !important;
+  }
+`;
+
 export {
   StyledPostMeta,
+  PostMetaDiv,
   PostAuthorAvatar,
   Content,
   PostAuthorName,
   PostMetaList,
+  SocialShareTransparent,
 };

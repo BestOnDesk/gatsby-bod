@@ -1,4 +1,4 @@
-import { AUTHOR_PATH, CATEGORY_PATH, POST_PATH } from "../constants";
+import { AUTHOR_PATH, CATEGORY_PATH, POST_PATH } from "../constants/paths";
 
 const getCategoryLink = (slug: string): string => CATEGORY_PATH + "/" + slug;
 
