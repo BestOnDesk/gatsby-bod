@@ -10,10 +10,32 @@ import {
 } from "./index.style";
 import { Col, Container, Row } from "styled-bootstrap-grid";
 import HoverFlip from "../../../core/HoverFlip";
+import { IGatsbyImageData } from "gatsby-plugin-image";
+import { getCategoryLink } from "../../../../utils/links";
 
-export interface FeaturedPostProps {}
+export interface FeaturedPostPropsPost {
+  title: string;
+  slug: string;
+  date: string;
+  image: IGatsbyImageData;
+  readingTime: string;
+  author: {
+    name: string;
+    slug: string;
+  };
+  categories: {
+    name: string;
+    slug: string;
+  }[];
+}
+
+export interface FeaturedPostProps {
+  left: FeaturedPostPropsPost;
+  right: FeaturedPostPropsPost;
+}
 
 const FeaturedPost = (props: FeaturedPostProps) => {
+  console.log(props);
   return (
     <StyledFeaturedPost>
       <Container>
@@ -30,7 +52,11 @@ const FeaturedPost = (props: FeaturedPostProps) => {
               <PostContent>
                 <PostCat>
                   <PostCatList>
-                    <HoverFlip to={"/"}>Test categoria</HoverFlip>
+                    {props.left.categories.map((category) => (
+                      <HoverFlip to={getCategoryLink(category.slug)}>
+                        {category.name}
+                      </HoverFlip>
+                    ))}
                   </PostCatList>
                 </PostCat>
               </PostContent>
