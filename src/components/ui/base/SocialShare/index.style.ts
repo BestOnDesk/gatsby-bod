@@ -28,6 +28,13 @@ const SocialShareButtonTooltip = styled.div`
   opacity: 0;
   position: absolute;
   background: ${(props) => props.theme.colors.primary};
+  z-index: 100;
+  border-radius: 1000px;
+  color: white;
+  width: 200px;
+  margin-top: -30px;
+  margin-left: -50px;
+  padding: 4px 0;
 `;
 
 const SocialShareButton = styled.button`

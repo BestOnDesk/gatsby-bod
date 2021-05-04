@@ -106,6 +106,19 @@ const SocialShareTransparent = styled(SocialShare)`
   }
 `;
 
+const ReadMoreButton = styled.div`
+  position: absolute;
+  right: -40px;
+  display: inline-block;
+
+  @media ${(props) => props.theme.layouts.sm} {
+    position: static;
+    right: 0;
+    margin-top: 12px;
+    flex-basis: 100%;
+  }
+`;
+
 export {
   StyledPostMeta,
   PostMetaDiv,
@@ -114,4 +127,5 @@ export {
   PostAuthorName,
   PostMetaList,
   SocialShareTransparent,
+  ReadMoreButton,
 };

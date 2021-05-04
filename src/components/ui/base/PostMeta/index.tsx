@@ -5,6 +5,7 @@ import {
   PostAuthorName,
   PostMetaDiv,
   PostMetaList,
+  ReadMoreButton,
   SocialShareTransparent,
   StyledPostMeta,
 } from "./index.style";
@@ -15,6 +16,7 @@ import HoverFlip from "../../../core/HoverFlip";
 import { getAuthorLink, getPostLink } from "utils/links";
 import { MAIN_URL } from "../../../../constants/paths";
 import { SHARE_TEXT } from "../../../../constants/socials";
+import HoverFlipLinkButton from "../../../core/HoverFlipMagnetLinkButton";
 
 export interface PostMetaProps {
   withButton?: boolean;
@@ -55,6 +57,11 @@ const PostMeta = (props: PostMetaProps) => {
         }}
         linkClipboard={MAIN_URL + getPostLink(props.postSlug)}
       />
+      <ReadMoreButton>
+        <HoverFlipLinkButton rounded to={getPostLink(props.postSlug)}>
+          Leggi ora
+        </HoverFlipLinkButton>
+      </ReadMoreButton>
     </StyledPostMeta>
   );
 };

@@ -1,7 +1,6 @@
 import React from "react";
 import {
   SocialShareButton,
-  SocialShareButtonTooltip,
   SocialShareElement,
   SocialShareLink,
   StyledSocialShare,
@@ -28,7 +27,11 @@ const SocialShare = (props: SocialShareProps) => {
     <StyledSocialShare className={props.className}>
       {props.whatsapp && (
         <SocialShareElement>
-          <SocialShareLink href={getWhatsappTextLink(props.whatsapp)}>
+          <SocialShareLink
+            href={getWhatsappTextLink(props.whatsapp)}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <i className="fab fa-whatsapp" />
           </SocialShareLink>
         </SocialShareElement>
@@ -40,6 +43,8 @@ const SocialShare = (props: SocialShareProps) => {
               props.telegram.url,
               props.telegram.text
             )}
+            target="_blank"
+            rel="noopener noreferrer"
           >
             <i className="fab fa-telegram" />
           </SocialShareLink>
@@ -52,9 +57,6 @@ const SocialShare = (props: SocialShareProps) => {
               copy(props.linkClipboard);
             }}
           >
-            <SocialShareButtonTooltip>
-              Copia il link negli appunti
-            </SocialShareButtonTooltip>
             <i className="fas fa-link"></i>
           </SocialShareButton>
         </SocialShareElement>

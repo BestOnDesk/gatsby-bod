@@ -17,6 +17,7 @@ const baseTheme: BaseTheme = {
 const t = baseTheme;
 
 t.colors.primary = "#3858F6";
+t.colors.primaryTransparent = "rgba(56,88,246, 0.5)";
 t.colors.secondary = "#D93E40";
 t.colors.secondaryAlt = "#F1352A";
 t.colors.tertiary = "#050505";
@@ -47,6 +48,7 @@ t.colors.extra02 = "#606770";
 t.colors.extra03 = "#FBFBFD";
 t.colors.extra04 = "#1A1A1A";
 t.colors.extra05 = "#242424";
+t.colors.blackTransparent = "rgba(0,0,0,0.3)";
 
 t.borders.radius = "10px";
 t.borders.radiusBig = "16px";

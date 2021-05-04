@@ -20,6 +20,30 @@ const StyledMainSlider = styled.section`
   }
 `;
 
+const PostTitle = styled.h2`
+  margin-bottom: 0;
+
+  a {
+    position: relative;
+    display: inline;
+    background-image: linear-gradient(
+      to right,
+      currentColor 0%,
+      currentColor 100%
+    );
+    background-size: 0 2px;
+    background-position: 0 95%;
+    transition: background-size 0.35s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0s;
+    padding: 0.1% 0;
+    background-repeat: no-repeat;
+    color: inherit;
+    &:hover {
+      color: inherit;
+      background-size: 100% 3px;
+    }
+  }
+`;
+
 const ContentBlock = styled.div`
   position: relative;
   padding-bottom: 120px;
@@ -27,6 +51,15 @@ const ContentBlock = styled.div`
 
   @media ${(props) => props.theme.layouts.sm} {
     padding-bottom: 70px;
+  }
+
+  &:hover {
+    ${PostTitle} {
+      a {
+        color: inherit;
+        background-size: 100% 3px;
+      }
+    }
   }
 `;
 
@@ -121,12 +154,13 @@ const PostCatList = styled.div`
   }
 `;
 
-const PostTitle = styled.h2``;
-
 const SlideArrow = styled.button<SlideArrowProps>`
-  border: 0 none;
-  width: auto;
+  top: auto;
+  right: auto;
   outline: none;
+  font-size: 18px;
+  padding: 1px 6px;
+  line-height: normal;
   width: 50px;
   height: 50px;
   background: transparent;
