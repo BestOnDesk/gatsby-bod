@@ -1,5 +1,11 @@
 import { graphql, useStaticQuery } from "gatsby";
 import { IGatsbyImageData } from "gatsby-plugin-image";
+import React from "react";
+import { StyledTabArea, Wrapper } from "./index.style";
+import { Col, Container, Row } from "styled-bootstrap-grid";
+import SectionTitle from "../../base/SectionTitle";
+import TabButton from "../../base/Tab/TabButton";
+import TabContent from "../../base/Tab/TabContent";
 
 export interface TabAreaProps {
   mainCategorySlug: string;
@@ -28,9 +34,9 @@ interface TabAreaQueryProps {
               };
             }[];
           };
-        };
-      }[];
-    };
+        }[];
+      };
+    }[];
   };
 }
 
@@ -74,7 +80,40 @@ const TabArea = (props: TabAreaProps) => {
     }
   `);
 
-  console.log(categories);
+  const category = categories.nodes.find(
+    (category) => category.slug === props.mainCategorySlug
+  );
+
+  return (
+    <StyledTabArea>
+      <Wrapper>
+        <Container>
+          <Row>
+            <Col lg={12}>
+              <SectionTitle level={2}>{category?.name}</SectionTitle>
+            </Col>
+          </Row>
+          <Row>
+            <Col lg={12}>
+              <TabButton
+                elements={category?.wpChildren.nodes.map((node) => node.name)}
+              />
+              <TabContent
+                posts={[
+                  { slug: "test" },
+                  { slug: "test" },
+                  { slug: "test" },
+                  { slug: "test" },
+                  { slug: "test" },
+                  { slug: "test" },
+                ]}
+              />
+            </Col>
+          </Row>
+        </Container>
+      </Wrapper>
+    </StyledTabArea>
+  );
 };
 
 export default TabArea;

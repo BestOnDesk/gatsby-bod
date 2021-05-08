@@ -5,8 +5,6 @@ import Logo from "./Logo";
 import Menu from "./Menu";
 import HeaderSearch from "./HeaderSearch";
 
-// TODO: change hiddenLgDown to hiddenXlDown when styled-bootstrap-grid will be fixed
-
 const Header = () => {
   return (
     <HeaderStyled>

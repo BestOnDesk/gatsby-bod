@@ -17,8 +17,6 @@ import { MenuCategory } from "../../../../../../../app-types/category";
 import { Col, Row } from "styled-bootstrap-grid";
 import ContentBlock from "./ContentBlock";
 
-// TODO: Add props and graphql query
-
 export interface MegaMenuProps {
   category: MenuCategory;
 }

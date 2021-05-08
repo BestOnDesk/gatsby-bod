@@ -37,12 +37,14 @@ const NavLink = styled.button<NavLinkProps>`
   background: ${(props) => props.theme.colors.white};
   background-color: ${(props) => props.theme.colors.white};
   outline: none;
+
   @media ${(props) => props.theme.layouts.sm} {
     padding: 0 13px;
     font-size: ${(props) => props.theme.fonts.size.b3};
   }
 
-  &:focus {
+  &:focus,
+  &:active {
     color: ${(props) => props.theme.colors.midgray};
     border-color: ${(props) => props.theme.colors.white};
   }
