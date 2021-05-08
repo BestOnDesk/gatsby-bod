@@ -19,6 +19,29 @@ const PostCol = styled(Col)`
   margin-top: 30px;
 `;
 
+const Title = styled.h4`
+  margin-bottom: 0;
+
+  a {
+    position: relative;
+    display: inline;
+    background-image: linear-gradient(
+      to right,
+      currentColor 0%,
+      currentColor 100%
+    );
+    background-size: 0px 2px;
+    background-position: 0px 95%;
+    transition: background-size 0.25s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0s;
+    padding: 0.1% 0px;
+    background-repeat: no-repeat;
+    color: inherit;
+    &:hover {
+      color: inherit;
+    }
+  }
+`;
+
 const ContentBlock = styled.div`
   display: flex;
   border: 1px solid ${(props) => props.theme.colors.lighter};
@@ -30,6 +53,12 @@ const ContentBlock = styled.div`
 
   &:hover {
     background: ${(props) => props.theme.colors.white};
+
+    ${Title} {
+      a {
+        background-size: 100% 2px;
+      }
+    }
   }
 
   @media ${(props) => props.theme.layouts.largeMobile} {
@@ -103,6 +132,34 @@ const PostCatList = styled.div`
   }
 `;
 
+const PostThumbnail = styled.div`
+  min-width: 250px;
+  overflow: hidden;
+  transition: 0.5s;
+  position: relative;
+
+  @media ${(props) => props.theme.layouts.lg} {
+    min-width: 150px;
+  }
+  @media ${(props) => props.theme.layouts.sm} {
+    min-width: 160px;
+  }
+  @media ${(props) => props.theme.layouts.largeMobile} {
+    flex-basis: 100%;
+  }
+  a {
+    display: block;
+    div {
+      overflow: hidden;
+      border-radius: 100%;
+    }
+    img {
+      width: 100%;
+      transition: 0.5s;
+    }
+  }
+`;
+
 export {
   StyledFeaturedPost,
   TitleSection,
@@ -111,4 +168,6 @@ export {
   PostContent,
   PostCat,
   PostCatList,
+  Title,
+  PostThumbnail,
 };

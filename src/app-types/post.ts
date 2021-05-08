@@ -33,9 +33,9 @@ export interface PostPreview {
   };
 }
 
-export const PostExtendedPreviewFragment = graphql`
-  fragment PostExtendedPreviewFragment on WpPost {
-    date(formatString: "DD MMMM YYYY", locale: "it")
+export const PostExtendedPreviewPostSliderFragment = graphql`
+  fragment PostExtendedPreviewPostSliderFragment on WpPost {
+    date(formatString: "DD MMM YYYY", locale: "it")
     content
     title
     slug
@@ -61,6 +61,34 @@ export const PostExtendedPreviewFragment = graphql`
   }
 `;
 
+export const PostExtendedPreviewFeaturedPostFragment = graphql`
+  fragment PostExtendedPreviewFeaturedPostFragment on WpPost {
+    date(formatString: "DD MMM YYYY", locale: "it")
+    content
+    title
+    slug
+    author {
+      node {
+        ...AuthorPreviewFragment
+      }
+    }
+    featuredImage {
+      node {
+        localFile {
+          childImageSharp {
+            gatsbyImageData(width: 250, height: 250)
+          }
+        }
+      }
+    }
+    categories {
+      nodes {
+        ...CategoryPreviewFragment
+      }
+    }
+  }
+`;
+
 export interface PostExtendedPreview {
   date: string;
   content: string;
@@ -72,7 +100,9 @@ export interface PostExtendedPreview {
   featuredImage: {
     node: {
       localFile: {
-        childImageSharp: IGatsbyImageData;
+        childImageSharp: {
+          gatsbyImageData: IGatsbyImageData;
+        };
       };
     };
   };

@@ -20,7 +20,7 @@ const HomeFeaturedPost = (props: HomeFeaturedPostProps) => {
     {
       posts: allWpPost(sort: { fields: date, order: DESC }) {
         nodes {
-          ...PostExtendedPreviewFragment
+          ...PostExtendedPreviewFeaturedPostFragment
         }
       }
     }
@@ -37,7 +37,9 @@ const HomeFeaturedPost = (props: HomeFeaturedPostProps) => {
             title: leftPost.title,
             slug: leftPost.slug,
             date: leftPost.date,
-            image: leftPost.featuredImage.node.localFile.childImageSharp,
+            image:
+              leftPost.featuredImage.node.localFile.childImageSharp
+                .gatsbyImageData,
             readingTime: getReadingTimeString(leftPost.content),
             author: {
               name: leftPost.author.node.name,
@@ -49,7 +51,9 @@ const HomeFeaturedPost = (props: HomeFeaturedPostProps) => {
             title: rightPost.title,
             slug: rightPost.slug,
             date: rightPost.date,
-            image: rightPost.featuredImage.node.localFile.childImageSharp,
+            image:
+              rightPost.featuredImage.node.localFile.childImageSharp
+                .gatsbyImageData,
             readingTime: getReadingTimeString(rightPost.content),
             author: {
               name: rightPost.author.node.name,

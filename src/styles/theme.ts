@@ -113,7 +113,12 @@ t.extends.listStyle = `
 t.extends.transition = `
   transition: ${t.animations.transition};
 `;
-t.extends.radius = `border-radius: ${t.borders.radius};`;
+t.extends.radius = `
+  border-radius: ${t.borders.radius};
+`;
+t.extends.boxShadow = `
+  box-shadow: ${t.shadows.primary};
+`;
 
 export const lightTheme: Theme = {
   ...baseTheme,
