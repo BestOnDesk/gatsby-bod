@@ -20,6 +20,7 @@ import HoverFlipLinkButton from "../../../core/HoverFlipMagnetLinkButton";
 
 export interface PostMetaProps {
   withButton?: boolean;
+  withShareButtons?: boolean;
   authorAvatarRounded?: boolean;
   date: string;
   author: AuthorPreview;
@@ -49,19 +50,23 @@ const PostMeta = (props: PostMetaProps) => {
           </PostMetaList>
         </Content>
       </PostMetaDiv>
-      <SocialShareTransparent
-        whatsapp={SHARE_TEXT + " - " + MAIN_URL + getPostLink(props.postSlug)}
-        telegram={{
-          text: SHARE_TEXT,
-          url: MAIN_URL + getPostLink(props.postSlug),
-        }}
-        linkClipboard={MAIN_URL + getPostLink(props.postSlug)}
-      />
-      <ReadMoreButton>
-        <HoverFlipLinkButton rounded to={getPostLink(props.postSlug)}>
-          Leggi ora
-        </HoverFlipLinkButton>
-      </ReadMoreButton>
+      {props.withShareButtons && (
+        <SocialShareTransparent
+          whatsapp={SHARE_TEXT + " - " + MAIN_URL + getPostLink(props.postSlug)}
+          telegram={{
+            text: SHARE_TEXT,
+            url: MAIN_URL + getPostLink(props.postSlug),
+          }}
+          linkClipboard={MAIN_URL + getPostLink(props.postSlug)}
+        />
+      )}
+      {props.withButton && (
+        <ReadMoreButton>
+          <HoverFlipLinkButton rounded to={getPostLink(props.postSlug)}>
+            Leggi ora
+          </HoverFlipLinkButton>
+        </ReadMoreButton>
+      )}
     </StyledPostMeta>
   );
 };

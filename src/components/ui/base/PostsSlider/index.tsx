@@ -100,6 +100,8 @@ const PostsSlider = ({ posts }: PostsSliderProps) => {
                         date={post.date}
                         readingTime={post.readingTime}
                         postSlug={post.slug}
+                        withButton
+                        withShareButtons
                       />
                     </PostContent>
                   </ContentBlock>

@@ -15,7 +15,7 @@ const Last5PostsSlider = () => {
     {
       posts: allWpPost(sort: { fields: date, order: DESC }, limit: 5) {
         nodes {
-          ...PostExtendedPreviewFragment
+          ...PostExtendedPreviewPostSliderFragment
         }
       }
     }
@@ -25,7 +25,8 @@ const Last5PostsSlider = () => {
     return {
       title: queryPost.title,
       slug: queryPost.slug,
-      image: queryPost.featuredImage.node.localFile.childImageSharp,
+      image:
+        queryPost.featuredImage.node.localFile.childImageSharp.gatsbyImageData,
       readingTime: getReadingTimeString(queryPost.content),
       author: {
         name: queryPost.author.node.name,
