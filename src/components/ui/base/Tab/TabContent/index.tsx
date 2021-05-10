@@ -4,15 +4,40 @@ import Slider from "react-slick";
 import ContentBlock from "../../ContentBlock";
 import PostContent from "../../ContentBlock/PostContent";
 import PostCat from "../../ContentBlock/PostContent/PostCat";
+import PostThumbnail from "../../ContentBlock/PostThumbnail";
+import { IGatsbyImageData } from "gatsby-plugin-image";
+import { getPostLink } from "../../../../../utils/links";
+import Title from "../../../../core/Title";
+import { Link } from "gatsby";
 
 export interface TabContentProps {
-  posts: {
+  categories: {
     slug: string;
+    name: string;
+    posts: {
+      nodes: {
+        date: string;
+        slug: string;
+        title: string;
+        featuredImage: {
+          node: {
+            localFile: {
+              childImageSharp: {
+                gatsbyImageData: IGatsbyImageData;
+              };
+            };
+          };
+        };
+      }[];
+    };
   }[];
+  selectedIndex: number;
+  maxSliderPosts: number;
 }
 
 const TabContent = (props: TabContentProps) => {
   const sliderSettings = {
+    className: "slick-layout-wrapper",
     infinite: true,
     slidesToShow: 3,
     slidesToScroll: 1,
@@ -50,24 +75,49 @@ const TabContent = (props: TabContentProps) => {
       },
     ],
   };
+
+  console.log(props.categories);
+
   return (
     <StyledTabContent>
-      <SingleTabContent role="tabpanel" active={true}>
-        <Slider {...sliderSettings}>
-          {props.posts.map((post, i) => {
-            console.log(i);
-            return (
-              <ContentBlock key={i} modernPostStyle textCenter>
-                <PostContent>
-                  <PostCat
-                    categories={[{ slug: "test", name: "test categoria" }]}
-                  />
-                </PostContent>
-              </ContentBlock>
-            );
-          })}
-        </Slider>
-      </SingleTabContent>
+      {props.categories.map((category, z) => {
+        return (
+          <SingleTabContent
+            role="tabpanel"
+            active={z === props.selectedIndex}
+            key={z}
+          >
+            <Slider {...sliderSettings}>
+              {category.posts.nodes
+                .slice(0, props.maxSliderPosts)
+                .map((post, i) => {
+                  return (
+                    <ContentBlock key={i} modernPostStyle textCenter>
+                      <PostContent>
+                        <PostCat
+                          categories={[
+                            { name: category.name, slug: category.slug },
+                          ]}
+                        />
+                        <Title level={4}>
+                          <Link to={getPostLink(post.slug)}>{post.title}</Link>
+                        </Title>
+                      </PostContent>
+                      <PostThumbnail
+                        image={
+                          post.featuredImage.node.localFile.childImageSharp
+                            .gatsbyImageData
+                        }
+                        alt={post.title}
+                        link={getPostLink(post.slug)}
+                      />
+                    </ContentBlock>
+                  );
+                })}
+            </Slider>
+          </SingleTabContent>
+        );
+      })}
     </StyledTabContent>
   );
 };

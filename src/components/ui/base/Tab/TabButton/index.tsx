@@ -1,16 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import { NavItem, NavLink, StyledTabButton } from "./index.style";
 
 export interface TabButtonProps {
   elements?: string[];
   onChange?: Function;
+  selectedIndex: number;
 }
 
 const TabButton = (props: TabButtonProps) => {
-  const [selected, setSelected] = useState<number>(0);
-
   const handleChange = (index: number) => {
-    setSelected(index);
     props.onChange && props.onChange(index);
   };
 
@@ -19,8 +17,8 @@ const TabButton = (props: TabButtonProps) => {
       {props.elements?.map((element, i) => (
         <NavItem role="presentation">
           <NavLink
-            active={i === selected}
-            aria-selected={i === selected}
+            active={i === props.selectedIndex}
+            aria-selected={i === props.selectedIndex}
             onClick={() => handleChange(i)}
             role="tab"
           >

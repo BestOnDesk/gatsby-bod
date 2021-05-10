@@ -3,7 +3,7 @@ import styled from "styled-components";
 const StyledPostThumbnail = styled.div`
   position: relative;
   a {
-    display: block;
+    display: flex;
     overflow: hidden;
     border-radius: ${(props) => props.theme.borders.radius};
     img {

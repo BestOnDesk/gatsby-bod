@@ -5,7 +5,21 @@ import { PostCatList } from "./PostContent/PostCat/index.style";
 import { StyledPostContent } from "./PostContent/index.style";
 import { StyledTitle } from "../../../core/Title/index.style";
 
-const StyledContentBlock = styled.div<ContentBlockProps>`
+export interface StyledContentBlockProps {
+  shape01: string;
+}
+
+const StyledContentBlock = styled.div<
+  ContentBlockProps & StyledContentBlockProps
+>`
+  &:hover {
+    ${StyledPostContent} {
+      a {
+        background-size: 100% 2px;
+      }
+    }
+  }
+
   ${(props) =>
     props.imageRounded &&
     css`
@@ -27,12 +41,21 @@ const StyledContentBlock = styled.div<ContentBlockProps>`
     `}
 
   ${(props) =>
+    props.textCenter &&
+    css`
+      text-align: center !important;
+    `}
+
+  ${(props) =>
     props.modernPostStyle &&
     css`
       border-radius: ${(props) => props.theme.borders.radius};
       background: ${(props) => props.theme.colors.lightest};
       padding: 50px 35px 0;
       overflow: hidden;
+      height: 100%;
+      display: flex !important;
+      flex-direction: column;
       @media ${(props) => props.theme.layouts.md} {
         padding: 40px 20px 0;
       }
@@ -44,7 +67,7 @@ const StyledContentBlock = styled.div<ContentBlockProps>`
         }
       `}
 
-      ${props.textCenter &&
+      ${props.textRight &&
       css`
         ${PostCatList} {
           justify-content: flex-end;
@@ -53,6 +76,7 @@ const StyledContentBlock = styled.div<ContentBlockProps>`
 
       ${StyledPostContent} {
         padding-bottom: 50px;
+        flex: 1;
         ${StyledTitle} {
           margin-bottom: 0;
         }
@@ -64,19 +88,20 @@ const StyledContentBlock = styled.div<ContentBlockProps>`
         @media ${(props) => props.theme.layouts.md} {
           margin: 0 -20px;
         }
-        &::before {
-          content: "";
-          background: url("../images/icons/shape-01.png");
-          height: 77px;
-          width: 100%;
-          position: absolute;
-          left: 0;
-          top: -3px;
-          z-index: 5;
-          background-position: center center;
-          background-size: cover;
-        }
+
         a {
+          &::before {
+            content: "";
+            background: url(${(props) => props.shape01});
+            height: 77px;
+            width: 100%;
+            position: absolute;
+            left: 0;
+            top: -3px;
+            z-index: 5;
+            background-position: center center;
+            background-size: cover;
+          }
           img {
             transition: 0.5s;
           }

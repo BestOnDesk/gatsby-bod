@@ -1,6 +1,6 @@
 import { graphql, useStaticQuery } from "gatsby";
 import { IGatsbyImageData } from "gatsby-plugin-image";
-import React from "react";
+import React, { useState } from "react";
 import { StyledTabArea, Wrapper } from "./index.style";
 import { Col, Container, Row } from "styled-bootstrap-grid";
 import SectionTitle from "../../base/SectionTitle";
@@ -28,7 +28,9 @@ interface TabAreaQueryProps {
               featuredImage: {
                 node: {
                   localFile: {
-                    childImageSharp: IGatsbyImageData;
+                    childImageSharp: {
+                      gatsbyImageData: IGatsbyImageData;
+                    };
                   };
                 };
               };
@@ -80,38 +82,40 @@ const TabArea = (props: TabAreaProps) => {
     }
   `);
 
+  const [selected, setSelected] = useState<number>(0);
+  const maxSliderPosts = 10;
+
   const category = categories.nodes.find(
     (category) => category.slug === props.mainCategorySlug
   );
 
   return (
     <StyledTabArea>
-      <Wrapper>
-        <Container>
-          <Row>
-            <Col lg={12}>
-              <SectionTitle level={2}>{category?.name}</SectionTitle>
-            </Col>
-          </Row>
-          <Row>
-            <Col lg={12}>
-              <TabButton
-                elements={category?.wpChildren.nodes.map((node) => node.name)}
-              />
-              <TabContent
-                posts={[
-                  { slug: "test" },
-                  { slug: "test" },
-                  { slug: "test" },
-                  { slug: "test" },
-                  { slug: "test" },
-                  { slug: "test" },
-                ]}
-              />
-            </Col>
-          </Row>
-        </Container>
-      </Wrapper>
+      {category && (
+        <Wrapper>
+          <Container>
+            <Row>
+              <Col lg={12}>
+                <SectionTitle level={2}>{category?.name}</SectionTitle>
+              </Col>
+            </Row>
+            <Row>
+              <Col lg={12}>
+                <TabButton
+                  elements={category?.wpChildren.nodes.map((node) => node.name)}
+                  selectedIndex={selected}
+                  onChange={(i: number) => setSelected(i)}
+                />
+                <TabContent
+                  categories={category.wpChildren.nodes}
+                  maxSliderPosts={maxSliderPosts}
+                  selectedIndex={selected}
+                />
+              </Col>
+            </Row>
+          </Container>
+        </Wrapper>
+      )}
     </StyledTabArea>
   );
 };
