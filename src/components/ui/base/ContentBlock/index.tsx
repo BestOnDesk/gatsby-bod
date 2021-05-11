@@ -6,8 +6,14 @@ import { IGatsbyImageData } from "gatsby-plugin-image";
 export interface ContentBlockProps {
   imageRounded?: boolean;
   modernPostStyle?: boolean;
+  postGrid?: boolean;
+  postGridLarge?: boolean;
+  postGridTransparent?: boolean;
+  postGridSmall?: boolean;
   textCenter?: boolean;
   textRight?: boolean;
+  marginTop?: number;
+  className?: string;
 }
 
 export interface ContentBlockQueryResult {

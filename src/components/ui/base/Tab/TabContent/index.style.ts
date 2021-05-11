@@ -6,13 +6,9 @@ import {
 } from "react-transition-group/Transition";
 import { SlideArrow } from "../../../../../styles/global-components.style";
 
-export interface SingleTabContentProps {
-  state: TransitionStatus;
-}
-
 const StyledTabContent = styled.div``;
 
-const SingleTabContent = styled.div<SingleTabContentProps>`
+const SingleTabContent = styled.div<{ state: TransitionStatus }>`
   margin-top: 40px;
   transition: opacity 0.15s linear;
   opacity: ${(props) => (props.state === ENTERED ? 1 : 0)};

@@ -17,7 +17,7 @@ export default () => {
 
       <TabArea mainCategorySlug={"prodotti"} />
 
-      <PostGridArea />
+      <PostGridArea mainCategorySlug={"crescita-personale"} />
     </GlobalWrapper>
   );
 };

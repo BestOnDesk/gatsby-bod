@@ -174,6 +174,20 @@ const SocialElement = styled.li<{ type: Social }>`
             }
           }
         `;
+      case "telegram":
+        return css`
+          &:hover {
+            a {
+              i {
+                background: ${(props) => props.theme.colors.telegram};
+                color: ${(props) => props.theme.colors.white};
+              }
+              span {
+                color: ${(props) => props.theme.colors.linkedin};
+              }
+            }
+          }
+        `;
     }
   }}
 `;

@@ -43,6 +43,7 @@ t.colors.instagram = "#C231A1";
 t.colors.vimeo = "#00ADEF";
 t.colors.twitch = "#6441A3";
 t.colors.linkedin = "#0E76A8";
+t.colors.telegram = "#0088CC";
 t.colors.discord = "#7289da";
 t.colors.extra01 = "#666666";
 t.colors.extra02 = "#606770";

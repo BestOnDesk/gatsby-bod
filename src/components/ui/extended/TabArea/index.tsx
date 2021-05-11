@@ -11,7 +11,7 @@ export interface TabAreaProps {
   mainCategorySlug: string;
 }
 
-interface TabAreaQueryProps {
+interface TabAreaQueryResult {
   categories: {
     nodes: {
       slug: string;
@@ -43,7 +43,7 @@ interface TabAreaQueryProps {
 }
 
 const TabArea = (props: TabAreaProps) => {
-  const { categories }: TabAreaQueryProps = useStaticQuery(graphql`
+  const { categories }: TabAreaQueryResult = useStaticQuery(graphql`
     query {
       categories: allWpCategory(
         sort: { fields: name, order: DESC }
@@ -102,7 +102,7 @@ const TabArea = (props: TabAreaProps) => {
             <Row>
               <Col lg={12}>
                 <TabButton
-                  elements={category?.wpChildren.nodes.map((node) => node.name)}
+                  elements={category.wpChildren.nodes.map((node) => node.name)}
                   selectedIndex={selected}
                   onChange={(i: number) => setSelected(i)}
                 />

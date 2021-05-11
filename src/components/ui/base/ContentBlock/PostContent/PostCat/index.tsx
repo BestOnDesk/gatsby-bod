@@ -17,7 +17,7 @@ const PostCat = (props: PostCatProps) => {
     <StyledPostCat>
       <PostCatList>
         {props.categories.map((category) => (
-          <HoverFlip to={getCategoryLink(category.slug)}>
+          <HoverFlip to={getCategoryLink(category.slug)} key={category.slug}>
             {category.name}
           </HoverFlip>
         ))}

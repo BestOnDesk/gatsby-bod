@@ -8,7 +8,8 @@ export type Social =
   | "twitter"
   | "youtube"
   | "pinterest"
-  | "discord";
+  | "discord"
+  | "telegram";
 
 export interface SocialAreaProps {
   socials: {

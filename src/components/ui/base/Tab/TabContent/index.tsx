@@ -83,8 +83,6 @@ const TabContent = (props: TabContentProps) => {
     ],
   };
 
-  console.log(props.categories);
-
   return (
     <StyledTabContent>
       {props.categories.map((category, z) => {
