@@ -51,7 +51,6 @@ const HoverFlipItemWrapper = styled(Link)`
   cursor: pointer;
   transition: opacity 0.2s;
   display: flex;
-  color: white;
 
   @media (min-width: 768px) {
   }

@@ -10,6 +10,8 @@ export interface HoverFlipProps extends GatsbyLinkProps<undefined> {
   children: string;
 }
 
+// TODO: Fix HoverFlip colors
+
 const HoverFlip = ({ to, children }: HoverFlipProps) => {
   return (
     <HoverFlipItemWrapper to={to}>
