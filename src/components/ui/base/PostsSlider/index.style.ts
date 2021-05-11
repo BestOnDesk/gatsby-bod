@@ -12,12 +12,6 @@ const StyledMainSlider = styled.section`
   .slick-active {
     z-index: 10;
   }
-
-  .slick-arrow {
-    &::before {
-      display: none !important;
-    }
-  }
 `;
 
 const PostTitle = styled.h2`

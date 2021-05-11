@@ -1,5 +1,10 @@
 import React from "react";
-import { SingleTabContent, StyledTabContent } from "./index.style";
+import {
+  NextSlideArrowBetweenSide,
+  PrevSlideArrowBetweenSide,
+  SingleTabContent,
+  StyledTabContent,
+} from "./index.style";
 import Slider from "react-slick";
 import ContentBlock from "../../ContentBlock";
 import PostContent from "../../ContentBlock/PostContent";
@@ -9,6 +14,8 @@ import { IGatsbyImageData } from "gatsby-plugin-image";
 import { getPostLink } from "../../../../../utils/links";
 import Title from "../../../../core/Title";
 import { Link } from "gatsby";
+import { Transition } from "react-transition-group";
+import { TransitionStatus } from "react-transition-group/Transition";
 
 export interface TabContentProps {
   categories: {
@@ -45,14 +52,14 @@ const TabContent = (props: TabContentProps) => {
     dots: false,
     draggable: true,
     prevArrow: (
-      <button className="slide-arrow prev-arrow">
-        <i className="fal fa-arrow-left"></i>
-      </button>
+      <PrevSlideArrowBetweenSide>
+        <i className="fal fa-arrow-left" />
+      </PrevSlideArrowBetweenSide>
     ),
     nextArrow: (
-      <button className="slide-arrow next-arrow">
-        <i className="fal fa-arrow-right"></i>
-      </button>
+      <NextSlideArrowBetweenSide>
+        <i className="fal fa-arrow-right" />
+      </NextSlideArrowBetweenSide>
     ),
     responsive: [
       {
@@ -82,40 +89,42 @@ const TabContent = (props: TabContentProps) => {
     <StyledTabContent>
       {props.categories.map((category, z) => {
         return (
-          <SingleTabContent
-            role="tabpanel"
-            active={z === props.selectedIndex}
-            key={z}
-          >
-            <Slider {...sliderSettings}>
-              {category.posts.nodes
-                .slice(0, props.maxSliderPosts)
-                .map((post, i) => {
-                  return (
-                    <ContentBlock key={i} modernPostStyle textCenter>
-                      <PostContent>
-                        <PostCat
-                          categories={[
-                            { name: category.name, slug: category.slug },
-                          ]}
-                        />
-                        <Title level={4}>
-                          <Link to={getPostLink(post.slug)}>{post.title}</Link>
-                        </Title>
-                      </PostContent>
-                      <PostThumbnail
-                        image={
-                          post.featuredImage.node.localFile.childImageSharp
-                            .gatsbyImageData
-                        }
-                        alt={post.title}
-                        link={getPostLink(post.slug)}
-                      />
-                    </ContentBlock>
-                  );
-                })}
-            </Slider>
-          </SingleTabContent>
+          <Transition in={z === props.selectedIndex} timeout={150} key={z}>
+            {(state: TransitionStatus) => (
+              <SingleTabContent role="tabpanel" state={state}>
+                <Slider {...sliderSettings}>
+                  {category.posts.nodes
+                    .slice(0, props.maxSliderPosts)
+                    .map((post, i) => {
+                      return (
+                        <ContentBlock key={i} modernPostStyle textCenter>
+                          <PostContent>
+                            <PostCat
+                              categories={[
+                                { name: category.name, slug: category.slug },
+                              ]}
+                            />
+                            <Title level={4}>
+                              <Link to={getPostLink(post.slug)}>
+                                {post.title}
+                              </Link>
+                            </Title>
+                          </PostContent>
+                          <PostThumbnail
+                            image={
+                              post.featuredImage.node.localFile.childImageSharp
+                                .gatsbyImageData
+                            }
+                            alt={post.title}
+                            link={getPostLink(post.slug)}
+                          />
+                        </ContentBlock>
+                      );
+                    })}
+                </Slider>
+              </SingleTabContent>
+            )}
+          </Transition>
         );
       })}
     </StyledTabContent>
