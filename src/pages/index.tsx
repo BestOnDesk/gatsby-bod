@@ -5,6 +5,7 @@ import HomeFeaturedPost from "components/ui/extended/HomeFeaturedPost";
 import TabArea from "components/ui/extended/TabArea";
 import PostGridArea from "../components/ui/extended/PostGridArea";
 import CategoriesList from "../components/ui/extended/CategoriesList";
+import AltPostArea from "../components/ui/extended/AltPostArea";
 
 export default () => {
   return (
@@ -30,6 +31,8 @@ export default () => {
       />
 
       <PostGridArea mainCategorySlug={"crescita-personale"} />
+
+      <AltPostArea />
     </GlobalWrapper>
   );
 };
