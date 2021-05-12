@@ -48,7 +48,7 @@ const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
     a:active {
         text-decoration: none;
         outline: none;
-        color: ${(props) => props.theme.colors.primary};
+        //color: ${(props) => props.theme.colors.primary};
     }
 
     a:focus {

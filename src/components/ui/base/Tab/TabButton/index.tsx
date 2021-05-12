@@ -15,7 +15,7 @@ const TabButton = (props: TabButtonProps) => {
   return (
     <StyledTabButton role="tablist">
       {props.elements?.map((element, i) => (
-        <NavItem role="presentation">
+        <NavItem role="presentation" key={i}>
           <NavLink
             active={i === props.selectedIndex}
             aria-selected={i === props.selectedIndex}
