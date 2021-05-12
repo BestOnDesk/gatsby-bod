@@ -10,6 +10,7 @@ export interface ContentBlockProps {
   postGridLarge?: boolean;
   postGridTransparent?: boolean;
   postGridSmall?: boolean;
+  postDefault?: boolean;
   textCenter?: boolean;
   textRight?: boolean;
   marginTop?: number;

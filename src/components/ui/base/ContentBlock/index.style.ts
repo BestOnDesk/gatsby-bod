@@ -287,6 +287,38 @@ const StyledContentBlock = styled.div<
         }
       `}
     `}
+    
+    ${(props) =>
+    props.postDefault &&
+    css`
+      ${StyledPostThumbnail} {
+        overflow: hidden;
+        border-radius: ${(props) => props.theme.borders.radius};
+        a {
+          img {
+            transition: 0.5s;
+          }
+        }
+      }
+      ${StyledPostContent} {
+        margin-top: 30px;
+        ${StyledTitle} {
+          margin-bottom: 0;
+        }
+        ${StyledPostMeta} {
+          margin-top: 30px;
+        }
+      }
+      &:hover {
+        ${StyledPostThumbnail} {
+          a {
+            img {
+              transform: scale(1.1);
+            }
+          }
+        }
+      }
+    `}
 `;
 
 export { StyledContentBlock };
