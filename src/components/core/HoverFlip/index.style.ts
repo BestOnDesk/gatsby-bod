@@ -15,6 +15,7 @@ const HoverFlipItem = styled.span<HoverFlipItemProps>`
       display: inline-block;
       position: relative;
       z-index: 1;
+      color: transparent;
       transition: transform 1.2s cubic-bezier(0.19, 1, 0.22, 1);
     }
 
