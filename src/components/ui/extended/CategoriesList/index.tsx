@@ -39,6 +39,7 @@ export interface CategoriesListQueryResult {
 
 export interface CategoriesListProps {
   slugs: string[];
+  backgroundGrey?: boolean;
 }
 
 const CategoriesList = (props: CategoriesListProps) => {
@@ -79,7 +80,7 @@ const CategoriesList = (props: CategoriesListProps) => {
   };
 
   return (
-    <StyledCategoriesList>
+    <StyledCategoriesList backgroundGrey={props.backgroundGrey}>
       <Container>
         <TitleRow alignItems={"center"}>
           <Col>

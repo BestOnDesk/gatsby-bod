@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { SocialRow, StyledPostGridArea } from "./index.style";
+import { StyledPostGridArea } from "./index.style";
 import { Col, Container, Row } from "styled-bootstrap-grid";
-import SocialArea from "../../base/SocialArea";
 import SectionTitle from "../../base/SectionTitle";
 import { IGatsbyImageData } from "gatsby-plugin-image";
 import { graphql, useStaticQuery } from "gatsby";
@@ -11,6 +10,7 @@ import { AuthorPreview } from "../../../../app-types/author";
 
 export interface PostGridAreaProps {
   mainCategorySlug: string;
+  backgroundGrey?: boolean;
 }
 
 interface PostGridQueryProps {
@@ -119,33 +119,9 @@ const PostGridArea = (props: PostGridAreaProps) => {
   );
 
   return (
-    <StyledPostGridArea>
+    <StyledPostGridArea backgroundGrey={props.backgroundGrey}>
       {category && (
         <Container>
-          <SocialRow>
-            <Col lg={12}>
-              <SocialArea
-                socials={[
-                  {
-                    link: "https://www.instagram.com/bestondesk/",
-                    type: "instagram",
-                  },
-                  {
-                    link: "https://www.facebook.com/bestondeskcom/",
-                    type: "facebook",
-                  },
-                  {
-                    link: "https://www.instagram.com/bestondesk/",
-                    type: "linkedin",
-                  },
-                  {
-                    link: "https://t.me/bestondesk",
-                    type: "telegram",
-                  },
-                ]}
-              />
-            </Col>
-          </SocialRow>
           <Row>
             <Col lg={12}>
               <SectionTitle level={2}>{category?.name}</SectionTitle>

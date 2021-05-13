@@ -1,9 +1,8 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { Row } from "styled-bootstrap-grid";
 import { StyledTitle } from "../../../core/Title/index.style";
 
-const StyledCategoriesList = styled.div`
-  background: ${(props) => props.theme.colors.lightest};
+const StyledCategoriesList = styled.div<{ backgroundGrey?: boolean }>`
   padding: 80px 0;
   @media ${(props) => props.theme.layouts.md} {
     padding: 80px 0;
@@ -11,6 +10,12 @@ const StyledCategoriesList = styled.div`
   @media ${(props) => props.theme.layouts.sm} {
     padding: 60px 0;
   }
+
+  ${(props) =>
+    props.backgroundGrey &&
+    css`
+      background: ${(props) => props.theme.colors.lightest};
+    `}
 `;
 
 const TitleRow = styled(Row)`
