@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { StyledLogo } from "../Header/Logo/index.style";
+import { StyledLogo } from "../../Logo/index.style";
 import { Link } from "gatsby";
 
 export interface StyledMobileMenuProps {

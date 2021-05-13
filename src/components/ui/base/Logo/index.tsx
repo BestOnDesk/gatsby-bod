@@ -5,7 +5,7 @@ import StaticImg from "components/core/StaticImg";
 const Logo = () => {
   return (
     <StyledLogo>
-      <LogoLink>
+      <LogoLink to={"/"}>
         <StaticImg
           imgStyle={{ maxHeight: "37px" }}
           alt="BestOnDesk"

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Logo from "../Header/Logo";
+import Logo from "../../Logo";
 import {
   Inner,
   ItemLink,

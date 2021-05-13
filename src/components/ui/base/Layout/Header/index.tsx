@@ -1,9 +1,9 @@
 import * as React from "react";
 import { Header as HeaderStyled, HeaderWrap } from "./index.style";
 import { Col, Row } from "styled-bootstrap-grid";
-import Logo from "./Logo";
 import Menu from "./Menu";
 import HeaderSearch from "./HeaderSearch";
+import Logo from "../../Logo";
 
 const Header = () => {
   return (

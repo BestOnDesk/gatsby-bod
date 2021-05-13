@@ -25,10 +25,6 @@ const SocialIcons = styled.ul<SocialIconsProps>`
       font-size: 14px;
       color: ${(props) => props.theme.colors.gray};
       ${(props) => props.theme.extends.transition}
-      &:hover {
-        background: ${(props) => props.theme.colors.primary};
-        color: ${(props) => props.theme.colors.white};
-      }
     }
   }
 

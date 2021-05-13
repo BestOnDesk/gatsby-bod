@@ -3,111 +3,151 @@ import {
   CopyrightArea,
   CopyrightLeft,
   CopyrightRight,
-  CopyrightText,
-  FollowTitle,
-  FooterArea,
+  FooterMainMenu,
+  FooterTop,
+  FooterWidget,
+  FtMenuList,
   Inner,
-  Logo,
-  MainMenu,
+  LogoCol,
+  SocialContainer,
+  StyledFooter,
 } from "./index.style";
 import { Col, Container, Row } from "styled-bootstrap-grid";
-import SocialIcons from "components/ui/base/SocialIcons";
+import Title from "../../../../core/Title";
+import { graphql, Link, useStaticQuery } from "gatsby";
+import { MenuCategory } from "../../../../../app-types/category";
+import { getCategoryLink } from "../../../../../utils/links";
+import Logo from "../../Logo";
+import SocialIcons from "../../SocialIcons";
 import {
   FACEBOOK_URL,
   INSTAGRAM_URL,
   LINKEDIN_URL,
   TELEGRAM_URL,
 } from "../../../../../constants/socials";
-import { Link } from "gatsby";
-import StaticImg from "../../../../core/StaticImg";
-import HoverFlip from "../../../../core/HoverFlip";
+import SocialIcon from "../../SocialIcons/SocialIcon";
+import { COOKIE_POLICY_URL } from "../../../../../constants/paths";
+
+export interface FooterQuery {
+  categories: {
+    nodes: MenuCategory[];
+  };
+}
 
 const Footer = () => {
+  const { categories }: FooterQuery = useStaticQuery(graphql`
+    query {
+      categories: allWpCategory(
+        sort: { fields: name, order: DESC }
+        filter: {
+          slug: { ne: "uncategorized-en" }
+          wpChildren: { nodes: { elemMatch: { count: { gt: 0 } } } }
+        }
+      ) {
+        nodes {
+          ...MenuCategoryFragment
+        }
+      }
+    }
+  `);
+
   return (
-    <FooterArea>
-      <Container>
-        <Row>
-          <Col lg={12}>
-            <Inner>
-              <FollowTitle>Seguici sui nostri social</FollowTitle>
-              <SocialIcons colorTertiary mdSize justifyContent={"start"}>
-                <li>
-                  <a
-                    href={FACEBOOK_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <i className="fab fa-facebook-f" />
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href={INSTAGRAM_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <i className="fab fa-instagram" />
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href={LINKEDIN_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <i className="fab fa-linkedin-in" />
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href={TELEGRAM_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <i className="fab fa-telegram-plane" />
-                  </a>
-                </li>
-              </SocialIcons>
-            </Inner>
-          </Col>
-        </Row>
-      </Container>
+    <StyledFooter>
+      <FooterMainMenu>
+        <Container>
+          <Row>
+            <Col lg={3} md={6} sm={6} xs={12}>
+              <FooterWidget>
+                <Title level={2}>BestOnDesk</Title>
+                <Inner>
+                  <FtMenuList>
+                    <li>
+                      <Link to={"/"}>Home</Link>
+                    </li>
+                    <li>
+                      <Link to={"/contatti"}>Contattaci</Link>
+                    </li>
+                    <li>
+                      <Link to={"/chi-siamo"}>Chi siamo</Link>
+                    </li>
+                    <li>
+                      <a
+                        href={COOKIE_POLICY_URL}
+                        rel="noopener noreferrer"
+                        target="_blank"
+                      >
+                        Cookie policy
+                      </a>
+                    </li>
+                  </FtMenuList>
+                </Inner>
+              </FooterWidget>
+            </Col>
+            {categories.nodes.map((category) => {
+              return (
+                <Col lg={3} md={6} sm={6} xs={12}>
+                  <FooterWidget>
+                    <Title level={2}>{category.name}</Title>
+                    <Inner>
+                      <FtMenuList>
+                        {category.wpChildren.nodes.map((subCategory) => {
+                          return (
+                            <li>
+                              <Link to={getCategoryLink(subCategory.slug)}>
+                                {subCategory.name}
+                              </Link>
+                            </li>
+                          );
+                        })}
+                      </FtMenuList>
+                    </Inner>
+                  </FooterWidget>
+                </Col>
+              );
+            })}
+          </Row>
+        </Container>
+      </FooterMainMenu>
+      <FooterTop>
+        <Container>
+          <Row>
+            <LogoCol lg={4} md={4}>
+              <Logo />
+            </LogoCol>
+            <Col lg={8} md={8}>
+              <SocialContainer>
+                <Title level={5}>Seguici sui nostri social</Title>
+                <SocialIcons colorTertiary mdSize justifyContent={"start"}>
+                  <SocialIcon link={FACEBOOK_URL} type={"facebook-f"} />
+                  <SocialIcon link={INSTAGRAM_URL} type={"instagram"} />
+                  <SocialIcon link={LINKEDIN_URL} type={"linkedin-in"} />
+                  <SocialIcon link={TELEGRAM_URL} type={"telegram-plane"} />
+                </SocialIcons>
+              </SocialContainer>
+            </Col>
+          </Row>
+        </Container>
+      </FooterTop>
       <CopyrightArea>
         <Container>
           <Row alignItems={"center"}>
-            <Col lg={9} md={12}>
+            <Col lg={9} md={8}>
               <CopyrightLeft>
-                <Logo>
-                  <Link to={"/"}>
-                    <StaticImg
-                      imgStyle={{ maxHeight: "37px" }}
-                      alt="BestOnDesk"
-                      src={"logo/logo-light.png"}
-                      srcDark={"logo/logo-dark.png"}
-                    />
-                  </Link>
-                </Logo>
-                <MainMenu>
-                  <li>
-                    <HoverFlip to={"/chi-siamo"}>Chi siamo</HoverFlip>
-                  </li>
-                  <li>
-                    <HoverFlip to={"/"}>AGGIUNGERE ROBA</HoverFlip>
-                  </li>
-                </MainMenu>
+                <p>
+                  In qualità di Affiliati Amazon riceviamo un guadagno dagli
+                  acquisti idonei.
+                </p>
               </CopyrightLeft>
             </Col>
-            <Col lg={3} md={12}>
+            <Col lg={3} md={4}>
               <CopyrightRight>
-                <CopyrightText>
-                  Tutti i diritti riservati © {new Date().getFullYear()}
-                </CopyrightText>
+                <p>Tutti i diritti riservati © {new Date().getFullYear()}</p>
               </CopyrightRight>
             </Col>
           </Row>
         </Container>
       </CopyrightArea>
-    </FooterArea>
+    </StyledFooter>
   );
 };
 
