@@ -64,7 +64,6 @@ const ContentBlock = styled.div`
   @media ${(props) => props.theme.layouts.largeMobile} {
     flex-wrap: wrap;
     flex-direction: column-reverse;
-    align-items: flex-start;
   }
 `;
 
