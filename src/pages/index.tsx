@@ -4,8 +4,15 @@ import Last5PostsSlider from "components/ui/extended/Last5PostsSlider";
 import HomeFeaturedPost from "components/ui/extended/HomeFeaturedPost";
 import TabArea from "components/ui/extended/TabArea";
 import PostGridArea from "../components/ui/extended/PostGridArea";
-import CategoriesList from "../components/ui/extended/CategoriesList";
 import AltPostArea from "../components/ui/extended/AltPostArea";
+import SocialArea from "../components/ui/base/SocialArea";
+import {
+  FACEBOOK_URL,
+  INSTAGRAM_URL,
+  LINKEDIN_URL,
+  TELEGRAM_URL,
+} from "../constants/socials";
+import CategoriesList from "../components/ui/extended/CategoriesList";
 
 export default () => {
   return (
@@ -19,6 +26,8 @@ export default () => {
 
       <TabArea mainCategorySlug={"prodotti"} />
 
+      <AltPostArea />
+
       <CategoriesList
         slugs={[
           "libri",
@@ -30,9 +39,29 @@ export default () => {
         ]}
       />
 
-      <PostGridArea mainCategorySlug={"crescita-personale"} />
+      <SocialArea
+        noPaddingBottom
+        socials={[
+          {
+            link: INSTAGRAM_URL,
+            type: "instagram",
+          },
+          {
+            link: FACEBOOK_URL,
+            type: "facebook",
+          },
+          {
+            link: LINKEDIN_URL,
+            type: "linkedin",
+          },
+          {
+            link: TELEGRAM_URL,
+            type: "telegram",
+          },
+        ]}
+      />
 
-      <AltPostArea />
+      <PostGridArea mainCategorySlug={"crescita-personale"} backgroundGrey />
     </GlobalWrapper>
   );
 };
