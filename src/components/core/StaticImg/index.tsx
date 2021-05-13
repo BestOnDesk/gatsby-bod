@@ -66,7 +66,7 @@ const staticImgQuery = graphql`
           relativePath
           sourceInstanceName
           childImageSharp {
-            gatsbyImageData
+            gatsbyImageData(placeholder: BLURRED)
           }
         }
       }
