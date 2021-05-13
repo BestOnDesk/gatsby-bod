@@ -1,7 +1,28 @@
 import styled, { css } from "styled-components";
 import { Social } from "./index";
 
-const StyledSocialArea = styled.div`
+export interface StyledSocialAreaProps {
+  noPaddingBottom?: boolean;
+}
+
+const StyledSocialArea = styled.div<StyledSocialAreaProps>`
+  padding: 80px 0;
+  background: ${(props) => props.theme.colors.lightest};
+  @media ${(props) => props.theme.layouts.md} {
+    padding: 80px 0;
+  }
+  @media ${(props) => props.theme.layouts.sm} {
+    padding: 60px 0;
+  }
+
+  ${(props) =>
+    props.noPaddingBottom &&
+    css`
+      padding-bottom: 0;
+    `}
+`;
+
+const Inner = styled.div`
   padding: 35px 50px;
   background: ${(props) => props.theme.colors.white};
   border-radius: ${(props) => props.theme.borders.radius};
@@ -76,7 +97,6 @@ const SocialElement = styled.li<{ type: Social }>`
   ${(props) => {
     switch (props.type) {
       case "instagram":
-        console.log("test");
         return css`
           &:hover {
             a {
@@ -192,4 +212,4 @@ const SocialElement = styled.li<{ type: Social }>`
   }}
 `;
 
-export { StyledSocialArea, SocialElement, SocialWithText };
+export { StyledSocialArea, Inner, SocialElement, SocialWithText };
