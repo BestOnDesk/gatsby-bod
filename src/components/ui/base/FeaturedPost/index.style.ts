@@ -13,8 +13,6 @@ const StyledFeaturedPost = styled.section`
   }
 `;
 
-const TitleSection = styled.div``;
-
 const PostCol = styled(Col)`
   margin-top: 30px;
 `;
@@ -161,7 +159,6 @@ const PostThumbnail = styled.div`
 
 export {
   StyledFeaturedPost,
-  TitleSection,
   PostCol,
   ContentBlock,
   PostContent,

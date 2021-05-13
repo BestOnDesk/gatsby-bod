@@ -8,7 +8,6 @@ import {
   PostThumbnail,
   StyledFeaturedPost,
   Title,
-  TitleSection,
 } from "./index.style";
 import { Col, Container, Row } from "styled-bootstrap-grid";
 import HoverFlip from "../../../core/HoverFlip";
@@ -16,6 +15,7 @@ import { GatsbyImage, IGatsbyImageData } from "gatsby-plugin-image";
 import { getCategoryLink, getPostLink } from "../../../../utils/links";
 import { Link } from "gatsby";
 import PostMeta from "../PostMeta";
+import SectionTitle from "../SectionTitle";
 
 export interface FeaturedPostPropsPost {
   title: string;
@@ -44,9 +44,7 @@ const FeaturedPost = (props: FeaturedPostProps) => {
       <Container>
         <Row>
           <Col lg={12}>
-            <TitleSection>
-              <h2>Altri post importanti</h2>
-            </TitleSection>
+            <SectionTitle level={2}>Post importanti</SectionTitle>
           </Col>
         </Row>
         <Row>
