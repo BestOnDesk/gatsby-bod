@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { StyledTitle } from "../../../core/Title/index.style";
 
-const StyledAltPostArea = styled.div`
+const StyledAltPostArea = styled.section`
   padding: 80px 0;
   background: ${(props) => props.theme.colors.extra04};
   @media ${(props) => props.theme.layouts.md} {

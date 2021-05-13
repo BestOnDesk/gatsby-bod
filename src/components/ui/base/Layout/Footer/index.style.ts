@@ -4,7 +4,7 @@ import { StyledLogo } from "../../Logo/index.style";
 import { Col, media } from "styled-bootstrap-grid";
 import { HoverFlipItemWrapper } from "../../../../core/HoverFlip/index.style";
 
-const StyledFooter = styled.div`
+const StyledFooter = styled.footer`
   padding: 40px 0;
 `;
 

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const StyledTabArea = styled.div`
+const StyledTabArea = styled.section`
   padding: 80px 0;
   color: #fff;
   @media ${(props) => props.theme.layouts.md} {

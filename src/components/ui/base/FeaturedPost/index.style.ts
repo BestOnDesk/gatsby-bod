@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Col } from "styled-bootstrap-grid";
 import { HoverFlipItemWrapper } from "../../../core/HoverFlip/index.style";
 
-const StyledFeaturedPost = styled.div`
+const StyledFeaturedPost = styled.section`
   padding: 80px 0;
   background-color: ${(props) => props.theme.colors.lightest};
   @media ${(props) => props.theme.layouts.md} {

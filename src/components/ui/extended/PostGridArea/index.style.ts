@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 import { Row } from "styled-bootstrap-grid";
 
-const StyledPostGridArea = styled.div<{ backgroundGrey?: boolean }>`
+const StyledPostGridArea = styled.section<{ backgroundGrey?: boolean }>`
   padding: 80px 0;
   @media ${(props) => props.theme.layouts.md} {
     padding: 80px 0;

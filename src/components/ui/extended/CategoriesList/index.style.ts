@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 import { Row } from "styled-bootstrap-grid";
 import { StyledTitle } from "../../../core/Title/index.style";
 
-const StyledCategoriesList = styled.div<{ backgroundGrey?: boolean }>`
+const StyledCategoriesList = styled.section<{ backgroundGrey?: boolean }>`
   padding: 80px 0;
   @media ${(props) => props.theme.layouts.md} {
     padding: 80px 0;

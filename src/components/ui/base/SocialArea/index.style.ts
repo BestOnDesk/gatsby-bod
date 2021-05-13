@@ -5,7 +5,7 @@ export interface StyledSocialAreaProps {
   noPaddingBottom?: boolean;
 }
 
-const StyledSocialArea = styled.div<StyledSocialAreaProps>`
+const StyledSocialArea = styled.section<StyledSocialAreaProps>`
   padding: 80px 0;
   background: ${(props) => props.theme.colors.lightest};
   @media ${(props) => props.theme.layouts.md} {
