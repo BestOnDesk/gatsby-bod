@@ -2,23 +2,17 @@ import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import {
-  ContentBlock,
-  PostCat,
-  PostCatList,
-  PostContent,
-  PostImage,
-  PostThumbnail,
-  PostTitle,
-  SlideArrow,
-  StyledMainSlider,
-} from "./index.style";
+import { SlideArrow, StyledMainSlider } from "./index.style";
 import { Col, Container, Row } from "styled-bootstrap-grid";
-import { getImage, IGatsbyImageData } from "gatsby-plugin-image";
+import { IGatsbyImageData } from "gatsby-plugin-image";
 import { Link } from "gatsby";
-import { getCategoryLink, getPostLink } from "../../../../utils/links";
-import HoverFlip from "../../../core/HoverFlip";
+import { getPostLink } from "../../../../utils/links";
 import PostMeta from "../PostMeta";
+import PostThumbnail from "../ContentBlock/PostThumbnail";
+import ContentBlock from "../ContentBlock";
+import Title from "../../../core/Title";
+import PostCat from "../ContentBlock/PostContent/PostCat";
+import PostContent from "../ContentBlock/PostContent";
 
 export interface PostSliderPost {
   title: string;
@@ -69,32 +63,18 @@ const PostsSlider = ({ posts }: PostsSliderProps) => {
           <Col lg={12}>
             <Slider {...sliderSettings}>
               {posts.map((post, i) => {
-                const image = getImage(post.image);
                 return (
                   <ContentBlock key={i}>
-                    <PostThumbnail>
-                      {image && (
-                        <Link to={getPostLink(post.slug)}>
-                          <PostImage image={image} alt={post.title} />
-                        </Link>
-                      )}
-                    </PostThumbnail>
+                    <PostThumbnail
+                      image={post.image}
+                      alt={post.title}
+                      link={getPostLink(post.slug)}
+                    />
                     <PostContent>
-                      <PostCat>
-                        <PostCatList>
-                          {post.categories.map((category, i) => (
-                            <HoverFlip
-                              to={getCategoryLink(category.slug)}
-                              key={i}
-                            >
-                              {category.name.toUpperCase()}
-                            </HoverFlip>
-                          ))}
-                        </PostCatList>
-                      </PostCat>
-                      <PostTitle>
+                      <PostCat categories={post.categories} />
+                      <Title level={2}>
                         <Link to={getPostLink(post.slug)}>{post.title}</Link>
-                      </PostTitle>
+                      </Title>
                       <PostMeta
                         author={post.author}
                         date={post.date}

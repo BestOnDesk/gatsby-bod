@@ -1,6 +1,9 @@
 import styled from "styled-components";
-import { GatsbyImage } from "gatsby-plugin-image";
-import { HoverFlipItemWrapper } from "../../../core/HoverFlip/index.style";
+import { StyledContentBlock } from "../ContentBlock/index.style";
+import { StyledTitle } from "../../../core/Title/index.style";
+import { StyledPostContent } from "../ContentBlock/PostContent/index.style";
+import { StyledPostThumbnail } from "../ContentBlock/PostThumbnail/index.style";
+import { StyledPostCat } from "../ContentBlock/PostContent/PostCat/index.style";
 
 export interface SlideArrowProps {
   nextArrow?: boolean;
@@ -12,138 +15,76 @@ const StyledMainSlider = styled.section`
   .slick-active {
     z-index: 10;
   }
-`;
 
-const PostTitle = styled.h2`
-  margin-bottom: 0;
-
-  a {
+  ${StyledContentBlock} {
     position: relative;
-    display: inline;
-    background-image: linear-gradient(
-      to right,
-      currentColor 0%,
-      currentColor 100%
-    );
-    background-size: 0 2px;
-    background-position: 0 95%;
-    transition: background-size 0.35s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0s;
-    padding: 0.1% 0;
-    background-repeat: no-repeat;
-    color: inherit;
-    &:hover {
-      color: inherit;
-      background-size: 100% 3px;
+    padding-bottom: 120px;
+    margin-bottom: 3px;
+
+    @media ${(props) => props.theme.layouts.sm} {
+      padding-bottom: 70px;
     }
-  }
-`;
 
-const ContentBlock = styled.div`
-  position: relative;
-  padding-bottom: 120px;
-  margin-bottom: 3px;
-
-  @media ${(props) => props.theme.layouts.sm} {
-    padding-bottom: 70px;
-  }
-
-  &:hover {
-    ${PostTitle} {
-      a {
-        color: inherit;
-        background-size: 100% 3px;
+    &:hover {
+      ${StyledTitle} {
+        a {
+          color: inherit;
+          background-size: 100% 3px;
+        }
       }
     }
   }
-`;
 
-const PostThumbnail = styled.div`
-  position: relative;
+  ${StyledPostContent} {
+    position: absolute;
+    background: ${(props) => props.theme.colors.white};
+    width: 570px;
+    padding: 40px 42px;
+    border-radius: ${(props) => props.theme.borders.radius};
+    right: 100px;
+    bottom: 0;
+    padding-right: 58px;
 
-  a {
-    border-radius: 0 0 10px 10px;
+    @media ${(props) => props.theme.layouts.md} {
+      width: 510px;
+      right: 40px;
+    }
 
-    img {
+    @media ${(props) => props.theme.layouts.sm} {
+      position: static;
       border-radius: 0 0 10px 10px;
-
-      @media ${(props) => props.theme.layouts.sm} {
-        border-radius: 0;
-      }
+      width: 100%;
+      padding: 30px;
     }
   }
-`;
 
-const PostImage = styled(GatsbyImage)`
-  border-radius: 0 0 10px 10px;
-  overflow: hidden;
-`;
-
-const PostContent = styled.div`
-  position: absolute;
-  background: ${(props) => props.theme.colors.white};
-  width: 570px;
-  padding: 40px 42px;
-  border-radius: ${(props) => props.theme.borders.radius};
-  right: 100px;
-  bottom: 0;
-  padding-right: 58px;
-
-  @media ${(props) => props.theme.layouts.md} {
-    width: 510px;
-    right: 40px;
-  }
-
-  @media ${(props) => props.theme.layouts.sm} {
-    position: static;
-    border-radius: 0 0 10px 10px;
-    width: 100%;
-    padding: 30px;
-  }
-`;
-
-const PostCat = styled.div`
-  margin-bottom: 20px;
-`;
-
-const PostCatList = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  margin: -8px;
-
-  a {
-    color: ${(props) => props.theme.colors.secondary};
-    ${(props) => props.theme.extends.transition}
-    display: flex;
-    font-size: ${(props) => props.theme.fonts.size.b3};
-    line-height: 20px;
-    margin: 8px;
+  ${StyledPostThumbnail} {
     position: relative;
-    font-weight: ${(props) => props.theme.fonts.weight.pMedium};
-    ${(props) => props.theme.extends.transition}
-
-    &:hover {
-      color: ${(props) => props.theme.colors.primary};
-    }
-
-    &::after {
-      content: ",";
-      position: absolute;
-      right: 0;
-    }
-
-    &:last-child {
-      &::after {
-        display: none;
+    a {
+      border-radius: 0 0 10px 10px;
+      img {
+        border-radius: 0 0 10px 10px;
+        @media ${(props) => props.theme.layouts.sm} {
+          border-radius: 0;
+        }
       }
     }
   }
 
-  ${HoverFlipItemWrapper} {
-    span {
-      &::after {
-        color: ${(props) => props.theme.colors.primary};
-      }
+  ${StyledPostCat} {
+    margin-bottom: 20px;
+
+    @media ${(props) => props.theme.layouts.sm} {
+      margin-bottom: 0;
+    }
+  }
+
+  ${StyledTitle} {
+    margin-bottom: 0;
+
+    @media ${(props) => props.theme.layouts.sm} {
+      font-size: 21px;
+      line-height: 30px;
     }
   }
 `;
@@ -164,6 +105,7 @@ const SlideArrow = styled.button<SlideArrowProps>`
   position: absolute;
   left: 105px;
   bottom: 43px;
+  transform: none;
 
   i {
     color: ${(props) => props.theme.colors.gray};
@@ -200,14 +142,4 @@ const SlideArrow = styled.button<SlideArrowProps>`
     `}
 `;
 
-export {
-  StyledMainSlider,
-  ContentBlock,
-  PostThumbnail,
-  PostImage,
-  PostContent,
-  PostCat,
-  PostCatList,
-  PostTitle,
-  SlideArrow,
-};
+export { StyledMainSlider, SlideArrow };
