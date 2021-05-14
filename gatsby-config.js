@@ -13,6 +13,10 @@ module.exports = {
           timeout: 3600000,
           requestConcurrency: 150,
         },
+        develop: {
+          hardCacheMediaFiles: true,
+          hardCacheData: true,
+        },
       },
     },
     {
