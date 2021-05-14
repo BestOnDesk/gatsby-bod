@@ -5,9 +5,14 @@ import Menu from "./Menu";
 import HeaderSearch from "./HeaderSearch";
 import Logo from "../../Logo";
 
-const Header = () => {
+export interface HeaderProps {
+  withShadow?: boolean;
+  sticky?: boolean;
+}
+
+const Header = (props: HeaderProps) => {
   return (
-    <HeaderStyled>
+    <HeaderStyled {...props}>
       <HeaderWrap>
         <Row alignItems="center" justifyContent="between">
           <Col xl={3} lg={3} md={4} sm={3} xs={12}>

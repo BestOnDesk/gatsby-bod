@@ -1,7 +1,8 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { StyledTitle } from "../../../../core/Title/index.style";
+import { PostContentProps } from "./index";
 
-const StyledPostContent = styled.div`
+const StyledPostContent = styled.div<PostContentProps>`
   ${StyledTitle} {
     margin-bottom: 0;
     a {
@@ -24,6 +25,12 @@ const StyledPostContent = styled.div`
       }
     }
   }
+
+  ${(props) =>
+    props.noPaddingTop &&
+    css`
+      padding-top: 0 !important;
+    `}
 `;
 
 export { StyledPostContent };

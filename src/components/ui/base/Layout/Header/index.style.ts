@@ -1,11 +1,8 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { isDark } from "../../../../../utils/theme";
 import { Row } from "styled-bootstrap-grid";
 import { StyledLogo } from "../../Logo/index.style";
-
-export interface HeaderProps {
-  withShadow?: boolean;
-}
+import { HeaderProps } from "./index";
 
 const Header = styled.header<HeaderProps>`
   padding: 0 60px;
@@ -22,14 +19,21 @@ const Header = styled.header<HeaderProps>`
 
   ${(props) =>
     props.withShadow &&
-    `
-        box-shadow: ${props.theme.shadows.primary};
+    css`
+      box-shadow: ${props.theme.shadows.primary};
+    `}
+
+  ${(props) =>
+    props.sticky &&
+    css`
+      position: fixed;
+      width: 100%;
     `}
 
   ${(props) =>
     isDark(props.theme) &&
-    `
-        background: ${props.theme.colors.extra04};
+    css`
+      background: ${props.theme.colors.extra04};
     `}
 
   ${StyledLogo} {

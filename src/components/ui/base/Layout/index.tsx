@@ -8,12 +8,19 @@ import { connect } from "react-redux";
 interface LayoutProps {
   children: ReactChild | ReactChild[];
   showMobileMenu: boolean;
+  headerWithShadow?: boolean;
+  headerSticky?: boolean;
 }
 
-const Layout = ({ children, showMobileMenu }: LayoutProps) => {
+const Layout = ({
+  children,
+  showMobileMenu,
+  headerWithShadow,
+  headerSticky,
+}: LayoutProps) => {
   return (
     <>
-      <Header />
+      <Header withShadow={headerWithShadow} sticky={headerSticky} />
       <MobileMenu show={showMobileMenu} />
       {children}
       <Footer />

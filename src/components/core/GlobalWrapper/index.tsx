@@ -15,12 +15,16 @@ interface GlobalWrapperProps {
   children: ReactChild | ReactChild[];
   withLayout?: boolean;
   themeMode: ThemeMode;
+  headerWithShadow?: boolean;
+  headerSticky?: boolean;
 }
 
 const GlobalWrapper = ({
   children,
   withLayout,
   themeMode,
+  headerWithShadow,
+  headerSticky,
 }: GlobalWrapperProps) => {
   const theme = lightTheme;
   theme.mode = themeMode;
@@ -67,7 +71,16 @@ const GlobalWrapper = ({
         <GridThemeProvider gridTheme={gridTheme}>
           <>
             <GlobalStyle />
-            {withLayout ? <Layout>{children}</Layout> : children}
+            {withLayout ? (
+              <Layout
+                headerWithShadow={headerWithShadow}
+                headerSticky={headerSticky}
+              >
+                {children}
+              </Layout>
+            ) : (
+              children
+            )}
           </>
         </GridThemeProvider>
       </ThemeProvider>

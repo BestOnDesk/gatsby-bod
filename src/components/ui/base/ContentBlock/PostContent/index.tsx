@@ -1,12 +1,16 @@
-import React, { ReactChild } from "react";
+import React, { PropsWithChildren } from "react";
 import { StyledPostContent } from "./index.style";
 
 export interface PostContentProps {
-  children: ReactChild | ReactChild[];
+  noPaddingTop?: boolean;
 }
 
-const PostContent = (props: PostContentProps) => {
-  return <StyledPostContent>{props.children}</StyledPostContent>;
+const PostContent = (props: PropsWithChildren<PostContentProps>) => {
+  return (
+    <StyledPostContent noPaddingTop={props.noPaddingTop}>
+      {props.children}
+    </StyledPostContent>
+  );
 };
 
 export default PostContent;
