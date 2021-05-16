@@ -1,6 +1,7 @@
 import React from "react";
 import {
   SocialShareButton,
+  SocialShareButtonTooltip,
   SocialShareElement,
   SocialShareLink,
   StyledSocialShare,
@@ -57,6 +58,7 @@ const SocialShare = (props: SocialShareProps) => {
               copy(props.linkClipboard);
             }}
           >
+            <SocialShareButtonTooltip>Link copiato!</SocialShareButtonTooltip>
             <i className="fas fa-link"></i>
           </SocialShareButton>
         </SocialShareElement>

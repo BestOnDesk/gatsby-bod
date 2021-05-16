@@ -51,6 +51,7 @@ t.colors.extra03 = "#FBFBFD";
 t.colors.extra04 = "#1A1A1A";
 t.colors.extra05 = "#242424";
 t.colors.blackTransparent = "rgba(0,0,0,0.3)";
+t.colors.extra02Transparent = "rgba(96,103,112,0.5)";
 
 t.borders.radius = "10px";
 t.borders.radiusBig = "16px";

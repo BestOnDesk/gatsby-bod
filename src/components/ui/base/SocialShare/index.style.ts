@@ -24,17 +24,17 @@ const SocialShareLink = styled.a`
 `;
 
 const SocialShareButtonTooltip = styled.div`
-  display: none;
   opacity: 0;
   position: absolute;
-  background: ${(props) => props.theme.colors.primary};
+  bottom: 24px;
+  left: -113px;
+  background: ${(props) => props.theme.colors.extra02Transparent};
   z-index: 100;
   border-radius: 1000px;
   color: white;
   width: 200px;
-  margin-top: -30px;
-  margin-left: -50px;
   padding: 4px 0;
+  transition: all 0.4s ease-in-out;
 `;
 
 const SocialShareButton = styled.button`
@@ -42,6 +42,7 @@ const SocialShareButton = styled.button`
   font-size: ${(props) => props.theme.fonts.size.b3};
   line-height: ${(props) => props.theme.fonts.height.b3};
   display: block;
+  position: relative;
   appearance: none;
   border: none;
   padding: 0;
@@ -50,9 +51,10 @@ const SocialShareButton = styled.button`
 
   &:hover {
     color: ${(props) => props.theme.colors.primary} !important;
+  }
 
+  &:focus {
     ${SocialShareButtonTooltip} {
-      display: block !important;
       opacity: 1 !important;
     }
   }
