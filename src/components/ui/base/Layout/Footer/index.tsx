@@ -85,14 +85,14 @@ const Footer = () => {
             </Col>
             {categories.nodes.map((category) => {
               return (
-                <Col lg={3} md={6} sm={6} xs={12}>
+                <Col lg={3} md={6} sm={6} xs={12} key={category.slug}>
                   <FooterWidget>
                     <Title level={2}>{category.name}</Title>
                     <Inner>
                       <FtMenuList>
                         {category.wpChildren.nodes.map((subCategory) => {
                           return (
-                            <li>
+                            <li key={subCategory.slug}>
                               <Link to={getCategoryLink(subCategory.slug)}>
                                 {subCategory.name}
                               </Link>
