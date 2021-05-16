@@ -52,7 +52,6 @@ export interface PostTemplateProps {
 
 const PostTemplate = ({ data, pageContext }: PostTemplateProps) => {
   const post = data.post;
-  console.log(post);
   return (
     <GlobalWrapper withLayout={true} headerWithShadow headerSticky>
       <PostSingleWrapper>

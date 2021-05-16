@@ -3,6 +3,7 @@ import { StyledPostDetails } from "./index.style";
 import { IGatsbyImageData } from "gatsby-plugin-image";
 import { graphql, useStaticQuery } from "gatsby";
 import RehypeReact from "rehype-react";
+import PostPreview, { isPostPreviewValid } from "../PostPreview";
 
 export interface PostDetailsQueryResult {
   primeLogo: {
@@ -22,8 +23,7 @@ const renderAst = new RehypeReact({
   createElement: React.createElement,
   components: {
     figure: (props: any) => {
-      if (props.className.includes("wp-block-embed-wordpress"))
-        return <p>Test</p>;
+      if (isPostPreviewValid(props)) return <PostPreview {...props} />;
       else return <figure {...props}>{props.children}</figure>;
     },
   },
