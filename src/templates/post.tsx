@@ -40,6 +40,10 @@ export interface PostTemplateProps {
         };
       };
     };
+    rehype: {
+      html: string;
+      htmlAst: any;
+    };
   };
   pageContext: {
     slug: string;
@@ -84,7 +88,7 @@ const PostTemplate = ({ data, pageContext }: PostTemplateProps) => {
                     .gatsbyImageData
                 }
               />
-              <PostDetails content={post.content} />
+              <PostDetails content={post.content} ast={data.rehype.htmlAst} />
             </Col>
           </Row>
         </Container>
@@ -119,6 +123,10 @@ export const query = graphql`
           }
         }
       }
+    }
+    rehype: htmlRehype(context: { slug: { eq: $slug } }) {
+      html
+      htmlAst
     }
   }
 `;
