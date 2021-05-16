@@ -89,6 +89,19 @@ module.exports = {
       __key: "images",
     },
     {
+      resolve: `gatsby-transformer-rehype`,
+      options: {
+        filter: (node) => node.internal.type === `WpPost`,
+        source: (node) => node.content,
+        contextFields: [],
+        fragment: true,
+        space: `html`,
+        emitParseErrors: false,
+        verbose: false,
+        plugins: [],
+      },
+    },
+    {
       resolve: "gatsby-source-filesystem",
       options: {
         name: "videos",
