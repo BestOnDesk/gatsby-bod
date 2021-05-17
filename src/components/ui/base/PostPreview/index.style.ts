@@ -5,10 +5,8 @@ import {
   PostMetaList,
   StyledPostMeta,
 } from "../PostMeta/index.style";
-import {
-  HoverFlipItem,
-  HoverFlipItemWrapper,
-} from "../../../core/HoverFlip/index.style";
+import { HoverFlipItemWrapper } from "../../../core/HoverFlip/index.style";
+import { StyledSocialShare } from "../SocialShare/index.style";
 
 const StyledPostPreview = styled.div`
   border-radius: ${(props) => props.theme.borders.radius};
@@ -34,7 +32,7 @@ const BackgroundImage = styled.div<{ backgroundSrc?: string }>`
 const PreviewContent = styled.div`
   padding: 24px;
 
-  ${StyledTitle}, p, ${PostAuthorName} ${HoverFlipItemWrapper} span::before {
+  ${StyledTitle}, p, ${PostAuthorName} ${HoverFlipItemWrapper} span::before, ${PostAuthorName} ${HoverFlipItemWrapper} span {
     color: ${(props) => props.theme.colors.white} !important;
   }
 
@@ -44,13 +42,20 @@ const PreviewContent = styled.div`
 
   ${StyledPostMeta} {
     margin-top: 24px;
-  }
 
-  ${PostMetaList} li {
-    color: ${(props) => props.theme.colors.lighter};
+    ${PostMetaList} li {
+      color: ${(props) => props.theme.colors.lighter};
 
-    &::after {
-      background: ${(props) => props.theme.colors.lighter};
+      &::after {
+        background: ${(props) => props.theme.colors.lighter};
+      }
+    }
+
+    ${StyledSocialShare} {
+      a,
+      button {
+        color: ${(props) => props.theme.colors.white};
+      }
     }
   }
 `;

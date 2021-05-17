@@ -1,5 +1,5 @@
 import React from "react";
-import { graphql, useStaticQuery } from "gatsby";
+import { graphql, Link, useStaticQuery } from "gatsby";
 import { IGatsbyImageData } from "gatsby-plugin-image";
 import { AuthorPreview } from "../../../../app-types/author";
 import {
@@ -10,6 +10,7 @@ import {
 import Title from "../../../core/Title";
 import PostMeta from "../PostMeta";
 import { getReadingTimeString } from "../../../../utils/reading-time";
+import { getPostLink } from "../../../../utils/links";
 
 export interface PostPreviewQueryResult {
   posts: {
@@ -84,24 +85,27 @@ const PostPreview = (props: any) => {
   return (
     <>
       {post && (
-        <StyledPostPreview>
-          <BackgroundImage
-            backgroundSrc={
-              post.featuredImage.node.localFile.childImageSharp.gatsbyImageData
-                .images.fallback?.src
-            }
-          />
-          <PreviewContent>
-            <Title level={2}>{post.title}</Title>
-            <p>{post.seo.metaDesc}</p>
-            <PostMeta
-              date={post.date}
-              author={post.author.node}
-              readingTime={getReadingTimeString(post.content)}
-              postSlug={post.slug}
+        <Link to={getPostLink(post.slug)}>
+          <StyledPostPreview>
+            <BackgroundImage
+              backgroundSrc={
+                post.featuredImage.node.localFile.childImageSharp
+                  .gatsbyImageData.images.fallback?.src
+              }
             />
-          </PreviewContent>
-        </StyledPostPreview>
+            <PreviewContent>
+              <Title level={2}>{post.title}</Title>
+              <p>{post.seo.metaDesc}</p>
+              <PostMeta
+                date={post.date}
+                author={post.author.node}
+                readingTime={getReadingTimeString(post.content)}
+                postSlug={post.slug}
+                withShareButtons
+              />
+            </PreviewContent>
+          </StyledPostPreview>
+        </Link>
       )}
     </>
   );
