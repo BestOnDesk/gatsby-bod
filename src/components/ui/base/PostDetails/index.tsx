@@ -26,7 +26,10 @@ const renderAst = new RehypeReact({
       if (isPostPreviewValid(props)) return <PostPreview {...props} />;
       else return <figure {...props}>{props.children}</figure>;
     },
+
     script: () => null, // TODO: check if scripts can work with iubenda
+    ins: () => null,
+    br: () => null,
   },
 }).Compiler;
 

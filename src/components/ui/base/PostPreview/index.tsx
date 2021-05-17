@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { graphql, Link, useStaticQuery } from "gatsby";
 import { IGatsbyImageData } from "gatsby-plugin-image";
 import { AuthorPreview } from "../../../../app-types/author";
@@ -41,7 +41,9 @@ export interface PostPreviewQueryResult {
 export const isPostPreviewValid = (props: any): boolean => {
   return (
     props.className?.includes("wp-block-embed-wordpress") &&
-    props.children[0]?.props?.children[1]?.props?.children[0]?.props?.href
+    (props.children[0]?.props?.children[1]?.props?.children[0]?.props?.href ||
+      (typeof props.children[0]?.props?.children[0] === "string" &&
+        props.children[0]?.props?.children.length === 1))
   );
 };
 
@@ -76,11 +78,26 @@ const PostPreview = (props: any) => {
     }
   `);
 
-  const slug = props.children[0]?.props?.children[1]?.props?.children[0]?.props?.href.replace(
-    /\//g,
-    ""
+  const randomIndex = useRef<number>(
+    Math.floor(Math.random() * posts.nodes.length)
   );
-  const post = posts.nodes.find((node) => node.slug === slug);
+
+  const slug =
+    typeof props.children[0]?.props?.children[0] === "string" &&
+    props.children[0]?.props?.children.length === 1
+      ? props.children[0]?.props?.children[0]
+          .replace(/\\n/g, "")
+          .replace(/\//g, "")
+      : props.children[0]?.props?.children[1]?.props?.children[0]?.props?.href.replace(
+          /\//g,
+          ""
+        );
+
+  console.log(props);
+
+  let post = posts.nodes.find((node) => node.slug === slug);
+
+  post = post ? post : posts.nodes[randomIndex.current];
 
   return (
     <>
