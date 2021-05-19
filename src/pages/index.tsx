@@ -13,10 +13,13 @@ import {
   TELEGRAM_URL,
 } from "../constants/socials";
 import CategoriesList from "../components/ui/extended/CategoriesList";
+import SEO from "../components/core/SEO";
 
 export default () => {
   return (
     <GlobalWrapper withLayout={true}>
+      <SEO title={"Home"} description={"Test"} />
+
       <Last5PostsSlider />
 
       <HomeFeaturedPost
