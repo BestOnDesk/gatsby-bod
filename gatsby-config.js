@@ -1,8 +1,11 @@
 const path = require("path");
 
+const url = process.env.GATSBY_SITE_URL || ***REMOVED***;
+
 module.exports = {
   siteMetadata: {
     title: "BestOnDesk",
+    siteUrl: url,
   },
   plugins: [
     {

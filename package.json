@@ -30,6 +30,7 @@
     "gatsby-plugin-react-redux-persist": "^1.1.0",
     "gatsby-plugin-sharp": "^3.0.1",
     "gatsby-plugin-sitemap": "^3.0.0",
+    "gatsby-plugin-smoothscroll": "^1.2.0",
     "gatsby-plugin-styled-components": "^4.0.0",
     "gatsby-plugin-typescript": "^3.0.0",
     "gatsby-source-filesystem": "^3.0.0",
@@ -45,6 +46,7 @@
     "redux": "^4.0.5",
     "redux-persist": "^6.0.0",
     "rehype-react": "^6.2.0",
+    "schema-dts": "^0.8.2",
     "slick-carousel": "^1.8.1",
     "styled-bootstrap-grid": "^3.1.1",
     "styled-components": "^5.2.1"
