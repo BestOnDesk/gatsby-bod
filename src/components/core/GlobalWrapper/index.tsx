@@ -10,14 +10,22 @@ import { lightTheme } from "../../../styles/theme";
 import { ThemeMode } from "../../../app-types/style";
 import { IState } from "../../../state/reducers";
 import { connect } from "react-redux";
+import SEO from "../SEO";
 
 interface GlobalWrapperProps {
-  children: ReactChild | ReactChild[];
+  children: ReactChild[];
   withLayout?: boolean;
   themeMode: ThemeMode;
   headerWithShadow?: boolean;
   headerSticky?: boolean;
 }
+
+const childrenContainSEO = (children: ReactChild[]) =>
+  children &&
+  children.filter(
+    // @ts-ignore
+    (child) => Object.keys(child).includes("type") && child.type === SEO
+  ).length > 0;
 
 const GlobalWrapper = ({
   children,
@@ -26,6 +34,12 @@ const GlobalWrapper = ({
   headerWithShadow,
   headerSticky,
 }: GlobalWrapperProps) => {
+  const IS_SSR = typeof window === "undefined";
+
+  if (!childrenContainSEO(children)) {
+    throw new Error("GlobalWrapper does not have a SEO element");
+  }
+
   const theme = lightTheme;
   theme.mode = themeMode;
 
@@ -60,11 +74,20 @@ const GlobalWrapper = ({
 
   return (
     <>
-      <Helmet>
+      <Helmet
+        script={[
+          {
+            type: "text/javascript",
+            innerHTML:
+              "document.documentElement.className = document.documentElement.className.replace(/\\bno-js\\b/,'js');",
+          },
+        ]}
+      >
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
+        <html className={IS_SSR ? "no-js" : "js"} />
       </Helmet>
       <BaseCSS />
       <ThemeProvider theme={theme}>
