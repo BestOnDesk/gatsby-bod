@@ -8,7 +8,7 @@ import {
 
 export interface HoverFlipLinkButtonProps {
   children: string;
-  rounded?: boolean;
+  buttonRounded?: boolean;
   colorSecondaryAlt?: boolean;
   to: string;
 }

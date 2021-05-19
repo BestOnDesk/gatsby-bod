@@ -16,7 +16,7 @@ import HoverFlip from "../../../core/HoverFlip";
 import { getAuthorLink, getPostLink } from "utils/links";
 import { MAIN_URL } from "../../../../constants/paths";
 import { SHARE_TEXT } from "../../../../constants/socials";
-import HoverFlipLinkButton from "../../../core/HoverFlipMagnetLinkButton";
+import HoverFlipLinkButton from "../../../core/HoverFlipLinkButton";
 
 export interface PostMetaProps {
   withButton?: boolean;
@@ -62,7 +62,7 @@ const PostMeta = (props: PostMetaProps) => {
       )}
       {props.withButton && (
         <ReadMoreButton>
-          <HoverFlipLinkButton rounded to={getPostLink(props.postSlug)}>
+          <HoverFlipLinkButton buttonRounded to={getPostLink(props.postSlug)}>
             Leggi ora
           </HoverFlipLinkButton>
         </ReadMoreButton>

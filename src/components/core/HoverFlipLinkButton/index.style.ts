@@ -3,7 +3,7 @@ import { HoverFlipItem, HoverFlipItemWrapper } from "../HoverFlip/index.style";
 import { Link } from "gatsby";
 
 export interface StyledButtonProps {
-  rounded?: boolean;
+  buttonRounded?: boolean;
   colorSecondaryAlt?: boolean;
 }
 
@@ -20,7 +20,7 @@ const StyledHoverFlipLinkButton = styled(Link)<StyledButtonProps>`
   line-height: 46px;
 
   ${(props) =>
-    props.rounded &&
+    props.buttonRounded &&
     `
         border-radius: 500px;
     `}
