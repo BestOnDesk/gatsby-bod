@@ -93,8 +93,6 @@ const PostPreview = (props: any) => {
           ""
         );
 
-  console.log(props);
-
   let post = posts.nodes.find((node) => node.slug === slug);
 
   post = post ? post : posts.nodes[randomIndex.current];

@@ -19,6 +19,7 @@ const StyledPostDetails = styled.div<{ primeLogoSrc?: string }>`
 
     div.author {
       margin-top: 10px;
+
       span {
         font-weight: ${(props) => props.theme.fonts.weight.pBold};
         color: ${(props) => props.theme.colors.primary};
@@ -34,7 +35,6 @@ const StyledPostDetails = styled.div<{ primeLogoSrc?: string }>`
 
     > div > ul {
       ${(props) => props.theme.extends.listStyle}
-
       li {
         > ul {
           list-style: none !important;
@@ -47,9 +47,11 @@ const StyledPostDetails = styled.div<{ primeLogoSrc?: string }>`
             }
           }
         }
+
         &:last-child {
           margin-bottom: 0;
         }
+
         a {
           font-weight: ${(props) => props.theme.fonts.weight.pMedium};
         }
@@ -64,15 +66,18 @@ const StyledPostDetails = styled.div<{ primeLogoSrc?: string }>`
       display: flex;
       background: ${(props) => props.theme.colors.lightest};
       border-radius: ${(props) => props.theme.borders.radius};
+
       .aawp-product__thumb {
         flex: 1;
         display: flex;
         flex-direction: column;
         padding: 20px;
+
         img {
           border-radius: ${(props) => props.theme.borders.radius};
           overflow: hidden;
         }
+
         .aawp-product__ribbon {
           width: 100%;
           background: ${(props) => props.theme.colors.primary};
@@ -82,6 +87,7 @@ const StyledPostDetails = styled.div<{ primeLogoSrc?: string }>`
           text-align: center;
         }
       }
+
       .aawp-product__content {
         flex: 4;
         padding: 20px 20px 20px 20px;
@@ -89,13 +95,13 @@ const StyledPostDetails = styled.div<{ primeLogoSrc?: string }>`
         .aawp-product__title {
           font-weight: bold;
         }
+
         .aawp-product__description {
           display: none;
 
           ${media.md`
           display: block;
         `}
-
           ul {
             ${(props) => props.theme.extends.listStyle}
             list-style-type: disc;
@@ -109,6 +115,7 @@ const StyledPostDetails = styled.div<{ primeLogoSrc?: string }>`
             }
           }
         }
+
         .aawp-product__footer {
           display: flex;
           flex-direction: column;
@@ -193,6 +200,53 @@ const StyledPostDetails = styled.div<{ primeLogoSrc?: string }>`
     vertical-align: baseline;
     height: 18px !important;
     width: auto !important;
+  }
+
+  .text-center {
+    text-align: center;
+  }
+
+  .no-mobile {
+    // TODO: Check /i-5-dispositivi-amazon-piu-apprezzati prime video banner, resolve width
+    display: none;
+
+    ${media.md`
+    display: block;
+      `}
+  }
+
+  .no-desktop {
+    ${media.md`
+        display: none;
+      `}
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    a {
+      color: ${(props) => props.theme.colors.primary};
+      position: relative;
+      display: inline;
+      background-image: linear-gradient(
+        to right,
+        currentColor 0%,
+        currentColor 100%
+      );
+      background-size: 0px 2px;
+      background-position: 0px 95%;
+      transition: background-size 0.25s cubic-bezier(0.785, 0.135, 0.15, 0.86)
+        0s;
+      padding: 0.1% 0px;
+      background-repeat: no-repeat;
+
+      &:hover {
+        background-size: 100% 2px;
+      }
+    }
   }
 `;
 

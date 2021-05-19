@@ -15,6 +15,9 @@ import PostDetails from "../components/ui/base/PostDetails";
 import { IGatsbyImageData } from "gatsby-plugin-image";
 import { graphql } from "gatsby";
 import PostImage from "../components/ui/base/PostImage";
+import SEO from "../components/core/SEO";
+import { TagPreview } from "../app-types/tag";
+import TagsArea from "components/ui/base/TagsArea";
 
 export interface PostTemplateProps {
   location: Location;
@@ -24,6 +27,13 @@ export interface PostTemplateProps {
       title: string;
       date: string;
       content: string;
+      seo: {
+        title: string;
+        metaDesc: string;
+        schema: {
+          raw: string;
+        };
+      };
       categories: {
         nodes: CategoryPreview[];
       };
@@ -38,6 +48,9 @@ export interface PostTemplateProps {
             };
           };
         };
+      };
+      tags: {
+        nodes: TagPreview[];
       };
     };
     rehype: {
@@ -54,6 +67,7 @@ const PostTemplate = ({ data, pageContext }: PostTemplateProps) => {
   const post = data.post;
   return (
     <GlobalWrapper withLayout={true} headerWithShadow headerSticky>
+      <SEO title={post.seo.title} description={post.seo.metaDesc} />
       <PostSingleWrapper>
         <Container>
           <Row>
@@ -88,6 +102,7 @@ const PostTemplate = ({ data, pageContext }: PostTemplateProps) => {
                 }
               />
               <PostDetails content={post.content} ast={data.rehype.htmlAst} />
+              <TagsArea tags={post.tags.nodes} />
             </Col>
           </Row>
         </Container>
@@ -103,6 +118,13 @@ export const query = graphql`
       title
       date(formatString: "DD MMM YYYY", locale: "it")
       content
+      seo {
+        title
+        metaDesc
+        schema {
+          raw
+        }
+      }
       categories {
         nodes {
           ...CategoryPreviewFragment
@@ -120,6 +142,11 @@ export const query = graphql`
               gatsbyImageData(width: 810, height: 550)
             }
           }
+        }
+      }
+      tags {
+        nodes {
+          ...TagPreviewFragment
         }
       }
     }

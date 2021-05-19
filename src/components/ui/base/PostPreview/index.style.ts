@@ -12,6 +12,7 @@ const StyledPostPreview = styled.div`
   border-radius: ${(props) => props.theme.borders.radius};
   overflow: hidden;
   position: relative;
+  margin-bottom: 40px;
 `;
 
 const BackgroundImage = styled.div<{ backgroundSrc?: string }>`
