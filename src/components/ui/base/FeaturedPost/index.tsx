@@ -54,7 +54,10 @@ const FeaturedPost = (props: FeaturedPostProps) => {
                 <PostCat>
                   <PostCatList>
                     {props.left.categories.map((category) => (
-                      <HoverFlip to={getCategoryLink(category.slug)}>
+                      <HoverFlip
+                        to={getCategoryLink(category.slug)}
+                        key={category.slug}
+                      >
                         {category.name}
                       </HoverFlip>
                     ))}
@@ -88,7 +91,10 @@ const FeaturedPost = (props: FeaturedPostProps) => {
                 <PostCat>
                   <PostCatList>
                     {props.right.categories.map((category) => (
-                      <HoverFlip to={getCategoryLink(category.slug)}>
+                      <HoverFlip
+                        to={getCategoryLink(category.slug)}
+                        key={category.slug}
+                      >
                         {category.name}
                       </HoverFlip>
                     ))}

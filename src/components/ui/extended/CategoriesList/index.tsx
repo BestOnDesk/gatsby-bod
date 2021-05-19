@@ -95,7 +95,7 @@ const CategoriesList = (props: CategoriesListProps) => {
                 const category = getCategory(slug);
                 if (category && image) {
                   return (
-                    <SingleCat>
+                    <SingleCat key={slug}>
                       <Inner>
                         <Link to={getCategoryLink(slug)}>
                           <Thumbnail>
