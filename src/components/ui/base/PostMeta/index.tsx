@@ -17,6 +17,10 @@ import { getAuthorLink, getPostLink } from "utils/links";
 import { MAIN_URL } from "../../../../constants/paths";
 import { SHARE_TEXT } from "../../../../constants/socials";
 import HoverFlipLinkButton from "../../../core/HoverFlipLinkButton";
+import {
+  getTelegramUrlTextLink,
+  getWhatsappTextLink,
+} from "../../../../utils/social";
 
 export interface PostMetaProps {
   withButton?: boolean;
@@ -52,11 +56,13 @@ const PostMeta = (props: PostMetaProps) => {
       </PostMetaDiv>
       {props.withShareButtons && (
         <SocialShareTransparent
-          whatsapp={SHARE_TEXT + " - " + MAIN_URL + getPostLink(props.postSlug)}
-          telegram={{
-            text: SHARE_TEXT,
-            url: MAIN_URL + getPostLink(props.postSlug),
-          }}
+          whatsapp={getWhatsappTextLink(
+            SHARE_TEXT + " - " + MAIN_URL + getPostLink(props.postSlug)
+          )}
+          telegram={getTelegramUrlTextLink(
+            MAIN_URL + getPostLink(props.postSlug),
+            SHARE_TEXT
+          )}
           linkClipboard={MAIN_URL + getPostLink(props.postSlug)}
         />
       )}

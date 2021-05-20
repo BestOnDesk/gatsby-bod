@@ -1,12 +1,5 @@
 import styled from "styled-components";
 
-const StyledSocialShare = styled.ul`
-  ${(props) => props.theme.extends.listStyle}
-  margin: 0 -5px;
-  display: flex;
-  flex-wrap: wrap;
-`;
-
 const SocialShareElement = styled.li`
   margin: 0 5px;
 `;
@@ -57,6 +50,18 @@ const SocialShareButton = styled.button`
     ${SocialShareButtonTooltip} {
       opacity: 1 !important;
     }
+  }
+`;
+
+const StyledSocialShare = styled.ul<{ sizeMd?: boolean }>`
+  ${(props) => props.theme.extends.listStyle}
+  margin: 0 -5px;
+  display: flex;
+  flex-wrap: wrap;
+
+  ${SocialShareLink} {
+    font-size: 16px;
+    line-height: 22px;
   }
 `;
 
