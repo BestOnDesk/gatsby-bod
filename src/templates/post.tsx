@@ -18,6 +18,7 @@ import PostImage from "../components/ui/base/PostImage";
 import SEO from "../components/core/SEO";
 import { TagPreview } from "../app-types/tag";
 import TagsArea from "components/ui/base/TagsArea";
+import AboutAuthor from "../components/ui/base/AboutAuthor";
 
 export interface PostTemplateProps {
   location: Location;
@@ -103,6 +104,7 @@ const PostTemplate = ({ data, pageContext }: PostTemplateProps) => {
               />
               <PostDetails content={post.content} ast={data.rehype.htmlAst} />
               <TagsArea tags={post.tags.nodes} />
+              <AboutAuthor author={post.author.node} />
             </Col>
           </Row>
         </Container>
