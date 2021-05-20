@@ -38,7 +38,7 @@ export interface PostPreviewQueryResult {
   };
 }
 
-export const isPostPreviewValid = (props: any): boolean => {
+export const isPostPreview = (props: any): boolean => {
   return (
     props.className?.includes("wp-block-embed-wordpress") &&
     (props.children[0]?.props?.children[1]?.props?.children[0]?.props?.href ||

@@ -3,7 +3,7 @@ import { StyledPostDetails } from "./index.style";
 import { IGatsbyImageData } from "gatsby-plugin-image";
 import { graphql, useStaticQuery } from "gatsby";
 import RehypeReact from "rehype-react";
-import PostPreview, { isPostPreviewValid } from "../PostPreview";
+import PostPreview, { isPostPreview } from "../PostPreview";
 
 export interface PostDetailsQueryResult {
   primeLogo: {
@@ -23,7 +23,7 @@ const renderAst = new RehypeReact({
   createElement: React.createElement,
   components: {
     figure: (props: any) => {
-      if (isPostPreviewValid(props)) return <PostPreview {...props} />;
+      if (isPostPreview(props)) return <PostPreview {...props} />;
       else return <figure {...props}>{props.children}</figure>;
     },
 
