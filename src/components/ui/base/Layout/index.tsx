@@ -18,6 +18,10 @@ const Layout = ({
   headerWithShadow,
   headerSticky,
 }: LayoutProps) => {
+  if (typeof window !== "undefined") {
+    require("smooth-scroll")('a[href*="#"]', { speed: 200, offset: 200 });
+  }
+
   return (
     <>
       <Header withShadow={headerWithShadow} sticky={headerSticky} />
