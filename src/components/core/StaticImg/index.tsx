@@ -9,6 +9,7 @@ interface StaticImgProps {
   src: string;
   srcDark?: string;
   imgStyle?: CSSProperties;
+  style?: CSSProperties;
 }
 
 interface ImageQueryProps {
