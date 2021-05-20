@@ -73,9 +73,17 @@ const StyledPostDetails = styled.div<{ primeLogoSrc?: string }>`
         flex-direction: column;
         padding: 20px;
 
-        img {
+        .aawp-product__image-link {
+          background: #fff;
           border-radius: ${(props) => props.theme.borders.radius};
-          overflow: hidden;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          img {
+            border-radius: ${(props) => props.theme.borders.radius};
+            overflow: hidden;
+          }
         }
 
         .aawp-product__ribbon {
