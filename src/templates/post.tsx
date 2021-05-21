@@ -21,6 +21,7 @@ import TagsArea from "components/ui/base/TagsArea";
 import AboutAuthor from "../components/ui/base/AboutAuthor";
 import { SidebarInner } from "components/ui/base/WidgetCategories/index.style";
 import WidgetCategories from "../components/ui/base/WidgetCategories";
+import WidgetSearch from "../components/ui/base/WidgetSearch";
 
 export interface PostTemplateProps {
   location: Location;
@@ -114,7 +115,9 @@ const PostTemplate = ({ data, pageContext }: PostTemplateProps) => {
                   categorySlugs={post.categories.nodes.map(
                     (category) => category.slug
                   )}
+                  marginBottom={30}
                 />
+                <WidgetSearch marginBottom={30} />
               </SidebarInner>
             </Col>
           </Row>
