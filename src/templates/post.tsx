@@ -23,6 +23,7 @@ import { SidebarInner } from "components/ui/base/WidgetCategories/index.style";
 import WidgetCategories from "../components/ui/base/WidgetCategories";
 import WidgetSearch from "../components/ui/base/WidgetSearch";
 import WidgetPostList from "../components/ui/base/WidgetPostList";
+import WidgetSocial from "../components/ui/base/WidgetSocial";
 
 export interface PostTemplateProps {
   location: Location;
@@ -119,7 +120,23 @@ const PostTemplate = ({ data, pageContext }: PostTemplateProps) => {
                   marginBottom={30}
                 />
                 <WidgetSearch marginBottom={30} />
-                <WidgetPostList marginBottom={30} limit={3} />
+                <WidgetPostList
+                  title={"Ultimi post su BestOnDesk"}
+                  marginBottom={30}
+                  limit={3}
+                  excludeSlug={post.slug}
+                  type={"last"}
+                />
+                <WidgetSocial marginBottom={30} />
+                <WidgetPostList
+                  title={"Popolari su BestOnDesk"}
+                  marginBottom={30}
+                  type={"fixed"}
+                  fixedSlugs={[
+                    "le-migliori-sedie-da-ufficio",
+                    "i-migliori-notebook",
+                  ]}
+                />
               </SidebarInner>
             </Col>
           </Row>

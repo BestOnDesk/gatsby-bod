@@ -2,15 +2,15 @@ import styled from "styled-components";
 import { HoverFlipItemWrapper } from "../../../core/HoverFlip/index.style";
 import SocialShare from "../SocialShare";
 
-const StyledPostMeta = styled.div`
-  margin-top: 34px;
+const StyledPostMeta = styled.div<{ noMargin?: boolean }>`
+  margin-top: ${(props) => (props.noMargin ? "0" : "34px")};
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
 
   @media ${(props) => props.theme.layouts.sm} {
-    margin-top: 20px;
+    margin-top: ${(props) => (props.noMargin ? "0" : "20px")};
   }
 
   @media ${(props) => props.theme.layouts.largeMobile} {
@@ -72,6 +72,7 @@ const PostMetaList = styled.ul`
     line-height: 18px;
     margin: 8px;
     position: relative;
+    font-weight: ${(props) => props.theme.fonts.weight.pRegular};
     &::after {
       right: -10px;
       position: absolute;

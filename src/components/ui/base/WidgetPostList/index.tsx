@@ -15,8 +15,12 @@ import PostMeta from "../PostMeta";
 import { getReadingTimeString } from "../../../../utils/reading-time";
 
 export interface WidgetPostListProps {
+  title: string;
   marginBottom?: number;
-  limit: number;
+  limit?: number;
+  excludeSlug?: string;
+  type: "last" | "fixed";
+  fixedSlugs?: string[];
 }
 
 interface WidgetPostListQueryResult {
@@ -62,11 +66,28 @@ const WidgetPostList = (props: WidgetPostListProps) => {
     }
   `);
 
+  let selectedPosts = [];
+
+  switch (props.type) {
+    case "last":
+      selectedPosts = posts.nodes.filter(
+        (post) => post.slug !== props.excludeSlug
+      );
+
+      if (props.limit) selectedPosts = selectedPosts.slice(0, props.limit);
+      break;
+    case "fixed":
+      selectedPosts = posts.nodes.filter((post) =>
+        props.fixedSlugs?.includes(post.slug)
+      );
+      break;
+  }
+
   return (
     <StyledWidgetPostList marginBottom={props.marginBottom}>
-      <WidgetTitle>Popolari su BestOnDesk</WidgetTitle>
+      <WidgetTitle>{props.title}</WidgetTitle>
       <PostMediumBlock>
-        {posts.nodes.slice(0, props.limit).map((post) => (
+        {selectedPosts.map((post) => (
           <ContentBlock postMedium marginBottom={20}>
             <PostThumbnail
               image={
@@ -84,6 +105,7 @@ const WidgetPostList = (props: WidgetPostListProps) => {
                 date={post.date}
                 readingTime={getReadingTimeString(post.content)}
                 postSlug={post.slug}
+                noMargin
               />
             </PostContent>
           </ContentBlock>

@@ -1,8 +1,6 @@
 import styled, { css } from "styled-components";
-import { StyledPostContent } from "../ContentBlock/PostContent/index.style";
-import { StyledTitle } from "../../../core/Title/index.style";
 
-const StyledWidgetPostList = styled.div<{ marginBottom?: number }>`
+const StyledWidgetSocial = styled.div<{ marginBottom?: number }>`
   background: ${(props) => props.theme.colors.extra03};
   padding: 30px;
   border-radius: ${(props) => props.theme.borders.radius};
@@ -12,12 +10,6 @@ const StyledWidgetPostList = styled.div<{ marginBottom?: number }>`
     css`
       margin-bottom: ${props.marginBottom}px;
     `}
-
-  ${StyledPostContent} {
-    ${StyledTitle} {
-      font-weight: ${(props) => props.theme.fonts.weight.sMedium};
-    }
-  }
 `;
 
 const WidgetTitle = styled.h5`
@@ -27,6 +19,4 @@ const WidgetTitle = styled.h5`
   text-align: center;
 `;
 
-const PostMediumBlock = styled.h5``;
-
-export { StyledWidgetPostList, WidgetTitle, PostMediumBlock };
+export { StyledWidgetSocial, WidgetTitle };
