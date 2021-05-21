@@ -38,7 +38,7 @@ const Content = styled.div`
 `;
 
 const Inner = styled(Link)`
-  background: #fbfbfd;
+  background: ${(props) => props.theme.colors.extra03};
   ${(props) => props.theme.borders.radius};
   display: flex;
   padding: 5px;

@@ -3,7 +3,7 @@ import Search from "../Search";
 import { SearchButton } from "../Search/index.style";
 
 const StyledWidgetSearch = styled.div<{ marginBottom?: number }>`
-  background: #fbfbfd;
+  background: ${(props) => props.theme.colors.extra03};
   padding: 30px;
   border-radius: ${(props) => props.theme.borders.radius};
 
