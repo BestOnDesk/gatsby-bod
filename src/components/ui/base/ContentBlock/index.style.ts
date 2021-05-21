@@ -30,6 +30,12 @@ const StyledContentBlock = styled.div<
     `}
 
   ${(props) =>
+    props.marginBottom &&
+    css`
+      margin-bottom: ${props.marginBottom}px !important;
+    `}
+
+  ${(props) =>
     props.imageRounded &&
     css`
       ${StyledPostThumbnail} {
@@ -309,6 +315,77 @@ const StyledContentBlock = styled.div<
           margin-top: 30px;
         }
       }
+      &:hover {
+        ${StyledPostThumbnail} {
+          a {
+            img {
+              transform: scale(1.1);
+            }
+          }
+        }
+      }
+    `}
+    
+    ${(props) =>
+    props.postMedium &&
+    css`
+      display: flex;
+      &:last-child {
+        margin-bottom: 0;
+      }
+      ${StyledPostThumbnail} {
+        width: 100px;
+        margin-right: 20px;
+        min-width: 100px;
+        @extend %radius;
+        overflow: hidden;
+        @media ${(props) => props.theme.layouts.lg} {
+          width: 70px;
+          margin-right: 10px;
+          min-width: 70px;
+        }
+        a {
+          img {
+            width: 100%;
+            border-radius: ${(props) => props.theme.borders.radius};
+            transition: 0.5s;
+          }
+        }
+      }
+
+      ${StyledPostContent} {
+        ${StyledPostCat} {
+          margin-bottom: 15px;
+          ${PostCatList} {
+            a {
+              ${HoverFlipItemWrapper} {
+                display: flex;
+              }
+            }
+          }
+        }
+        ${StyledTitle} {
+          margin-bottom: 10px;
+        }
+      }
+
+      ${props.postMediumBorder &&
+      css`
+        border-bottom: 2px solid ${(props) => props.theme.colors.lighter};
+        padding: 30px 0;
+        ${props.borderThin &&
+        css`
+          border-width: 1px;
+        `}
+        &:last-child {
+          padding-bottom: 0;
+          border-bottom: 0 none;
+        }
+        &:first-child {
+          padding-top: 0;
+        }
+      `}
+
       &:hover {
         ${StyledPostThumbnail} {
           a {

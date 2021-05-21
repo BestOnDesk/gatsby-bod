@@ -22,6 +22,7 @@ import AboutAuthor from "../components/ui/base/AboutAuthor";
 import { SidebarInner } from "components/ui/base/WidgetCategories/index.style";
 import WidgetCategories from "../components/ui/base/WidgetCategories";
 import WidgetSearch from "../components/ui/base/WidgetSearch";
+import WidgetPostList from "../components/ui/base/WidgetPostList";
 
 export interface PostTemplateProps {
   location: Location;
@@ -118,6 +119,7 @@ const PostTemplate = ({ data, pageContext }: PostTemplateProps) => {
                   marginBottom={30}
                 />
                 <WidgetSearch marginBottom={30} />
+                <WidgetPostList marginBottom={30} limit={3} />
               </SidebarInner>
             </Col>
           </Row>

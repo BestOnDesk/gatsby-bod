@@ -27,7 +27,7 @@ export interface PostMetaProps {
   withShareButtons?: boolean;
   authorAvatarRounded?: boolean;
   date: string;
-  author: AuthorPreview;
+  author?: AuthorPreview;
   readingTime: string;
   postSlug: string;
 }
@@ -36,18 +36,22 @@ const PostMeta = (props: PostMetaProps) => {
   return (
     <StyledPostMeta>
       <PostMetaDiv>
-        <PostAuthorAvatar>
-          <StaticImg
-            alt={props.author.name}
-            src={getAuthorAvatarRelativePath(props.author.slug)}
-          />
-        </PostAuthorAvatar>
+        {props.author && (
+          <PostAuthorAvatar>
+            <StaticImg
+              alt={props.author.name}
+              src={getAuthorAvatarRelativePath(props.author.slug)}
+            />
+          </PostAuthorAvatar>
+        )}
         <Content>
-          <PostAuthorName>
-            <HoverFlip to={getAuthorLink(props.author.slug)}>
-              {props.author.name}
-            </HoverFlip>
-          </PostAuthorName>
+          {props.author && (
+            <PostAuthorName>
+              <HoverFlip to={getAuthorLink(props.author.slug)}>
+                {props.author.name}
+              </HoverFlip>
+            </PostAuthorName>
+          )}
           <PostMetaList>
             <li>{props.date}</li>
             <li>{props.readingTime}</li>
