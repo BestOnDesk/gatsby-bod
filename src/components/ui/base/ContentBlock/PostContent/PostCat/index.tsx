@@ -16,9 +16,14 @@ const PostCat = (props: PostCatProps) => {
   return (
     <StyledPostCat>
       <PostCatList>
-        {props.categories.map((category) => (
+        {props.categories.map((category, i) => (
           <HoverFlip to={getCategoryLink(category.slug)} key={category.slug}>
-            {category.name}
+            {category.name +
+              (props.categories.length > 1
+                ? i < props.categories.length - 1
+                  ? ","
+                  : ""
+                : "")}
           </HoverFlip>
         ))}
       </PostCatList>

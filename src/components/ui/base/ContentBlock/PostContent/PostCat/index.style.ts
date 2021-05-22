@@ -25,12 +25,6 @@ const PostCatList = styled.div`
       color: ${(props) => props.theme.colors.primary};
     }
 
-    &::after {
-      content: ",";
-      position: absolute;
-      right: 0;
-    }
-
     &:last-child {
       &::after {
         display: none;

@@ -214,10 +214,6 @@ const StyledPostDetails = styled.div<{ primeLogoSrc?: string }>`
     width: auto !important;
   }
 
-  .text-center {
-    text-align: center;
-  }
-
   .no-mobile {
     // TODO: Check /i-5-dispositivi-amazon-piu-apprezzati prime video banner, resolve width
     display: none;
@@ -259,6 +255,16 @@ const StyledPostDetails = styled.div<{ primeLogoSrc?: string }>`
         background-size: 100% 2px;
       }
     }
+  }
+
+  .aligncenter,
+  .text-center {
+    text-align: center;
+  }
+
+  div.wp-block-image img {
+    border-radius: ${(props) => props.theme.borders.radius};
+    margin-bottom: 30px;
   }
 `;
 
