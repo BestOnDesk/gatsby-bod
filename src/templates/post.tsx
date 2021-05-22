@@ -24,6 +24,7 @@ import WidgetCategories from "../components/ui/base/WidgetCategories";
 import WidgetSearch from "../components/ui/base/WidgetSearch";
 import WidgetPostList from "../components/ui/base/WidgetPostList";
 import WidgetSocial from "../components/ui/base/WidgetSocial";
+import MorePosts from "../components/ui/base/MorePosts";
 
 export interface PostTemplateProps {
   location: Location;
@@ -142,6 +143,10 @@ const PostTemplate = ({ data, pageContext }: PostTemplateProps) => {
           </Row>
         </Container>
       </PostSingleWrapper>
+      <MorePosts
+        categorySlugs={post.categories.nodes.map((category) => category.slug)}
+        excludeSlug={post.slug}
+      />
     </GlobalWrapper>
   );
 };
