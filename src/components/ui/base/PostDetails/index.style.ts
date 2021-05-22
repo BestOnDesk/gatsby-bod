@@ -2,6 +2,10 @@ import styled from "styled-components";
 import { media } from "styled-bootstrap-grid";
 
 const StyledPostDetails = styled.div<{ primeLogoSrc?: string }>`
+  p {
+    margin: 0 0 30px;
+  }
+
   blockquote {
     margin-bottom: 60px;
     margin-top: 60px;
@@ -62,7 +66,7 @@ const StyledPostDetails = styled.div<{ primeLogoSrc?: string }>`
   .aawp {
     .aawp-product {
       position: relative;
-      margin: 20px 0;
+      margin: 30px 0;
       display: flex;
       background: ${(props) => props.theme.colors.lightest};
       border-radius: ${(props) => props.theme.borders.radius};
