@@ -146,6 +146,7 @@ const PostTemplate = ({ data, pageContext }: PostTemplateProps) => {
       <MorePosts
         categorySlugs={post.categories.nodes.map((category) => category.slug)}
         excludeSlug={post.slug}
+        limit={4}
       />
     </GlobalWrapper>
   );
