@@ -12,7 +12,6 @@ import {
 } from "./index.style";
 import HoverFlip from "../../../../../../core/HoverFlip";
 import { Link } from "gatsby";
-import { getCategoryLink } from "../../../../../../../utils/links";
 import { MenuCategory } from "../../../../../../../app-types/category";
 import { Col, Row } from "styled-bootstrap-grid";
 import ContentBlock from "./ContentBlock";
@@ -26,7 +25,7 @@ const MegaMenu = ({ category }: MegaMenuProps) => {
 
   return (
     <MegaMenuWrapper>
-      <Link to={getCategoryLink(category.slug)}>{category.name}</Link>
+      <Link to={category.uri}>{category.name}</Link>
       <MegaMenuSubMenu>
         <MegaMenuItem>
           <VerticalNav>
@@ -38,7 +37,7 @@ const MegaMenu = ({ category }: MegaMenuProps) => {
                     onMouseEnter={() => setActive(i)}
                     key={i}
                   >
-                    <HoverFlip to={getCategoryLink(subCategory.slug)}>
+                    <HoverFlip to={subCategory.uri}>
                       {subCategory.name}
                     </HoverFlip>
                   </VerticalNavItem>
@@ -58,7 +57,7 @@ const MegaMenu = ({ category }: MegaMenuProps) => {
                             <ContentBlock
                               imgRounded={true}
                               post={post}
-                              categorySlug={subCategory.slug}
+                              categoryUri={subCategory.uri}
                               categoryName={subCategory.name}
                             />
                           </Col>

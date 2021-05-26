@@ -10,7 +10,6 @@ import {
 import { graphql, useStaticQuery } from "gatsby";
 import { GatsbyImage, IGatsbyImageData } from "gatsby-plugin-image";
 import Title from "../../../core/Title";
-import { getCategoryLink } from "../../../../utils/links";
 
 export interface WidgetCategoriesProps {
   categorySlugs: string[];
@@ -22,10 +21,12 @@ interface WidgetCategoriesQueryResult {
     nodes: {
       name: string;
       slug: string;
+      uri: string;
       wpChildren: {
         nodes: {
           slug: string;
           name: string;
+          uri: string;
           posts: {
             nodes: {
               featuredImage: {
@@ -58,10 +59,12 @@ const WidgetCategories = (props: WidgetCategoriesProps) => {
         nodes {
           name
           slug
+          uri
           wpChildren {
             nodes {
               slug
               name
+              uri
               posts {
                 nodes {
                   featuredImage {
@@ -98,7 +101,7 @@ const WidgetCategories = (props: WidgetCategoriesProps) => {
         {relatedMainCategories.map((mainCategory) => {
           return mainCategory.wpChildren.nodes.map((subCategory) => (
             <Item>
-              <Inner to={getCategoryLink(subCategory.slug)}>
+              <Inner to={subCategory.uri}>
                 <Thumbnail>
                   <GatsbyImage
                     alt={subCategory.name}

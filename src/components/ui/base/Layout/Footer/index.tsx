@@ -16,7 +16,6 @@ import { Col, Container, Row } from "styled-bootstrap-grid";
 import Title from "../../../../core/Title";
 import { graphql, Link, useStaticQuery } from "gatsby";
 import { MenuCategory } from "../../../../../app-types/category";
-import { getCategoryLink } from "../../../../../utils/links";
 import Logo from "../../Logo";
 import SocialIcons from "../../SocialIcons";
 import {
@@ -92,8 +91,8 @@ const Footer = () => {
                       <FtMenuList>
                         {category.wpChildren.nodes.map((subCategory) => {
                           return (
-                            <li key={subCategory.slug}>
-                              <Link to={getCategoryLink(subCategory.slug)}>
+                            <li key={subCategory.uri}>
+                              <Link to={subCategory.uri}>
                                 {subCategory.name}
                               </Link>
                             </li>

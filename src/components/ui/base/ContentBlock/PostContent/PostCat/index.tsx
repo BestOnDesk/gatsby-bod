@@ -1,10 +1,9 @@
 import React from "react";
 import { PostCatList, StyledPostCat } from "./index.style";
 import HoverFlip from "../../../../../core/HoverFlip";
-import { getCategoryLink } from "../../../../../../utils/links";
 
 export interface PostCatCategory {
-  slug: string;
+  uri: string;
   name: string;
 }
 
@@ -17,7 +16,7 @@ const PostCat = (props: PostCatProps) => {
     <StyledPostCat>
       <PostCatList>
         {props.categories.map((category, i) => (
-          <HoverFlip to={getCategoryLink(category.slug)} key={category.slug}>
+          <HoverFlip to={category.uri} key={category.uri}>
             {category.name +
               (props.categories.length > 1
                 ? i < props.categories.length - 1

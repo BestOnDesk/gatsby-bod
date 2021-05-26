@@ -12,7 +12,6 @@ import {
 } from "./index.style";
 import { Col, Container, Row } from "styled-bootstrap-grid";
 import SectionTitle from "../../base/SectionTitle";
-import { getCategoryLink } from "../../../../utils/links";
 import Title from "../../../core/Title";
 
 export interface CategoriesListQueryResult {
@@ -20,6 +19,7 @@ export interface CategoriesListQueryResult {
     nodes: {
       slug: string;
       name: string;
+      uri: string;
       posts: {
         nodes: {
           featuredImage: {
@@ -52,6 +52,7 @@ const CategoriesList = (props: CategoriesListProps) => {
         nodes {
           slug
           name
+          uri
           posts {
             nodes {
               featuredImage {
@@ -97,7 +98,7 @@ const CategoriesList = (props: CategoriesListProps) => {
                   return (
                     <SingleCat key={slug}>
                       <Inner>
-                        <Link to={getCategoryLink(slug)}>
+                        <Link to={category.uri}>
                           <Thumbnail>
                             <GatsbyImage alt={category.name} image={image} />
                           </Thumbnail>

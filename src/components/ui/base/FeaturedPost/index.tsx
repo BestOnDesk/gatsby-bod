@@ -12,7 +12,7 @@ import {
 import { Col, Container, Row } from "styled-bootstrap-grid";
 import HoverFlip from "../../../core/HoverFlip";
 import { GatsbyImage, IGatsbyImageData } from "gatsby-plugin-image";
-import { getCategoryLink, getPostLink } from "../../../../utils/links";
+import { getPostLink } from "../../../../utils/links";
 import { Link } from "gatsby";
 import PostMeta from "../PostMeta";
 import SectionTitle from "../SectionTitle";
@@ -30,6 +30,7 @@ export interface FeaturedPostPropsPost {
   categories: {
     name: string;
     slug: string;
+    uri: string;
   }[];
 }
 
@@ -54,10 +55,7 @@ const FeaturedPost = (props: FeaturedPostProps) => {
                 <PostCat>
                   <PostCatList>
                     {props.left.categories.map((category) => (
-                      <HoverFlip
-                        to={getCategoryLink(category.slug)}
-                        key={category.slug}
-                      >
+                      <HoverFlip to={category.uri} key={category.uri}>
                         {category.name}
                       </HoverFlip>
                     ))}
@@ -91,10 +89,7 @@ const FeaturedPost = (props: FeaturedPostProps) => {
                 <PostCat>
                   <PostCatList>
                     {props.right.categories.map((category) => (
-                      <HoverFlip
-                        to={getCategoryLink(category.slug)}
-                        key={category.slug}
-                      >
+                      <HoverFlip to={category.uri} key={category.uri}>
                         {category.name}
                       </HoverFlip>
                     ))}

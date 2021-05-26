@@ -13,7 +13,6 @@ import {
   SubMenu,
 } from "./index.style";
 import { graphql, useStaticQuery } from "gatsby";
-import { getCategoryLink } from "../../../../../utils/links";
 import { useDispatch } from "react-redux";
 import { closeMenu } from "../../../../../state/actions/mobile";
 
@@ -26,10 +25,12 @@ export interface MobileMenuQueryProps {
     nodes: {
       slug: string;
       name: string;
+      uri: string;
       wpChildren: {
         nodes: {
           slug: string;
           name: string;
+          uri: string;
         }[];
       };
     }[];
@@ -51,10 +52,12 @@ const MobileMenu = (props: MobileMenuProps) => {
         nodes {
           slug
           name
+          uri
           wpChildren {
             nodes {
               slug
               name
+              uri
             }
           }
         }
@@ -95,7 +98,7 @@ const MobileMenu = (props: MobileMenuProps) => {
             return (
               <MenuItemWithChildren key={i} open={open}>
                 <MenuItemWithChildrenInner>
-                  <ItemLink to={getCategoryLink(category.slug)} onClick={close}>
+                  <ItemLink to={category.uri} onClick={close}>
                     {category.name}
                   </ItemLink>
                   <i
@@ -107,10 +110,7 @@ const MobileMenu = (props: MobileMenuProps) => {
                   {category.wpChildren.nodes.map((subcategory, i) => {
                     return (
                       <MenuItem key={i}>
-                        <ItemLink
-                          to={getCategoryLink(subcategory.slug)}
-                          onClick={close}
-                        >
+                        <ItemLink to={subcategory.uri} onClick={close}>
                           {subcategory.name}
                         </ItemLink>
                       </MenuItem>
