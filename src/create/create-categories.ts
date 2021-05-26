@@ -1,26 +1,42 @@
 import { Actions, CreatePagesArgs } from "gatsby";
-import { getCategoryLink, getCategoryLinkWithPage } from "../utils/links";
+import { getCategoryLinkWithPage } from "../utils/links";
 import * as path from "path";
-import { AuthorPreview } from "../app-types/author";
 import { POSTS_PER_PAGE } from "../constants/main";
+import { IGatsbyImageData } from "gatsby-plugin-image";
 
 export interface CreateCategoriesQueryResult {
   categories: {
     nodes: {
       slug: string;
       name: string;
+      uri: string;
       posts: {
         nodes: {
           slug: string;
           title: string;
+          content: string;
+          date: string;
           author: {
-            node: AuthorPreview;
+            node: {
+              name: string;
+              slug: string;
+            };
+          };
+          featuredImage: {
+            node: {
+              localFile: {
+                childImageSharp: {
+                  gatsbyImageData: IGatsbyImageData;
+                };
+              };
+            };
           };
         }[];
       };
       wpChildren: {
         nodes: {
           slug: string;
+          name: string;
         }[];
       };
     }[];
@@ -37,6 +53,7 @@ export const createCategories = async (
         nodes {
           slug
           name
+          uri
           posts {
             nodes {
               slug
@@ -50,9 +67,11 @@ export const createCategories = async (
                 }
               }
               featuredImage {
-                localFile {
-                  childImageSharp {
-                    gatsbyImageData(width: 295, height: 250)
+                node {
+                  localFile {
+                    childImageSharp {
+                      gatsbyImageData(width: 295, height: 250)
+                    }
                   }
                 }
               }
@@ -77,34 +96,40 @@ export const createCategories = async (
     result.data.categories.nodes.forEach((node) => {
       const numberOfPages = Math.ceil(node.posts.nodes.length / POSTS_PER_PAGE);
 
-      const parentCategorySlug = result?.data?.categories.nodes.find(
+      const parentCategoryObj = result?.data?.categories.nodes.find(
         (category) => {
           return category.wpChildren.nodes.some(
             (subCategory) => subCategory.slug === node.slug
           );
         }
-      )?.slug;
+      );
+
+      const parentCategory = parentCategoryObj
+        ? {
+            slug: parentCategoryObj?.slug,
+            name: parentCategoryObj?.name,
+            uri: parentCategoryObj?.uri,
+          }
+        : undefined;
 
       Array.from({ length: numberOfPages }).forEach((_, i) => {
         const currentPath =
-          i === 0
-            ? getCategoryLink(node.slug)
-            : `${getCategoryLinkWithPage(node.slug, i + 1)}`;
+          i === 0 ? node.uri : `${getCategoryLinkWithPage(node.uri, i + 1)}`;
         let newerPath;
         let olderPath;
 
         if (i === 0) {
           newerPath = undefined;
         } else if (i === 1) {
-          newerPath = getCategoryLink(node.slug);
+          newerPath = node.uri;
         } else {
-          newerPath = getCategoryLinkWithPage(node.slug, i);
+          newerPath = getCategoryLinkWithPage(node.uri, i);
         }
 
         if (i === numberOfPages - 1) {
           olderPath = undefined;
         } else {
-          olderPath = getCategoryLinkWithPage(node.slug, i + 2);
+          olderPath = getCategoryLinkWithPage(node.uri, i + 2);
         }
 
         actions.createPage({
@@ -119,7 +144,7 @@ export const createCategories = async (
               numberOfPages: numberOfPages,
               currentPage: i + 1,
             },
-            parentCategorySlug: parentCategorySlug,
+            parentCategory,
             category: node,
             posts: node.posts.nodes.slice(
               i * POSTS_PER_PAGE,

@@ -2,6 +2,7 @@ import React from "react";
 import GlobalWrapper from "../components/core/GlobalWrapper";
 import SEO from "../components/core/SEO";
 import { IGatsbyImageData } from "gatsby-plugin-image";
+import BreadcrumbArea from "../components/ui/base/BreadcrumbArea";
 
 export interface CategoryTemplateProps {
   pageContext: {
@@ -13,32 +14,43 @@ export interface CategoryTemplateProps {
       newerPath: string;
       olderPath: string;
     };
-    parentCategorySlug: string;
+    parentCategory?: {
+      name: string;
+      slug: string;
+      uri: string;
+    };
     category: {
-      nodes: {
-        slug: string;
-        name: string;
-        posts: {
-          nodes: {
-            slug: string;
-            title: string;
-            content: string;
-            date: string;
-            author: {
-              node: {
-                name: string;
-                slug: string;
+      uri: string;
+      name: string;
+      posts: {
+        nodes: {
+          slug: string;
+          title: string;
+          content: string;
+          date: string;
+          author: {
+            node: {
+              name: string;
+              slug: string;
+            };
+          };
+          featuredImage: {
+            node: {
+              localFile: {
+                childImageSharp: {
+                  gatsbyImageData: IGatsbyImageData;
+                };
               };
             };
-          }[];
-        };
-        wpChildren: {
-          nodes: {
-            slug: string;
-            name: string;
-          }[];
-        };
-      }[];
+          };
+        }[];
+      };
+      wpChildren: {
+        nodes: {
+          slug: string;
+          name: string;
+        }[];
+      };
     };
     posts: {
       slug: string;
@@ -52,9 +64,11 @@ export interface CategoryTemplateProps {
         };
       };
       featuredImage: {
-        localFile: {
-          childImageSharp: {
-            gatsbyImageData: IGatsbyImageData;
+        node: {
+          localFile: {
+            childImageSharp: {
+              gatsbyImageData: IGatsbyImageData;
+            };
           };
         };
       };
@@ -63,12 +77,27 @@ export interface CategoryTemplateProps {
 }
 
 const CategoryTemplate = ({ pageContext }: CategoryTemplateProps) => {
-  console.log(pageContext);
-
   return (
     <GlobalWrapper withLayout headerWithShadow>
       <SEO title={"test"} description={"test"} />
-      <div>{pageContext.parentCategorySlug}</div>
+      <BreadcrumbArea
+        title={pageContext.category.name}
+        breadcrumbs={[
+          { name: "BestOnDesk", link: "/" },
+          ...(pageContext.parentCategory?.slug
+            ? [
+                {
+                  name: pageContext.parentCategory.name,
+                  link: pageContext.parentCategory.uri,
+                },
+              ]
+            : []),
+          {
+            name: pageContext.category.name,
+            link: pageContext.category.uri,
+          },
+        ]}
+      />
     </GlobalWrapper>
   );
 };
