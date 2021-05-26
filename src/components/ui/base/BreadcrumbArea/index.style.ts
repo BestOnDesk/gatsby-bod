@@ -23,11 +23,18 @@ const BreadcrumbsLi = styled.li`
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 0;
 
   a {
-    color: ${(props) => props.theme.baseColor};
+    color: ${(props) => props.theme.colors.gray};
     text-transform: uppercase;
     font-weight: 600;
+    font-size: 0.65em;
+  }
+
+  i {
+    color: ${(props) => props.theme.colors.gray};
+    margin: 0 4px;
     font-size: 0.65em;
   }
 `;
