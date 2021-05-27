@@ -31,13 +31,14 @@ export interface PostMetaProps {
   readingTime: string;
   postSlug: string;
   noMargin?: boolean;
+  noAuthorImage?: boolean;
 }
 
 const PostMeta = (props: PostMetaProps) => {
   return (
     <StyledPostMeta noMargin={props.noMargin}>
       <PostMetaDiv>
-        {props.author && (
+        {props.author && !props.noAuthorImage && (
           <PostAuthorAvatar>
             <StaticImg
               alt={props.author.name}

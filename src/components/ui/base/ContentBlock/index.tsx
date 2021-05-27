@@ -13,6 +13,7 @@ export interface ContentBlockProps {
   postDefault?: boolean;
   postMedium?: boolean;
   postMediumBorder?: boolean;
+  postListView?: boolean;
   borderThin?: boolean;
   textCenter?: boolean;
   textRight?: boolean;

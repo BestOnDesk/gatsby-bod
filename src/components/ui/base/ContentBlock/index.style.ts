@@ -4,7 +4,7 @@ import { ContentBlockProps } from "./index";
 import { PostCatList, StyledPostCat } from "./PostContent/PostCat/index.style";
 import { StyledPostContent } from "./PostContent/index.style";
 import { StyledTitle } from "../../../core/Title/index.style";
-import { StyledPostMeta } from "../PostMeta/index.style";
+import { PostMetaDiv, StyledPostMeta } from "../PostMeta/index.style";
 import { HoverFlipItemWrapper } from "../../../core/HoverFlip/index.style";
 import { PostGridContent } from "../Tab/GridTabContent/index.style";
 
@@ -392,6 +392,121 @@ const StyledContentBlock = styled.div<
             img {
               transform: scale(1.1);
             }
+          }
+        }
+      }
+    `}
+    
+    ${(props) =>
+    props.postListView &&
+    css`
+      display: flex;
+      @media ${props.theme.layouts.sm} {
+        flex-wrap: wrap;
+      }
+      ${StyledPostThumbnail} {
+        min-width: 295px;
+        margin-right: 20px;
+        max-width: 295px;
+
+        > a > div {
+          border-radius: ${props.theme.borders.radius};
+          overflow: hidden;
+        }
+
+        img {
+          transition: 0.5s;
+        }
+        @media ${props.theme.layouts.lg} {
+          min-width: 223px;
+        }
+
+        @media ${props.theme.layouts.sm} {
+          min-width: auto;
+          margin-right: 0;
+          flex-basis: 30%;
+          padding-right: 20px;
+        }
+        @media ${props.theme.layouts.largeMobile} {
+          flex-basis: 100%;
+          padding-right: 0;
+          border-radius: 10px 10px 0 0;
+          min-width: 100%;
+        }
+        a {
+          display: block;
+          height: 100%;
+          @media ${props.theme.layouts.largeMobile} {
+            border-radius: ${props.theme.borders.radius}
+              ${props.theme.borders.radius} 0 0;
+          }
+          img {
+            width: 100%;
+            border-radius: ${props.theme.borders.radius};
+            object-fit: cover;
+            height: 100%;
+            @media ${props.theme.layouts.largeMobile} {
+              border-radius: 10px 10px 0 0;
+            }
+          }
+        }
+      }
+      ${StyledPostContent} {
+        border: 1px solid ${(props) => props.theme.colors.lightest};
+        padding: 32px 30px;
+        border-radius: ${props.theme.borders.radius};
+        ${(props) => props.theme.extends.transition}
+        flex-grow: 1;
+        @media ${props.theme.layouts.sm} {
+          flex-basis: 60%;
+          padding: 32px 20px;
+        }
+
+        @media ${props.theme.layouts.largeMobile} {
+          flex-basis: 100%;
+          border-radius: 0 0 10px 10px;
+        }
+
+        ${StyledTitle} {
+          margin-bottom: 0;
+        }
+
+        ${StyledPostCat} {
+          margin-bottom: 15px;
+          ${PostCatList} {
+            display: flex;
+          }
+        }
+
+        ${StyledPostMeta} {
+          margin-top: 46px;
+          @media ${(props) => props.theme.layouts.lg} {
+            margin-top: 15px;
+          }
+          @media ${(props) => props.theme.layouts.sm} {
+            margin-top: 15px;
+          }
+          ${PostMetaDiv} {
+            @media ${(props) => props.theme.layouts.sm} {
+              margin-bottom: 15px;
+            }
+          }
+        }
+      }
+
+      &:first-child {
+        margin-top: 0 !important;
+      }
+
+      &:hover {
+        ${StyledPostContent} {
+          box-shadow: ${props.theme.shadows.primary};
+          background: ${props.theme.colors.white};
+          border: 1px solid ${props.theme.colors.white};
+        }
+        ${StyledPostThumbnail} {
+          img {
+            transform: scale(1.1);
           }
         }
       }

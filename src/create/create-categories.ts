@@ -3,6 +3,7 @@ import { getCategoryLinkWithPage } from "../utils/links";
 import * as path from "path";
 import { POSTS_PER_PAGE } from "../constants/main";
 import { IGatsbyImageData } from "gatsby-plugin-image";
+import { CategoryPreview } from "../app-types/category";
 
 export interface CreateCategoriesQueryResult {
   categories: {
@@ -16,6 +17,9 @@ export interface CreateCategoriesQueryResult {
           title: string;
           content: string;
           date: string;
+          categories: {
+            nodes: CategoryPreview[];
+          };
           author: {
             node: {
               name: string;
@@ -60,6 +64,13 @@ export const createCategories = async (
               title
               content
               date(formatString: "DD MMM YYYY", locale: "it")
+              categories {
+                nodes {
+                  name
+                  slug
+                  uri
+                }
+              }
               author {
                 node {
                   slug

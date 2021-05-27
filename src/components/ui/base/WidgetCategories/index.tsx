@@ -14,6 +14,7 @@ import Title from "../../../core/Title";
 export interface WidgetCategoriesProps {
   categorySlugs: string[];
   marginBottom?: number;
+  excludeProvided?: boolean;
 }
 
 interface WidgetCategoriesQueryResult {
@@ -99,7 +100,13 @@ const WidgetCategories = (props: WidgetCategoriesProps) => {
     <StyledWidgetCategories marginBottom={props.marginBottom}>
       <List>
         {relatedMainCategories.map((mainCategory) => {
-          return mainCategory.wpChildren.nodes.map((subCategory) => (
+          const subCategories = props.excludeProvided
+            ? mainCategory.wpChildren.nodes.filter(
+                (subCategory) => !props.categorySlugs.includes(subCategory.slug)
+              )
+            : mainCategory.wpChildren.nodes;
+
+          return subCategories.map((subCategory) => (
             <Item>
               <Inner to={subCategory.uri}>
                 <Thumbnail>
