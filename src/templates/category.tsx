@@ -30,8 +30,8 @@ export interface CategoryTemplateProps {
       skip: number;
       numberOfPages: number;
       currentPage: number;
-      newerPath: string;
-      olderPath: string;
+      newerPath?: string;
+      olderPath?: string;
     };
     parentCategory?: {
       name: string;
@@ -153,6 +153,11 @@ const CategoryTemplate = ({ pageContext }: CategoryTemplateProps) => {
                   </PostContent>
                 </ContentBlock>
               ))}
+              <PrevNextPagesArea
+                mobileMode
+                newerLink={pageContext.pagination.newerPath}
+                olderLink={pageContext.pagination.olderPath}
+              />
             </Col>
             <Col lg={4}>
               <SidebarInner>
@@ -183,7 +188,6 @@ const CategoryTemplate = ({ pageContext }: CategoryTemplateProps) => {
           </Row>
         </Container>
       </PostListArea>
-      <PrevNextPagesArea />
     </GlobalWrapper>
   );
 };
