@@ -2,13 +2,13 @@ import styled from "styled-components";
 import { SocialShareTransparent } from "../PostMeta/index.style";
 
 const StyledPostListArea = styled.div`
-  padding: 80px 0;
+  padding-top: 80px;
   color: #fff;
   @media ${(props) => props.theme.layouts.md} {
-    padding: 80px 0;
+    padding-top: 80px;
   }
   @media ${(props) => props.theme.layouts.sm} {
-    padding: 60px 0;
+    padding-top: 60px;
   }
 
   ${SocialShareTransparent} {

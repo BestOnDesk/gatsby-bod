@@ -401,7 +401,7 @@ const StyledContentBlock = styled.div<
     props.postListView &&
     css`
       display: flex;
-      @media ${props.theme.layouts.sm} {
+      @media ${(props) => props.theme.layouts.sm} {
         flex-wrap: wrap;
       }
       ${StyledPostThumbnail} {
@@ -410,24 +410,25 @@ const StyledContentBlock = styled.div<
         max-width: 295px;
 
         > a > div {
-          border-radius: ${props.theme.borders.radius};
+          border-radius: ${(props) => props.theme.borders.radius};
           overflow: hidden;
+          height: 100%;
         }
 
         img {
           transition: 0.5s;
         }
-        @media ${props.theme.layouts.lg} {
+        @media ${(props) => props.theme.layouts.lg} {
           min-width: 223px;
         }
 
-        @media ${props.theme.layouts.sm} {
+        @media ${(props) => props.theme.layouts.sm} {
           min-width: auto;
           margin-right: 0;
           flex-basis: 30%;
           padding-right: 20px;
         }
-        @media ${props.theme.layouts.largeMobile} {
+        @media ${(props) => props.theme.layouts.largeMobile} {
           flex-basis: 100%;
           padding-right: 0;
           border-radius: 10px 10px 0 0;
@@ -436,16 +437,16 @@ const StyledContentBlock = styled.div<
         a {
           display: block;
           height: 100%;
-          @media ${props.theme.layouts.largeMobile} {
-            border-radius: ${props.theme.borders.radius}
-              ${props.theme.borders.radius} 0 0;
+          @media ${(props) => props.theme.layouts.largeMobile} {
+            border-radius: ${(props) => props.theme.borders.radius}
+              ${(props) => props.theme.borders.radius} 0 0;
           }
-          img {
+          > div {
             width: 100%;
-            border-radius: ${props.theme.borders.radius};
+            border-radius: ${(props) => props.theme.borders.radius};
             object-fit: cover;
             height: 100%;
-            @media ${props.theme.layouts.largeMobile} {
+            @media ${(props) => props.theme.layouts.largeMobile} {
               border-radius: 10px 10px 0 0;
             }
           }
@@ -454,15 +455,15 @@ const StyledContentBlock = styled.div<
       ${StyledPostContent} {
         border: 1px solid ${(props) => props.theme.colors.lightest};
         padding: 32px 30px;
-        border-radius: ${props.theme.borders.radius};
+        border-radius: ${(props) => props.theme.borders.radius};
         ${(props) => props.theme.extends.transition}
         flex-grow: 1;
-        @media ${props.theme.layouts.sm} {
+        @media ${(props) => props.theme.layouts.sm} {
           flex-basis: 60%;
           padding: 32px 20px;
         }
 
-        @media ${props.theme.layouts.largeMobile} {
+        @media ${(props) => props.theme.layouts.largeMobile} {
           flex-basis: 100%;
           border-radius: 0 0 10px 10px;
         }
