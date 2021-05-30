@@ -81,7 +81,7 @@ export const createCategories = async (
                 node {
                   localFile {
                     childImageSharp {
-                      gatsbyImageData(width: 295, height: 250)
+                      gatsbyImageData(width: 549, height: 259)
                     }
                   }
                 }
