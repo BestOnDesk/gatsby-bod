@@ -20,6 +20,7 @@ import SocialShare from "../SocialShare";
 
 export interface AboutAuthorProps {
   author: AuthorPreview;
+  mainTitle?: boolean;
 }
 
 interface AboutAuthorQueryResult {
@@ -69,7 +70,7 @@ const AboutAuthor = (props: AboutAuthorProps) => {
         </Thumbnail>
         <MediaBody>
           <AuthorInfo>
-            <Title level={5}>
+            <Title level={props.mainTitle ? 1 : 5}>
               <HoverFlip to={getAuthorLink(author.slug)}>
                 {author.name}
               </HoverFlip>
