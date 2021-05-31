@@ -100,7 +100,6 @@ export interface CategoryTemplateProps {
 }
 
 const CategoryTemplate = ({ pageContext }: CategoryTemplateProps) => {
-  console.log(pageContext);
   return (
     <GlobalWrapper withLayout headerWithShadow>
       <SEO title={pageContext.category.name} description={"test"} />

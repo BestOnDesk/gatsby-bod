@@ -1,51 +1,117 @@
 import { Actions, CreatePagesArgs } from "gatsby";
-import { getCategoryLinkWithPage } from "../utils/links";
-import * as path from "path";
-import { POSTS_PER_PAGE } from "../constants/main";
 import { IGatsbyImageData } from "gatsby-plugin-image";
 import { CategoryPreview } from "../app-types/category";
+import { POSTS_PER_PAGE } from "../constants/main";
+import { getCategoryLinkWithPage } from "../utils/links";
+import path from "path";
+
+interface Post {
+  slug: string;
+  title: string;
+  content: string;
+  date: string;
+  rawDate: string;
+  categories: {
+    nodes: CategoryPreview[];
+  };
+  author: {
+    node: {
+      name: string;
+      slug: string;
+    };
+  };
+  featuredImage: {
+    node: {
+      localFile: {
+        childImageSharp: {
+          gatsbyImageData: IGatsbyImageData;
+        };
+      };
+    };
+  };
+}
+
+interface Category {
+  slug: string;
+  name: string;
+  uri: string;
+  posts: {
+    nodes: Post[];
+  };
+}
+
+interface MainCategory extends Category {
+  wpChildren: {
+    nodes: Category[];
+  };
+}
 
 export interface CreateCategoriesQueryResult {
   categories: {
-    nodes: {
-      slug: string;
-      name: string;
-      uri: string;
-      posts: {
-        nodes: {
-          slug: string;
-          title: string;
-          content: string;
-          date: string;
-          categories: {
-            nodes: CategoryPreview[];
-          };
-          author: {
-            node: {
-              name: string;
-              slug: string;
-            };
-          };
-          featuredImage: {
-            node: {
-              localFile: {
-                childImageSharp: {
-                  gatsbyImageData: IGatsbyImageData;
-                };
-              };
-            };
-          };
-        }[];
-      };
-      wpChildren: {
-        nodes: {
-          slug: string;
-          name: string;
-        }[];
-      };
-    }[];
+    nodes: MainCategory[];
   };
 }
+
+const createCategoryPages = (
+  category: Category | MainCategory,
+  posts: Post[],
+  actions: Actions,
+  parentCategory?: Category
+) => {
+  const numberOfPages = Math.ceil(posts.length / POSTS_PER_PAGE);
+
+  Array.from({ length: numberOfPages }).forEach((_, i) => {
+    const currentPath =
+      i === 0
+        ? category.uri
+        : `${getCategoryLinkWithPage(category.uri, i + 1)}`;
+    let newerPath;
+    let olderPath;
+
+    if (i === 0) {
+      newerPath = undefined;
+    } else if (i === 1) {
+      newerPath = category.uri;
+    } else {
+      newerPath = getCategoryLinkWithPage(category.uri, i);
+    }
+
+    if (i === numberOfPages - 1) {
+      olderPath = undefined;
+    } else {
+      olderPath = getCategoryLinkWithPage(category.uri, i + 2);
+    }
+
+    const parentCategoryObj = parentCategory
+      ? {
+          slug: parentCategory?.slug,
+          name: parentCategory?.name,
+          uri: parentCategory?.uri,
+        }
+      : undefined;
+
+    actions.createPage({
+      path: currentPath,
+      component: path.resolve("./src/templates/category.tsx"),
+      context: {
+        pagination: {
+          olderPath: olderPath,
+          newerPath: newerPath,
+          limit: POSTS_PER_PAGE,
+          skip: i * POSTS_PER_PAGE,
+          numberOfPages: numberOfPages,
+          currentPage: i + 1,
+        },
+        parentCategory,
+        category: category,
+        posts: posts.slice(
+          i * POSTS_PER_PAGE,
+          i * POSTS_PER_PAGE + POSTS_PER_PAGE
+        ),
+      },
+    });
+  });
+};
 
 export const createCategories = async (
   actions: Actions,
@@ -53,7 +119,13 @@ export const createCategories = async (
 ): Promise<void> => {
   const result = await graphql<CreateCategoriesQueryResult>(`
     {
-      categories: allWpCategory(filter: { slug: { ne: "uncategorized-en" } }) {
+      categories: allWpCategory(
+        sort: { fields: name, order: DESC }
+        filter: {
+          slug: { ne: "uncategorized-en" }
+          wpChildren: { nodes: { elemMatch: { count: { gt: 0 } } } }
+        }
+      ) {
         nodes {
           slug
           name
@@ -64,6 +136,7 @@ export const createCategories = async (
               title
               content
               date(formatString: "DD MMM YYYY", locale: "it")
+              rawDate: date
               categories {
                 nodes {
                   name
@@ -92,6 +165,38 @@ export const createCategories = async (
             nodes {
               slug
               name
+              uri
+              posts {
+                nodes {
+                  slug
+                  title
+                  content
+                  date(formatString: "DD MMM YYYY", locale: "it")
+                  rawDate: date
+                  categories {
+                    nodes {
+                      name
+                      slug
+                      uri
+                    }
+                  }
+                  author {
+                    node {
+                      slug
+                      name
+                    }
+                  }
+                  featuredImage {
+                    node {
+                      localFile {
+                        childImageSharp {
+                          gatsbyImageData(width: 549, height: 259)
+                        }
+                      }
+                    }
+                  }
+                }
+              }
             }
           }
         }
@@ -105,64 +210,27 @@ export const createCategories = async (
 
   result.data &&
     result.data.categories.nodes.forEach((node) => {
-      const numberOfPages = Math.ceil(node.posts.nodes.length / POSTS_PER_PAGE);
+      const posts = [...node.posts.nodes];
 
-      const parentCategoryObj = result?.data?.categories.nodes.find(
-        (category) => {
-          return category.wpChildren.nodes.some(
-            (subCategory) => subCategory.slug === node.slug
-          );
-        }
+      node.wpChildren.nodes.forEach((subCategory) => {
+        subCategory.posts.nodes.forEach((post) => {
+          if (!posts.some((checkPost) => checkPost.slug === post.slug)) {
+            posts.push(post);
+          }
+        });
+
+        createCategoryPages(
+          subCategory,
+          subCategory.posts.nodes,
+          actions,
+          node
+        );
+      });
+
+      const sortedPosts = posts.sort(
+        (a, b) => new Date(b.rawDate).getTime() - new Date(a.rawDate).getTime()
       );
 
-      const parentCategory = parentCategoryObj
-        ? {
-            slug: parentCategoryObj?.slug,
-            name: parentCategoryObj?.name,
-            uri: parentCategoryObj?.uri,
-          }
-        : undefined;
-
-      Array.from({ length: numberOfPages }).forEach((_, i) => {
-        const currentPath =
-          i === 0 ? node.uri : `${getCategoryLinkWithPage(node.uri, i + 1)}`;
-        let newerPath;
-        let olderPath;
-
-        if (i === 0) {
-          newerPath = undefined;
-        } else if (i === 1) {
-          newerPath = node.uri;
-        } else {
-          newerPath = getCategoryLinkWithPage(node.uri, i);
-        }
-
-        if (i === numberOfPages - 1) {
-          olderPath = undefined;
-        } else {
-          olderPath = getCategoryLinkWithPage(node.uri, i + 2);
-        }
-
-        actions.createPage({
-          path: currentPath,
-          component: path.resolve("./src/templates/category.tsx"),
-          context: {
-            pagination: {
-              olderPath: olderPath,
-              newerPath: newerPath,
-              limit: POSTS_PER_PAGE,
-              skip: i * POSTS_PER_PAGE,
-              numberOfPages: numberOfPages,
-              currentPage: i + 1,
-            },
-            parentCategory,
-            category: node,
-            posts: node.posts.nodes.slice(
-              i * POSTS_PER_PAGE,
-              i * POSTS_PER_PAGE + POSTS_PER_PAGE
-            ),
-          },
-        });
-      });
+      createCategoryPages(node, sortedPosts, actions);
     });
 };
