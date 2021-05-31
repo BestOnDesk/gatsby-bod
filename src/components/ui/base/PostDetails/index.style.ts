@@ -221,12 +221,16 @@ const StyledPostDetails = styled.div<{ primeLogoSrc?: string }>`
     ${media.md`
     display: block;
       `}
+
+    margin: 0 0 30px;
   }
 
   .no-desktop {
     ${media.md`
         display: none;
       `}
+
+    margin: 0 0 30px;
   }
 
   h1,
@@ -265,6 +269,11 @@ const StyledPostDetails = styled.div<{ primeLogoSrc?: string }>`
   div.wp-block-image img {
     border-radius: ${(props) => props.theme.borders.radius};
     margin-bottom: 30px;
+  }
+
+  pre.pre-black {
+    background: ${(props) => props.theme.colors.lightest};
+    word-break: break-word !important;
   }
 `;
 
