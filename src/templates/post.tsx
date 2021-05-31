@@ -72,6 +72,7 @@ export interface PostTemplateProps {
 
 const PostTemplate = ({ data, pageContext }: PostTemplateProps) => {
   const post = data.post;
+
   return (
     <GlobalWrapper withLayout headerWithShadow headerSticky>
       <SEO title={post.seo.title} description={post.seo.metaDesc} />
