@@ -13,6 +13,7 @@ import Title from "../../../core/Title";
 
 export interface WidgetCategoriesProps {
   categorySlugs: string[];
+  childrenCategories?: boolean;
   marginBottom?: number;
   excludeProvided?: boolean;
 }
@@ -86,7 +87,7 @@ const WidgetCategories = (props: WidgetCategoriesProps) => {
     }
   `);
 
-  const relatedMainCategories = categories.nodes.filter((mainCategory) => {
+  let selectedCategories = categories.nodes.filter((mainCategory) => {
     const subCategoriesSlugs = mainCategory.wpChildren.nodes.map(
       (subCategory) => subCategory.slug
     );
@@ -96,10 +97,16 @@ const WidgetCategories = (props: WidgetCategoriesProps) => {
       .reduce((acc, curr) => acc || curr);
   });
 
+  if (props.childrenCategories) {
+    selectedCategories = categories.nodes.filter((mainCategory) =>
+      props.categorySlugs.includes(mainCategory.slug)
+    );
+  }
+
   return (
     <StyledWidgetCategories marginBottom={props.marginBottom}>
       <List>
-        {relatedMainCategories.map((mainCategory) => {
+        {selectedCategories.map((mainCategory) => {
           const subCategories = props.excludeProvided
             ? mainCategory.wpChildren.nodes.filter(
                 (subCategory) => !props.categorySlugs.includes(subCategory.slug)

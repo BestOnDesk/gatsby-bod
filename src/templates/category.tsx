@@ -162,6 +162,7 @@ const CategoryTemplate = ({ pageContext }: CategoryTemplateProps) => {
               <SidebarInner>
                 <WidgetCategories
                   categorySlugs={[pageContext.category.slug]}
+                  childrenCategories={!pageContext.parentCategory}
                   excludeProvided
                   marginBottom={30}
                 />
