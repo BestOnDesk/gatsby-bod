@@ -12,7 +12,9 @@ module.exports = {
     {
       resolve: "gatsby-source-wordpress",
       options: {
-        url: ***REMOVED***,
+        url:
+          process.env.GATSBY_WP_SOURCE_URL ||
+          ***REMOVED***,
         schema: {
           timeout: 3600000,
           requestConcurrency: 150,
