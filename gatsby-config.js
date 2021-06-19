@@ -82,7 +82,7 @@ module.exports = {
       options: {
         filter: (node) => node.internal.type === `WpPost`,
         source: (node) => node.content,
-        contextFields: [],
+        contextFields: ["slug"],
         fragment: true,
         space: `html`,
         emitParseErrors: false,
