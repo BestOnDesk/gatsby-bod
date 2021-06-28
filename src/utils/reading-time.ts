@@ -1,4 +1,4 @@
-import { stripWhiteSpace } from "./string";
+import { stripHtml, stripWhiteSpace } from "./string";
 
 const WORDS_PER_MIN = 275; //wpm
 const IMAGE_READ_TIME = 12;
@@ -82,7 +82,10 @@ const humanizeTime = (time: number): string => {
 
 const getReadingTimeString = (string: string): string => {
   const { time: imageTime, count: imageCount } = imageReadTime(string);
-  const strippedString = stripTags(stripWhiteSpace(string));
+  const strippedString = stripHtml(stripWhiteSpace(string))
+    .replace(/\.\.\./g, " ")
+    .trim() // Remove HTML
+    .replace(/\s+/g, " ");
   const {
     characterCount,
     otherLanguageTime,

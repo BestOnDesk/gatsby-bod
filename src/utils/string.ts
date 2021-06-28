@@ -1,5 +1,9 @@
+import { stripHtml as stringStripHtml } from "string-strip-html";
+
 const stripHtml = (string: string): string => {
-  return string.replace(/(<([^>]+)>)/gi, " ").trim();
+  return stringStripHtml(string, {
+    stripTogetherWithTheirContents: ["script", "style"],
+  }).result.trim();
 };
 
 const stripMultipleSpaces = (string: string): string => {

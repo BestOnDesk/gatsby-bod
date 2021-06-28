@@ -8,16 +8,16 @@ import {
   MetabarBlock,
   MetabarIcon,
 } from "./index.style";
-import Search from "components/ui/base/Search";
 import { useDispatch } from "react-redux";
 import { openMenu } from "../../../../../../state/actions/mobile";
+import SearchAutocomplete from "../../../SearchAutocomplete";
 
 const HeaderSearch = () => {
   const dispatch = useDispatch();
   return (
     <HeaderSearchDiv>
       <HeaderSearchForm>
-        <Search />
+        <SearchAutocomplete />
       </HeaderSearchForm>
       <MetabarBlock>
         <MetabarIcon>

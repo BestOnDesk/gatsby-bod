@@ -7,8 +7,6 @@ const Search = styled.div`
   display: inline-block;
 `;
 
-const SearchIcon = styled.i``;
-
 const SearchButton = styled.button`
   position: absolute;
   left: 0;
@@ -35,4 +33,4 @@ const SearchInput = styled.input`
   font-size: 14px !important;
 `;
 
-export { Search, SearchButton, SearchInput, SearchIcon };
+export { Search, SearchButton, SearchInput };

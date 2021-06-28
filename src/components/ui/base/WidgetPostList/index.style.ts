@@ -27,6 +27,6 @@ const WidgetTitle = styled.h5`
   text-align: center;
 `;
 
-const PostMediumBlock = styled.h5``;
+const PostMediumBlock = styled.div``;
 
 export { StyledWidgetPostList, WidgetTitle, PostMediumBlock };

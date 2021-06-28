@@ -1,4 +1,5 @@
 const path = require("path");
+require("dotenv").config();
 
 const url = process.env.GATSBY_SITE_URL || ***REMOVED***;
 
@@ -99,6 +100,75 @@ module.exports = {
       __key: "videos",
     },
     "gatsby-plugin-image",
+    {
+      resolve: `gatsby-plugin-algolia`,
+      options: {
+        appId: process.env.GATSBY_ALGOLIA_APP_ID,
+        apiKey: process.env.ALGOLIA_ADMIN_KEY,
+        queries: [
+          {
+            query: `{
+              allWpPost {
+                nodes {
+                  slug
+                  title
+                  content
+                  date(formatString: "DD MMM YYYY", locale: "it")
+                  modified
+                  seo {
+                    metaDesc
+                  }
+                  featuredImage {
+                    node {
+                      localFile {
+                        childImageSharp {
+                          gatsbyImageData
+                        }
+                      }
+                    }
+                  }
+                  tags {
+                    nodes {
+                      name
+                    }
+                  }
+                }
+              }
+            }`,
+            transformer: ({ data }) =>
+              data.allWpPost.nodes.map((node) => {
+                const content = require("string-strip-html").stripHtml(
+                  node.content,
+                  {
+                    stripTogetherWithTheirContents: ["script", "style"],
+                  }
+                ).result;
+                return {
+                  objectID: node.slug,
+                  slug: node.slug,
+                  title: node.title,
+                  desc: node.seo.metaDesc,
+                  modified: node.modified,
+                  date: node.date,
+                  content: content
+                    .replace(/\.\.\./g, " ")
+                    .trim() // Remove HTML
+                    .replace(/\s+/g, " "),
+                  tags: node.tags.nodes.map((node) => node.name),
+                  image:
+                    node.featuredImage.node.localFile.childImageSharp
+                      .gatsbyImageData,
+                  matchFields: ["slug", "modified"],
+                };
+              }),
+            indexName: process.env.GATSBY_ALGOLIA_INDEX_NAME,
+            settings: {},
+          },
+        ],
+        enablePartialUpdates: true,
+        matchFields: ["slug", "modified"],
+      },
+    },
     {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
