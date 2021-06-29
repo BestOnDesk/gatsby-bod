@@ -14,20 +14,16 @@ executors:
 default:
   common-jobs: &common-jobs
     jobs:
-      - danger:
-          context: ci
       - deploy-master:
           context:
-            - ci
-            - landing
+            - website
           filters:
             branches:
               only:
                 - master
       - deploy-staging:
           context:
-            - ci
-            - landing
+            - website
           filters:
             branches:
               only:
@@ -70,28 +66,6 @@ default:
       - run:
           name: Invalidate cache
           command: aws cloudfront create-invalidation --distribution-id $AWS_CDN_DISTRIBUTION_ID --paths "/*"
-
-jobs:
-  danger:
-    working_directory: /mnt/ramdisk
-    executor: node
-    steps:
-      - checkout
-      - restore_cache:
-          name: Restore Yarn Package Cache
-          keys:
-            - yarn-packages-v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
-      - run:
-          name: Install dependencies
-          command: yarn install --frozen-lockfile --cache-folder ~/.cache/yarn
-      - save_cache:
-          name: Save Yarn Package Cache
-          key: yarn-packages-v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
-          paths:
-            - ~/.cache/yarn
-      - run:
-          name: Run danger
-          command: yarn danger ci
 
   deploy-master:
     environment:
