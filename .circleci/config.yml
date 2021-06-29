@@ -1,14 +1,14 @@
 version: 2.1
 
 orbs:
-  aws-cli: circleci/aws-cli@0.1.20
-  aws-s3: circleci/aws-s3@1.0.15
+  aws-cli: circleci/aws-cli@2.0.3
+  aws-s3: circleci/aws-s3@2.0.0
 
 executors:
   node:
     docker:
       - image: circleci/python:3.7-node
-    resource_class: large
+    resource_class: medium
 
 
 default:
@@ -16,6 +16,7 @@ default:
     jobs:
       - deploy-master:
           context:
+            - ci
             - website
           filters:
             branches:
@@ -23,6 +24,7 @@ default:
                 - master
       - deploy-staging:
           context:
+            - ci
             - website
           filters:
             branches:
