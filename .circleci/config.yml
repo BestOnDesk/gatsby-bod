@@ -1,0 +1,125 @@
+version: 2.1
+
+orbs:
+  aws-cli: circleci/aws-cli@0.1.20
+  aws-s3: circleci/aws-s3@1.0.15
+
+executors:
+  node:
+    docker:
+      - image: circleci/python:3.7-node
+    resource_class: large
+
+
+default:
+  common-jobs: &common-jobs
+    jobs:
+      - danger:
+          context: ci
+      - deploy-master:
+          context:
+            - ci
+            - landing
+          filters:
+            branches:
+              only:
+                - master
+      - deploy-staging:
+          context:
+            - ci
+            - landing
+          filters:
+            branches:
+              only:
+                - staging
+  common-deploy: &common-deploy
+    executor: node
+    working_directory: /mnt/ramdisk
+    steps:
+      - checkout
+      - aws-cli/setup
+      - run: date +%F > date
+      - restore_cache:
+          name: Restore Yarn Package Cache
+          keys:
+            - yarn-packages-v1-{{ .Branch }}-{{ checksum "date" }}-{{ checksum "yarn.lock" }}
+      - run:
+          name: Install dependencies
+          command: yarn install --frozen-lockfile --cache-folder /mnt/ramdisk/.cache/yarn
+      - save_cache:
+          name: Save Yarn Package Cache
+          key: yarn-packages-v1-{{ .Branch }}-{{ checksum "date" }}-{{ checksum "yarn.lock" }}
+          paths:
+            - /mnt/ramdisk/.cache/yarn
+      - restore_cache:
+          name: Restore Build Cache
+          keys:
+            - build-packages-v1-{{ .Branch }}-{{ checksum "date" }}-{{ checksum "yarn.lock" }}
+      - run:
+          name: Build
+          command: yarn build
+      - save_cache:
+          name: Save Build Cache
+          key: build-packages-v1-{{ .Branch }}-{{ checksum "date" }}-{{ checksum "yarn.lock" }}
+          paths:
+            - /mnt/ramdisk/.cache
+            - /mnt/ramdisk/public
+      - run:
+          name: Deploy
+          command: yarn deploy
+      - run:
+          name: Invalidate cache
+          command: aws cloudfront create-invalidation --distribution-id $AWS_CDN_DISTRIBUTION_ID --paths "/*"
+
+jobs:
+  danger:
+    working_directory: /mnt/ramdisk
+    executor: node
+    steps:
+      - checkout
+      - restore_cache:
+          name: Restore Yarn Package Cache
+          keys:
+            - yarn-packages-v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
+      - run:
+          name: Install dependencies
+          command: yarn install --frozen-lockfile --cache-folder ~/.cache/yarn
+      - save_cache:
+          name: Save Yarn Package Cache
+          key: yarn-packages-v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
+      - run:
+          name: Run danger
+          command: yarn danger ci
+
+  deploy-master:
+    environment:
+      AWS_S3_BUCKET: bestondesk.com
+      AWS_CDN_DISTRIBUTION_ID: ***REMOVED***
+      GATSBY_ACTIVE_ENV: production
+      GATSBY_SITE_URL: "https://bestondesk.com"
+    <<: *common-deploy
+
+  deploy-staging:
+    environment:
+      AWS_S3_BUCKET: staging.bestondesk.com
+      AWS_CDN_DISTRIBUTION_ID: ***REMOVED***
+      GATSBY_ACTIVE_ENV: staging
+      GATSBY_SITE_URL: ***REMOVED***
+    <<: *common-deploy
+
+workflows:
+  version: 2
+  nightly:
+    <<: *common-jobs
+    triggers:
+      - schedule:
+          cron: "0 4 * * *"
+          filters:
+            branches:
+              only:
+                - master
+                - staging
+  release:
+    <<: *common-jobs
