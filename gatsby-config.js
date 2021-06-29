@@ -93,14 +93,6 @@ module.exports = {
         plugins: [],
       },
     },
-    {
-      resolve: "gatsby-source-filesystem",
-      options: {
-        name: "videos",
-        path: `${__dirname}/src/media/videos/`,
-      },
-      __key: "videos",
-    },
     "gatsby-plugin-image",
     {
       resolve: `gatsby-plugin-algolia`,
