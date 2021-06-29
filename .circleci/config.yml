@@ -67,6 +67,7 @@ default:
           name: Invalidate cache
           command: aws cloudfront create-invalidation --distribution-id $AWS_CDN_DISTRIBUTION_ID --paths "/*"
 
+jobs:
   deploy-master:
     environment:
       AWS_S3_BUCKET: bestondesk.com
