@@ -172,6 +172,16 @@ module.exports = {
         display: "swap",
       },
     },
-    "gatsby-plugin-netlify",
+    {
+      resolve: `gatsby-plugin-s3`,
+      options: {
+        bucketName: process.env.AWS_S3_BUCKET || ***REMOVED***,
+        protocol: "https",
+        hostname: process.env.AWS_S3_BUCKET || ***REMOVED***,
+        generateMatchPathRewrites: false,
+        generateRoutingRules: true,
+        generateRedirectObjectsForPermanentRedirects: true,
+      },
+    },
   ],
 };
