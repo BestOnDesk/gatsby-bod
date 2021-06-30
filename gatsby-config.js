@@ -183,5 +183,6 @@ module.exports = {
         generateRedirectObjectsForPermanentRedirects: true,
       },
     },
+    "gatsby-plugin-gatsby-cloud",
   ],
 };
