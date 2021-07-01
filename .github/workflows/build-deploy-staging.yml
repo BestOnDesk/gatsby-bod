@@ -1,0 +1,34 @@
+name: build-deploy-staging
+
+on:
+  push:
+    branches:
+      - 'staging'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout project
+        uses: actions/checkout@v2
+
+      - name: Use Node.js
+        uses: actions/setup-node@v2
+
+      - name: Install dependencies
+        run: yarn --frozen-lockfile
+
+      - name: Build Gatsby
+        run: yarn build
+
+      - name: Deploy
+        uses: reggionick/s3-deploy@v3
+        with:
+          folder: build
+          bucket: ${{ secrets.AWS_S3_BUCKET_STAGING }}
+          bucket-region: ${{ secrets.AWS_S3_BUCKET_REGION }}
+          dist-id: ${{ secrets.AWS_CLOUDFRONT_DISTRIBUTION_ID_STAGING }}
+          invalidation: /
+          delete-removed: true
+          no-cache: true
+          private: true
