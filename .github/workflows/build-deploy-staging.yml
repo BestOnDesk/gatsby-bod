@@ -8,12 +8,52 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    env:
+      NODE_ENV: staging
+      GATSBY_ACTIVE_ENV: staging
+      GATSBY_SITE_URL: 'https://staging.bestondesk.com'
+      ALGOLIA_ADMIN_KEY: ${{ secrets.ALGOLIA_ADMIN_KEY }}
+      GATSBY_ALGOLIA_APP_ID: ${{ secrets.GATSBY_ALGOLIA_APP_ID }}
+      GATSBY_ALGOLIA_SEARCH_KEY: ${{ secrets.GATSBY_ALGOLIA_SEARCH_KEY }}
+      GATSBY_ALGOLIA_INDEX_NAME: ${{ secrets.GATSBY_ALGOLIA_INDEX_NAME }}
+      GATSBY_WP_SOURCE_URL: ${{ secrets.GATSBY_WP_SOURCE_URL }}
     steps:
       - name: Checkout project
         uses: actions/checkout@v2
 
       - name: Use Node.js
         uses: actions/setup-node@v2
+
+      - name: Set Yarn cache directory
+        id: yarn-cache-dir
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+
+      - name: Use Yarn cache
+        uses: actions/cache@v2
+        id: yarn-cache
+        with:
+          path: ${{ steps.yarn-cache-dir.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - name: Cache Gatsby Cache Folder
+        uses: actions/cache@v2
+        id: gatsby-cache-folder
+        with:
+          path: .cache
+          key: ${{ runner.os }}-cache-gatsby
+          restore-keys: |
+            ${{ runner.os }}-cache-gatsby
+
+      - name: Cache Gatsby Public Folder
+        uses: actions/cache@v2
+        id: gatsby-public-folder
+        with:
+          path: public/
+          key: ${{ runner.os }}-public-gatsby
+          restore-keys: |
+            ${{ runner.os }}-public-gatsby
 
       - name: Install dependencies
         run: yarn --frozen-lockfile
