@@ -10,7 +10,7 @@ import Title from "../../../../core/Title";
 import { Link } from "gatsby";
 import { IGatsbyImageData } from "gatsby-plugin-image";
 import PostMeta from "../../PostMeta";
-import { getReadingTimeString } from "../../../../../utils/reading-time";
+import { humanizeTime } from "../../../../../utils/reading-time";
 
 const Hits = (props: StateResultsProvided) => {
   if (!props.searchResults || !props.searchResults.query) {
@@ -38,7 +38,7 @@ const Hits = (props: StateResultsProvided) => {
               </Title>
               <PostMeta
                 date={hit.date}
-                readingTime={getReadingTimeString(hit.content)}
+                readingTime={humanizeTime(parseFloat(hit.readingTime))}
                 postSlug={hit.slug}
                 noMargin
               />

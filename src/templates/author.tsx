@@ -14,7 +14,7 @@ import PostCat from "../components/ui/base/ContentBlock/PostContent/PostCat";
 import Title from "../components/core/Title";
 import { Link } from "gatsby";
 import PostMeta from "../components/ui/base/PostMeta";
-import { getReadingTimeString } from "../utils/reading-time";
+import { humanizeTime } from "../utils/reading-time";
 import PrevNextPagesArea from "../components/ui/base/PrevNextPagesArea";
 import { SidebarInner } from "../components/ui/base/WidgetCategories/index.style";
 import WidgetSearch from "../components/ui/base/WidgetSearch";
@@ -40,7 +40,6 @@ export interface AuthorTemplateProps {
     posts: {
       slug: string;
       title: string;
-      content: string;
       date: string;
       categories: {
         nodes: CategoryPreview[];
@@ -59,6 +58,9 @@ export interface AuthorTemplateProps {
             };
           };
         };
+      };
+      seo: {
+        readingTime: number;
       };
     }[];
   };
@@ -93,7 +95,7 @@ const AuthorTemplate = ({ pageContext }: AuthorTemplateProps) => {
                     </Title>
                     <PostMeta
                       date={post.date}
-                      readingTime={getReadingTimeString(post.content)}
+                      readingTime={humanizeTime(post.seo.readingTime)}
                       postSlug={post.slug}
                       author={post.author.node}
                       noAuthorImage

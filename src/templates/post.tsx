@@ -10,7 +10,7 @@ import Title from "../components/core/Title";
 import { CategoryPreview } from "../app-types/category";
 import PostMeta from "../components/ui/base/PostMeta";
 import { AuthorPreview } from "../app-types/author";
-import { getReadingTimeString } from "../utils/reading-time";
+import { humanizeTime } from "../utils/reading-time";
 import PostDetails from "../components/ui/base/PostDetails";
 import { IGatsbyImageData } from "gatsby-plugin-image";
 import { graphql } from "gatsby";
@@ -33,10 +33,10 @@ export interface PostTemplateProps {
       slug: string;
       title: string;
       date: string;
-      content: string;
       seo: {
         title: string;
         metaDesc: string;
+        readingTime: number;
         schema: {
           raw: string;
         };
@@ -91,7 +91,7 @@ const PostTemplate = ({ data, pageContext }: PostTemplateProps) => {
                           <PostMeta
                             date={post.date}
                             author={post.author.node}
-                            readingTime={getReadingTimeString(post.content)}
+                            readingTime={humanizeTime(post.seo.readingTime)}
                             postSlug={post.slug}
                             withShareButtons
                           />
@@ -109,7 +109,7 @@ const PostTemplate = ({ data, pageContext }: PostTemplateProps) => {
                     .gatsbyImageData
                 }
               />
-              <PostDetails content={post.content} ast={data.rehype.htmlAst} />
+              <PostDetails ast={data.rehype.htmlAst} />
               <TagsArea tags={post.tags.nodes} />
               <AboutAuthor author={post.author.node} />
             </Col>
@@ -159,10 +159,10 @@ export const query = graphql`
       slug
       title
       date(formatString: "DD MMM YYYY", locale: "it")
-      content
       seo {
         title
         metaDesc
+        readingTime
         schema {
           raw
         }

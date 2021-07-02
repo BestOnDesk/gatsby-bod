@@ -4,7 +4,6 @@ import SEO from "../components/core/SEO";
 import { IGatsbyImageData } from "gatsby-plugin-image";
 import BreadcrumbArea from "../components/ui/base/BreadcrumbArea";
 import PostListArea from "../components/ui/base/PostListArea";
-import { AuthorPreview } from "../app-types/author";
 import { CategoryPreview } from "../app-types/category";
 import { Col, Container, Row } from "styled-bootstrap-grid";
 import { SidebarInner } from "../components/ui/base/WidgetCategories/index.style";
@@ -19,7 +18,7 @@ import PostContent from "../components/ui/base/ContentBlock/PostContent";
 import PostCat from "../components/ui/base/ContentBlock/PostContent/PostCat";
 import Title from "../components/core/Title";
 import PostMeta from "../components/ui/base/PostMeta";
-import { getReadingTimeString } from "../utils/reading-time";
+import { humanizeTime } from "../utils/reading-time";
 import { Link } from "gatsby";
 import PrevNextPagesArea from "components/ui/base/PrevNextPagesArea";
 
@@ -42,29 +41,6 @@ export interface CategoryTemplateProps {
       uri: string;
       name: string;
       slug: string;
-      posts: {
-        nodes: {
-          slug: string;
-          title: string;
-          content: string;
-          date: string;
-          categories: {
-            nodes: CategoryPreview[];
-          };
-          author: {
-            node: AuthorPreview;
-          };
-          featuredImage: {
-            node: {
-              localFile: {
-                childImageSharp: {
-                  gatsbyImageData: IGatsbyImageData;
-                };
-              };
-            };
-          };
-        }[];
-      };
       wpChildren: {
         nodes: {
           slug: string;
@@ -75,7 +51,6 @@ export interface CategoryTemplateProps {
     posts: {
       slug: string;
       title: string;
-      content: string;
       date: string;
       categories: {
         nodes: CategoryPreview[];
@@ -94,6 +69,9 @@ export interface CategoryTemplateProps {
             };
           };
         };
+      };
+      seo: {
+        readingTime: number;
       };
     }[];
   };
@@ -143,7 +121,7 @@ const CategoryTemplate = ({ pageContext }: CategoryTemplateProps) => {
                     </Title>
                     <PostMeta
                       date={post.date}
-                      readingTime={getReadingTimeString(post.content)}
+                      readingTime={humanizeTime(post.seo.readingTime)}
                       postSlug={post.slug}
                       author={post.author.node}
                       noAuthorImage

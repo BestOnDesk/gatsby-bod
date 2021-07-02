@@ -8,7 +8,6 @@ import path from "path";
 interface Post {
   slug: string;
   title: string;
-  content: string;
   date: string;
   rawDate: string;
   categories: {
@@ -28,6 +27,9 @@ interface Post {
         };
       };
     };
+  };
+  seo: {
+    readingTime: number;
   };
 }
 
@@ -90,6 +92,9 @@ const createCategoryPages = (
         }
       : undefined;
 
+    //@ts-ignore
+    delete category.posts;
+
     actions.createPage({
       path: currentPath,
       component: path.resolve("./src/templates/category.tsx"),
@@ -134,7 +139,6 @@ export const createCategories = async (
             nodes {
               slug
               title
-              content
               date(formatString: "DD MMM YYYY", locale: "it")
               rawDate: date
               categories {
@@ -159,6 +163,9 @@ export const createCategories = async (
                   }
                 }
               }
+              seo {
+                readingTime
+              }
             }
           }
           wpChildren {
@@ -170,7 +177,6 @@ export const createCategories = async (
                 nodes {
                   slug
                   title
-                  content
                   date(formatString: "DD MMM YYYY", locale: "it")
                   rawDate: date
                   categories {
@@ -194,6 +200,9 @@ export const createCategories = async (
                         }
                       }
                     }
+                  }
+                  seo {
+                    readingTime
                   }
                 }
               }

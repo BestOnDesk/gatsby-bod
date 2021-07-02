@@ -14,7 +14,6 @@ export interface PostDetailsQueryResult {
 }
 
 export interface PostDetailsProps {
-  content: string;
   ast: any;
 }
 

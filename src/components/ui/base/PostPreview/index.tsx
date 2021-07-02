@@ -9,7 +9,7 @@ import {
 } from "./index.style";
 import Title from "../../../core/Title";
 import PostMeta from "../PostMeta";
-import { getReadingTimeString } from "../../../../utils/reading-time";
+import { humanizeTime } from "../../../../utils/reading-time";
 import { getPostLink } from "../../../../utils/links";
 
 export interface PostPreviewQueryResult {
@@ -17,10 +17,10 @@ export interface PostPreviewQueryResult {
     nodes: {
       slug: string;
       title: string;
-      content: string;
       date: string;
       seo: {
         metaDesc: string;
+        readingTime: number;
       };
       featuredImage: {
         node: {
@@ -54,10 +54,10 @@ const PostPreview = (props: any) => {
         nodes {
           slug
           title
-          content
           date(formatString: "DD MMM YYYY", locale: "it")
           seo {
             metaDesc
+            readingTime
           }
           featuredImage {
             node {
@@ -114,7 +114,7 @@ const PostPreview = (props: any) => {
               <PostMeta
                 date={post.date}
                 author={post.author.node}
-                readingTime={getReadingTimeString(post.content)}
+                readingTime={humanizeTime(post.seo.readingTime)}
                 postSlug={post.slug}
                 withShareButtons
               />

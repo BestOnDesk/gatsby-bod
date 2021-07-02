@@ -8,7 +8,6 @@ import path from "path";
 interface Post {
   slug: string;
   title: string;
-  content: string;
   date: string;
   rawDate: string;
   categories: {
@@ -28,6 +27,9 @@ interface Post {
         };
       };
     };
+  };
+  seo: {
+    readingTime: number;
   };
 }
 
@@ -71,7 +73,6 @@ export const createAuthors = async (
             nodes {
               slug
               title
-              content
               date(formatString: "DD MMM YYYY", locale: "it")
               categories {
                 nodes {
@@ -94,6 +95,9 @@ export const createAuthors = async (
                     }
                   }
                 }
+              }
+              seo {
+                readingTime
               }
             }
           }

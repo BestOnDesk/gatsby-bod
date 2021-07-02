@@ -12,7 +12,7 @@ import { getPostLink } from "../../../../utils/links";
 import PostContent from "../ContentBlock/PostContent";
 import Title from "../../../core/Title";
 import PostMeta from "../PostMeta";
-import { getReadingTimeString } from "../../../../utils/reading-time";
+import { humanizeTime } from "../../../../utils/reading-time";
 
 export interface WidgetPostListProps {
   title: string;
@@ -28,8 +28,10 @@ interface WidgetPostListQueryResult {
     nodes: {
       title: string;
       date: string;
-      content: string;
       slug: string;
+      seo: {
+        readingTime: number;
+      };
       featuredImage: {
         node: {
           localFile: {
@@ -50,8 +52,10 @@ const WidgetPostList = (props: WidgetPostListProps) => {
         nodes {
           title
           date(formatString: "DD MMM YYYY", locale: "it")
-          content
           slug
+          seo {
+            readingTime
+          }
           featuredImage {
             node {
               localFile {
@@ -103,7 +107,7 @@ const WidgetPostList = (props: WidgetPostListProps) => {
               </Title>
               <PostMeta
                 date={post.date}
-                readingTime={getReadingTimeString(post.content)}
+                readingTime={humanizeTime(post.seo.readingTime)}
                 postSlug={post.slug}
                 noMargin
               />

@@ -106,11 +106,11 @@ module.exports = {
                 nodes {
                   slug
                   title
-                  content
                   date(formatString: "DD MMM YYYY", locale: "it")
                   modified
                   seo {
                     metaDesc
+                    readingTime
                   }
                   featuredImage {
                     node {
@@ -152,6 +152,7 @@ module.exports = {
                   image:
                     node.featuredImage.node.localFile.childImageSharp
                       .gatsbyImageData,
+                  readingTime: node.readingTime,
                   matchFields: ["slug", "modified"],
                 };
               }),
