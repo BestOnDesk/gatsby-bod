@@ -96,4 +96,4 @@ const getReadingTimeString = (string: string): string => {
   return humanizeTime(imageTime + wordTime);
 };
 
-export { getReadingTimeString };
+export { getReadingTimeString, humanizeTime };

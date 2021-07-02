@@ -2,7 +2,7 @@ import React from "react";
 import { PostExtendedPreview } from "../../../../app-types/post";
 import { graphql, useStaticQuery } from "gatsby";
 import FeaturedPost from "../../base/FeaturedPost";
-import { getReadingTimeString } from "../../../../utils/reading-time";
+import { humanizeTime } from "../../../../utils/reading-time";
 
 export interface HomeFeaturedPostQueryProps {
   posts: {
@@ -40,7 +40,7 @@ const HomeFeaturedPost = (props: HomeFeaturedPostProps) => {
             image:
               leftPost.featuredImage.node.localFile.childImageSharp
                 .gatsbyImageData,
-            readingTime: getReadingTimeString(leftPost.content),
+            readingTime: humanizeTime(leftPost.seo.readingTime),
             author: {
               name: leftPost.author.node.name,
               slug: leftPost.author.node.slug,
@@ -54,7 +54,7 @@ const HomeFeaturedPost = (props: HomeFeaturedPostProps) => {
             image:
               rightPost.featuredImage.node.localFile.childImageSharp
                 .gatsbyImageData,
-            readingTime: getReadingTimeString(rightPost.content),
+            readingTime: humanizeTime(leftPost.seo.readingTime),
             author: {
               name: rightPost.author.node.name,
               slug: rightPost.author.node.slug,

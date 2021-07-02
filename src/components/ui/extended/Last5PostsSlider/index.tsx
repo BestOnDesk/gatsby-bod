@@ -1,7 +1,7 @@
 import React from "react";
 import { graphql, useStaticQuery } from "gatsby";
 import PostsSlider, { PostSliderPost } from "../../base/PostsSlider";
-import { getReadingTimeString } from "../../../../utils/reading-time";
+import { humanizeTime } from "../../../../utils/reading-time";
 import { PostExtendedPreview } from "../../../../app-types/post";
 
 export interface Last5PostsSliderQueryProps {
@@ -27,7 +27,7 @@ const Last5PostsSlider = () => {
       slug: queryPost.slug,
       image:
         queryPost.featuredImage.node.localFile.childImageSharp.gatsbyImageData,
-      readingTime: getReadingTimeString(queryPost.content),
+      readingTime: humanizeTime(queryPost.seo.readingTime),
       author: {
         name: queryPost.author.node.name,
         slug: queryPost.author.node.slug,

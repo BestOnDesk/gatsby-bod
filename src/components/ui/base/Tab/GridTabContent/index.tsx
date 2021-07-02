@@ -15,19 +15,22 @@ import PostCat from "../../ContentBlock/PostContent/PostCat";
 import Title from "../../../../core/Title";
 import PostMeta from "../../PostMeta";
 import { AuthorPreview } from "../../../../../app-types/author";
-import { getReadingTimeString } from "../../../../../utils/reading-time";
+import { humanizeTime } from "../../../../../utils/reading-time";
 import { Link } from "gatsby";
 import ContentBlock from "../../ContentBlock";
 
 interface GridTabContentCategory {
   slug: string;
   name: string;
+  uri: string;
   posts: {
     nodes: {
       date: string;
       slug: string;
       title: string;
-      content: string;
+      seo: {
+        readingTime: number;
+      };
       author: {
         node: AuthorPreview;
       };
@@ -77,7 +80,7 @@ const getContentBlock = (
     />
     <PostGridContent>
       <PostContent>
-        <PostCat categories={[{ slug: category.slug, name: category.name }]} />
+        <PostCat categories={[{ uri: category.uri, name: category.name }]} />
         <Title level={3}>
           <Link to={getPostLink(category.posts.nodes[index].slug)}>
             {category.posts.nodes[index].title}
@@ -87,8 +90,8 @@ const getContentBlock = (
           <PostMeta
             date={category.posts.nodes[index].date}
             author={category.posts.nodes[index].author.node}
-            readingTime={getReadingTimeString(
-              category.posts.nodes[index].content
+            readingTime={humanizeTime(
+              category.posts.nodes[index].seo.readingTime
             )}
             postSlug={category.posts.nodes[index].slug}
             withShareButtons

@@ -15,11 +15,13 @@ interface TabAreaQueryResult {
   categories: {
     nodes: {
       slug: string;
+      uri: string;
       name: string;
       wpChildren: {
         nodes: {
           slug: string;
           name: string;
+          uri: string;
           posts: {
             nodes: {
               date: string;
@@ -54,10 +56,12 @@ const TabArea = (props: TabAreaProps) => {
       ) {
         nodes {
           slug
+          uri
           name
           wpChildren {
             nodes {
               slug
+              uri
               name
               posts {
                 nodes {

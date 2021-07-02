@@ -22,12 +22,16 @@ interface PostGridQueryProps {
         nodes: {
           slug: string;
           name: string;
+          uri: string;
           posts: {
             nodes: {
               date: string;
               slug: string;
               title: string;
               content: string;
+              seo: {
+                readingTime: number;
+              };
               author: {
                 node: AuthorPreview;
               };
@@ -70,6 +74,7 @@ const PostGridArea = (props: PostGridAreaProps) => {
         nodes {
           slug
           name
+          uri
           wpChildren {
             nodes {
               slug
@@ -79,7 +84,9 @@ const PostGridArea = (props: PostGridAreaProps) => {
                   date(formatString: "DD MMM YYYY", locale: "it")
                   slug
                   title
-                  content
+                  seo {
+                    readingTime
+                  }
                   author {
                     node {
                       ...AuthorPreviewFragment

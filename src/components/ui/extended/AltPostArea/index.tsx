@@ -13,13 +13,12 @@ import PostContent from "../../base/ContentBlock/PostContent";
 import PostCat from "../../base/ContentBlock/PostContent/PostCat";
 import Title from "../../../core/Title";
 import PostMeta from "../../base/PostMeta";
-import { getReadingTimeString } from "../../../../utils/reading-time";
+import { humanizeTime } from "../../../../utils/reading-time";
 
 export interface AltPostAreaQueryResult {
   posts: {
     nodes: {
       title: string;
-      content: string;
       date: string;
       slug: string;
       bigImage: {
@@ -46,6 +45,9 @@ export interface AltPostAreaQueryResult {
       categories: {
         nodes: CategoryPreview[];
       };
+      seo: {
+        readingTime: number;
+      };
     }[];
   };
 }
@@ -67,7 +69,6 @@ const AltPostArea = () => {
       ) {
         nodes {
           title
-          content
           slug
           date(formatString: "DD MMM YYYY", locale: "it")
           bigImage: featuredImage {
@@ -97,6 +98,9 @@ const AltPostArea = () => {
             nodes {
               ...CategoryPreviewFragment
             }
+          }
+          seo {
+            readingTime
           }
         }
       }
@@ -128,7 +132,7 @@ const AltPostArea = () => {
             <PostMeta
               date={posts.nodes[index].date}
               author={posts.nodes[index].author.node}
-              readingTime={getReadingTimeString(posts.nodes[index].content)}
+              readingTime={humanizeTime(posts.nodes[index].seo.readingTime)}
               postSlug={posts.nodes[index].slug}
               withShareButtons
             />

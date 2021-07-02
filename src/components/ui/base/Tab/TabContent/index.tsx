@@ -20,6 +20,7 @@ import { TransitionStatus } from "react-transition-group/Transition";
 export interface TabContentProps {
   categories: {
     slug: string;
+    uri: string;
     name: string;
     posts: {
       nodes: {
@@ -99,7 +100,7 @@ const TabContent = (props: TabContentProps) => {
                           <PostContent>
                             <PostCat
                               categories={[
-                                { name: category.name, slug: category.slug },
+                                { name: category.name, uri: category.uri },
                               ]}
                             />
                             <Title level={4}>

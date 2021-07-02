@@ -31,12 +31,14 @@ export interface PostPreview {
       };
     };
   };
+  seo: {
+    readingTime: number;
+  };
 }
 
 export const PostExtendedPreviewPostSliderFragment = graphql`
   fragment PostExtendedPreviewPostSliderFragment on WpPost {
     date(formatString: "DD MMM YYYY", locale: "it")
-    content
     title
     slug
     author {
@@ -53,6 +55,9 @@ export const PostExtendedPreviewPostSliderFragment = graphql`
         }
       }
     }
+    seo {
+      readingTime
+    }
     categories {
       nodes {
         ...CategoryPreviewFragment
@@ -64,7 +69,6 @@ export const PostExtendedPreviewPostSliderFragment = graphql`
 export const PostExtendedPreviewFeaturedPostFragment = graphql`
   fragment PostExtendedPreviewFeaturedPostFragment on WpPost {
     date(formatString: "DD MMM YYYY", locale: "it")
-    content
     title
     slug
     author {
@@ -81,6 +85,9 @@ export const PostExtendedPreviewFeaturedPostFragment = graphql`
         }
       }
     }
+    seo {
+      readingTime
+    }
     categories {
       nodes {
         ...CategoryPreviewFragment
@@ -91,7 +98,6 @@ export const PostExtendedPreviewFeaturedPostFragment = graphql`
 
 export interface PostExtendedPreview {
   date: string;
-  content: string;
   title: string;
   slug: string;
   author: {
@@ -105,6 +111,9 @@ export interface PostExtendedPreview {
         };
       };
     };
+  };
+  seo: {
+    readingTime: number;
   };
   categories: {
     nodes: CategoryPreview[];
