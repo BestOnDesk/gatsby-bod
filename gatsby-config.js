@@ -183,6 +183,31 @@ module.exports = {
         generateRedirectObjectsForPermanentRedirects: true,
       },
     },
-    "gatsby-plugin-gatsby-cloud",
+    {
+      resolve: "gatsby-plugin-robots-txt",
+      options: {
+        env: {
+          development: {
+            policy: [{ userAgent: "*", disallow: ["/"] }],
+          },
+          staging: {
+            policy: [
+              { userAgent: "AhrefsSiteAudit", allow: ["/"] },
+              { userAgent: "Screaming Frog SEO Spider", allow: ["/"] },
+              { userAgent: "*", disallow: ["/"] },
+            ],
+          },
+          production: {
+            policy: [
+              {
+                userAgent: "*",
+                allow: "/",
+              },
+              { userAgent: "*", allow: "/" },
+            ],
+          },
+        },
+      },
+    },
   ],
 };
