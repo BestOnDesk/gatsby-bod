@@ -64,7 +64,7 @@ jobs:
       - name: Deploy
         uses: reggionick/s3-deploy@v3
         with:
-          folder: build
+          folder: public
           bucket: ${{ secrets.AWS_S3_BUCKET_STAGING }}
           bucket-region: ${{ secrets.AWS_S3_BUCKET_REGION }}
           dist-id: ${{ secrets.AWS_CLOUDFRONT_DISTRIBUTION_ID_STAGING }}
