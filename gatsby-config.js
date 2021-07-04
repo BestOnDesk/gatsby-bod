@@ -107,6 +107,7 @@ module.exports = {
                   slug
                   title
                   date(formatString: "DD MMM YYYY", locale: "it")
+                  content
                   modified
                   seo {
                     metaDesc
