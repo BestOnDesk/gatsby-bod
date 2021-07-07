@@ -10,15 +10,13 @@ export interface HomeFeaturedPostQueryProps {
   };
 }
 
-export interface HomeFeaturedPostProps {
-  slugLeft: string;
-  slugRight: string;
-}
-
-const HomeFeaturedPost = (props: HomeFeaturedPostProps) => {
+const HomeFeaturedPost = () => {
   const { posts }: HomeFeaturedPostQueryProps = useStaticQuery(graphql`
     {
-      posts: allWpPost(sort: { fields: date, order: DESC }) {
+      posts: allWpPost(
+        sort: { fields: date, order: DESC }
+        filter: { isSticky: { eq: true } }
+      ) {
         nodes {
           ...PostExtendedPreviewFeaturedPostFragment
         }
@@ -26,44 +24,37 @@ const HomeFeaturedPost = (props: HomeFeaturedPostProps) => {
     }
   `);
 
-  const leftPost = posts.nodes.find((node) => node.slug === props.slugLeft);
-  const rightPost = posts.nodes.find((node) => node.slug === props.slugRight);
-
   return (
-    <>
-      {leftPost && rightPost && (
-        <FeaturedPost
-          left={{
-            title: leftPost.title,
-            slug: leftPost.slug,
-            date: leftPost.date,
-            image:
-              leftPost.featuredImage.node.localFile.childImageSharp
-                .gatsbyImageData,
-            readingTime: humanizeTime(leftPost.seo.readingTime),
-            author: {
-              name: leftPost.author.node.name,
-              slug: leftPost.author.node.slug,
-            },
-            categories: leftPost.categories.nodes,
-          }}
-          right={{
-            title: rightPost.title,
-            slug: rightPost.slug,
-            date: rightPost.date,
-            image:
-              rightPost.featuredImage.node.localFile.childImageSharp
-                .gatsbyImageData,
-            readingTime: humanizeTime(leftPost.seo.readingTime),
-            author: {
-              name: rightPost.author.node.name,
-              slug: rightPost.author.node.slug,
-            },
-            categories: rightPost.categories.nodes,
-          }}
-        />
-      )}
-    </>
+    <FeaturedPost
+      left={{
+        title: posts.nodes[0].title,
+        slug: posts.nodes[0].slug,
+        date: posts.nodes[0].date,
+        image:
+          posts.nodes[0].featuredImage.node.localFile.childImageSharp
+            .gatsbyImageData,
+        readingTime: humanizeTime(posts.nodes[0].seo.readingTime),
+        author: {
+          name: posts.nodes[0].author.node.name,
+          slug: posts.nodes[0].author.node.slug,
+        },
+        categories: posts.nodes[0].categories.nodes,
+      }}
+      right={{
+        title: posts.nodes[1].title,
+        slug: posts.nodes[1].slug,
+        date: posts.nodes[1].date,
+        image:
+          posts.nodes[1].featuredImage.node.localFile.childImageSharp
+            .gatsbyImageData,
+        readingTime: humanizeTime(posts.nodes[1].seo.readingTime),
+        author: {
+          name: posts.nodes[1].author.node.name,
+          slug: posts.nodes[1].author.node.slug,
+        },
+        categories: posts.nodes[1].categories.nodes,
+      }}
+    />
   );
 };
 

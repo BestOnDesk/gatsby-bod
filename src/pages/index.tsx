@@ -22,10 +22,7 @@ export default () => {
 
       <Last5PostsSlider />
 
-      <HomeFeaturedPost
-        slugLeft={"le-migliori-sedie-da-ufficio"}
-        slugRight={"i-migliori-notebook"}
-      />
+      <HomeFeaturedPost />
 
       <TabArea mainCategorySlug={"prodotti"} />
 
