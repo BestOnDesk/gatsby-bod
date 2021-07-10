@@ -52,20 +52,6 @@ module.exports = {
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-sitemap",
     {
-      resolve: `gatsby-plugin-react-redux-persist`,
-      options: {
-        pathToCreateStoreModule: "./src/state/createStore",
-        serialize: {
-          space: 0,
-          isJSON: true,
-          unsafe: false,
-          ignoreFunction: true,
-        },
-        cleanupOnClient: true,
-        windowKey: "__PRELOADED_STATE__",
-      },
-    },
-    {
       resolve: "gatsby-plugin-manifest",
       options: {
         icon: "src/media/images/icon.png",

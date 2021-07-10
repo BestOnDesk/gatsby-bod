@@ -8,14 +8,11 @@ import Layout from "components/ui/base/Layout";
 import "styles/font-awesome.min.css";
 import { lightTheme } from "../../../styles/theme";
 import { ThemeMode } from "../../../app-types/style";
-import { IState } from "../../../state/reducers";
-import { connect } from "react-redux";
 import SEO from "../SEO";
 
 interface GlobalWrapperProps {
   children: ReactChild[];
   withLayout?: boolean;
-  themeMode: ThemeMode;
   headerWithShadow?: boolean;
   headerSticky?: boolean;
 }
@@ -30,7 +27,6 @@ const childrenContainSEO = (children: ReactChild[]) =>
 const GlobalWrapper = ({
   children,
   withLayout,
-  themeMode,
   headerWithShadow,
   headerSticky,
 }: GlobalWrapperProps) => {
@@ -41,7 +37,7 @@ const GlobalWrapper = ({
   }
 
   const theme = lightTheme;
-  theme.mode = themeMode;
+  theme.mode = ThemeMode.Light;
 
   const gridTheme = {
     gridColumns: 12,
@@ -111,8 +107,4 @@ const GlobalWrapper = ({
   );
 };
 
-const mapStateToProps = (state: IState) => ({
-  themeMode: state.themeReducer.themeMode,
-});
-
-export default connect(mapStateToProps)(GlobalWrapper);
+export default GlobalWrapper;

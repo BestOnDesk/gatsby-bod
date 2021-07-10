@@ -8,12 +8,9 @@ import {
   MetabarBlock,
   MetabarIcon,
 } from "./index.style";
-import { useDispatch } from "react-redux";
-import { openMenu } from "../../../../../../state/actions/mobile";
 import SearchAutocomplete from "../../../SearchAutocomplete";
 
 const HeaderSearch = () => {
-  const dispatch = useDispatch();
   return (
     <HeaderSearchDiv>
       <HeaderSearchForm>
@@ -28,7 +25,7 @@ const HeaderSearch = () => {
       </MetabarBlock>
       <HamburgerMenu>
         <HamburgerInner>
-          <HamburgerIcon onClick={() => dispatch(openMenu())}>
+          <HamburgerIcon>
             <i className="fal fa-bars" />
           </HamburgerIcon>
         </HamburgerInner>

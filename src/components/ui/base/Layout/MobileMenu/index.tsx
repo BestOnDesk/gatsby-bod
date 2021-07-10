@@ -13,8 +13,6 @@ import {
   SubMenu,
 } from "./index.style";
 import { graphql, useStaticQuery } from "gatsby";
-import { useDispatch } from "react-redux";
-import { closeMenu } from "../../../../../state/actions/mobile";
 
 export interface MobileMenuProps {
   show: boolean;
@@ -38,7 +36,6 @@ export interface MobileMenuQueryProps {
 }
 
 const MobileMenu = (props: MobileMenuProps) => {
-  const dispatch = useDispatch();
   const [subMenuOpenIndex, setSubMenuOpenIndex] = useState<number>(-1);
   const { categories }: MobileMenuQueryProps = useStaticQuery(graphql`
     query {
@@ -69,8 +66,6 @@ const MobileMenu = (props: MobileMenuProps) => {
     if (subMenuOpenIndex !== index) setSubMenuOpenIndex(index);
     else setSubMenuOpenIndex(-1);
   };
-
-  const close = () => dispatch(closeMenu());
 
   const preventDefault = (e: any) => {
     e.preventDefault();
