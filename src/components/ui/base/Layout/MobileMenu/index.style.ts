@@ -36,7 +36,7 @@ const StyledMobileMenu = styled.div<StyledMobileMenuProps>`
   background: rgba(0, 0, 0, 0.9);
   visibility: hidden;
   opacity: 0;
-  cursor: url(../images/icons/light-close.png) 16 16, pointer;
+  cursor: pointer;
   transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
   z-index: 99999;
 
