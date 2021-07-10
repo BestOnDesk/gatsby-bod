@@ -16,6 +16,7 @@ import { graphql, useStaticQuery } from "gatsby";
 
 export interface MobileMenuProps {
   show: boolean;
+  close: Function;
 }
 
 export interface MobileMenuQueryProps {
@@ -65,6 +66,10 @@ const MobileMenu = (props: MobileMenuProps) => {
   const toggleSubMenuOpen = (index: number) => {
     if (subMenuOpenIndex !== index) setSubMenuOpenIndex(index);
     else setSubMenuOpenIndex(-1);
+  };
+
+  const close = () => {
+    props.close();
   };
 
   const preventDefault = (e: any) => {

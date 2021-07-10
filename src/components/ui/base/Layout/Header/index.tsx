@@ -8,6 +8,7 @@ import Logo from "../../Logo";
 export interface HeaderProps {
   withShadow?: boolean;
   sticky?: boolean;
+  openMobileMenu: Function;
 }
 
 const Header = (props: HeaderProps) => {
@@ -22,7 +23,7 @@ const Header = (props: HeaderProps) => {
             <Menu />
           </Col>
           <Col xl={3} lg={8} md={8} sm={9} xs={12}>
-            <HeaderSearch />
+            <HeaderSearch openMobileMenu={props.openMobileMenu} />
           </Col>
         </Row>
       </HeaderWrap>

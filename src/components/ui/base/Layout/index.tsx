@@ -1,4 +1,4 @@
-import React, { ReactChild } from "react";
+import React, { ReactChild, useState } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
 import MobileMenu from "./MobileMenu";
@@ -10,14 +10,23 @@ interface LayoutProps {
 }
 
 const Layout = ({ children, headerWithShadow, headerSticky }: LayoutProps) => {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
+
   if (typeof window !== "undefined") {
     require("smooth-scroll")('a[href*="#"]', { speed: 200, offset: 200 });
   }
 
   return (
     <>
-      <Header withShadow={headerWithShadow} sticky={headerSticky} />
-      <MobileMenu show={false} />
+      <Header
+        withShadow={headerWithShadow}
+        sticky={headerSticky}
+        openMobileMenu={() => setMobileMenuOpen(true)}
+      />
+      <MobileMenu
+        show={mobileMenuOpen}
+        close={() => setMobileMenuOpen(false)}
+      />
       {children}
       <Footer />
     </>

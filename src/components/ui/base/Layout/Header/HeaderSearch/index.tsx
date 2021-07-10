@@ -10,7 +10,11 @@ import {
 } from "./index.style";
 import SearchAutocomplete from "../../../SearchAutocomplete";
 
-const HeaderSearch = () => {
+interface HeaderSearchProps {
+  openMobileMenu: Function;
+}
+
+const HeaderSearch = (props: HeaderSearchProps) => {
   return (
     <HeaderSearchDiv>
       <HeaderSearchForm>
@@ -25,7 +29,7 @@ const HeaderSearch = () => {
       </MetabarBlock>
       <HamburgerMenu>
         <HamburgerInner>
-          <HamburgerIcon>
+          <HamburgerIcon onClick={props.openMobileMenu}>
             <i className="fal fa-bars" />
           </HamburgerIcon>
         </HamburgerInner>
