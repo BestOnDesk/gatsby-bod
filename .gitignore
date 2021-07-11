@@ -5,3 +5,5 @@ public
 .idea
 yarn-error.log
 .wordpress-cache
+
+.env
