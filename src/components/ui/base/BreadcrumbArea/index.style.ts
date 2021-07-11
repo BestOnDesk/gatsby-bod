@@ -6,6 +6,10 @@ const StyledBreadcrumbArea = styled.div`
   padding: 80px 0;
   background: ${(props) => props.theme.colors.lightest};
 
+  @media ${(props) => props.theme.layouts.largeMobile} {
+    padding: 40px 0;
+  }
+
   ${StyledAboutAuthor} {
     border: none;
     padding: 0;
@@ -21,6 +25,8 @@ const StyledBreadcrumbArea = styled.div`
 `;
 
 const Inner = styled.div`
+  margin-top: 8px;
+
   ${StyledTitle} {
     margin-bottom: 0;
   }
@@ -29,6 +35,7 @@ const Inner = styled.div`
 const BreadcrumbsUl = styled.ul`
   list-style: none;
   display: flex;
+  flex-wrap: wrap;
   padding: 0;
   margin-bottom: 0;
 `;
