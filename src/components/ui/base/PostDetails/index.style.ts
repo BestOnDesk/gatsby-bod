@@ -71,6 +71,10 @@ const StyledPostDetails = styled.div<{ primeLogoSrc?: string }>`
       background: ${(props) => props.theme.colors.lightest};
       border-radius: ${(props) => props.theme.borders.radius};
 
+      @media ${(props) => props.theme.layouts.largeMobile} {
+        flex-direction: column;
+      }
+
       .aawp-product__thumb {
         flex: 1;
         display: flex;
@@ -102,7 +106,11 @@ const StyledPostDetails = styled.div<{ primeLogoSrc?: string }>`
 
       .aawp-product__content {
         flex: 4;
-        padding: 20px 20px 20px 20px;
+        padding: 20px;
+
+        @media ${(props) => props.theme.layouts.largeMobile} {
+          padding-top: 0;
+        }
 
         .aawp-product__title {
           font-weight: bold;
@@ -175,6 +183,10 @@ const StyledPostDetails = styled.div<{ primeLogoSrc?: string }>`
             border-radius: ${(props) => props.theme.borders.radius};
             transition: 0.2s ease-in-out;
 
+            @media ${(props) => props.theme.layouts.largeMobile} {
+              width: 100%;
+            }
+
             &:hover {
               box-shadow: ${(props) => props.theme.shadows.dark};
             }
@@ -196,6 +208,12 @@ const StyledPostDetails = styled.div<{ primeLogoSrc?: string }>`
         position: absolute;
         bottom: 4px;
         left: 8px;
+
+        @media ${(props) => props.theme.layouts.largeMobile} {
+          position: relative;
+          text-align: center;
+          left: 0;
+        }
       }
     }
   }
