@@ -19,6 +19,7 @@ jobs:
       GATSBY_WP_SOURCE_URL: ${{ secrets.GATSBY_WP_SOURCE_URL }}
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET_STAGING }}
     steps:
       - name: Checkout project
         uses: actions/checkout@v2
@@ -64,13 +65,13 @@ jobs:
         run: yarn build
 
       - name: Deploy
-        uses: reggionick/s3-deploy@v3
-        with:
-          folder: public
-          bucket: ${{ secrets.AWS_S3_BUCKET_STAGING }}
-          bucket-region: ${{ secrets.AWS_S3_BUCKET_REGION }}
-          dist-id: ${{ secrets.AWS_CLOUDFRONT_DISTRIBUTION_ID_STAGING }}
-          invalidation: /
-          delete-removed: true
-          no-cache: true
-          private: true
+        run: yarn deploy
+
+      - name: Invalidate CloudFront
+        uses: chetan/invalidate-cloudfront-action@master
+        env:
+          DISTRIBUTION: ${{ secrets.AWS_CLOUDFRONT_DISTRIBUTION_ID_STAGING }}
+          PATHS: "/*"
+          AWS_REGION: ${{ secrets.AWS_S3_BUCKET_REGION }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
