@@ -1,7 +1,7 @@
 const path = require("path");
 require("dotenv").config();
 
-const url = process.env.GATSBY_SITE_URL || ***REMOVED***;
+const url = process.env.GATSBY_SITE_URL;
 
 module.exports = {
   siteMetadata: {
@@ -12,9 +12,7 @@ module.exports = {
     {
       resolve: "gatsby-source-wordpress",
       options: {
-        url:
-          process.env.GATSBY_WP_SOURCE_URL ||
-          ***REMOVED***,
+        url: process.env.GATSBY_WP_SOURCE_URL,
         schema: {
           timeout: 3600000,
           requestConcurrency: 150,
@@ -163,9 +161,9 @@ module.exports = {
     {
       resolve: `gatsby-plugin-s3`,
       options: {
-        bucketName: process.env.AWS_S3_BUCKET || ***REMOVED***,
+        bucketName: process.env.AWS_S3_BUCKET,
         protocol: "https",
-        hostname: process.env.AWS_S3_BUCKET || ***REMOVED***,
+        hostname: process.env.AWS_S3_BUCKET,
         generateMatchPathRewrites: false,
         generateRoutingRules: true,
         generateRedirectObjectsForPermanentRedirects: true,
