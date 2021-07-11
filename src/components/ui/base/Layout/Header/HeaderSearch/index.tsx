@@ -9,6 +9,7 @@ import {
   MetabarIcon,
 } from "./index.style";
 import SearchAutocomplete from "../../../SearchAutocomplete";
+import { TELEGRAM_URL } from "../../../../../../constants/socials";
 
 interface HeaderSearchProps {
   openMobileMenu: Function;
@@ -22,7 +23,7 @@ const HeaderSearch = (props: HeaderSearchProps) => {
       </HeaderSearchForm>
       <MetabarBlock>
         <MetabarIcon>
-          <a href="#">
+          <a href={TELEGRAM_URL} target="_blank">
             <i className="fab fa-telegram-plane" />
           </a>
         </MetabarIcon>
