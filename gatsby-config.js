@@ -79,6 +79,39 @@ module.exports = {
     },
     "gatsby-plugin-image",
     {
+      resolve: "gatsby-plugin-google-tagmanager",
+      options: {
+        id: "GTM-TTZQCH2",
+        includeInDevelopment: false,
+        routeChangeEventName: "page_view",
+      },
+    },
+    {
+      resolve: `gatsby-plugin-amp`,
+      options: {
+        analytics: {
+          type: "gtag",
+          dataCredentials: "include",
+          config: {
+            vars: {
+              gtag_id: "GTM-TTZQCH2",
+              config: {
+                "GTM-TTZQCH2": {
+                  page_location: "{{pathname}}",
+                },
+              },
+            },
+          },
+        },
+        canonicalBaseUrl: url,
+        components: ["amp-form"],
+        excludedPaths: ["/404*", "/"],
+        pathIdentifier: "/amp/",
+        relAmpHtmlPattern: "{{canonicalBaseUrl}}{{pathname}}{{pathIdentifier}}",
+        useAmpClientIdApi: true,
+      },
+    },
+    {
       resolve: `gatsby-plugin-algolia`,
       options: {
         appId: process.env.GATSBY_ALGOLIA_APP_ID,
