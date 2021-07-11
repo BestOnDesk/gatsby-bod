@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { StyledTitle } from "../../../core/Title/index.style";
 import { PostAuthorName, PostMetaList } from "../../base/PostMeta/index.style";
 import { HoverFlipItem } from "../../../core/HoverFlip/index.style";
+import { StyledPostThumbnail } from "../../base/ContentBlock/PostThumbnail/index.style";
 
 const StyledAltPostArea = styled.section`
   padding: 80px 0;
@@ -19,6 +20,12 @@ const StyledAltPostArea = styled.section`
 
   ${PostMetaList} li {
     color: ${(props) => props.theme.colors.midgray};
+  }
+
+  ${StyledPostThumbnail} {
+    a > div {
+      width: 100%;
+    }
   }
 `;
 
