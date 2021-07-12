@@ -8,3 +8,4 @@
 - Do search logic in header
 - Add cookie policy and complete footer links
 - Social icons in MobileMenu
+- Move TODOs in Asana
