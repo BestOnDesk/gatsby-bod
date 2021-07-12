@@ -197,6 +197,9 @@ module.exports = {
         protocol: "https",
         hostname: process.env.AWS_S3_BUCKET,
         acl: "public-read",
+        params: {
+          CacheControl: "max-age=86400,stale-while-revalidate=172800,public",
+        },
         generateMatchPathRewrites: false,
         generateRoutingRules: true,
         generateRedirectObjectsForPermanentRedirects: true,
