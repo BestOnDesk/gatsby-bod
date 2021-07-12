@@ -196,6 +196,7 @@ module.exports = {
         bucketName: process.env.AWS_S3_BUCKET,
         protocol: "https",
         hostname: process.env.AWS_S3_BUCKET,
+        acl: "public-read",
         generateMatchPathRewrites: false,
         generateRoutingRules: true,
         generateRedirectObjectsForPermanentRedirects: true,
