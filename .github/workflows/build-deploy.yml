@@ -11,7 +11,7 @@ jobs:
     env:
       NODE_ENV: production
       GATSBY_ACTIVE_ENV: production
-      GATSBY_SITE_URL: 'https://staging.bestondesk.com'
+      GATSBY_SITE_URL: 'https://bestondesk.com'
       ALGOLIA_ADMIN_KEY: ${{ secrets.ALGOLIA_ADMIN_KEY }}
       GATSBY_ALGOLIA_APP_ID: ${{ secrets.GATSBY_ALGOLIA_APP_ID }}
       GATSBY_ALGOLIA_SEARCH_KEY: ${{ secrets.GATSBY_ALGOLIA_SEARCH_KEY }}
@@ -20,6 +20,7 @@ jobs:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
+      AWS_REGION: ${{ secrets.AWS_S3_BUCKET_REGION }}
     steps:
       - name: Checkout project
         uses: actions/checkout@v2
