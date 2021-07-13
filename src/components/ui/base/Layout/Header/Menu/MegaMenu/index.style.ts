@@ -36,6 +36,10 @@ const MegaMenuWrapper = styled(MenuItemWithChildren)`
       opacity: 1;
       visibility: visible;
     }
+
+    > a {
+      color: ${(props) => props.theme.colors.primary};
+    }
   }
 `;
 
