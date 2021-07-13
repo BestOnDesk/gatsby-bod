@@ -27,12 +27,12 @@ const PostAuthorAvatar = styled.div`
   min-width: 50px;
   width: 50px;
   margin-right: 15px;
-  border-radius: 100%;
+  border-radius: 100% !important;
   display: flex;
   align-items: center;
   img {
     width: 100%;
-    border-radius: 100%;
+    border-radius: 100% !important;
   }
 `;
 
