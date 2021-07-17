@@ -11,7 +11,11 @@ import { Close, Overlay, StyledSearchAutocomplete } from "./index.style";
 import SearchBox from "./SearchBox";
 import Results from "./Results";
 
-const SearchAutocomplete = () => {
+interface SearchAutoCompleteProps {
+  className?: string;
+}
+
+const SearchAutocomplete = (props: SearchAutoCompleteProps) => {
   const [focus, setFocus] = useState<boolean>(false);
 
   const algoliaClient = algoliasearch(ALGOLIA_APP_ID, ALGOLIA_SEARCH_KEY);
@@ -37,7 +41,7 @@ const SearchAutocomplete = () => {
   }, []);
 
   return (
-    <StyledSearchAutocomplete focus={focus}>
+    <StyledSearchAutocomplete focus={focus} className={props.className}>
       <InstantSearch indexName={ALGOLIA_INDEX_NAME} searchClient={searchClient}>
         <Configure distinct={SEARCH_DISTINCT_LIMIT} />
         <SearchBox

@@ -1,6 +1,7 @@
 import styled, { css } from "styled-components";
-import Search from "../Search";
 import { SearchButton } from "../Search/index.style";
+import SearchAutocomplete from "../SearchAutocomplete";
+import { StyledSearchBox } from "../SearchAutocomplete/SearchBox/index.style";
 
 const StyledWidgetSearch = styled.div<{ marginBottom?: number }>`
   background: ${(props) => props.theme.colors.extra03};
@@ -21,23 +22,12 @@ const WidgetTitle = styled.h5`
   text-align: center;
 `;
 
-const SearchComponent = styled(Search)`
-  display: block;
-
-  input {
-    height: 40px !important;
-    border: 0 none !important;
+const CustomSearchAutocomplete = styled(SearchAutocomplete)`
+  ${StyledSearchBox} {
     max-width: 100% !important;
-    font-size: 14px !important;
-    line-height: 22px !important;
-    padding-left: 44px !important;
-  }
-
-  ${SearchButton} {
-    i {
-      font-size: 14px;
-    }
+    width: 100% !important;
+    height: 40px !important;
   }
 `;
 
-export { StyledWidgetSearch, WidgetTitle, SearchComponent };
+export { StyledWidgetSearch, WidgetTitle, CustomSearchAutocomplete };

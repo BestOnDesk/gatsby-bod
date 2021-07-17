@@ -1,6 +1,6 @@
 import React from "react";
 import {
-  SearchComponent,
+  CustomSearchAutocomplete,
   StyledWidgetSearch,
   WidgetTitle,
 } from "./index.style";
@@ -13,7 +13,7 @@ const WidgetSearch = (props: WidgetSearchProps) => {
   return (
     <StyledWidgetSearch marginBottom={props.marginBottom}>
       <WidgetTitle>Cerca</WidgetTitle>
-      <SearchComponent />
+      <CustomSearchAutocomplete />
     </StyledWidgetSearch>
   );
 };
