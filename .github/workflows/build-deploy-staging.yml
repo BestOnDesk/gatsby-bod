@@ -46,18 +46,18 @@ jobs:
         id: gatsby-cache-folder
         with:
           path: .cache
-          key: ${{ runner.os }}-cache-gatsby-v2
+          key: ${{ runner.os }}-cache-gatsby-v3
           restore-keys: |
-            ${{ runner.os }}-cache-gatsby-v2
+            ${{ runner.os }}-cache-gatsby-v3
 
       - name: Cache Gatsby Public Folder
         uses: actions/cache@v2
         id: gatsby-public-folder
         with:
           path: public/
-          key: ${{ runner.os }}-public-gatsby-v2
+          key: ${{ runner.os }}-public-gatsby-v3
           restore-keys: |
-            ${{ runner.os }}-public-gatsby-v2
+            ${{ runner.os }}-public-gatsby-v3
 
       - name: Install dependencies
         run: yarn --frozen-lockfile
