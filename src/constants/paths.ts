@@ -1,4 +1,4 @@
-export const MAIN_URL = "https://bestondesk.com";
+export const MAIN_URL = "https://www.bestondesk.com";
 export const COOKIE_POLICY_URL =
   "https://www.iubenda.com/privacy-policy/58676891/cookie-policy";
 

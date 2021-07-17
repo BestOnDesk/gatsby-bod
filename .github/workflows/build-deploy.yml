@@ -11,7 +11,7 @@ jobs:
     env:
       NODE_ENV: production
       GATSBY_ACTIVE_ENV: production
-      GATSBY_SITE_URL: 'https://bestondesk.com'
+      GATSBY_SITE_URL: 'https://www.bestondesk.com'
       ALGOLIA_ADMIN_KEY: ${{ secrets.ALGOLIA_ADMIN_KEY }}
       GATSBY_ALGOLIA_APP_ID: ${{ secrets.GATSBY_ALGOLIA_APP_ID }}
       GATSBY_ALGOLIA_SEARCH_KEY: ${{ secrets.GATSBY_ALGOLIA_SEARCH_KEY }}
