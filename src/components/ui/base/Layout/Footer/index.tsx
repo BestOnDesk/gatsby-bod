@@ -64,10 +64,10 @@ const Footer = () => {
                       <Link to={"/"}>Home</Link>
                     </li>
                     <li>
-                      <Link to={"/contatti"}>Contattaci</Link>
+                      <Link to={"/contatti/"}>Contattaci</Link>
                     </li>
                     <li>
-                      <Link to={"/chi-siamo"}>Chi siamo</Link>
+                      <Link to={"/chi-siamo/"}>Chi siamo</Link>
                     </li>
                     <li>
                       <a

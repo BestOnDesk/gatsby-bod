@@ -121,7 +121,7 @@ const MobileMenu = (props: MobileMenuProps) => {
             );
           })}
           <MenuItem>
-            <ItemLink to="/chi-siamo" onClick={close}>
+            <ItemLink to="/chi-siamo/" onClick={close}>
               Chi siamo
             </ItemLink>
           </MenuItem>
