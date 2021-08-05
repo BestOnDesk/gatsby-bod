@@ -14,7 +14,7 @@ const Header = styled.header<HeaderProps>`
     padding: 0 30px;
   }
   @media only screen and (max-width: 1199px) {
-    padding: 20px 30px;
+    padding: 10px 30px;
   }
 
   ${(props) =>
