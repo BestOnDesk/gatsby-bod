@@ -266,7 +266,7 @@ const StyledContentBlock = styled.div<
                     }
                   }
                   &:hover {
-                    color: ${(props) => props.theme.colors.primary};
+                    color: ${(props) => props.theme.colors.secondary};
                   }
                 }
               }

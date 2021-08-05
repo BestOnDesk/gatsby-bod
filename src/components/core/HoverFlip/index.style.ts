@@ -24,7 +24,7 @@ const HoverFlipItem = styled.span<HoverFlipItemProps>`
       content: \"${(props) => props.text}\";
       display: block;
       position: absolute;
-      color: ${(props) => props.theme.colors.secondary};
+      color: ${(props) => props.theme.colors.primary};
     }
 
     span::before {

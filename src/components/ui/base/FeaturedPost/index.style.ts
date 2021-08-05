@@ -93,7 +93,7 @@ const PostCatList = styled.div`
   align-items: center;
   margin: -8px;
   a {
-    color: ${(props) => props.theme.colors.secondary};
+    color: ${(props) => props.theme.colors.primary};
     display: flex;
     font-size: ${(props) => props.theme.fonts.size.b3};
     line-height: 20px;
@@ -104,7 +104,7 @@ const PostCatList = styled.div`
     ${(props) => props.theme.extends.transition}
 
     &:hover {
-      color: ${(props) => props.theme.colors.primary};
+      color: ${(props) => props.theme.colors.secondary};
     }
 
     &::after {
@@ -123,7 +123,7 @@ const PostCatList = styled.div`
   ${HoverFlipItemWrapper} {
     span {
       &::after {
-        color: ${(props) => props.theme.colors.primary};
+        color: ${(props) => props.theme.colors.secondary};
       }
     }
   }

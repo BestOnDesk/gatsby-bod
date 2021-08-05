@@ -20,7 +20,7 @@ const PostCatList = styled.div`
     ${(props) => props.theme.extends.transition}
 
     &:hover {
-      color: ${(props) => props.theme.colors.primary};
+      color: ${(props) => props.theme.colors.secondary};
     }
 
     &::after {
@@ -39,7 +39,7 @@ const PostCatList = styled.div`
   ${HoverFlipItemWrapper} {
     span {
       &::after {
-        color: ${(props) => props.theme.colors.primary};
+        color: ${(props) => props.theme.colors.secondary};
       }
     }
   }

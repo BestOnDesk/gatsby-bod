@@ -16,9 +16,9 @@ const baseTheme: BaseTheme = {
 };
 const t = baseTheme;
 
-t.colors.primary = "#5468C9";
+t.colors.primary = "#1FC5A8";
 t.colors.primaryTransparent = "rgba(56,88,246, 0.5)";
-t.colors.secondary = "#1FC5A8";
+t.colors.secondary = "#5468C9";
 t.colors.secondaryAlt = "#F1352A";
 t.colors.tertiary = "#FFD463";
 //t.colors.tertiary = "#050505";
