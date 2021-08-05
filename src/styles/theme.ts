@@ -16,11 +16,12 @@ const baseTheme: BaseTheme = {
 };
 const t = baseTheme;
 
-t.colors.primary = "#3858F6";
+t.colors.primary = "#5468C9";
 t.colors.primaryTransparent = "rgba(56,88,246, 0.5)";
-t.colors.secondary = "#D93E40";
+t.colors.secondary = "#1FC5A8";
 t.colors.secondaryAlt = "#F1352A";
-t.colors.tertiary = "#050505";
+t.colors.tertiary = "#FFD463";
+//t.colors.tertiary = "#050505";
 t.colors.heading = "#000000";
 t.colors.body = "#000000";
 t.colors.gray = "#65676B";
