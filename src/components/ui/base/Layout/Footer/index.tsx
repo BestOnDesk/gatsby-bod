@@ -116,7 +116,7 @@ const Footer = () => {
             <Col lg={8} md={8}>
               <SocialContainer>
                 <Title level={5}>Seguici sui nostri social</Title>
-                <SocialIcons colorTertiary mdSize justifyContent={"start"}>
+                <SocialIcons mdSize justifyContent={"start"}>
                   <SocialIcon link={FACEBOOK_URL} type={"facebook-f"} />
                   <SocialIcon link={INSTAGRAM_URL} type={"instagram"} />
                   <SocialIcon link={LINKEDIN_URL} type={"linkedin-in"} />
