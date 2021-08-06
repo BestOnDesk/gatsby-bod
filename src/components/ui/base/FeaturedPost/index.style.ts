@@ -45,7 +45,6 @@ const ContentBlock = styled.div`
   border: 1px solid ${(props) => props.theme.colors.lighter};
   border-radius: ${(props) => props.theme.borders.radius};
   padding: 35px 30px;
-  height: 100%;
   align-items: center;
   ${(props) => props.theme.extends.transition}
 
