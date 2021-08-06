@@ -8,7 +8,6 @@ import { CategoryPreview } from "../app-types/category";
 import { Col, Container, Row } from "styled-bootstrap-grid";
 import { SidebarInner } from "../components/ui/base/WidgetCategories/index.style";
 import WidgetCategories from "../components/ui/base/WidgetCategories";
-import WidgetSearch from "../components/ui/base/WidgetSearch";
 import WidgetPostList from "../components/ui/base/WidgetPostList";
 import WidgetSocial from "../components/ui/base/WidgetSocial";
 import ContentBlock from "../components/ui/base/ContentBlock";
@@ -144,7 +143,6 @@ const CategoryTemplate = ({ pageContext }: CategoryTemplateProps) => {
                   excludeProvided
                   marginBottom={30}
                 />
-                <WidgetSearch marginBottom={30} />
                 <WidgetPostList
                   title={"Ultimi post su BestOnDesk"}
                   marginBottom={30}

@@ -17,7 +17,6 @@ import PostMeta from "../components/ui/base/PostMeta";
 import { humanizeTime } from "../utils/reading-time";
 import PrevNextPagesArea from "../components/ui/base/PrevNextPagesArea";
 import { SidebarInner } from "../components/ui/base/WidgetCategories/index.style";
-import WidgetSearch from "../components/ui/base/WidgetSearch";
 import WidgetPostList from "../components/ui/base/WidgetPostList";
 import WidgetSocial from "../components/ui/base/WidgetSocial";
 import WidgetCategories from "../components/ui/base/WidgetCategories";
@@ -116,7 +115,6 @@ const AuthorTemplate = ({ pageContext }: AuthorTemplateProps) => {
                   categorySlugs={pageContext.authorCategoriesSlugs}
                   marginBottom={30}
                 />
-                <WidgetSearch marginBottom={30} />
                 <WidgetPostList
                   title={"Ultimi post su BestOnDesk"}
                   marginBottom={30}

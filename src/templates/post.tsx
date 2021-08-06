@@ -21,7 +21,6 @@ import TagsArea from "components/ui/base/TagsArea";
 import AboutAuthor from "../components/ui/base/AboutAuthor";
 import { SidebarInner } from "components/ui/base/WidgetCategories/index.style";
 import WidgetCategories from "../components/ui/base/WidgetCategories";
-import WidgetSearch from "../components/ui/base/WidgetSearch";
 import WidgetPostList from "../components/ui/base/WidgetPostList";
 import WidgetSocial from "../components/ui/base/WidgetSocial";
 import MorePosts from "../components/ui/base/MorePosts";
@@ -121,7 +120,6 @@ const PostTemplate = ({ data, pageContext }: PostTemplateProps) => {
                   )}
                   marginBottom={30}
                 />
-                <WidgetSearch marginBottom={30} />
                 <WidgetPostList
                   title={"Ultimi post su BestOnDesk"}
                   marginBottom={30}
