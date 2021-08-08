@@ -74,7 +74,16 @@ const PostTemplate = ({ data, pageContext }: PostTemplateProps) => {
 
   return (
     <GlobalWrapper withLayout headerWithShadow headerSticky>
-      <SEO title={post.seo.title} description={post.seo.metaDesc} />
+      <SEO
+        title={post.seo.title}
+        description={post.seo.metaDesc}
+        image={{
+          imageData:
+            post.featuredImage.node.localFile.childImageSharp.gatsbyImageData,
+          alt: post.seo.title,
+        }}
+        structuredData={JSON.parse(post.seo.schema.raw)["@graph"]}
+      />
       <PostSingleWrapper>
         <Container>
           <Row>
