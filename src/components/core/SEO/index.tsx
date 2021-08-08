@@ -56,7 +56,7 @@ const SEO = (props: SEOProps) => {
     query {
       cardImage: file(
         sourceInstanceName: { eq: "images" }
-        relativePath: { eq: "logo/default-card.png" }
+        relativePath: { eq: "logo/default-card.jpeg" }
       ) {
         childImageSharp {
           gatsbyImageData
