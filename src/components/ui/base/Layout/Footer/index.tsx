@@ -9,6 +9,7 @@ import {
   FtMenuList,
   Inner,
   LogoCol,
+  SocialCol,
   SocialContainer,
   StyledFooter,
 } from "./index.style";
@@ -113,7 +114,7 @@ const Footer = () => {
             <LogoCol lg={4} md={4}>
               <Logo />
             </LogoCol>
-            <Col lg={8} md={8}>
+            <SocialCol lg={8} md={8}>
               <SocialContainer>
                 <Title level={5}>Seguici sui nostri social</Title>
                 <SocialIcons mdSize justifyContent={"start"}>
@@ -123,7 +124,7 @@ const Footer = () => {
                   <SocialIcon link={TELEGRAM_URL} type={"telegram-plane"} />
                 </SocialIcons>
               </SocialContainer>
-            </Col>
+            </SocialCol>
           </Row>
         </Container>
       </FooterTop>

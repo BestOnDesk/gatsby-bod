@@ -82,6 +82,12 @@ const LogoCol = styled(Col)`
   align-items: center;
 `;
 
+const SocialCol = styled(Col)`
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+`;
+
 const SocialContainer = styled.div`
   display: flex;
   justify-content: flex-start;
@@ -194,6 +200,7 @@ export {
   FtMenuList,
   FooterTop,
   LogoCol,
+  SocialCol,
   SocialContainer,
   CopyrightArea,
   CopyrightLeft,
