@@ -51,7 +51,6 @@ interface SEOQueryProps {
 }
 
 const SEO = (props: SEOProps) => {
-  // TODO: Change default meta img
   const { site, cardImage, images }: SEOQueryProps = useStaticQuery(graphql`
     query {
       cardImage: file(
