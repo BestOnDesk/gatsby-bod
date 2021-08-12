@@ -2,7 +2,6 @@ import { Actions } from "gatsby";
 
 import redirectsContent from "./redirects.json";
 
-const config = require("../../gatsby-config");
 const isEnvDevelopment = process.env.NODE_ENV === "development";
 
 export interface Redirect {
