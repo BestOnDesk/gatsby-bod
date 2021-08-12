@@ -26,7 +26,6 @@
     "gatsby": "^3.0.1",
     "gatsby-image": "^3.0.0",
     "gatsby-plugin-algolia": "^0.20.1",
-    "gatsby-plugin-amp": "^0.2.2",
     "gatsby-plugin-google-analytics": "^3.0.0",
     "gatsby-plugin-google-fonts": "^1.0.1",
     "gatsby-plugin-google-tagmanager": "^3.9.0",
