@@ -83,6 +83,7 @@ const GlobalWrapper = ({
           name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
+        <meta name="theme-color" content={theme.colors.primary} />
         <html className={IS_SSR ? "no-js" : "js"} />
       </Helmet>
       <BaseCSS />
