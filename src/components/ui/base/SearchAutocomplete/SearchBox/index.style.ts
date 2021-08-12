@@ -1,5 +1,4 @@
 import styled, { css } from "styled-components";
-import { media } from "styled-bootstrap-grid";
 
 const StyledSearchBox = styled.div<{ focus: boolean }>`
   position: relative;
@@ -50,6 +49,10 @@ const Input = styled.input`
 
   @media ${(props) => props.theme.layouts.largeMobile} {
     display: none;
+  }
+
+  &::placeholder {
+    color: ${(props) => props.theme.colors.body} !important;
   }
 `;
 
