@@ -11,5 +11,5 @@ export const createPages: GatsbyNode["createPages"] = async ({
   await createPosts(actions, graphql);
   await createCategories(actions, graphql);
   await createAuthors(actions, graphql);
-  await createRedirects(actions);
+  await createRedirects(actions, graphql);
 };
