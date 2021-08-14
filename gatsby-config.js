@@ -78,6 +78,33 @@ module.exports = {
     },
     "gatsby-plugin-image",
     {
+      resolve: "gatsby-plugin-iubenda-cookie-footer",
+      options: {
+        googleTagManagerOptions: true,
+        iubendaOptions: {
+          consentOnContinuedBrowsing: true,
+          lang: "it",
+          siteId: 1648136,
+          floatingPreferencesButtonDisplay: false,
+          enableCMP: true,
+          googleAdditionalConsentMode: true,
+          isTCFConsentGlobal: false,
+          cookiePolicyId: 58676891,
+          banner: {
+            acceptButtonDisplay: true,
+            customizeButtonDisplay: true,
+            acceptButtonColor: "#1FC5A8",
+            acceptButtonCaptionColor: "white",
+            customizeButtonColor: "#4b5766",
+            customizeButtonCaptionColor: "white",
+            position: "float-bottom-left",
+            textColor: "white",
+            backgroundColor: "#232f3e",
+          },
+        },
+      },
+    },
+    {
       resolve: "gatsby-plugin-google-tagmanager",
       options: {
         id: "GTM-TTZQCH2",
