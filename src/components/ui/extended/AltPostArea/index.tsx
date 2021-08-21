@@ -59,9 +59,7 @@ const AltPostArea = () => {
         filter: {
           categories: {
             nodes: {
-              elemMatch: {
-                wpParent: { node: { slug: { eq: "per-le-aziende" } } }
-              }
+              elemMatch: { wpParent: { node: { slug: { eq: "come-fare" } } } }
             }
           }
         }

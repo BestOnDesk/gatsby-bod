@@ -33,8 +33,8 @@ export default () => {
           "libri",
           "tecnologia",
           "corsi",
-          "successo-denaro",
-          "gestione-risorse",
+          "finanza-personale",
+          "performance",
           "motivazione",
         ]}
       />
@@ -61,7 +61,7 @@ export default () => {
         ]}
       />
 
-      <PostGridArea mainCategorySlug={"crescita-personale"} backgroundGrey />
+      <PostGridArea mainCategorySlug={"crescita"} backgroundGrey />
     </GlobalWrapper>
   );
 };
