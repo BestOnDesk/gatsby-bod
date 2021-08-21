@@ -5,7 +5,7 @@ import SEO from "../components/core/SEO";
 export default () => {
   return (
     <GlobalWrapper withLayout>
-      <SEO title={"Chi siamo"} description={"Description chi siamo"} />
+      <SEO title={"Chi siamo"} description={"Chi siamo"} />
 
       <h1>Chi siamo</h1>
     </GlobalWrapper>
