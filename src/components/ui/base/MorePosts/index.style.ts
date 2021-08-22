@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { StyledPostContent } from "../ContentBlock/PostContent/index.style";
+import { StyledPostThumbnail } from "../ContentBlock/PostThumbnail/index.style";
 
 const StyledMorePosts = styled.div`
   padding: 80px 0;
@@ -13,6 +14,12 @@ const StyledMorePosts = styled.div`
 
   ${StyledPostContent} {
     padding-top: 20px;
+  }
+
+  ${StyledPostThumbnail} {
+    > a > div {
+      width: 100%;
+    }
   }
 `;
 

@@ -10,6 +10,7 @@ import { getPostLink } from "../../../../utils/links";
 import PostContent from "../ContentBlock/PostContent";
 import PostCat from "../ContentBlock/PostContent/PostCat";
 import Title from "../../../core/Title";
+import { CategoryPreview } from "../../../../app-types/category";
 
 export interface MorePostsProps {
   excludeSlug: string;
@@ -23,10 +24,7 @@ interface MorePostsQueryResult {
       title: string;
       slug: string;
       categories: {
-        nodes: {
-          slug: string;
-          name: string;
-        }[];
+        nodes: CategoryPreview[];
       };
       featuredImage: {
         node: {
@@ -52,6 +50,7 @@ const MorePosts = (props: MorePostsProps) => {
             nodes {
               slug
               name
+              uri
             }
           }
           featuredImage {
