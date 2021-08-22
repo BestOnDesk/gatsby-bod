@@ -6,6 +6,7 @@ const StyledPostThumbnail = styled.div`
     display: flex;
     overflow: hidden;
     border-radius: ${(props) => props.theme.borders.radius};
+
     img {
       width: 100%;
     }
