@@ -3,8 +3,8 @@ import GlobalWrapper from "../components/core/GlobalWrapper";
 import SEO from "../components/core/SEO";
 import BreadcrumbArea from "components/ui/base/BreadcrumbArea";
 import PostListArea from "components/ui/base/PostListArea";
-import {Col, Container, Row} from "styled-bootstrap-grid";
-import {AboutUs, CustomP, Inner} from "styles/chi-siamo.style";
+import { Col, Container, Row } from "styled-bootstrap-grid";
+import { AboutUs, CustomP, Inner } from "styles/chi-siamo.style";
 import Title from "components/core/Title";
 import WidgetPostList from "components/ui/base/WidgetPostList";
 import WidgetSocial from "components/ui/base/WidgetSocial";
@@ -74,10 +74,19 @@ export default () => {
                     Mantenere viva la tua creatività costruendoci attorno
                     l’ambiente perfetto in cui fare emergere le tue qualità.
                   </CustomP>
-                  <CustomP>
+                  <p>
                     Perché la tua identità viene prima di qualsiasi altra cosa e
                     tutto ciò che devi fare è non dimenticarlo mai.
+                  </p>
+                  <Title level={3}>Partnership e collaborazioni</Title>
+                  <CustomP>
+                    Vuoi uno spazio pubblicitario su BestOnDesk? Una recensione
+                    di un tuo prodotto o un articolo dedicato al tuo Brand?
                   </CustomP>
+                  <p>
+                    Scrivici e troveremo la soluzione migliore per te e il tuo
+                    business.
+                  </p>
                 </Inner>
               </AboutUs>
             </Col>
