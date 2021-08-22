@@ -3,9 +3,11 @@ import GlobalWrapper from "../components/core/GlobalWrapper";
 import SEO from "../components/core/SEO";
 import BreadcrumbArea from "components/ui/base/BreadcrumbArea";
 import PostListArea from "components/ui/base/PostListArea";
-import { Col, Container, Row } from "styled-bootstrap-grid";
-import { AboutUs, Inner } from "styles/chi-siamo.style";
+import {Col, Container, Row} from "styled-bootstrap-grid";
+import {AboutUs, CustomP, Inner} from "styles/chi-siamo.style";
 import Title from "components/core/Title";
+import WidgetPostList from "components/ui/base/WidgetPostList";
+import WidgetSocial from "components/ui/base/WidgetSocial";
 
 export default () => {
   return (
@@ -26,16 +28,16 @@ export default () => {
       <PostListArea>
         <Container>
           <Row>
-            <Col lg={8} xl={8}>
+            <Col lg={8}>
               <AboutUs>
                 <Inner>
                   <Title level={2}>
-                    Bestondesk é il tuo nuovo collega che sarà sempre dalla tua
+                    BestOnDesk é il tuo nuovo collega che sarà sempre dalla tua
                     parte
                   </Title>
                   <Title level={3}>Perché?</Title>
                   <p>
-                    Perché bbiamo accumulato oltre 20 anni di esperienza nel
+                    Perché abbiamo accumulato oltre 20 anni di esperienza nel
                     lavoro d’ufficio. Abbastanza per comprendere che le piccole
                     cose fanno spesso la differenza tra una carriera di successo
                     e uno stato di insoddisfazione.
@@ -64,20 +66,38 @@ export default () => {
                     dalla crescita personale a 360°.
                   </p>
                   <Title level={3}>Our mission</Title>
-                  <p>
+                  <CustomP>
                     La nostra missione è aiutarti ad avere successo attraverso
                     te stesso!
-                  </p>
-                  <p>
+                  </CustomP>
+                  <CustomP>
                     Mantenere viva la tua creatività costruendoci attorno
                     l’ambiente perfetto in cui fare emergere le tue qualità.
-                  </p>
-                  <p>
+                  </CustomP>
+                  <CustomP>
                     Perché la tua identità viene prima di qualsiasi altra cosa e
                     tutto ciò che devi fare è non dimenticarlo mai.
-                  </p>
+                  </CustomP>
                 </Inner>
               </AboutUs>
+            </Col>
+            <Col lg={4}>
+              <WidgetPostList
+                title={"Ultimi post su BestOnDesk"}
+                marginBottom={30}
+                limit={3}
+                type={"last"}
+              />
+              <WidgetSocial marginBottom={30} />
+              <WidgetPostList
+                title={"Popolari su BestOnDesk"}
+                marginBottom={30}
+                type={"fixed"}
+                fixedSlugs={[
+                  "le-migliori-sedie-da-ufficio",
+                  "i-migliori-notebook",
+                ]}
+              />
             </Col>
           </Row>
         </Container>
