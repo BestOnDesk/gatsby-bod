@@ -1,3 +1,3 @@
 export const getAuthorAvatarRelativePath = (slug: string) => {
-  return `authors/${slug}.jpg`;
+  return `authors/${slug}.jpeg`;
 };
