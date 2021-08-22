@@ -1,9 +1,9 @@
 import React from "react";
-import GlobalWrapper from "../../components/core/GlobalWrapper";
-import SEO from "../../components/core/SEO";
-import { Banner, Description, Inner } from "./index.style";
+import GlobalWrapper from "../components/core/GlobalWrapper";
+import SEO from "../components/core/SEO";
+import { Banner, Description, Inner } from "../styles/chi-siamo.style";
 import { Col, Container, Row } from "styled-bootstrap-grid";
-import Title from "../../components/core/Title";
+import Title from "../components/core/Title";
 
 export default () => {
   return (

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { StyledTitle } from "../../components/core/Title/index.style";
+import { StyledTitle } from "../components/core/Title/index.style";
 
 const Banner = styled.div`
   height: 670px;
