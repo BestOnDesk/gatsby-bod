@@ -28,7 +28,7 @@ const Hits = (props: StateResultsProvided) => {
         {props.searchResults.hits.map((hit) => (
           <ContentBlock postMedium marginBottom={20}>
             <PostThumbnail
-              image={(hit.image as any) as IGatsbyImageData}
+              image={hit.image as any as IGatsbyImageData}
               alt={hit.title}
               link={getPostLink(hit.slug)}
             />

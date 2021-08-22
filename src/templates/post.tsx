@@ -161,7 +161,7 @@ const PostTemplate = ({ data, pageContext }: PostTemplateProps) => {
 };
 
 export const query = graphql`
-  query($slug: String) {
+  query ($slug: String) {
     post: wpPost(slug: { eq: $slug }) {
       slug
       title

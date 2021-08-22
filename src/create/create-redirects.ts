@@ -40,7 +40,7 @@ export const createRedirects = async (
   actions: Actions,
   graphql: CreatePagesArgs["graphql"]
 ): Promise<void> => {
-  const redirects = (redirectsContent as unknown) as Redirect[];
+  const redirects = redirectsContent as unknown as Redirect[];
 
   const result = await graphql<CreateRedirectsQueryResult>(`
     query {

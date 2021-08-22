@@ -86,12 +86,8 @@ const getReadingTimeString = (string: string): string => {
     .replace(/\.\.\./g, " ")
     .trim() // Remove HTML
     .replace(/\s+/g, " ");
-  const {
-    characterCount,
-    otherLanguageTime,
-    wordTime,
-    wordCount,
-  } = wordsReadTime(strippedString);
+  const { characterCount, otherLanguageTime, wordTime, wordCount } =
+    wordsReadTime(strippedString);
 
   return humanizeTime(imageTime + wordTime);
 };
