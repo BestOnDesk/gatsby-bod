@@ -18,7 +18,12 @@ import SEO from "../components/core/SEO";
 export default () => {
   return (
     <GlobalWrapper withLayout={true}>
-      <SEO title={"Home"} description={"Test"} />
+      <SEO
+        title={"Home"}
+        description={
+          "BestOnDesk, finalmente il collega d’ufficio su cui puoi sempre contare in qualunque momento. Prodotti, consigli e molto altro."
+        }
+      />
 
       <Last5PostsSlider />
 
