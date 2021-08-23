@@ -24,21 +24,26 @@ import WidgetCategories from "../components/ui/base/WidgetCategories";
 import WidgetPostList from "../components/ui/base/WidgetPostList";
 import WidgetSocial from "../components/ui/base/WidgetSocial";
 import MorePosts from "../components/ui/base/MorePosts";
+import { getAuthorLink } from "../utils/links";
 
 export interface PostTemplateProps {
   location: Location;
   data: {
+    site: {
+      siteMetadata: {
+        siteUrl: string;
+      };
+    };
     post: {
       slug: string;
       title: string;
       date: string;
+      rawDate: string;
+      modified: string;
       seo: {
         title: string;
         metaDesc: string;
         readingTime: number;
-        schema: {
-          raw: string;
-        };
       };
       categories: {
         nodes: CategoryPreview[];
@@ -69,8 +74,8 @@ export interface PostTemplateProps {
   };
 }
 
-const PostTemplate = ({ data, pageContext }: PostTemplateProps) => {
-  const post = data.post;
+const PostTemplate = ({ data }: PostTemplateProps) => {
+  const { post, site } = data;
 
   return (
     <GlobalWrapper withLayout headerWithShadow headerSticky>
@@ -82,7 +87,29 @@ const PostTemplate = ({ data, pageContext }: PostTemplateProps) => {
             post.featuredImage.node.localFile.childImageSharp.gatsbyImageData,
           alt: post.seo.title,
         }}
-        structuredData={JSON.parse(post.seo.schema.raw)["@graph"]}
+        structuredData={[
+          {
+            "@context": "https://schema.org",
+            "@type": "NewsArticle",
+            headline: post.title,
+            image: [
+              site.siteMetadata.siteUrl +
+                post.featuredImage.node.localFile.childImageSharp
+                  .gatsbyImageData.images.fallback!.src,
+            ],
+            datePublished: post.rawDate,
+            dateModified: post.modified,
+            author: [
+              {
+                "@type": "Person",
+                name: post.author.node.name,
+                url:
+                  site.siteMetadata.siteUrl +
+                  getAuthorLink(post.author.node.slug),
+              },
+            ],
+          },
+        ]}
       />
       <PostSingleWrapper>
         <Container>
@@ -162,17 +189,21 @@ const PostTemplate = ({ data, pageContext }: PostTemplateProps) => {
 
 export const query = graphql`
   query ($slug: String) {
+    site {
+      siteMetadata {
+        siteUrl
+      }
+    }
     post: wpPost(slug: { eq: $slug }) {
       slug
       title
       date(formatString: "DD MMM YYYY", locale: "it")
+      rawDate: date
+      modified
       seo {
         title
         metaDesc
         readingTime
-        schema {
-          raw
-        }
       }
       categories {
         nodes {
