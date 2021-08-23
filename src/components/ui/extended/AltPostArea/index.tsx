@@ -147,7 +147,7 @@ const AltPostArea = () => {
       <Container>
         <Row>
           <Col lg={12}>
-            <SectionTitle level={2}>Per le aziende</SectionTitle>
+            <SectionTitle level={2}>Come fare</SectionTitle>
           </Col>
         </Row>
         <Row>
