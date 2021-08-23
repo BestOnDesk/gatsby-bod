@@ -37,6 +37,9 @@ interface Category {
   slug: string;
   name: string;
   uri: string;
+  seo: {
+    metaDesc: string;
+  };
   posts: {
     nodes: Post[];
   };
@@ -135,6 +138,9 @@ export const createCategories = async (
           slug
           name
           uri
+          seo {
+            metaDesc
+          }
           posts {
             nodes {
               slug
@@ -173,6 +179,9 @@ export const createCategories = async (
               slug
               name
               uri
+              seo {
+                metaDesc
+              }
               posts {
                 nodes {
                   slug

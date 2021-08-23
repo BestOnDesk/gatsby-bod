@@ -40,10 +40,16 @@ export interface CategoryTemplateProps {
       uri: string;
       name: string;
       slug: string;
+      seo: {
+        metaDesc: string;
+      };
       wpChildren: {
         nodes: {
           slug: string;
           name: string;
+          seo: {
+            metaDesc: string;
+          };
         }[];
       };
     };
@@ -79,7 +85,10 @@ export interface CategoryTemplateProps {
 const CategoryTemplate = ({ pageContext }: CategoryTemplateProps) => {
   return (
     <GlobalWrapper withLayout headerWithShadow>
-      <SEO title={pageContext.category.name} description={"test"} />
+      <SEO
+        title={pageContext.category.name}
+        description={pageContext.category.seo.metaDesc}
+      />
       <BreadcrumbArea
         title={pageContext.category.name}
         breadcrumbs={[
