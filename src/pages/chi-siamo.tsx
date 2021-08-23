@@ -12,7 +12,12 @@ import WidgetSocial from "components/ui/base/WidgetSocial";
 export default () => {
   return (
     <GlobalWrapper withLayout>
-      <SEO title={"Chi siamo"} description={"Chi siamo"} />
+      <SEO
+        title={"Chi siamo"}
+        description={
+          "Esperti di informatica, esperti nel lavoro d’ufficio e nella selezione dei prodotti migliori. Questo è ciò che siamo e ciò che facciamo."
+        }
+      />
 
       <BreadcrumbArea
         title="Chi siamo"
