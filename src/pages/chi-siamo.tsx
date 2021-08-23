@@ -87,6 +87,14 @@ export default () => {
                     Scrivici e troveremo la soluzione migliore per te e il tuo
                     business.
                   </p>
+                  <Title level={3}>Contatti</Title>
+                  <CustomP>Chat: in basso a sinistra</CustomP>
+                  <p>
+                    Email:{" "}
+                    <a href={"mailto:info@bestondesk.com"}>
+                      info@bestondesk.com
+                    </a>
+                  </p>
                 </Inner>
               </AboutUs>
             </Col>

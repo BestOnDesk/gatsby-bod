@@ -4,6 +4,10 @@ const Inner = styled.div`
   p {
     margin: 0 0 30px;
   }
+
+  a {
+    color: ${(props) => props.theme.colors.primary};
+  }
 `;
 
 const CustomP = styled.p`
