@@ -171,7 +171,7 @@ module.exports = {
                   image:
                     node.featuredImage.node.localFile.childImageSharp
                       .gatsbyImageData,
-                  readingTime: node.readingTime,
+                  readingTime: node.seo.readingTime,
                   matchFields: ["slug", "modified"],
                 };
               }),
