@@ -10,6 +10,7 @@ import { IGatsbyImageData } from "gatsby-plugin-image";
 export interface SEOProps {
   title: string;
   withoutTitleSuffix?: boolean;
+  withoutDefaultStructuredData?: boolean;
   description: string;
   canonical?: string;
   image?: Image;
@@ -128,6 +129,18 @@ const SEO = (props: SEOProps) => {
     new Error("Default SEO Image not found");
   }
 
+  const defaultStructuredData: WithContext<Thing>[] = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      url: "https://www.bestondesk.com",
+      logo:
+        site.siteMetadata.siteUrl +
+        images.edges.find(({ node }) => node.relativePath === "icon.png")!.node
+          .childImageSharp.gatsbyImageData.images.fallback!.src,
+    },
+  ];
+
   return (
     <Helmet
       htmlAttributes={{
@@ -236,6 +249,14 @@ const SEO = (props: SEOProps) => {
     >
       {props.structuredData &&
         props.structuredData.map((data, i) => {
+          return (
+            <script type="application/ld+json" key={i}>
+              {JSON.stringify(data)}
+            </script>
+          );
+        })}
+      {!props.withoutDefaultStructuredData &&
+        defaultStructuredData.map((data, i) => {
           return (
             <script type="application/ld+json" key={i}>
               {JSON.stringify(data)}
