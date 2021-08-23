@@ -2,6 +2,7 @@ import React, { ReactChild, useState } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
 import MobileMenu from "./MobileMenu";
+import BackToTop from "../../extended/BackToTop";
 
 interface LayoutProps {
   children: ReactChild | ReactChild[];
@@ -29,6 +30,7 @@ const Layout = ({ children, headerWithShadow, headerSticky }: LayoutProps) => {
       />
       {children}
       <Footer />
+      <BackToTop />
     </>
   );
 };

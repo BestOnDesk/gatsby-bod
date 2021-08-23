@@ -13,7 +13,7 @@ export interface HeaderProps {
 
 const Header = (props: HeaderProps) => {
   return (
-    <HeaderStyled {...props}>
+    <HeaderStyled {...props} id={"main-header"}>
       <HeaderWrap>
         <Row alignItems="center" justifyContent="between">
           <Col xl={3} lg={3} md={4} sm={3} xs={12}>
