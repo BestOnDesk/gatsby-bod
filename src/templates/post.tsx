@@ -74,7 +74,7 @@ export interface PostTemplateProps {
   };
 }
 
-const PostTemplate = ({ data }: PostTemplateProps) => {
+const PostTemplate = ({ data, location }: PostTemplateProps) => {
   const { post, site } = data;
 
   return (
@@ -82,6 +82,7 @@ const PostTemplate = ({ data }: PostTemplateProps) => {
       <SEO
         title={post.seo.title}
         description={post.seo.metaDesc}
+        location={location}
         image={{
           imageData:
             post.featuredImage.node.localFile.childImageSharp.gatsbyImageData,

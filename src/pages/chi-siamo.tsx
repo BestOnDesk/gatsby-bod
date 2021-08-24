@@ -9,7 +9,11 @@ import Title from "components/core/Title";
 import WidgetPostList from "components/ui/base/WidgetPostList";
 import WidgetSocial from "components/ui/base/WidgetSocial";
 
-export default () => {
+interface ChiSiamoPageProps {
+  location: Location;
+}
+
+export default ({ location }: ChiSiamoPageProps) => {
   return (
     <GlobalWrapper withLayout>
       <SEO
@@ -17,6 +21,7 @@ export default () => {
         description={
           "Esperti di informatica, esperti nel lavoro d’ufficio e nella selezione dei prodotti migliori. Questo è ciò che siamo e ciò che facciamo."
         }
+        location={location}
       />
 
       <BreadcrumbArea

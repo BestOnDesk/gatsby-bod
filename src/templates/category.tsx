@@ -80,14 +80,16 @@ export interface CategoryTemplateProps {
       };
     }[];
   };
+  location: Location;
 }
 
-const CategoryTemplate = ({ pageContext }: CategoryTemplateProps) => {
+const CategoryTemplate = ({ pageContext, location }: CategoryTemplateProps) => {
   return (
     <GlobalWrapper withLayout headerWithShadow>
       <SEO
         title={pageContext.category.name}
         description={pageContext.category.seo.metaDesc}
+        location={location}
       />
       <BreadcrumbArea
         title={pageContext.category.name}

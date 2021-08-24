@@ -3,7 +3,6 @@ import { Helmet } from "react-helmet";
 import { graphql, useStaticQuery } from "gatsby";
 import { Image, OpenGraphObject, TwitterCard } from "app-types/seo";
 import { getOpenGraphTypeMetas } from "utils/seo";
-import { globalHistory } from "@reach/router";
 import { Thing, WithContext } from "schema-dts";
 import { IGatsbyImageData } from "gatsby-plugin-image";
 
@@ -18,6 +17,7 @@ export interface SEOProps {
   twitterCard?: TwitterCard;
   meta?: JSX.IntrinsicElements["meta"][];
   structuredData?: WithContext<Thing>[];
+  location?: Location;
 }
 
 export interface SEOImage {
@@ -150,11 +150,11 @@ const SEO = (props: SEOProps) => {
       titleTemplate={
         props.withoutTitleSuffix ? undefined : `%s | ${site.siteMetadata.title}`
       }
-      link={
-        props.canonical
+      link={[
+        ...(props.canonical
           ? [{ rel: "canonical", key: props.canonical, href: props.canonical }]
-          : []
-      }
+          : []),
+      ]}
       meta={[
         {
           name: `description`,
@@ -184,9 +184,7 @@ const SEO = (props: SEOProps) => {
         },
         {
           property: `og:url`,
-          content: props.canonical
-            ? props.canonical
-            : `${site.siteMetadata.siteUrl}${globalHistory.location.pathname}`,
+          content: props.canonical ? props.canonical : props.location?.href,
         },
         {
           property: `og:image`,

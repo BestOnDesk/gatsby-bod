@@ -15,7 +15,11 @@ import {
 import CategoriesList from "../components/ui/extended/CategoriesList";
 import SEO from "../components/core/SEO";
 
-export default () => {
+interface IndexPageProps {
+  location: Location;
+}
+
+export default ({ location }: IndexPageProps) => {
   return (
     <GlobalWrapper withLayout={true}>
       <SEO
@@ -23,6 +27,7 @@ export default () => {
         description={
           "BestOnDesk, finalmente il collega d’ufficio su cui puoi sempre contare in qualunque momento. Prodotti, consigli e molto altro."
         }
+        location={location}
       />
 
       <Last5PostsSlider />
