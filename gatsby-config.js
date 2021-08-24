@@ -235,7 +235,6 @@ module.exports = {
                 userAgent: "*",
                 allow: "/",
               },
-              { userAgent: "*", allow: "/" },
             ],
           },
         },
