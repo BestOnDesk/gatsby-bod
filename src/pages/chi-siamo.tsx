@@ -25,7 +25,7 @@ export default () => {
           { name: "BestOnDesk", link: "/" },
           {
             name: "Chi siamo",
-            link: "/chi-siamo",
+            link: "/chi-siamo/",
           },
         ]}
       />
