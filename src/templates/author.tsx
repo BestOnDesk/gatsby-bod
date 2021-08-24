@@ -34,6 +34,7 @@ export interface AuthorTemplateProps {
     author: {
       name: string;
       slug: string;
+      description: string;
     };
     authorCategoriesSlugs: string[];
     posts: {
@@ -63,12 +64,17 @@ export interface AuthorTemplateProps {
       };
     }[];
   };
+  location: Location;
 }
 
-const AuthorTemplate = ({ pageContext }: AuthorTemplateProps) => {
+const AuthorTemplate = ({ pageContext, location }: AuthorTemplateProps) => {
   return (
     <GlobalWrapper withLayout headerWithShadow>
-      <SEO title={pageContext.author.name} description={"test"} />
+      <SEO
+        title={pageContext.author.name}
+        description={pageContext.author.description}
+        location={location}
+      />
 
       <BreadcrumbArea author={pageContext.author} />
 

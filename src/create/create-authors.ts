@@ -38,6 +38,7 @@ export interface CreateAuthorsQueryResult {
     nodes: {
       name: string;
       slug: string;
+      description: string;
       posts: {
         nodes: Post[];
       };
@@ -69,6 +70,7 @@ export const createAuthors = async (
         nodes {
           name
           slug
+          description
           posts {
             nodes {
               slug
