@@ -118,6 +118,7 @@ const StyledPostDetails = styled.div<{ primeLogoSrc?: string }>`
 
         .aawp-product__title {
           font-weight: bold;
+          color: ${(props) => props.theme.colors.heading};
         }
 
         .aawp-product__description {
