@@ -80,7 +80,7 @@ const PostTemplate = ({ data, location }: PostTemplateProps) => {
   return (
     <GlobalWrapper withLayout headerWithShadow headerSticky>
       <SEO
-        title={post.seo.title}
+        title={post.title}
         description={post.seo.metaDesc}
         location={location}
         image={{
