@@ -40,7 +40,8 @@ export interface PostPreviewQueryResult {
 
 export const isPostPreview = (props: any): boolean => {
   return (
-    props.className?.includes("wp-block-embed-wordpress") &&
+    (props.className?.includes("wp-block-embed-wordpress") ||
+      props.className?.includes("wp-block-embed-bestondesk")) &&
     (props.children[0]?.props?.children[1]?.props?.children[0]?.props?.href ||
       (typeof props.children[0]?.props?.children[0] === "string" &&
         props.children[0]?.props?.children.length === 1))
