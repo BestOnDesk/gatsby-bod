@@ -17,6 +17,7 @@ const StyledSearchBox = styled.div<{ focus: boolean }>`
   font-size: 14px;
 
   @media ${(props) => props.theme.layouts.largeMobile} {
+    display: none;
     padding: 0;
     width: 40px;
     justify-content: center;

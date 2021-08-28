@@ -123,6 +123,11 @@ const MetabarIcon = styled.li`
 const HamburgerMenu = styled.div`
   display: block;
   margin-left: 20px;
+
+  @media ${(props) => props.theme.layouts.largeMobile} {
+    margin: 0 !important;
+  }
+
   @media ${(props) => props.theme.layouts.md} {
     margin-left: 10px;
   }
