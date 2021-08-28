@@ -11,8 +11,8 @@ const StyledPostDetails = styled.div<{ primeLogoSrc?: string }>`
   }
 
   blockquote {
-    margin-bottom: 60px;
-    margin-top: 60px;
+    margin-bottom: 30px;
+    margin-top: 30px;
     font-size: 30px;
     line-height: 40px;
     color: ${(props) => props.theme.colors.gray};
