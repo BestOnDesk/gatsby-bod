@@ -6,10 +6,8 @@ import {
   HeaderSearch as HeaderSearchDiv,
   HeaderSearchForm,
   MetabarBlock,
-  MetabarIcon,
 } from "./index.style";
 import SearchAutocomplete from "../../../SearchAutocomplete";
-import { TELEGRAM_URL } from "../../../../../../constants/socials";
 
 interface HeaderSearchProps {
   openMobileMenu: Function;
@@ -21,13 +19,7 @@ const HeaderSearch = (props: HeaderSearchProps) => {
       <HeaderSearchForm>
         <SearchAutocomplete />
       </HeaderSearchForm>
-      <MetabarBlock>
-        <MetabarIcon>
-          <a href={TELEGRAM_URL} target="_blank">
-            <i className="fab fa-telegram-plane" />
-          </a>
-        </MetabarIcon>
-      </MetabarBlock>
+      <MetabarBlock></MetabarBlock>
       <HamburgerMenu>
         <HamburgerInner>
           <HamburgerIcon onClick={props.openMobileMenu}>
