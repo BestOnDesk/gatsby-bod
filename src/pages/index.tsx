@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import GlobalWrapper from "components/core/GlobalWrapper";
 import Last5PostsSlider from "components/ui/extended/Last5PostsSlider";
 import HomeFeaturedPost from "components/ui/extended/HomeFeaturedPost";
