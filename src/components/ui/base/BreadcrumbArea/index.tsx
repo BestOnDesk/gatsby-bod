@@ -40,8 +40,6 @@ const BreadcrumbArea = (props: BreadcrumbAreaProps) => {
     }
   `);
 
-  console.log(props.breadcrumbs);
-
   return (
     <StyledBreadcrumbArea>
       <Container>
