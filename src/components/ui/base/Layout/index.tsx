@@ -8,9 +8,15 @@ interface LayoutProps {
   children: ReactChild | ReactChild[];
   headerWithShadow?: boolean;
   headerSticky?: boolean;
+  withoutFooter?: boolean;
 }
 
-const Layout = ({ children, headerWithShadow, headerSticky }: LayoutProps) => {
+const Layout = ({
+  children,
+  headerWithShadow,
+  headerSticky,
+  withoutFooter,
+}: LayoutProps) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
 
   if (typeof window !== "undefined") {
@@ -29,7 +35,7 @@ const Layout = ({ children, headerWithShadow, headerSticky }: LayoutProps) => {
         close={() => setMobileMenuOpen(false)}
       />
       {children}
-      <Footer />
+      {!withoutFooter && <Footer />}
       <BackToTop />
     </>
   );

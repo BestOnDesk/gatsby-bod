@@ -13,6 +13,7 @@ import SEO from "../SEO";
 interface GlobalWrapperProps {
   children: ReactChild[];
   withLayout?: boolean;
+  withoutFooter?: boolean;
   headerWithShadow?: boolean;
   headerSticky?: boolean;
 }
@@ -27,6 +28,7 @@ const childrenContainSEO = (children: ReactChild[]) =>
 const GlobalWrapper = ({
   children,
   withLayout,
+  withoutFooter,
   headerWithShadow,
   headerSticky,
 }: GlobalWrapperProps) => {
@@ -95,6 +97,7 @@ const GlobalWrapper = ({
               <Layout
                 headerWithShadow={headerWithShadow}
                 headerSticky={headerSticky}
+                withoutFooter={withoutFooter}
               >
                 {children}
               </Layout>
