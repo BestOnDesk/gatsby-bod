@@ -37,6 +37,8 @@ const StyledHoverFlipLinkButton = styled(Link)<StyledButtonProps>`
     `}
   
   ${HoverFlipItem} {
+    color: ${(props) => props.theme.colors.white};
+
     span {
       &::after,
       &::before {
