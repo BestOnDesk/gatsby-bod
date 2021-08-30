@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const StyledBackToTop = styled.a<{ show: boolean }>`
+const StyledBackToTop = styled.button<{ show: boolean }>`
   display: inline-block;
   background-color: ${(props) => props.theme.colors.primary};
   width: 50px;

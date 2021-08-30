@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { StyledBackToTop } from "./index.style";
 
 const BackToTop = () => {
-  const backToTopRef = useRef<HTMLAnchorElement>(null);
+  const backToTopRef = useRef<HTMLButtonElement>(null);
   const [showScroll, setShowScroll] = useState<boolean>(false);
 
   useEffect(() => {
@@ -17,10 +17,16 @@ const BackToTop = () => {
     }
   });
 
+  const scrollToTop = () => {
+    if (typeof window !== `undefined`) {
+      window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+    }
+  };
+
   return (
     <StyledBackToTop
       show={showScroll}
-      href={"#main-header"}
+      onClick={scrollToTop}
       ref={backToTopRef}
     />
   );
