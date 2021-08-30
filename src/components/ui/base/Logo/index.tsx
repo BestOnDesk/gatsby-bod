@@ -385,7 +385,7 @@ const Logo = () => {
                 id="g157"
                 transform="matrix(0.06927583,0,0,-0.06927583,-8.3486043,42.461149)"
               >
-                <g id="g159" clip-path="url(#clipPath163)">
+                <g id="g159" clipPath="url(#clipPath163)">
                   <g id="g165" transform="translate(225.2899,516.5558)">
                     <path
                       d="M 0,0 2.201,-2.042 H 0 Z"
