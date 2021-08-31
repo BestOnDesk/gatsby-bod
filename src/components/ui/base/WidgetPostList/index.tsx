@@ -92,7 +92,7 @@ const WidgetPostList = (props: WidgetPostListProps) => {
       <WidgetTitle>{props.title}</WidgetTitle>
       <PostMediumBlock>
         {selectedPosts.map((post) => (
-          <ContentBlock postMedium marginBottom={20}>
+          <ContentBlock postMedium marginBottom={20} key={post.slug}>
             <PostThumbnail
               image={
                 post.featuredImage.node.localFile.childImageSharp
