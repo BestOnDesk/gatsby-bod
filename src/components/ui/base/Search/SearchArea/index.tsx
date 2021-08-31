@@ -39,6 +39,7 @@ const SearchArea = (props: SearchAreaProps) => {
     setSearchQuery(props.value || "");
     if (props.value && props.value != "") {
       props.refine(props.value);
+      props.searchCallback(props.value);
     }
   }, [props.refine]);
 
