@@ -9,6 +9,7 @@ interface LayoutProps {
   headerWithShadow?: boolean;
   headerSticky?: boolean;
   withoutFooter?: boolean;
+  withoutSearch?: boolean;
 }
 
 const Layout = ({
@@ -16,6 +17,7 @@ const Layout = ({
   headerWithShadow,
   headerSticky,
   withoutFooter,
+  withoutSearch,
 }: LayoutProps) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
 
@@ -29,6 +31,7 @@ const Layout = ({
         withShadow={headerWithShadow}
         sticky={headerSticky}
         openMobileMenu={() => setMobileMenuOpen(true)}
+        withoutSearch={withoutSearch}
       />
       <MobileMenu
         show={mobileMenuOpen}

@@ -11,13 +11,14 @@ import SearchAutocomplete from "../../../SearchAutocomplete";
 
 interface HeaderSearchProps {
   openMobileMenu: Function;
+  withoutSearch?: boolean;
 }
 
 const HeaderSearch = (props: HeaderSearchProps) => {
   return (
     <HeaderSearchDiv>
       <HeaderSearchForm>
-        <SearchAutocomplete />
+        {!props.withoutSearch && <SearchAutocomplete />}
       </HeaderSearchForm>
       <MetabarBlock></MetabarBlock>
       <HamburgerMenu>

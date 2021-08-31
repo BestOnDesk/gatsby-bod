@@ -14,6 +14,7 @@ interface GlobalWrapperProps {
   children: ReactChild[];
   withLayout?: boolean;
   withoutFooter?: boolean;
+  withoutSearch?: boolean;
   headerWithShadow?: boolean;
   headerSticky?: boolean;
 }
@@ -29,6 +30,7 @@ const GlobalWrapper = ({
   children,
   withLayout,
   withoutFooter,
+  withoutSearch,
   headerWithShadow,
   headerSticky,
 }: GlobalWrapperProps) => {
@@ -98,6 +100,7 @@ const GlobalWrapper = ({
                 headerWithShadow={headerWithShadow}
                 headerSticky={headerSticky}
                 withoutFooter={withoutFooter}
+                withoutSearch={withoutSearch}
               >
                 {children}
               </Layout>

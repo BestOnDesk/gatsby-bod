@@ -9,6 +9,7 @@ export interface HeaderProps {
   withShadow?: boolean;
   sticky?: boolean;
   openMobileMenu: Function;
+  withoutSearch?: boolean;
 }
 
 const Header = (props: HeaderProps) => {
@@ -23,7 +24,10 @@ const Header = (props: HeaderProps) => {
             <Menu />
           </Col>
           <Col xl={3} lg={8} md={8} sm={9} xs={12}>
-            <HeaderSearch openMobileMenu={props.openMobileMenu} />
+            <HeaderSearch
+              openMobileMenu={props.openMobileMenu}
+              withoutSearch={props.withoutSearch}
+            />
           </Col>
         </Row>
       </HeaderWrap>
