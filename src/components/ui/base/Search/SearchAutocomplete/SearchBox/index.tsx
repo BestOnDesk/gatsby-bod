@@ -7,7 +7,8 @@ import React, {
 } from "react";
 import { connectSearchBox } from "react-instantsearch-dom";
 import { Input, StyledSearchBox } from "./index.style";
-import useDebounce from "../../../../../hooks/use-debounce";
+import useDebounce from "../../../../../../hooks/use-debounce";
+import { navigate } from "gatsby";
 
 interface SearchBoxProps {
   focus: boolean;
@@ -34,10 +35,17 @@ const SearchBox = (props: SearchBoxProps) => {
     }
   }, [debouncedSearchTerm, searchCharacters]);
 
-  const handleEsc = (e: any) => {
+  const handleKeyDown = (e: any) => {
     if (e.keyCode === 27) {
       e.currentTarget.blur();
       props.handleClose();
+    }
+
+    if (e.key === "Enter") {
+      e.preventDefault();
+      const searchParams = new URLSearchParams();
+      searchParams.set("query", searchTerm);
+      navigate("/search?" + searchParams.toString());
     }
   };
 
@@ -55,7 +63,7 @@ const SearchBox = (props: SearchBoxProps) => {
         ref={inputRef}
         onFocus={props.handleFocus}
         onChange={(e) => setSearchTerm(e.target.value)}
-        onKeyDown={handleEsc}
+        onKeyDown={handleKeyDown}
       />
     </StyledSearchBox>
   );

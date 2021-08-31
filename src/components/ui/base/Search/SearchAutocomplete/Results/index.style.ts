@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { StyledTitle } from "../../../../core/Title/index.style";
-import { StyledContentBlock } from "../../ContentBlock/index.style";
+import { StyledTitle } from "../../../../../core/Title/index.style";
+import { StyledContentBlock } from "../../../ContentBlock/index.style";
 
 const StyledResults = styled.div`
   z-index: 99;

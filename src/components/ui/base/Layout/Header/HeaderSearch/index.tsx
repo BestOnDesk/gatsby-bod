@@ -7,7 +7,7 @@ import {
   HeaderSearchForm,
   MetabarBlock,
 } from "./index.style";
-import SearchAutocomplete from "../../../SearchAutocomplete";
+import SearchAutocomplete from "../../../Search/SearchAutocomplete";
 
 interface HeaderSearchProps {
   openMobileMenu: Function;

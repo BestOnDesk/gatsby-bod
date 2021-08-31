@@ -6,7 +6,7 @@ import {
   ALGOLIA_INDEX_NAME,
   ALGOLIA_SEARCH_KEY,
   SEARCH_DISTINCT_LIMIT,
-} from "../../../../constants/algolia";
+} from "../../../../../constants/algolia";
 import { Close, Overlay, StyledSearchAutocomplete } from "./index.style";
 import SearchBox from "./SearchBox";
 import Results from "./Results";

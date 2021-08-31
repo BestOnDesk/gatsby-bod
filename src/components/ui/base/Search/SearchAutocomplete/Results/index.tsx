@@ -2,15 +2,15 @@ import React from "react";
 import { InnerContainer, NoResults, StyledResults } from "./index.style";
 import { connectStateResults, PoweredBy } from "react-instantsearch-dom";
 import { StateResultsProvided } from "react-instantsearch-core";
-import PostThumbnail from "../../ContentBlock/PostThumbnail";
-import ContentBlock from "../../ContentBlock";
-import { getPostLink } from "../../../../../utils/links";
-import PostContent from "../../ContentBlock/PostContent";
-import Title from "../../../../core/Title";
+import PostThumbnail from "../../../ContentBlock/PostThumbnail";
+import ContentBlock from "../../../ContentBlock";
+import { getPostLink } from "../../../../../../utils/links";
+import PostContent from "../../../ContentBlock/PostContent";
+import Title from "../../../../../core/Title";
 import { Link } from "gatsby";
 import { IGatsbyImageData } from "gatsby-plugin-image";
-import PostMeta from "../../PostMeta";
-import { humanizeTime } from "../../../../../utils/reading-time";
+import PostMeta from "../../../PostMeta";
+import { humanizeTime } from "../../../../../../utils/reading-time";
 
 const Hits = (props: StateResultsProvided) => {
   if (!props.searchResults || !props.searchResults.query) {

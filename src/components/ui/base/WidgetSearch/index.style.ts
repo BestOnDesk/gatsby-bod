@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 import { SearchButton } from "../Search/index.style";
-import SearchAutocomplete from "../SearchAutocomplete";
-import { StyledSearchBox } from "../SearchAutocomplete/SearchBox/index.style";
+import SearchAutocomplete from "../Search/SearchAutocomplete";
+import { StyledSearchBox } from "../Search/SearchAutocomplete/SearchBox/index.style";
 
 const StyledWidgetSearch = styled.div<{ marginBottom?: number }>`
   background: ${(props) => props.theme.colors.extra03};
