@@ -133,6 +133,18 @@ module.exports = {
                   date(formatString: "DD MMM YYYY", locale: "it")
                   content
                   modified
+                  categories {
+                    nodes {
+                      uri
+                      name
+                    }
+                  }
+                  author {
+                    node {
+                      name
+                      slug
+                    }
+                  }
                   seo {
                     metaDesc
                     readingTime
@@ -167,6 +179,8 @@ module.exports = {
                   slug: node.slug,
                   title: node.title,
                   desc: node.seo.metaDesc,
+                  categories: node.categories.nodes,
+                  author: node.author.node,
                   modified: node.modified,
                   date: node.date,
                   content: content
