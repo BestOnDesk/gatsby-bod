@@ -138,7 +138,10 @@ const Footer = () => {
             </Col>
             <Col lg={3} md={4}>
               <CopyrightRight>
-                <p>Tutti i diritti riservati © {new Date().getFullYear()}</p>
+                <p>
+                  Tutti i diritti riservati © {new Date().getFullYear()} <br />
+                  P.IVA: IT05104380265
+                </p>
               </CopyrightRight>
             </Col>
           </Row>
