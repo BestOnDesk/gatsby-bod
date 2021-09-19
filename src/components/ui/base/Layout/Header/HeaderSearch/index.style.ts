@@ -78,6 +78,21 @@ const MetabarIcon = styled.li`
   }
 `;
 
+const MobileSearchIcon = styled(MetabarIcon)`
+  margin: 0 8px 0 0;
+
+  ${media.sm`
+    display: none;
+  `}
+
+  a {
+    color: ${(props) => props.theme.colors.body};
+    i {
+      font-weight: 900;
+    }
+  }
+`;
+
 const HamburgerMenu = styled.div`
   display: block;
   margin-left: 20px;
@@ -126,6 +141,7 @@ export {
   HeaderSearchForm,
   MetabarBlock,
   MetabarIcon,
+  MobileSearchIcon,
   HamburgerMenu,
   HamburgerInner,
   HamburgerIcon,
