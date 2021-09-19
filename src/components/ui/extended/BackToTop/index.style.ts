@@ -3,6 +3,7 @@ import styled from "styled-components";
 const StyledBackToTop = styled.button<{ show: boolean }>`
   display: inline-block;
   background-color: ${(props) => props.theme.colors.primary};
+  border: none;
   width: 50px;
   height: 50px;
   text-align: center;
