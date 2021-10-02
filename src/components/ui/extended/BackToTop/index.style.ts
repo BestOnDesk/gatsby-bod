@@ -9,8 +9,8 @@ const StyledBackToTop = styled.button<{ show: boolean }>`
   text-align: center;
   border-radius: 100%;
   position: fixed;
-  bottom: 30px;
-  right: 30px;
+  bottom: 18px;
+  right: 16px;
   transition: background-color 0.3s, opacity 0.5s, visibility 0.5s;
   opacity: 0;
   visibility: hidden;
