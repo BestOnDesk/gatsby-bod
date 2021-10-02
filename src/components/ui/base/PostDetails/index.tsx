@@ -26,7 +26,7 @@ const renderAst = new RehypeReact({
       else return <figure {...props}>{props.children}</figure>;
     },
 
-    script: () => null, // TODO: check if scripts can work with iubenda
+    script: () => null,
     ins: () => null,
     br: () => null,
   },

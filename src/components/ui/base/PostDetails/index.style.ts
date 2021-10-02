@@ -117,7 +117,7 @@ const StyledPostDetails = styled.div<{ primeLogoSrc?: string }>`
         }
 
         .aawp-product__title {
-          font-weight: bold;
+          font-weight: ${(props) => props.theme.fonts.weight.pBold};
           color: ${(props) => props.theme.colors.heading};
         }
 
@@ -172,38 +172,6 @@ const StyledPostDetails = styled.div<{ primeLogoSrc?: string }>`
             font-size: ${(props) => props.theme.fonts.size.b4};
             line-height: ${(props) => props.theme.fonts.height.b4};
           }
-
-          .aawp-button {
-            background: ${(props) => props.theme.colors.primary};
-            color: ${(props) => props.theme.colors.white};
-            font-weight: ${(props) => props.theme.fonts.weight.pMedium};
-            font-size: ${(props) => props.theme.fonts.size.b2};
-            display: flex;
-            justify-content: center;
-            border: 2px solid ${(props) => props.theme.colors.primary};
-            ${(props) => props.theme.extends.transition}
-            padding: 0 30px;
-            height: 50px;
-            line-height: 46px;
-            border-radius: ${(props) => props.theme.borders.radius};
-            transition: 0.2s ease-in-out;
-
-            @media ${(props) => props.theme.layouts.largeMobile} {
-              width: 100%;
-            }
-
-            &:hover {
-              box-shadow: ${(props) => props.theme.shadows.dark};
-            }
-
-            &::before {
-              font-family: "Font Awesome 5 Brands";
-              content: "\\f270";
-              margin-right: 8px;
-              font-size: 20px;
-              margin-top: 1px;
-            }
-          }
         }
       }
 
@@ -218,6 +186,117 @@ const StyledPostDetails = styled.div<{ primeLogoSrc?: string }>`
           position: relative;
           text-align: center;
           left: 0;
+        }
+      }
+    }
+
+    .aawp-button {
+      background: ${(props) => props.theme.colors.primary};
+      color: ${(props) => props.theme.colors.white};
+      font-weight: ${(props) => props.theme.fonts.weight.pMedium};
+      font-size: ${(props) => props.theme.fonts.size.b2};
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 2px solid ${(props) => props.theme.colors.primary};
+      ${(props) => props.theme.extends.transition}
+      padding: 0 30px;
+      height: 50px;
+      line-height: 46px;
+      border-radius: ${(props) => props.theme.borders.radius};
+      transition: 0.2s ease-in-out;
+
+      @media ${(props) => props.theme.layouts.largeMobile} {
+        width: 100%;
+      }
+
+      &:hover {
+        box-shadow: ${(props) => props.theme.shadows.dark};
+      }
+
+      &::before {
+        font-family: "Font Awesome 5 Brands";
+        content: "\\f270";
+        margin-right: 8px;
+        font-size: 20px;
+        margin-top: 1px;
+      }
+    }
+
+    .aawp-table {
+      background: ${(props) => props.theme.colors.lightest};
+      border-radius: ${(props) => props.theme.borders.radius};
+
+      .aawp-product {
+        margin: 12px 0;
+
+        .aawp-table__td-thumb {
+          display: flex;
+          min-width: 200px;
+          justify-content: center;
+          align-items: center;
+          background: #fff;
+          border-radius: ${(props) => props.theme.borders.radius};
+          margin: 20px 10px 20px 20px;
+          padding: 10px;
+
+          @media ${(props) => props.theme.layouts.largeMobile} {
+            width: auto;
+            margin: 20px 20px 10px 20px;
+            padding: 20px 0;
+          }
+
+          .aawp-product__img {
+            overflow: hidden;
+            border-radius: ${(props) => props.theme.borders.radius};
+          }
+        }
+
+        .aawp-table__td-content {
+          display: flex;
+          flex: 1;
+          flex-direction: column;
+          justify-content: flex-start;
+          align-items: flex-start;
+          margin: 20px 20px 20px 10px;
+
+          @media ${(props) => props.theme.layouts.largeMobile} {
+            margin: 10px 20px;
+          }
+
+          .aawp-table__td-links {
+            align-self: flex-end;
+            .aawp-button {
+              display: flex;
+              height: 40px;
+            }
+          }
+
+          .aawp-product__title {
+            font-weight: bold;
+            color: ${(props) => props.theme.colors.heading};
+          }
+
+          .aawp-table__td-pricing {
+            display: flex;
+            flex-direction: column-reverse;
+            align-items: flex-end;
+            margin-top: auto;
+            align-self: flex-end;
+
+            .aawp-product__price {
+              font-size: ${(props) => props.theme.fonts.size.h5};
+              line-height: ${(props) => props.theme.fonts.height.h5};
+              font-weight: ${(props) => props.theme.fonts.weight.pSemiBold};
+            }
+
+            .aawp-check-prime {
+              width: 80%;
+              content: url("${(props) => props.primeLogoSrc}");
+              margin-bottom: -9px;
+              margin-right: -7px;
+            }
+          }
         }
       }
     }
