@@ -96,7 +96,11 @@ const PostGridArea = (props: PostGridAreaProps) => {
                     node {
                       localFile {
                         childImageSharp {
-                          gatsbyImageData(width: 1410, height: 1320)
+                          gatsbyImageData(
+                            width: 1410
+                            height: 1320
+                            transformOptions: { cropFocus: CENTER }
+                          )
                         }
                       }
                     }
@@ -105,7 +109,11 @@ const PostGridArea = (props: PostGridAreaProps) => {
                     node {
                       localFile {
                         childImageSharp {
-                          gatsbyImageData(width: 990, height: 600)
+                          gatsbyImageData(
+                            width: 990
+                            height: 600
+                            transformOptions: { cropFocus: CENTER }
+                          )
                         }
                       }
                     }

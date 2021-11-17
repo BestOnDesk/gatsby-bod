@@ -59,7 +59,11 @@ const CategoriesList = (props: CategoriesListProps) => {
                 node {
                   localFile {
                     childImageSharp {
-                      gatsbyImageData(width: 540, height: 540)
+                      gatsbyImageData(
+                        width: 540
+                        height: 540
+                        transformOptions: { cropFocus: CENTER }
+                      )
                     }
                   }
                 }

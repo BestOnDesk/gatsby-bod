@@ -73,7 +73,11 @@ const WidgetCategories = (props: WidgetCategoriesProps) => {
                     node {
                       localFile {
                         childImageSharp {
-                          gatsbyImageData(width: 50, height: 50)
+                          gatsbyImageData(
+                            width: 50
+                            height: 50
+                            transformOptions: { cropFocus: CENTER }
+                          )
                         }
                       }
                     }

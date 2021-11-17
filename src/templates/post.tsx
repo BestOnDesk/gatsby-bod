@@ -220,7 +220,11 @@ export const query = graphql`
         node {
           localFile {
             childImageSharp {
-              gatsbyImageData(width: 810, height: 550)
+              gatsbyImageData(
+                width: 810
+                height: 550
+                transformOptions: { cropFocus: CENTER }
+              )
             }
           }
         }

@@ -60,7 +60,11 @@ const WidgetPostList = (props: WidgetPostListProps) => {
             node {
               localFile {
                 childImageSharp {
-                  gatsbyImageData(width: 100, height: 100)
+                  gatsbyImageData(
+                    width: 100
+                    height: 100
+                    transformOptions: { cropFocus: CENTER }
+                  )
                 }
               }
             }

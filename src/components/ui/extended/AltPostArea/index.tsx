@@ -73,7 +73,11 @@ const AltPostArea = () => {
             node {
               localFile {
                 childImageSharp {
-                  gatsbyImageData(width: 600, height: 500)
+                  gatsbyImageData(
+                    width: 600
+                    height: 500
+                    transformOptions: { cropFocus: CENTER }
+                  )
                 }
               }
             }
@@ -82,7 +86,11 @@ const AltPostArea = () => {
             node {
               localFile {
                 childImageSharp {
-                  gatsbyImageData(width: 285, height: 190)
+                  gatsbyImageData(
+                    width: 285
+                    height: 190
+                    transformOptions: { cropFocus: CENTER }
+                  )
                 }
               }
             }

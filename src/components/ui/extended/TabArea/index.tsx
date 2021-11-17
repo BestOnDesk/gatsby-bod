@@ -72,7 +72,11 @@ const TabArea = (props: TabAreaProps) => {
                     node {
                       localFile {
                         childImageSharp {
-                          gatsbyImageData(width: 780, height: 520)
+                          gatsbyImageData(
+                            width: 780
+                            height: 520
+                            transformOptions: { cropFocus: CENTER }
+                          )
                         }
                       }
                     }
