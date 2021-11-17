@@ -350,11 +350,11 @@ const StyledPostDetails = styled.div<{ primeLogoSrc?: string }>`
         currentColor 0%,
         currentColor 100%
       );
-      background-size: 0px 2px;
-      background-position: 0px 95%;
+      background-size: 0 2px;
+      background-position: 0 95%;
       transition: background-size 0.25s cubic-bezier(0.785, 0.135, 0.15, 0.86)
         0s;
-      padding: 0.1% 0px;
+      padding: 0.1% 0;
       background-repeat: no-repeat;
 
       &:hover {
@@ -373,9 +373,15 @@ const StyledPostDetails = styled.div<{ primeLogoSrc?: string }>`
     margin-bottom: 30px;
   }
 
-  pre.pre-black {
+  pre {
     background: ${(props) => props.theme.colors.lightest};
-    word-break: break-word !important;
+    border-radius: ${(props) => props.theme.borders.radius};
+    font-family: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
+    font-size: ${(props) => props.theme.fonts.size.h5};
+
+    &.pre-black {
+      word-break: break-word !important;
+    }
   }
 `;
 
